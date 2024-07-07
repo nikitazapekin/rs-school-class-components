@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 import "./index.scss"
 interface State {
   counter: number;
