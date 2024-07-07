@@ -19,7 +19,7 @@ class ErrorComponent extends Component<{}, State> {
   
   render() {
     if (this.state.counter === 1) {
-      throw new Error('I crashed!');
+      throw new Error('I crashed!!');
     }
     return (
       <div>
