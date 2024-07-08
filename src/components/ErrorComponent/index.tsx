@@ -7,7 +7,7 @@ interface State {
 class ErrorComponent extends Component<{}, State> {
   constructor(props: {}) {
     super(props);
-    this.state = { counter: 0 };
+    this.state = { counter: 1 };
     this.handleClick = this.handleClick.bind(this);
   }
   
