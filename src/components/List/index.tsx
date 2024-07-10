@@ -5,22 +5,24 @@ import { MyComponentProps } from './types';
 import Card from '../Card';
 class List extends Component<MyComponentProps> {
 	render() {
-		const {  users, handleNext, handlePrev, isFetching, total } = this.props;
+		const { users, handleNext, handlePrev, isFetching } = this.props;
 		return (
 			<section className="list">
 				<div className="list__container">
-					{total == 0 && <p className="list__error">Please type username to search user on github or check your entered prompt </p>}
 					{isFetching && <Spinner />}
 					<div className="user__list">
-						{users &&
-							users.items.map((item, index) => (
+						{users ? (
+							users.map((item, index) => (
 								<Card
 									html_url={item.html_url}
 									login={item.login}
 									avatar_url={item.avatar_url}
 									key={index}
 								/>
-							))}
+							))
+						) : (
+							<p className="list__error">No users found.</p>
+						)}
 					</div>
 					<div className="list__btns">
 						<button className="list__prev list__btn" onClick={handlePrev}>

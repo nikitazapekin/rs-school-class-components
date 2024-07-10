@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 import "./index.scss"
 interface State {
   counter: number;
@@ -19,7 +19,7 @@ class ErrorComponent extends Component<{}, State> {
   
   render() {
     if (this.state.counter === 1) {
-      throw new Error('I crashed!');
+      throw new Error('I crashed!!');
     }
     return (
       <div>
