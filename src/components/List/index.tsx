@@ -29,7 +29,7 @@ class List extends Component<MyComponentProps> {
 							Prev
 						</button>
 						<button className="list__next list__btn" onClick={handleNext}>
-							Nnext
+							Next
 						</button>
 					</div>
 				</div>
