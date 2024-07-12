@@ -33,3 +33,7 @@ const App = () => {
 };
 
 export default App;
+
+//https://jestjs.io/ru/docs/tutorial-react
+//npm install --save-dev react-test-renderer
+//npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer

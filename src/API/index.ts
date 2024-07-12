@@ -61,7 +61,7 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		url = `https://api.github.com/users?page=${offset}&per_page=${limit}`;
 		try {
 			const data = await fetchUserData(url);
-			console.log('Data:', data);
+			console.log('Dataaaa:', data);
 			return data;
 		} catch (error) {
 			console.error(error);
