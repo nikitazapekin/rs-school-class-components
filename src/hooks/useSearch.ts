@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { getUserData } from '../API';
+import { useNavigate, useLocation } from 'react-router-dom';
+//import { useSearchParams } from 'react-router-dom';
 interface BatchTypes {
 	limit: number;
 	offset: number;
@@ -69,10 +71,29 @@ const useSearch = () => {
 	};
 	const handleClick = () => {
 		fetchUserData(query);
+		setPage(batch.offset, query);
 	};
 	useEffect(() => {
 		handleClick();
 	}, []);
-	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query };
+
+	//const [searchParams, setSearchParams] = useSearchParams();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const setPage = (page: number, query: string) => {
+		const searchParams = new URLSearchParams(location.search);
+		searchParams.set('page', String(page));
+		if (query.length > 0) {
+			searchParams.set('query', query);
+		}
+		navigate(`${location.pathname}?${searchParams.toString()}`);
+	};
+
+	useEffect(() => {
+		setPage(batch.offset, query);
+	}, [batch]);
+
+	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query, batch };
 };
 export default useSearch;

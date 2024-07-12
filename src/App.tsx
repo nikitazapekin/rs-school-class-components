@@ -1,48 +1,15 @@
 //import { Component, ChangeEvent } from 'react';
 import Header from './components/Header';
 import List from './components/List';
-//import { getUserData } from './API';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import './global.scss';
 import './normalize.scss';
 import ErrorComponent from './components/ErrorComponent';
 import useSearch from './hooks/useSearch';
 
-/*
-
-interface UserItem {
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
-  score: number;
-}
-interface AppState {
-  typedValue: string;
-  users: UserItem[];
-  limit: number;
-  offset: number;
-  amountOfPages: number;
-  isFetching: boolean;
-}
-  */
-
 const App = () => {
 	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
+
 	return (
 		<>
 			<ErrorBoundary>
@@ -60,12 +27,19 @@ const App = () => {
 						<ErrorComponent />
 					</ErrorBoundary>
 				</div>
+
+				<button // onClick={getCurrentPage}
+				>
+					{' '}
+					sdsd
+				</button>
 			</ErrorBoundary>
 		</>
 	);
 };
 
 export default App;
+
 /*
 interface UserItem {
   login: string;
