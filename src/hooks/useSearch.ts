@@ -40,10 +40,10 @@ const useSearch = () => {
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(event.target.value);
 	};
-	const fetchUserData = async (prompt: string) => {
+	const fetchUserData = async (prompt: string, page: number) => {
 		try {
 			setIsFetching(true);
-			const res = await getUserData(batch.limit, batch.offset, prompt);
+			const res = await getUserData(batch.limit, page, prompt);
 			setUsers(res);
 		} catch (error) {
 			console.error('Error fetching user data:', error);
@@ -58,7 +58,8 @@ const useSearch = () => {
 			...prev,
 			offset: prev.offset + 1,
 		}));
-		handleClick();
+		//	handleClick();
+		fetchUserData(query, batch.offset);
 	};
 
 	const handlePrev = () => {
@@ -67,19 +68,40 @@ const useSearch = () => {
 			...prev,
 			offset: prev.offset - 1,
 		}));
-		handleClick();
+		//	handleClick();
+		fetchUserData(query, batch.offset);
 	};
 	const handleClick = () => {
-		fetchUserData(query);
-		setPage(batch.offset, query);
+		//fetchUserData(query, batch.offset);
+		//setPage(batch.offset, query);
+		fetchUserData(query, 1);
+		setPage(1, query);
+		setBatch((prev) => ({
+			...prev,
+			//offset: Number(page)
+			offset: 1,
+		}));
 	};
 	useEffect(() => {
-		handleClick();
+		const [page, query] = getCurrentParams();
+		fetchUserData(String(query), Number(page));
+		setBatch((prev) => ({
+			...prev,
+			//offset: Number(page)
+			offset: Number(page),
+		}));
+		setQuery(String(query));
 	}, []);
 
-	//const [searchParams, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	const getCurrentParams = () => {
+		const searchParams = new URLSearchParams(location.search);
+		const page = parseInt(searchParams.get('page') || '1', 10);
+		const query = searchParams.get('query') || '';
+		return [page, query];
+	};
 
 	const setPage = (page: number, query: string) => {
 		const searchParams = new URLSearchParams(location.search);
