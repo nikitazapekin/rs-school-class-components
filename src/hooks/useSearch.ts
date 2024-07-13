@@ -22,7 +22,8 @@ const useSearch = () => {
 		try {
 			setIsFetching(true);
 			console.log('PAGE', page);
-			const res = await getUserData(batch.limit, page, prompt);
+			let promptStored = localStorage.getItem('searchParam');
+			const res = await getUserData(batch.limit, page, String(promptStored));
 			setUsers(res);
 		} catch (error) {
 			console.error('Error fetching user data:', error);
@@ -49,6 +50,7 @@ const useSearch = () => {
 
 	const handleClick = () => {
 		fetchUserData(query, 1);
+		localStorage.setItem('searchParam', query);
 		setPage(1, query);
 		setBatch((prev) => ({
 			...prev,
@@ -72,6 +74,7 @@ const useSearch = () => {
 
 	useEffect(() => {
 		const [page, query] = getCurrentParams();
+		localStorage.setItem('searchParam', String(query));
 		fetchUserData(String(query), Number(page));
 		setBatch((prev) => ({
 			...prev,
@@ -81,7 +84,8 @@ const useSearch = () => {
 	}, []);
 
 	useEffect(() => {
-		setPage(batch.offset, query);
+		const queryStored = localStorage.getItem('searchParam');
+		setPage(batch.offset, String(queryStored));
 		fetchUserData(query, batch.offset);
 	}, [batch]);
 
