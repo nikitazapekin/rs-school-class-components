@@ -1,5 +1,19 @@
+import NotFound from '@/components/NotFound';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const NotFoundPage = () => {
-	return <>Not found 404</>;
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (window.location.pathname === '/') {
+			navigate('/main');
+		}
+	}, []);
+	return (
+		<>
+			<NotFound />
+		</>
+	);
 };
 
 export default NotFoundPage;

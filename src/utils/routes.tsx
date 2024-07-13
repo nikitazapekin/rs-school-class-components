@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { HOMEPAGE_ROUTE, NOT_FOUND_ROUTE } from './consts';
 import MainPage from '../pages/main';
 import NotFoundPage from '../pages/404page';
