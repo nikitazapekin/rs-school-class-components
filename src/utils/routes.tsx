@@ -1,26 +1,19 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { HOMEPAGE_ROUTE, NOT_FOUND_ROUTE } from './consts';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import MainPage from '../pages/main';
 import NotFoundPage from '../pages/404page';
+import UserData from '@/components/UserData';
 import { ErrorBoundary } from '../components/ErrorBoundary';
-
-const publicRoutes = [
-	{
-		path: HOMEPAGE_ROUTE,
-		Component: MainPage,
-	},
-	{
-		path: NOT_FOUND_ROUTE,
-		Component: NotFoundPage,
-	},
-];
 
 const AppRoutes = (): JSX.Element => {
 	return (
 		<ErrorBoundary>
 			<Router>
 				<Routes>
-					<Route path={HOMEPAGE_ROUTE} element={<MainPage />} />
+					<Route path="/main" element={<MainPage />}>
+						<Route path="userdata" element={<UserData />} />
+						<Route path="*" element={<Outlet />} />
+					</Route>
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</Router>
