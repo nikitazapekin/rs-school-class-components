@@ -5,6 +5,12 @@ import AppRoutes from './utils/routes.tsx';
 ReactDOM.createRoot(document.getElementById('root')!).render(<AppRoutes />);
 
 /*
+@fortawesome/react-fontawesome
+ n (imported by C:/Users/wotbl/Vite-test-setup/src/hooks/useSearch.ts)
+  @fortawesome/free-solid-svg-icons
+
+
+
 <Routes>
 	   <Route path='/' element={<MainPage />} />
 	   <Route
