@@ -5,15 +5,9 @@ import './global.scss';
 import './normalize.scss';
 import ErrorComponent from './components/ErrorComponent';
 import useSearch from './hooks/useSearch';
-import './App.scss';
-import { useNavigate } from 'react-router-dom';
 
 const App = () => {
-	const navigate = useNavigate();
 	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
-	const handleRedirect = () => {
-		navigate('not-existing-page');
-	};
 
 	return (
 		<>
@@ -32,9 +26,6 @@ const App = () => {
 						<ErrorComponent />
 					</ErrorBoundary>
 				</div>
-				<button className="redirect__btn" onClick={handleRedirect}>
-					Redirect to error page
-				</button>
 			</ErrorBoundary>
 		</>
 	);
