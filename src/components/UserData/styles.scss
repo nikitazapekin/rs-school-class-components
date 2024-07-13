@@ -1,9 +1,32 @@
-.testB {
-	background-color: rgb(185, 92, 4);
-	width: 40%;
-	height: 100vh;
-	margin-left: auto;
+.sidebar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	position: fixed;
 	right: 0;
 	top: 0;
+	width: 40%;
+	background-color: rgb(185, 92, 4);
+	height: 100vh;
+}
+
+.close__btn {
+	position: relative;
+}
+
+.close__btn {
+	margin-top: 30px;
+	padding: 20px;
+	max-width: 90%;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 20px;
+	font-size: 30px;
+	transition: 1s;
+}
+
+.close__btn:hover {
+	background-color: rgb(90, 90, 190);
+	color: #fff;
 }

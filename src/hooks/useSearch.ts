@@ -88,8 +88,10 @@ const useSearch = () => {
 		setPage(batch.offset, String(queryStored));
 		fetchUserData(query, batch.offset);
 	}, [batch]);
-
-	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query, batch };
+	const handleSearch = (username: string) => {
+		return users.find((item) => item.login == username);
+	};
+	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query, batch, handleSearch };
 };
 
 export default useSearch;
