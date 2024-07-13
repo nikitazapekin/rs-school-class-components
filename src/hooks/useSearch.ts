@@ -89,12 +89,11 @@ const useSearch = () => {
 
 	useEffect(() => {
 		const queryStored = localStorage.getItem('searchParam');
-		//	fetchUserData(query, batch.offset);
 		fetchUserData(String(queryStored), batch.offset);
 	}, [batch]);
-	//}, []);
 	const handleSearch = (username: string) => {
-		return users.find((item) => item.login == username);
+		let user = users.find((item) => item.login == username);
+		localStorage.setItem('user', JSON.stringify(user));
 	};
 	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query, batch, handleSearch };
 };

@@ -1,12 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
-import useSearch from '@/hooks/useSearch';
+import Spinner from '../Spinner';
+
+interface User {
+	login: string;
+	id: number;
+	node_id: string;
+	avatar_url: string;
+	gravatar_id: string;
+	url: string;
+	html_url: string;
+	followers_url: string;
+	following_url: string;
+	gists_url: string;
+	starred_url: string;
+	subscriptions_url: string;
+	organizations_url: string;
+	repos_url: string;
+	events_url: string;
+	received_events_url: string;
+	type: string;
+	site_admin: boolean;
+	score: number;
+}
 
 const UserData = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+	const [isFetching, setIsFetching] = useState<boolean>(false);
+	const [user, setUser] = useState<User | null>(null);
+
+	useEffect(() => {
+		const searchParams = new URLSearchParams(location.search);
+		const username = searchParams.get('username');
+
+		if (username) {
+			const fetchUserData = async () => {
+				try {
+					setIsFetching(true);
+					const response = await fetch(`https://api.github.com/users/${username}`);
+					if (!response.ok) {
+						throw new Error('User not found');
+					}
+					const userData: User = await response.json();
+					setUser(userData);
+					localStorage.setItem('user', JSON.stringify(userData));
+				} catch (error) {
+					console.error('Error fetching user data:', error);
+				} finally {
+					setIsFetching(false);
+				}
+			};
+
+			fetchUserData();
+		}
+	}, [location.search, navigate]);
+
 	return (
 		<aside className="sidebar">
-			csa
+			{isFetching && <Spinner />}
+			{user && (
+				<div>
+					<h2>{user.login}</h2>
+					<img src={user.avatar_url} alt={`${user.login}'s avatar`} />
+					<p>ID: {user.id}</p>
+					<p>Type: {user.type}</p>
+				</div>
+			)}
 			<button className="close__btn">Close</button>
 		</aside>
 	);
@@ -14,7 +75,10 @@ const UserData = () => {
 
 export default UserData;
 
-/*
+/*import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './styles.scss';
+import useSearch from '@/hooks/useSearch';
 interface User {
     login: string;
     id: number;
@@ -36,6 +100,38 @@ interface User {
     site_admin: boolean;
     score: number;
 }
+
+const UserData = () => {
+    //const [user, setUser] = 
+    const [user, setUser] = useState<User >();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+    useEffect(()=> {
+
+    }, [])
+       
+	return (
+		<aside className="sidebar">
+			csa
+
+
+
+			<button className="close__btn">Close</button>
+            {JSON.stringify(user)}
+		</aside>
+	);
+};
+export default UserData;
+
+*/
+/*
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
