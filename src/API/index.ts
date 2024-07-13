@@ -41,7 +41,7 @@ async function fetchUserData(url: string): Promise<UserDataArray> {
 		throw new Error('Error fetching data');
 	}
 }
-async function fetchUserDataAdvanced(url: string): Promise<UserData> {
+export async function fetchUserDataAdvanced(url: string): Promise<UserData> {
 	try {
 		const response: AxiosResponse<UserData> = await axios.get(url);
 		return response.data;
@@ -88,7 +88,7 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		}
 	}
 }
-
+//Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
 /* import axios, { AxiosError, AxiosResponse } from 'axios';
 
 type UserDataArray = Array<{

@@ -37,3 +37,40 @@ export default App;
 //https://jestjs.io/ru/docs/tutorial-react
 //npm install --save-dev react-test-renderer
 //npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
+//npm install --save-dev @babel/preset-typescript @babel/core @babel/preset-env babel-jest
+
+/*module.exports = {
+    presets: [
+      '@babel/preset-env',
+      ['@babel/preset-react', {runtime: 'automatic'}],
+    ],
+  };
+*/
+// babel.config.js
+
+/*
+module.exports = {
+  presets: [
+    '@babel/preset-env',
+    '@babel/preset-react',  
+    '@babel/preset-typescript' 
+  ],
+};
+
+ */
+
+/*
+module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current'
+        }
+      }
+    ]
+  ]
+};
+*/
+//
