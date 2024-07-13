@@ -21,8 +21,6 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 					) : (
 						<p className="list__error">No users found.</p>
 					)}
-					{/*
-					 */}
 				</div>
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>

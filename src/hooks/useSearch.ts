@@ -18,10 +18,10 @@ const useSearch = () => {
 		setQuery(event.target.value);
 	};
 
-	const fetchUserData = async (prompt: string, page: number) => {
+	const fetchUserData = async (page: number) => {
 		try {
 			setIsFetching(true);
-			console.log('PAGE', page);
+
 			let promptStored = localStorage.getItem('searchParam');
 			const res = await getUserData(batch.limit, page, String(promptStored));
 			setUsers(res);
@@ -52,7 +52,7 @@ const useSearch = () => {
 	};
 
 	const handleClick = () => {
-		fetchUserData(query, 1);
+		fetchUserData(1);
 		localStorage.setItem('searchParam', query);
 		setPage(1, query);
 		setBatch((prev) => ({
@@ -79,7 +79,7 @@ const useSearch = () => {
 		const [page, query] = getCurrentParams();
 		setPage(Number(page), String(query));
 		localStorage.setItem('searchParam', String(query));
-		fetchUserData(String(query), Number(page));
+		fetchUserData(Number(page));
 		setBatch((prev) => ({
 			...prev,
 			offset: Number(page),
@@ -88,8 +88,7 @@ const useSearch = () => {
 	}, []);
 
 	useEffect(() => {
-		const queryStored = localStorage.getItem('searchParam');
-		fetchUserData(String(queryStored), batch.offset);
+		fetchUserData(batch.offset);
 	}, [batch]);
 	const handleSearch = (username: string) => {
 		let user = users.find((item) => item.login == username);
@@ -99,6 +98,3 @@ const useSearch = () => {
 };
 
 export default useSearch;
-
-/*
- */
