@@ -9,7 +9,7 @@ const useSearch = () => {
 	const [isFetching, setIsFetching] = useState<boolean>(false);
 	const [users, setUsers] = useState<UserItem[]>([]);
 	const [batch, setBatch] = useState<BatchTypes>({
-		limit: 10,
+		limit: 5,
 		offset: 1,
 	});
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -38,6 +38,8 @@ const useSearch = () => {
 			...prev,
 			offset: prev.offset + 1,
 		}));
+
+		setPage(batch.offset + 1, query);
 	};
 
 	const handlePrev = () => {
@@ -46,6 +48,7 @@ const useSearch = () => {
 			...prev,
 			offset: prev.offset - 1,
 		}));
+		setPage(batch.offset - 1, query);
 	};
 
 	const handleClick = () => {
@@ -74,6 +77,7 @@ const useSearch = () => {
 
 	useEffect(() => {
 		const [page, query] = getCurrentParams();
+		setPage(Number(page), String(query));
 		localStorage.setItem('searchParam', String(query));
 		fetchUserData(String(query), Number(page));
 		setBatch((prev) => ({
@@ -85,9 +89,10 @@ const useSearch = () => {
 
 	useEffect(() => {
 		const queryStored = localStorage.getItem('searchParam');
-		setPage(batch.offset, String(queryStored));
-		fetchUserData(query, batch.offset);
+		//	fetchUserData(query, batch.offset);
+		fetchUserData(String(queryStored), batch.offset);
 	}, [batch]);
+	//}, []);
 	const handleSearch = (username: string) => {
 		return users.find((item) => item.login == username);
 	};
@@ -95,3 +100,6 @@ const useSearch = () => {
 };
 
 export default useSearch;
+
+/*
+ */

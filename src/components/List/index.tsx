@@ -2,10 +2,10 @@ import './index.scss';
 import Spinner from '../Spinner';
 import { MyComponentProps } from './types';
 import Card from '../Card';
+
 const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) => {
 	return (
 		<section className="list">
-			<button className='ttt'>efeff</button>
 			<div className="list__container">
 				{isFetching && <Spinner />}
 				<div className="user__list">
@@ -21,6 +21,8 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 					) : (
 						<p className="list__error">No users found.</p>
 					)}
+					{/*
+					 */}
 				</div>
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>

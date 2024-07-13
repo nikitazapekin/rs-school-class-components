@@ -5,16 +5,13 @@ import './global.scss';
 import './normalize.scss';
 import ErrorComponent from './components/ErrorComponent';
 import useSearch from './hooks/useSearch';
-
 const App = () => {
 	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
-
 	return (
 		<>
 			<ErrorBoundary>
 				<div className="container">
 					<Header handleClick={handleClick} handleInputChange={handleInputChange} />
-
 					<List
 						handleNext={handleNext}
 						handlePrev={handlePrev}

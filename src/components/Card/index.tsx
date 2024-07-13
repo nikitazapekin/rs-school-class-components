@@ -1,8 +1,6 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './index.scss';
 import { CardProps } from './types.ts';
-
 const Card = ({ avatar_url, login }: CardProps) => {
 	const navigate = useNavigate();
 
