@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { fetchUserDataAdvanced } from './index'; 
+import { fetchUserDataAdvanced } from './index';
+
 export type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -103,7 +104,7 @@ describe('getData', () => {
 		};
 	});
 
-	test('Корректное значение', async () => {
+	test('', async () => {
 		(axios.get as jest.Mock).mockReturnValue(Promise.resolve(response));
 		let url: string = `https://api.github.com/search/users?q=type:user&page=1&per_page=3`;
 		const data = await fetchUserDataAdvanced(url);
