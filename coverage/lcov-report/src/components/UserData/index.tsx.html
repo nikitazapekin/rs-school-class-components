@@ -203,10 +203,7 @@
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
 <a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -350,9 +347,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
@@ -360,73 +354,69 @@ import Spinner from '../Spinner';
 import axios from 'axios';
 &nbsp;
 interface User {
-  login: string;
-  id: number;
-  avatar_url: string;
-  type: string;
+	login: string;
+	id: number;
+	avatar_url: string;
+	type: string;
 }
 &nbsp;
 const UserData = () =&gt; {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [isFetching, setIsFetching] = useState&lt;boolean&gt;(false);
-  const [user, setUser] = useState&lt;User | null&gt;(null);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const [isFetching, setIsFetching] = useState&lt;boolean&gt;(false);
+	const [user, setUser] = useState&lt;User | null&gt;(null);
 &nbsp;
-  useEffect(() =&gt; {
-    const searchParams = new URLSearchParams(location.search);
-    const username = searchParams.get('username');
+	useEffect(() =&gt; {
+		const searchParams = new URLSearchParams(location.search);
+		const username = searchParams.get('username');
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (username) {
-      const fetchUserData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async </span>() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        try {</span>
-<span class="cstat-no" title="statement not covered" >          setIsFetching(true);</span>
-          const response = <span class="cstat-no" title="statement not covered" >await axios.get(`https://api.github.com/users/${username}`);</span>
-          const userData: User = <span class="cstat-no" title="statement not covered" >response.data;</span>
-<span class="cstat-no" title="statement not covered" >          setUser(userData);</span>
-<span class="cstat-no" title="statement not covered" >          localStorage.setItem('user', JSON.stringify(userData));</span>
-        } catch (error) {
-<span class="cstat-no" title="statement not covered" >          console.error('Error fetching user data:', error);</span>
-        } finally {
-<span class="cstat-no" title="statement not covered" >          setIsFetching(false);</span>
-        }
-      };
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (username) {
+			const fetchUserData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async </span>() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >				try {</span>
+<span class="cstat-no" title="statement not covered" >					setIsFetching(true);</span>
+					const response = <span class="cstat-no" title="statement not covered" >await axios.get(`https://api.github.com/users/${username}`);</span>
+					const userData: User = <span class="cstat-no" title="statement not covered" >response.data;</span>
+<span class="cstat-no" title="statement not covered" >					setUser(userData);</span>
+<span class="cstat-no" title="statement not covered" >					localStorage.setItem('user', JSON.stringify(userData));</span>
+				} catch (error) {
+<span class="cstat-no" title="statement not covered" >					console.error('Error fetching user data:', error);</span>
+				} finally {
+<span class="cstat-no" title="statement not covered" >					setIsFetching(false);</span>
+				}
+			};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      fetchUserData();</span>
-    }
-  }, [location.search, navigate]);
+<span class="cstat-no" title="statement not covered" >			fetchUserData();</span>
+		}
+	}, [location.search, navigate]);
 &nbsp;
-  const handleReturn = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
-    const lastUrl = <span class="cstat-no" title="statement not covered" >localStorage.getItem('lastUrl');</span>
-<span class="cstat-no" title="statement not covered" >    if (lastUrl) {</span>
-<span class="cstat-no" title="statement not covered" >      navigate(`${lastUrl}`);</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      navigate('/main');</span>
-    }
-  };
+	const handleReturn = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
+		const lastUrl = <span class="cstat-no" title="statement not covered" >localStorage.getItem('lastUrl');</span>
+<span class="cstat-no" title="statement not covered" >		if (lastUrl) {</span>
+<span class="cstat-no" title="statement not covered" >			navigate(`${lastUrl}`);</span>
+		} else {
+<span class="cstat-no" title="statement not covered" >			navigate('/main');</span>
+		}
+	};
 &nbsp;
-  return (
-    &lt;aside className="sidebar"&gt;
-      {isFetching &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;Spinner data-testid="spinner" /&gt;}</span>
-      {user &amp;&amp; (
-<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;div&gt;</span>
-          &lt;h2&gt;{user.login}&lt;/h2&gt;
-          &lt;img src={user.avatar_url} alt={`${user.login}'s avatar`} /&gt;
-          &lt;p&gt;ID: {user.id}&lt;/p&gt;
-          &lt;p&gt;Type: {user.type}&lt;/p&gt;
-        &lt;/div&gt;
-      )}
-      &lt;button className="close__btn" onClick={handleReturn}&gt;
-        Close
-      &lt;/button&gt;
-    &lt;/aside&gt;
-  );
+	return (
+		&lt;aside className="sidebar"&gt;
+			{isFetching &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;Spinner data-testid="spinner" /&gt;}</span>
+			{user &amp;&amp; (
+<span class="branch-1 cbranch-no" title="branch not covered" >				&lt;div&gt;</span>
+					&lt;h2&gt;{user.login}&lt;/h2&gt;
+					&lt;img src={user.avatar_url} alt={`${user.login}'s avatar`} /&gt;
+					&lt;p&gt;ID: {user.id}&lt;/p&gt;
+					&lt;p&gt;Type: {user.type}&lt;/p&gt;
+				&lt;/div&gt;
+			)}
+			&lt;button className="close__btn" onClick={handleReturn}&gt;
+				Close
+			&lt;/button&gt;
+		&lt;/aside&gt;
+	);
 };
 &nbsp;
 export default UserData;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 &nbsp;
 /*import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -500,7 +490,8 @@ const UserData = () =&gt; {
 export default UserData;
 &nbsp;
 &nbsp;
- */</pre></td></tr></table></pre>
+ */
+&nbsp;</pre></td></tr></table></pre>
 
 			<div class="push"></div>
 			<!-- for sticky footer -->
@@ -509,7 +500,7 @@ export default UserData;
 		<div class="footer quiet pad2 space-top1 center small">
 			Code coverage generated by
 			<a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-			at 2024-07-14T15:18:53.132Z
+			at 2024-07-14T15:25:02.978Z
 		</div>
 		<script src="../../../prettify.js"></script>
 		<script>
