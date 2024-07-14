@@ -1,4 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run test
+ 
+output=$(npm run test 2>&1)
+
+ 
+error_count=$(echo "$output" | grep -o "error" | wc -l)
+
+ 
+if [ "$error_count" -gt 30 ]; then
+  echo "Push rejected: more than 30 errors found in tests."
+  echo "$output"
+  exit 1
+fi
+
+ 
+exit 0

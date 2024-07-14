@@ -20,15 +20,15 @@
 				<h1><a href="../../index.html">All files</a> / <a href="index.html">src/API</a> index.ts</h1>
 				<div class="clearfix">
 					<div class="fl pad1y space-right2">
-						<span class="strong">50% </span>
+						<span class="strong">88.46% </span>
 						<span class="quiet">Statements</span>
-						<span class="fraction">13/26</span>
+						<span class="fraction">23/26</span>
 					</div>
 
 					<div class="fl pad1y space-right2">
-						<span class="strong">50% </span>
+						<span class="strong">75% </span>
 						<span class="quiet">Branches</span>
-						<span class="fraction">2/4</span>
+						<span class="fraction">3/4</span>
 					</div>
 
 					<div class="fl pad1y space-right2">
@@ -38,9 +38,9 @@
 					</div>
 
 					<div class="fl pad1y space-right2">
-						<span class="strong">50% </span>
+						<span class="strong">88.46% </span>
 						<span class="quiet">Lines</span>
-						<span class="fraction">13/26</span>
+						<span class="fraction">23/26</span>
 					</div>
 				</div>
 				<p class="quiet">
@@ -54,7 +54,7 @@
 					</div>
 				</template>
 			</div>
-			<div class="status-line medium"></div>
+			<div class="status-line high"></div>
 			<pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,15 +103,15 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -120,8 +120,8 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -130,11 +130,11 @@
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,13 +146,13 @@ export async function fetchUserDataAdvanced(url: string): Promise&lt;UserData&gt
 		const response: AxiosResponse&lt;UserData&gt; = await axios.get(url);
 		return response.data;
 	} catch (error) {
-<span class="cstat-no" title="statement not covered" >		if (axios.isAxiosError(error)) {</span>
-			const axiosError = <span class="cstat-no" title="statement not covered" >error as AxiosError;</span>
-<span class="cstat-no" title="statement not covered" >			console.error('Error fetching data:', axiosError.message);</span>
-		} else {
+		if (axios.isAxiosError(error)) {
+			const axiosError = error as AxiosError;
+			console.error('Error fetching data:', axiosError.message);
+		} else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >			console.error('Unknown error:', error);</span>
 		}
-<span class="cstat-no" title="statement not covered" >		throw new Error('Error fetching data');</span>
+		throw new Error('Error fetching data');
 	}
 }
 export async function getUserData(limit: number, offset: number, typedValue: string): Promise&lt;UserDataArray&gt; {
@@ -161,8 +161,8 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		url = `https://api.github.com/search/users?q=type:user&amp;page=${offset}&amp;per_page=${limit}`;
 		try {
 			const data = await fetchUserDataAdvanced(url);
-<span class="cstat-no" title="statement not covered" >			console.log('Data:', data);</span>
-<span class="cstat-no" title="statement not covered" >			return data.items;</span>
+			console.log('Data:', data);
+			return data.items;
 		} catch (error) {
 <span class="cstat-no" title="statement not covered" >			console.error(error);</span>
 <span class="cstat-no" title="statement not covered" >			throw error;</span>
@@ -171,11 +171,11 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		url = `https://api.github.com/search/users?q=${typedValue}&amp;page=${offset}&amp;per_page=${limit}`;
 		try {
 			const data = await fetchUserDataAdvanced(url);
-<span class="cstat-no" title="statement not covered" >			console.log('Data:', data);</span>
-<span class="cstat-no" title="statement not covered" >			return data.items;</span>
+			console.log('Data:', data);
+			return data.items;
 		} catch (error) {
-<span class="cstat-no" title="statement not covered" >			console.error(error);</span>
-<span class="cstat-no" title="statement not covered" >			throw error;</span>
+			console.error(error);
+			throw error;
 		}
 	}
 }
@@ -188,7 +188,7 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		<div class="footer quiet pad2 space-top1 center small">
 			Code coverage generated by
 			<a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-			at 2024-07-14T15:56:30.930Z
+			at 2024-07-14T16:08:34.990Z
 		</div>
 		<script src="../../prettify.js"></script>
 		<script>

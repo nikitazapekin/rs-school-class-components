@@ -1,6 +1,7 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import useSearch from './useSearch';
 import { BrowserRouter } from 'react-router-dom';
+
 const TestComponent = () => {
 	const { query, users, batch, handleInputChange, handleClick, handleNext, handlePrev } = useSearch();
 
@@ -57,7 +58,7 @@ describe('useSearch hook tests', () => {
 		});
 	});
 
-	it('should increment offset on handleNext', () => {
+	it('should increment offset on handleNext', async () => {
 		render(
 			<BrowserRouter>
 				<TestComponent />
@@ -67,10 +68,12 @@ describe('useSearch hook tests', () => {
 		const nextButton = screen.getByRole('button', { name: /next/i });
 		fireEvent.click(nextButton);
 
-		expect(screen.getByTestId('pagination-offset')).toHaveTextContent('2');
+		await waitFor(() => {
+			expect(screen.getByTestId('pagination-offset')).toHaveTextContent('2');
+		});
 	});
 
-	it('should decrement offset on handlePrev', () => {
+	it('should decrement offset on handlePrev', async () => {
 		render(
 			<BrowserRouter>
 				<TestComponent />
@@ -80,10 +83,12 @@ describe('useSearch hook tests', () => {
 		const prevButton = screen.getByRole('button', { name: /prev/i });
 		fireEvent.click(prevButton);
 
-		expect(screen.getByTestId('pagination-offset')).toHaveTextContent('0');
+		await waitFor(() => {
+			expect(screen.getByTestId('pagination-offset')).toHaveTextContent('0');
+		});
 	});
 
-	it('should set user in localStorage on handleSearch', () => {
+	it('should set user in localStorage on handleSearch', async () => {
 		render(
 			<BrowserRouter>
 				<TestComponent />
@@ -97,7 +102,9 @@ describe('useSearch hook tests', () => {
 		const searchButton = screen.getByRole('button', { name: /search/i });
 		fireEvent.click(searchButton);
 
-		const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-		expect(storedUser.login).toBe(username);
+		await waitFor(() => {
+			const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+			expect(storedUser.login).toBe(username);
+		});
 	});
 });

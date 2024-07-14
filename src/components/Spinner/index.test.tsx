@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import Spinner from './index';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -17,7 +16,11 @@ describe('Spinner', () => {
 	});
 
 	it('renders correctly with styles applied', () => {
-		const { container } = render(<Spinner />);
+		const { container } = render(
+			<MemoryRouter>
+				<Spinner />
+			</MemoryRouter>,
+		);
 
 		expect(container.firstChild).toHaveStyle(`
       width: 48px;
