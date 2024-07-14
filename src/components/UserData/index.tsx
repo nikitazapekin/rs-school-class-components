@@ -3,14 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
 import Spinner from '../Spinner';
 import axios from 'axios';
-
-interface User {
-	login: string;
-	id: number;
-	avatar_url: string;
-	type: string;
-}
-
+import { User } from './types';
 const UserData = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -25,7 +18,7 @@ const UserData = () => {
 			const fetchUserData = async () => {
 				try {
 					setIsFetching(true);
-					const response = await axios.get(`https://api.github.com/users/${username}`);
+					const response = await axios.get<User>(`https://api.github.com/users/${username}`);
 					const userData: User = response.data;
 					setUser(userData);
 					localStorage.setItem('user', JSON.stringify(userData));
