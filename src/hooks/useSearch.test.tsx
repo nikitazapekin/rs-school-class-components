@@ -101,3 +101,5 @@ describe('useSearch hook tests', () => {
 		expect(storedUser.login).toBe(username);
 	});
 });
+
+//git reset --hard HEAD@{1}
