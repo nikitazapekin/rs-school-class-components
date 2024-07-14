@@ -9,7 +9,7 @@ echo "Tests completed with exit code: $test_exit_code"
 echo "Test output:"
 echo "$output"
 
-# For debugging, save the test output to a file
+ 
 echo "$output" > test_output.log
 
 error_count=$(echo "$output" | grep -o "error" | wc -l)
