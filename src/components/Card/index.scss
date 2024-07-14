@@ -3,7 +3,9 @@
 	font-size: 32px;
 	background-color: rgb(218, 156, 41);
 	display: flex;
+	transition: 0.5s ease-in-out;
 	align-items: flex-start;
+	cursor: pointer;
 
 	&__list {
 		display: flex;
@@ -13,11 +15,15 @@
 
 	&__logo {
 		border-radius: 50%;
-		width: 42%;
+		max-width: 300px;
 	}
 
 	&__link {
 		text-decoration: none;
 		color: #000;
 	}
+}
+
+.user:hover {
+	background-color: #92411b;
 }

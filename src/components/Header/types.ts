@@ -1,5 +1,4 @@
-import { ChangeEvent } from 'react';
 export interface HeaderProps {
-	handleInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	handleClick: () => void;
 }
