@@ -1,9 +1,13 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import UserData from './index';
 import axios from 'axios';
 import { MemoryRouter } from 'react-router-dom';
 
 jest.mock('axios');
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useNavigate: jest.fn(),
+}));
 
 describe('UserData component', () => {
 	it('renders user data correctly after fetching', async () => {
@@ -46,5 +50,33 @@ describe('UserData component', () => {
 		});
 
 		expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
+	});
+
+	it('navigates correctly when Close button is clicked', async () => {
+		const mockUserData = {
+			login: 'karpathy',
+			id: 241138,
+			avatar_url: 'https://avatars.githubusercontent.com/u/241138?v=4',
+			type: 'User',
+		};
+
+		const navigate = jest.fn();
+
+		(axios.get as jest.Mock).mockResolvedValue({ data: mockUserData });
+
+		render(
+			<MemoryRouter>
+				<UserData />
+			</MemoryRouter>,
+		);
+
+		await waitFor(() => {
+			expect(screen.getByText('karpathy')).toBeInTheDocument();
+		});
+
+		const closeButton = screen.getByText('Close');
+		fireEvent.click(closeButton);
+
+		expect(navigate).toHaveBeenCalledWith(expect.stringContaining('/main'));
 	});
 });
