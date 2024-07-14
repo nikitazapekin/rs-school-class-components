@@ -8,7 +8,7 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 		<section className="list">
 			<div className="list__container">
 				{isFetching && <Spinner />}
-				<div className="user__list">
+				<div className="user__list" data-testid="elems">
 					{users ? (
 						users.map((item, index) => (
 							<Card
