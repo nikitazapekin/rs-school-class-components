@@ -1,0 +1,26 @@
+.user {
+  padding: 40px 20px;
+  font-size: 32px;
+  background-color: rgb(218, 156, 41);
+  display: flex;
+  transition: 0.5s ease-in-out;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.user__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.user__logo {
+  border-radius: 50%;
+  max-width: 300px;
+}
+.user__link {
+  text-decoration: none;
+  color: #000;
+}
+
+.user:hover {
+  background-color: #92411b;
+}/*# sourceMappingURL=index.css.map */

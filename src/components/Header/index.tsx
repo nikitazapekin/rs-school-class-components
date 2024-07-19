@@ -3,6 +3,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 import { HeaderProps } from './types';
 import { useNavigate } from 'react-router-dom';
+import ThemeButton from '../ThemeButton';
 
 const Header = ({ handleInputChange, handleClick }: HeaderProps) => {
 	const navigate = useNavigate();
@@ -22,6 +23,8 @@ const Header = ({ handleInputChange, handleClick }: HeaderProps) => {
 				<button className="redirect__btn" onClick={handleRedirect}>
 					Redirect to error page
 				</button>
+
+				<ThemeButton />
 			</div>
 		</header>
 	);
