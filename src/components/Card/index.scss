@@ -60,7 +60,7 @@
 	font-weight: bold;
 }
 
-/* Custom checkbox */
+ 
 .user__checkbox {
 	position: relative;
 	width: 20px;
@@ -74,7 +74,8 @@
 	transition: background-color 0.3s;
 
 	&:checked::before {
-		content: '✔';
+	/*	content: '✔'; */
+	content: 'Add to favourite';
 		position: absolute;
 		top: 50%;
 		left: 50%;

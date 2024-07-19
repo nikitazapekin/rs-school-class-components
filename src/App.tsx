@@ -1,53 +1,4 @@
-/*
-import Header from './components/Header';
-import List from './components/List';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import './global.scss';
-import './normalize.scss';
-import ErrorComponent from './components/ErrorComponent';
-import useSearch from './hooks/useSearch';
-import { useAppDispatch } from './hooks/redux';
-//import { useAppDispatch } from '@/hooks/redux';
-import { Testt } from './store/action-creators/appSliceActionCreator';
-
-import { useGetPokemonByNameQuery } from './store/slices/apiSlice';
-//import { useGetPokemonByNameQuery } from './services/pokemon'
-const App = () => {
-
-	const dispatch = useAppDispatch()
-	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
-
-	const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
-
-
-	console.log("RTK", data, error, isLoading)
-	return (
-		<>
-			<ErrorBoundary>
-				<div className="container">
-					<Header handleClick={handleClick} handleInputChange={handleInputChange} />
-					<List
-						handleNext={handleNext}
-						handlePrev={handlePrev}
-						users={users}
-						isFetching={isFetching}
-						typedValue={query}
-					/>
-					<ErrorBoundary>
-						<ErrorComponent />
-					</ErrorBoundary>
-				</div>
-
-				<button onClick={()=> dispatch(Testt())}>tesss</button>
-			</ErrorBoundary>
-		</>
-	);
-};
-
-export default App;
-*/
-
-
+ 
 import React, { useContext, useEffect } from 'react';
 import Header from './components/Header';
 import List from './components/List';
@@ -59,10 +10,15 @@ import ErrorComponent from './components/ErrorComponent';
 import useSearch from './hooks/useSearch';
 import { useAppDispatch } from './hooks/redux';
 import { useLazyGetPokemonByNameQuery } from './store/slices/apiSlice';
-
-import ThemeContext, { ThemeProvider } from './components/ThemeContext';
+import { useSelector } from 'react-redux';
+ 
+import  { ThemeProvider } from './components/ThemeContext';
 import Background from './components/Background';
+import { storedUsersSelector } from './store/selectors/getStoredElements';
+import StoredUsersButton from './components/StoredUsersButton';
 const App = () => {
+
+	const storedUsers = useSelector(storedUsersSelector)
 	const dispatch = useAppDispatch();
 	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
 	const [triggerGetPokemonByName, { data, error, isLoading }] = useLazyGetPokemonByNameQuery();
@@ -73,19 +29,16 @@ const App = () => {
 
 	console.log("RTK", data, error, isLoading);
 
-
  
-	const {isDark} = useContext(ThemeContext)
 	useEffect(()=> {
-console.log(isDark)
-	}, [isDark])
+console.log(storedUsers)
+	}, [storedUsers])
 	return (
 		<>
 
 			<ErrorBoundary>
 				<ThemeProvider>
-					 
-
+					
 						<div className="container">
 							<Header handleClick={handleClick} handleInputChange={handleInputChange} />
 							<List
@@ -95,6 +48,9 @@ console.log(isDark)
 								isFetching={isFetching}
 								typedValue={query}
 							/>
+							{storedUsers.length>0 && (
+								<StoredUsersButton />
+							)}
 							<ErrorBoundary>
 								<ErrorComponent />
 							</ErrorBoundary>

@@ -71,9 +71,9 @@ const appSlicee = createSlice({
         },
 
         setAddToStoredElement(state, action: PayloadAction<UserItem>) {
-            console.log("USER", action.payload)
+          //  console.log("USER", action.payload)
             state.storedElements = [...state.storedElements, action.payload];
-            console.log(state.storedElements)
+            //console.log(state.storedElements)
 
         }
     },

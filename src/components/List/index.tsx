@@ -9,7 +9,7 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 			<div className="list__container">
 				{isFetching && <Spinner />}
 				<div className="user__list" data-testid="elems">
-				{/*	{users ? (
+					{/*	{users ? (
 						users.map((item, index) => (
 							<Card
 								html_url={item.html_url}
@@ -27,12 +27,11 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 					*/}
 
 
-{users ? (
-						users.map((item, index) => (
+					{users ? (
+						users.map((item) => (
 							<Card
-							 user={item}
-								//item={{user: item}}
-								key={index}
+								user={item}
+								key={item.id}
 							/>
 						))
 					) : (
