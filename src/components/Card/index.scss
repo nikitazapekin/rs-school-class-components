@@ -1,7 +1,7 @@
 .user {
 	padding: 40px 20px;
 	font-size: 32px;
-	background-color: rgb(218, 156, 41);
+	background-color: rgb(201, 174, 124);
 	display: flex;
 	transition: 0.5s ease-in-out;
 	align-items: flex-start;
@@ -24,6 +24,90 @@
 	}
 }
 
+.user-dark {
+	background-color: rgb(73, 71, 71);
+	color: #fff;
+}
+
 .user:hover {
 	background-color: #92411b;
 }
+
+/*===========================================================*/
+
+
+
+
+
+
+
+
+
+
+
+.user__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	row-gap: 20px;
+	margin-left: 20px;
+
+}
+
+
+.user__login {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* Custom checkbox */
+.user__checkbox {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	appearance: none;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	outline: none;
+	transition: background-color 0.3s;
+
+	&:checked::before {
+		content: '✔';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #000;
+	}
+
+	&:hover {
+		background-color: #f0f0f0;
+	}
+}
+
+.user__details {
+	font-size: 24px;
+	cursor: pointer;
+	padding: 10px 25px;
+	transition: 1s;
+}
+
+.user__details:hover {
+	background-color: rgb(90, 90, 190);
+	color: #fff;
+}
+
+/*
+&__btn {
+	padding: 10px 25px;
+	cursor: pointer;
+	transition: 1s;
+}
+
+&__btn:hover {
+	background-color: rgb(90, 90, 190);
+	color: #fff;
+}
+	*/

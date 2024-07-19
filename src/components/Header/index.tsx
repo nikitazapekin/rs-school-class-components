@@ -4,15 +4,21 @@ import './index.scss';
 import { HeaderProps } from './types';
 import { useNavigate } from 'react-router-dom';
 import ThemeButton from '../ThemeButton';
-
+import { useContext, useEffect } from 'react';
+import ThemeContext from '../ThemeContext';
 const Header = ({ handleInputChange, handleClick }: HeaderProps) => {
 	const navigate = useNavigate();
 	const handleRedirect = () => {
 		navigate('/not-existing-page');
 	};
 
+
+	const { isDark} = useContext(ThemeContext);
+useEffect(()=> {
+console.log("IS", isDark)
+}, [isDark])
 	return (
-		<header className="header">
+		<header className={`header ${isDark ? `header-dark` : ''}`}>
 			<div className="header__content">
 				<nav className="header__search">
 					<input type="text" className="search__bar" placeholder="Search..." onChange={handleInputChange} />
@@ -31,3 +37,12 @@ const Header = ({ handleInputChange, handleClick }: HeaderProps) => {
 };
 
 export default Header;
+
+
+/*
+import { useContext, useEffect } from 'react';
+import ThemeContext from '../ThemeContext';
+
+const ThemeButton = () => {
+  const { isDark, toggleTheme } = useContext(ThemeContext);
+  */
