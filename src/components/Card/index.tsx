@@ -47,11 +47,12 @@ export default Card;
 
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
-import { CardProps } from './types.ts';
+ 
 import ThemeContext from '../ThemeContext';
 import { useContext } from 'react';
 import { useAppDispatch } from '@/hooks/redux.ts';
 import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
+ 
 interface UserItem {
 	user: {
 
@@ -78,8 +79,7 @@ interface UserItem {
 } 
 		const Card = ( item: UserItem) => {
 	const navigate = useNavigate();
-	//console.log(item.item.)
-	console.log(item.user)
+	 
 const dispatch = useAppDispatch()
 	const handleCardClick = () => {
 		const currentParams = new URLSearchParams(location.search);

@@ -22,10 +22,7 @@ interface UserItem {
 	score: number;
 } 
 export const AddElementToStorage =(user: UserItem )=>(dispatch: AppDispatch )  => {
-// dispatch(setIsAuthorized(isUnauthorized))
-
-console.log("UUU", user)
-
+ 
 dispatch(setAddToStoredElement(user))
 }
  

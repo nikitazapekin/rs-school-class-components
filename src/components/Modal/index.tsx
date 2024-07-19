@@ -6,19 +6,35 @@ import { storedUsersSelector } from "@/store/selectors/getStoredElements";
 import { isOpenModal } from "@/store/selectors/isOpenModalSelector";
 import { useAppDispatch } from "@/hooks/redux";
 import { OpenModalActionCreator } from "@/store/action-creators/openModalActionCreator";
+import { useContext, useEffect } from "react";
+import ThemeContext from "../ThemeContext";
+import { clearStoredElementsActionCreator } from "@/store/action-creators/clearStoredElementsActionCreator";
 const Modal = () => {
     const storedUsers = useSelector(storedUsersSelector)
     const dispatch = useAppDispatch()
     const isOpen = useSelector(isOpenModal)
     const handleClose = () => {
         dispatch(OpenModalActionCreator())
+        
     }
-    if (!isOpen) {
+
+    const handleClear = ()=> {
+        dispatch(clearStoredElementsActionCreator())
+        handleClose()
+    }
+/*
+useEffect(()=> {
+if(storedUsers.length==0){
+    handleClose()
+}
+}, []) */
+    const { isDark } = useContext(ThemeContext)
+    if (!isOpen  ) {
         return <></>
     }
     return (
         <div className="modal">
-            <div className="modal__inner">
+            <div className={`modal__inner ${isDark ? `modal__inner-dark` : ''}`}>
                 <h2 className="modal__title">
                     Yours stored elements
                 </h2>
@@ -26,9 +42,10 @@ const Modal = () => {
                     {storedUsers.map(item => (
                         <>
                             <ModalCard
-                                avatar={item.avatar_url}
-                                id={item.id}
-                                login={item.login}
+                              //  avatar={item.avatar_url}
+                            //    id={item.id}
+                             //   login={item.login}
+                             user={item}
                                 key={item.id} />
                         </>
                     ))}
@@ -37,7 +54,7 @@ const Modal = () => {
                     <button className="modal__btn">
                         Download all
                     </button>
-                    <button className="modal__btn modal__clear">
+                    <button className="modal__btn modal__clear" onClick={handleClear}>
                         Clear all
                     </button>
                 </div>

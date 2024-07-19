@@ -18,20 +18,18 @@
         z-index: 1111;
         position: relative;
         background-color: rgb(151, 146, 146);
+        transition: 1s;
+    }
+    &__inner-dark {
+background-color: #838080;
+//color: #fff;
     }
     &__elements {
         max-height: 60vh;
 
         overflow-y: scroll;
     }
-
-    /*
-    &__elements::-webkit-scrollbar {
-        width: 2px;
-        background: #7a1c1c;
-    }
-
-    */
+ 
 
     &__elements::-webkit-scrollbar {
         width: 12px; 
@@ -43,12 +41,13 @@
     }
     
     &__elements::-webkit-scrollbar-thumb {
-        background: #888;  
+        background: #92411b;
         border-radius: 10px;
+        transition: 1s;
     }
     
     &__elements::-webkit-scrollbar-thumb:hover {
-        background: #555;  
+        background: #913535;  
     }
     &__overlay {
         position: absolute;
