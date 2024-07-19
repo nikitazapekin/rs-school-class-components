@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { store } from '../store';
+ 
 
 
 interface UserItem {
@@ -50,11 +50,13 @@ export interface AppStatee {
     isLoading: boolean;
     error: string | null;
     storedElements: UserDataArray;
+    isModalOpen: boolean
 }
 const initialState: AppStatee = {
     isLoading: false,
     error: null,
-    storedElements: []
+    storedElements: [],
+    isModalOpen: false
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -71,13 +73,13 @@ const appSlicee = createSlice({
         },
 
         setAddToStoredElement(state, action: PayloadAction<UserItem>) {
-          //  console.log("USER", action.payload)
             state.storedElements = [...state.storedElements, action.payload];
-            //console.log(state.storedElements)
-
+        },
+        setModalOpen(state, ) {
+         state.isModalOpen = !state.isModalOpen
         }
     },
 });
 
-export const { setLoading, setError, setAlert, setAddToStoredElement } = appSlicee.actions;
+export const { setLoading, setError, setAlert, setAddToStoredElement, setModalOpen } = appSlicee.actions;
 export default appSlicee.reducer;

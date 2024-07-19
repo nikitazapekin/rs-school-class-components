@@ -20,33 +20,7 @@ interface UserItem {
 	type: string;
 	site_admin: boolean;
 	score: number;
-}
-/*
-//export const AddElementToStorage =()=>(dispatch: AppDispatch, user: UserItem  )  => {
-    export const AddElementToStorage =( dispatch: AppDispatch, user: UserItem  )  => {
- //dispatch(setAlert(111))
- //dispatch(setAddToStoredElement(user))
-}
-
-
-import {AppDispatch} from "../store";
-import { setIsAuthorized } from "../slices/IsUnauthorized";
- interface IsUnauthorizedProps {
-      isUnauthorized: boolean
-    }
-export const IsUnauthorizedAction =(isUnauthorized:IsUnauthorizedProps)=>(dispatch: AppDispatch )  => {
- dispatch(setIsAuthorized(isUnauthorized))
-}
- 
-*/
-
-/*
-import {AppDispatch} from "../store";
-import { setIsAuthorized } from "../slices/IsUnauthorized";
- interface IsUnauthorizedProps {
-      isUnauthorized: boolean
-    }
-      */
+} 
 export const AddElementToStorage =(user: UserItem )=>(dispatch: AppDispatch )  => {
 // dispatch(setIsAuthorized(isUnauthorized))
 

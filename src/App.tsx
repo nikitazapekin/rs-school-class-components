@@ -16,10 +16,11 @@ import  { ThemeProvider } from './components/ThemeContext';
 import Background from './components/Background';
 import { storedUsersSelector } from './store/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersButton';
+import Modal from './components/Modal';
 const App = () => {
 
 	const storedUsers = useSelector(storedUsersSelector)
-	const dispatch = useAppDispatch();
+ 
 	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
 	const [triggerGetPokemonByName, { data, error, isLoading }] = useLazyGetPokemonByNameQuery();
 
@@ -51,6 +52,8 @@ console.log(storedUsers)
 							{storedUsers.length>0 && (
 								<StoredUsersButton />
 							)}
+
+							<Modal />
 							<ErrorBoundary>
 								<ErrorComponent />
 							</ErrorBoundary>
