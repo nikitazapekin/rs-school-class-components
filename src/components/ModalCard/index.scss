@@ -1,0 +1,67 @@
+.modal {
+
+    &__card {
+        padding: 20px;
+        display: flex;
+        max-height: 150px;
+
+        &__avatar {
+            border-radius: 50%;
+        }
+
+        &__title {
+            font-size: 32px;
+            font-family: bold;
+        }
+
+        &__inner {
+            display: flex;
+           
+            width: 100%;
+           justify-content: space-between;
+        }
+
+        &__btns {
+      
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            justify-content: center;
+        //    align-items: flex-end;
+        //    margin-left: auto;
+            //   display: flex;
+            // column-gap: 20px;
+            // justify-content: center;
+        }
+
+
+
+
+
+        &__btn {
+            cursor: pointer;
+
+            z-index: 111;
+            padding: 3px;
+            font-size: 25px;
+            max-width: 300px;
+            transition: 1s;
+        }
+
+        &__clear {
+            transition: 1s;
+        }
+
+
+
+        &__btn:hover {
+            background-color: rgb(90, 90, 190);
+            color: #fff;
+        }
+
+        &__clear:hover {
+            background-color: rgb(158, 51, 51);
+            color: #fff;
+        }
+    }
+}
