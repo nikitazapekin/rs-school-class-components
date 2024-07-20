@@ -17,6 +17,50 @@ import Background from './components/Background';
 import { storedUsersSelector } from './store/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersButton';
 import Modal from './components/Modal';
+
+/*
+ 
+import { Parser } from 'json2csv';
+import { saveAs } from 'file-saver';
+
+const ExportCSV = ( data: string ) => {
+  const exportToCSV = () => {
+    const json2csvParser = new Parser();
+    const csv = json2csvParser.parse(data);
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    saveAs(blob, 'data.csv');
+  };
+
+  return (
+    <button onClick={exportToCSV}>
+      Экспортировать в CSV
+    </button>
+  );
+};
+
+
+
+npm install react-csv-export --save --legacy-peer-deps
+
+import CsvLink from 'react-csv-export';
+const EXAMPLE_DATA_OF_DEMO = [
+	{ id: "id-0", name: "Youngjae", age: 29, country: "KOR" },
+	{ id: "id-1", name: "Kiook", age: 20, country: "JAP" },
+	{ id: "id-2", name: "Brian", age: 30, country: "USA" },
+	{ id: "id-3", name: "Kisoo", age: 41, country: "DPR" },
+	{ id: "id-4", name: "Youngsik", age: 51, country: "GER" }
+];
+
+
+npm i react-csv --legacy-peer-deps
+npm i --save-dev @types/react-csv --legacy-peer-deps
+*/
+
+import {CSVLink, CSVDownload} from 'react-csv';
+const csvData =[
+	['rahul', 'delhi', 'accountsdept']  
+  ];
 const App = () => {
 
 	const storedUsers = useSelector(storedUsersSelector)
@@ -59,7 +103,10 @@ console.log(storedUsers)
 							</ErrorBoundary>
 						</div>
 						<button onClick={handleButtonClick}>Fetch Pokemon</button>
+
 				 <Background />
+ 
+				 <CSVLink data={csvData} >Download me</CSVLink>
 				</ThemeProvider>
 			</ErrorBoundary>
 		</>
@@ -72,6 +119,7 @@ export default App;
 
 
 /*
+<ExportCSV  data={"dds"} />
 // App.tsx
 import React from 'react';
 import { UserProvider } from './UserContext';
