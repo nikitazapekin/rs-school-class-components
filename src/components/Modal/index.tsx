@@ -39,13 +39,12 @@ if(storedUsers.length==0){
                     Yours stored elements
                 </h2>
                 <div className="modal__elements">
-                    {storedUsers.map(item => (
+                    {storedUsers.map((item, index) => (
                         <>
                             <ModalCard
-                              //  avatar={item.avatar_url}
-                            //    id={item.id}
-                             //   login={item.login}
                              user={item}
+                         
+                             index={index}
                                 key={item.id} />
                         </>
                     ))}
