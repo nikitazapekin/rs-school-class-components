@@ -1,95 +1,11 @@
- /*
-import React, { useContext, useEffect } from 'react';
-import Header from './components/Header';
-import List from './components/List';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import './global.scss';
  
-import './normalize.scss';
-import ErrorComponent from './components/ErrorComponent';
-import useSearch from './hooks/useSearch';
-import { useAppDispatch } from './hooks/redux';
-import { useLazyGetPokemonByNameQuery } from './store/slices/apiSlice';
-import { useSelector } from 'react-redux';
- 
-import  { ThemeProvider } from './components/ThemeContext';
-import Background from './components/Background';
-import { storedUsersSelector } from './store/selectors/getStoredElements';
-import StoredUsersButton from './components/StoredUsersButton';
-import Modal from './components/Modal';
-
- 
-
-import {CSVLink, CSVDownload} from 'react-csv';
-
- 
- const csvData = "bshb"
-const App = () => {
-
-	const storedUsers = useSelector(storedUsersSelector)
- 
-	const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
-	const [triggerGetPokemonByName, { data, error, isLoading }] = useLazyGetPokemonByNameQuery();
-
-	const handleButtonClick = () => {
-		triggerGetPokemonByName('bulbasaur');
-	}
-
-	console.log("RTK", data, error, isLoading);
-
- 
-	useEffect(()=> {
-console.log(storedUsers)
-	}, [storedUsers])
-	return (
-		<>
-
-			<ErrorBoundary>
-				<ThemeProvider>
-					
-						<div className="container">
-							<Header handleClick={handleClick} handleInputChange={handleInputChange} />
-							<List
-								handleNext={handleNext}
-								handlePrev={handlePrev}
-								users={users}
-								isFetching={isFetching}
-								typedValue={query}
-							/>
-							{storedUsers.length>0 && (
-								<StoredUsersButton />
-							)}
-
-							<Modal />
-							<ErrorBoundary>
-								<ErrorComponent />
-							</ErrorBoundary>
-						</div>
-						<button onClick={handleButtonClick}>Fetch Pokemon</button>
-
-				 <Background />
- 
-				 <CSVLink data={csvData} >Download me</CSVLink>
-				</ThemeProvider>
-			</ErrorBoundary>
-		</>
-	);
-};
-
-export default App;
- */
-
-
 import Header from './components/Header';
 import List from './components/List';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSVLink } from 'react-csv';
-import { useSelector } from 'react-redux';
-//import { useSearch, storedUsersSelector } from './yourCustomHooks'; // Ensure to import your custom hooks correctly
-//import { useLazyGetPokemonByNameQuery } from './yourRTKQueries'; // Ensure to import your RTK query hook correctly
-//import { ErrorBoundary, ThemeProvider, Header, List, StoredUsersButton, Modal, ErrorComponent, Background } from './yourComponents'; // Ensure to import your components correctly
+import { useSelector } from 'react-redux'; 
 import { storedUsersSelector } from './store/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersButton';
 import useSearch from './hooks/useSearch';
@@ -100,6 +16,8 @@ import  { ThemeProvider } from './components/ThemeContext';
 import Background from './components/Background';
  import ErrorComponent from './components/ErrorComponent';
 import Modal from './components/Modal';
+import { useSearchUsersQuery } from './store/slices/querySlice';
+//import DownloadCsvButton from './components/Download';
 //import trigger
 const App = () => {
     const storedUsers = useSelector(storedUsersSelector);
@@ -108,25 +26,18 @@ const App = () => {
     //const [triggerGetPokemonByName, { data, error, isLoading }] = useLazyGetPokemonByNameQuery();
 
     const handleButtonClick = () => {
-     //   triggerGetPokemonByName('bulbasaur');
+     //   triggerGetPokemonByName('bulbasaur'); npm install file-saver --legacy-peer-deps
+
     };
 
-    useEffect(() => {
-        console.log(storedUsers);
-    }, [storedUsers]);
-
-    const csvHeaders = [
-        { label: 'Username', key: 'username' },
-        { label: 'Telephone', key: 'telephone' },
-        { label: 'ID', key: 'id' }
-    ];
-
- 
-    const csvData = [
-        { username: 'user1', telephone: '123-456-7890', id: '1' },
-        { username: 'user2', telephone: '098-765-4321', id: '2' }
-    ];
-
+ const [page, setPage] = useState(1)
+	const { data, error, isLoading } = useSearchUsersQuery({ query:``, page, per_page: 10 });
+	const handleSearch=()=> {
+		setPage(prev=> prev+1)
+	}
+	useEffect(()=> {
+console.log(data)
+	}, [data])
     return (
         <>
             <ErrorBoundary>
@@ -148,9 +59,14 @@ const App = () => {
                             <ErrorComponent />
                         </ErrorBoundary>
                     </div>
-                    <button onClick={handleButtonClick}>Fetch Pokemon</button>
+               
+
+
+				   <button onClick={handleSearch}> searc</button>
                     <Background />
-                    <CSVLink data={csvData} headers={csvHeaders} filename={"users.csv"}>Download me</CSVLink>
+			 
+
+
                 </ThemeProvider>
             </ErrorBoundary>
         </>
@@ -158,3 +74,44 @@ const App = () => {
 };
 
 export default App;
+
+ /*
+ import React, { useState } from 'react';
+import { useSearchUsersQuery } from './path/to/githubApi';
+
+const GitHubUserSearch = () => {
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useSearchUsersQuery({ query, page, per_page: 30 });
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setPage(1);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {data && (
+        <ul>
+          {data.items.map((user) => (
+            <li key={user.id}>{user.login}</li>
+          ))}
+        </ul>
+      )}
+      <button onClick={() => setPage((prev) => prev + 1)}>Next Page</button>
+    </div>
+  );
+};
+
+export default GitHubUserSearch;
+*/

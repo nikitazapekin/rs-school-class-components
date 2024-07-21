@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DownloadCSV = ({ data, fileName }) => {
+const DownloadCSVButton = ({ data, fileName }) => {
   const convertToCSV = (objArray) => {
     const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
     let str = '';
@@ -33,4 +33,4 @@ const DownloadCSV = ({ data, fileName }) => {
   );
 }
 
-export default DownloadCSV;
+export default DownloadCSVButton;

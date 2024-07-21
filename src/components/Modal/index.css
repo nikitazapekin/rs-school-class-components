@@ -1,0 +1,101 @@
+.modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 111;
+}
+.modal__title {
+  font-size: 35px;
+}
+.modal__inner {
+  border-radius: 20px;
+  padding: 40px;
+  z-index: 1111;
+  position: relative;
+  background-color: rgb(151, 146, 146);
+  transition: 1s;
+}
+.modal__inner-dark {
+  background-color: #838080;
+}
+.modal__elements {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.modal__elements::-webkit-scrollbar {
+  width: 12px;
+}
+.modal__elements::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.modal__elements::-webkit-scrollbar-thumb {
+  background: #92411b;
+  border-radius: 10px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+.modal__elements::-webkit-scrollbar-thumb:hover {
+  background: #913535;
+}
+.modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(88, 87, 87);
+  opacity: 0.7;
+  z-index: 111;
+}
+.modal__btns {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.modal__btn {
+  cursor: pointer;
+  z-index: 111;
+  padding: 7px;
+  font-size: 35px;
+  max-width: 300px;
+  transition: 1s;
+}
+.modal__clear {
+  transition: 1s;
+}
+.modal__btn:hover {
+  background-color: rgb(90, 90, 190);
+  color: #fff;
+}
+.modal__clear:hover {
+  background-color: rgb(158, 51, 51);
+  color: #fff;
+}
+
+/*
+.stored__users {
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    top: 90px;
+    z-index: 111;
+    padding: 7px;
+ font-size: 35px;
+max-width: 300px;
+	transition: 1s;
+}
+
+
+
+.stored__users:hover {
+	background-color: rgb(90, 90, 190);
+	color: #fff;
+}
+    *//*# sourceMappingURL=index.css.map */

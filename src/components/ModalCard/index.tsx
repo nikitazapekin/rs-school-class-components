@@ -84,54 +84,50 @@ interface ModalCardProps {
 
 export default ModalCard;
 
-
-
-
+    /*
+    */
+    /*
+*/
 /*import React from 'react';
 import { clearStoredElementsByIdActionCreator } from "@/store/action-creators/removeStoredElementByIdActionCreator";
 import "./index.scss";
 import { useAppDispatch } from "@/hooks/redux";
 import { CSVLink } from 'react-csv';
 
-interface UserItem {
-    user: {
-        login: string;
-        id: number;
-        node_id: string;
-        avatar_url: string;
-        gravatar_id: string;
-        url: string;
-        html_url: string;
-        followers_url: string;
-        following_url: string;
-        gists_url: string;
-        starred_url: string;
-        subscriptions_url: string;
-        organizations_url: string;
-        repos_url: string;
-        events_url: string;
-        received_events_url: string;
-        type: string;
-        site_admin: boolean;
-        score: number;
-    }
+
+interface User {
+    login: string;
+    id: number;
+    node_id: string;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    received_events_url: string;
+    type: string;
+    site_admin: boolean;
+    score: number;
 }
 
-
-
-
-interface UserItemProps {
-    item: UserItem;
+interface ModalCardProps {
+    user: User;
     index: number;
 }
-const ModalCard = ({ user }: UserItem, index: number) => {
 
-
-//const ModalCard = ({ item, index }: UserItemProps) => {
+//const ModalCard = ({ user }: UserItem, index: Ind) => {
+    const ModalCard: React.FC<ModalCardProps> = ({ user, index }) => {
     const dispatch = useAppDispatch();
 
     const handleRemove = () => {
-        dispatch(clearStoredElementsByIdActionCreator(user.item.id));
+        dispatch(clearStoredElementsByIdActionCreator(user.id));
     };
 
     const csvHeaders = [
@@ -161,14 +157,12 @@ const ModalCard = ({ user }: UserItem, index: number) => {
     return (
         <div className="modal__card">
             <div className="modal__card__inner">
-                <img src={user.item.avatar_url} alt="avatar" className="modal__card__avatar" />
+                <img src={user.avatar_url} alt="avatar" className="modal__card__avatar" />
                 <p className="modal__card__title">
-                    {user.item.login}
+                    {user.login}
                 </p>
                 <div className="modal__card__btns">
-              
-
-                <CSVLink data={csvData} headers={csvHeaders} filename={`${index}_users.csv`}>
+                    <CSVLink data={csvData} headers={csvHeaders} filename={`${index+1}_details.csv`}>
                         <button className="modal__card__btn">Download</button>
                     </CSVLink>
                     <button className="modal__card__btn modal__card__clear" onClick={handleRemove}>Delete</button>
@@ -179,4 +173,6 @@ const ModalCard = ({ user }: UserItem, index: number) => {
 };
 
 export default ModalCard;
- */
+
+*/
+ 

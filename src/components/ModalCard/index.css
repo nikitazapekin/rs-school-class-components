@@ -1,0 +1,42 @@
+.modal__card {
+  padding: 20px;
+  display: flex;
+  max-height: 150px;
+}
+.modal__card__avatar {
+  border-radius: 50%;
+}
+.modal__card__title {
+  font-size: 32px;
+  font-family: bold;
+}
+.modal__card__inner {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.modal__card__btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+}
+.modal__card__btn {
+  cursor: pointer;
+  z-index: 111;
+  padding: 3px;
+  font-size: 25px;
+  max-width: 300px;
+  transition: 1s;
+}
+.modal__card__clear {
+  transition: 1s;
+}
+.modal__card__btn:hover {
+  background-color: rgb(90, 90, 190);
+  color: #fff;
+}
+.modal__card__clear:hover {
+  background-color: rgb(158, 51, 51);
+  color: #fff;
+}/*# sourceMappingURL=index.css.map */

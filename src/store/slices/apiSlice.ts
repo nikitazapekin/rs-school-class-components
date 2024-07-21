@@ -1,8 +1,8 @@
-/*
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-//import type { Pokemon } from './types'
+ 
 
-// Define a service using a base URL and expected endpoints
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
+ 
 export const pokemonApi = createApi({
   reducerPath: 'pokemonApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
@@ -13,28 +13,7 @@ export const pokemonApi = createApi({
   }),
 })
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi
-
-*/
-
-
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
-// Define a service using a base URL and expected endpoints
-export const pokemonApi = createApi({
-  reducerPath: 'pokemonApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
-  endpoints: (builder) => ({
-    getPokemonByName: builder.query<string, string>({
-      query: (name) => `pokemon/${name}`,
-    }),
-  }),
-})
-
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
+ 
 export const { useGetPokemonByNameQuery, useLazyGetPokemonByNameQuery } = pokemonApi
 
 
