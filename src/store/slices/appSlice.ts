@@ -50,13 +50,32 @@ export interface AppStatee {
     isLoading: boolean;
     error: string | null;
     storedElements: UserDataArray;
-    isModalOpen: boolean
+    users: UserDataArray;
+    isModalOpen: boolean,
+    params: {
+        limit: number,
+        offset: number,
+        query: string
+
+    }
+}
+
+export interface SearchTypes {
+    query: string,
+    offset: number,
 }
 const initialState: AppStatee = {
     isLoading: false,
     error: null,
     storedElements: [],
-    isModalOpen: false
+    users: [],
+    isModalOpen: false,
+    params: {
+
+        limit: 10,
+        offset: 1,
+        query: ""
+    }
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -81,15 +100,34 @@ const appSlicee = createSlice({
         setClearStoredElements(state) {
             state.storedElements = []
         },
-        setRemoveStoredElementById(state, action: PayloadAction<number>){
-            if(state.storedElements.length==1){
+        setRemoveStoredElementById(state, action: PayloadAction<number>) {
+            if (state.storedElements.length == 1) {
                 state.isModalOpen = !state.isModalOpen
             }
-            state.storedElements = state.storedElements.filter(item=> item.id !=action.payload)
+            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
+        },
+        setSearchParams(state, action: PayloadAction<SearchTypes>) {
+            console.log(action.payload)
+        },
+
+        setNextPage(state) {
+            state.params.offset = state.params.offset + 1
+        },
+        setPrevPage(state) {
+            state.params.offset = state.params.offset - 1
+        },
+        setQueryPage(state, action: PayloadAction<string>) {
+          state.params.query = action.payload
+          console.log(state.params.query)
         }
     },
 });
 
-export const { setLoading, setError, setAlert, setAddToStoredElement, 
-    setModalOpen, setClearStoredElements, setRemoveStoredElementById } = appSlicee.actions;
+export const { setLoading, setError, setAlert, setAddToStoredElement,
+    setModalOpen, setClearStoredElements, setRemoveStoredElementById,
+    setSearchParams,
+    setNextPage,
+    setPrevPage,
+    setQueryPage
+} = appSlicee.actions;
 export default appSlicee.reducer;

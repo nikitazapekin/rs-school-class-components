@@ -6,23 +6,32 @@ import { useNavigate } from 'react-router-dom';
 import ThemeButton from '../ThemeButton';
 import { useContext, useEffect } from 'react';
 import ThemeContext from '../ThemeContext';
-const Header = ({ handleInputChange, handleClick }: HeaderProps) => {
+import { useAppDispatch } from '@/hooks/redux';
+import { setQueryActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
+const Header = () => {
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch()
 	const handleRedirect = () => {
 		navigate('/not-existing-page');
 	};
+	const handleInput= (event: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(setQueryActionCreator(event.target.value))
 
-
+	};
+const handleSave = () => {
+	//localStorage.setItem('searchParam', query);
+}
 	const { isDark} = useContext(ThemeContext);
-useEffect(()=> {
-console.log("IS", isDark)
-}, [isDark])
+
 	return (
 		<header className={`header ${isDark ? `header-dark` : ''}`}>
 			<div className="header__content">
 				<nav className="header__search">
-					<input type="text" className="search__bar" placeholder="Search..." onChange={handleInputChange} />
-					<button className="search__btn" onClick={handleClick} aria-label="search">
+					<input type="text" className="search__bar" placeholder="Search..." //onChange={handleInputChange}
+					onChange={handleInput}
+					/>
+					<button className="search__btn" //onClick={handleClick} 
+					aria-label="search">
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>

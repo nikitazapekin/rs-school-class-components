@@ -2,30 +2,81 @@ import './index.scss';
 import Spinner from '../Spinner';
 import { MyComponentProps } from './types';
 import Card from '../Card';
+//import { setNextPageActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
+import { useAppDispatch } from '@/hooks/redux';
+import { useSelector } from 'react-redux';
+import { setNextPageActionCreator, setPrevPageActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
+import { paramsSelector } from '@/store/selectors/getSearchParams';
+import { useSearchUsersQuery } from '@/store/slices/querySlice';
+import { useEffect } from 'react';
+ 
 
-const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) => {
+
+
+
+interface UserItem {
+	login: string;
+	id: number;
+	node_id: string;
+	avatar_url: string;
+	gravatar_id: string;
+	url: string;
+	html_url: string;
+	followers_url: string;
+	following_url: string;
+	gists_url: string;
+	starred_url: string;
+	subscriptions_url: string;
+	organizations_url: string;
+	repos_url: string;
+	events_url: string;
+	received_events_url: string;
+	type: string;
+	site_admin: boolean;
+	score: number;
+}
+const List = () => {
+	const dispatch = useAppDispatch()
+	const params = useSelector(paramsSelector)
+
+
+	const handleNext = () => {
+		window.scrollTo(0, 0);
+		dispatch(setNextPageActionCreator())
+	}
+
+	const handlePrev = () => {
+		window.scrollTo(0, 0);
+		dispatch(setPrevPageActionCreator())
+	}
+
+	const { data, error, isLoading } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: 10 });
+	useEffect(() => {
+		console.log("DATA", data)
+	}, [data])
+
+
 	return (
 		<section className="list">
 			<div className="list__container">
-				{isFetching && <Spinner />}
+				{isLoading && <Spinner />}
 				<div className="user__list" data-testid="elems">
-					{/*	{users ? (
-						users.map((item, index) => (
+
+					{ data && (
+
+						data.items.map((item: UserItem) => (
 							<Card
-								html_url={item.html_url}
-								login={item.login}
-								avatar_url={item.avatar_url}
-								item={item}
-								key={index}
+							user={item}
+							key={item.id}
 							/>
 						))
-					) : (
-						<p className="list__error">No users found.</p>
-					)}
+					)
+					}
+				</div>
+				{/*
 
-
-					*/}
-
+{isFetching && <Spinner />}
+<div className="user__list" data-testid="elems">
 
 					{users ? (
 						users.map((item) => (
@@ -34,10 +85,11 @@ const List = ({ users, handleNext, handlePrev, isFetching }: MyComponentProps) =
 								key={item.id}
 							/>
 						))
-					) : (
-						<p className="list__error">No users found.</p>
+						) : (
+							<p className="list__error">No users found.</p>
 					)}
 				</div>
+					*/}
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>
 						Prev

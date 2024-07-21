@@ -22,8 +22,8 @@ import { useSearchUsersQuery } from './store/slices/querySlice';
 const App = () => {
     const storedUsers = useSelector(storedUsersSelector);
 
-    const { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query } = useSearch();
-    //const [triggerGetPokemonByName, { data, error, isLoading }] = useLazyGetPokemonByNameQuery();
+   // const { handleInputChange, handleClick, isFetching, users, query } = useSearch();
+ 
 
     const handleButtonClick = () => {
      //   triggerGetPokemonByName('bulbasaur'); npm install file-saver --legacy-peer-deps
@@ -43,13 +43,13 @@ console.log(data)
             <ErrorBoundary>
                 <ThemeProvider>
                     <div className="container">
-                        <Header handleClick={handleClick} handleInputChange={handleInputChange} />
+                        <Header />
                         <List
-                            handleNext={handleNext}
-                            handlePrev={handlePrev}
-                            users={users}
-                            isFetching={isFetching}
-                            typedValue={query}
+                          //  handleNext={handleNext}
+                          //  handlePrev={handlePrev}
+                       //     users={users}
+                         //   isFetching={isFetching}
+                         //   typedValue={query}
                         />
                         {storedUsers.length > 0 && (
                             <StoredUsersButton />

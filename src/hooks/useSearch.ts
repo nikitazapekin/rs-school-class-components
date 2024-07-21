@@ -31,7 +31,7 @@ const useSearch = () => {
 			setIsFetching(false);
 		}
 	};
-
+/*
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		setBatch((prev) => ({
@@ -50,7 +50,7 @@ const useSearch = () => {
 		}));
 		setPage(batch.offset - 1, query);
 	};
-
+*/
 	const handleClick = () => {
 		fetchUserData(1);
 		localStorage.setItem('searchParam', query);
@@ -94,7 +94,9 @@ const useSearch = () => {
 		let user = users.find((item) => item.login == username);
 		localStorage.setItem('user', JSON.stringify(user));
 	};
-	return { handleInputChange, handleClick, isFetching, users, handleNext, handlePrev, query, batch, handleSearch };
+	return { handleInputChange, handleClick, isFetching, users, 
+	//	handleNext, handlePrev,
+		 query, batch, handleSearch };
 };
 
 export default useSearch;
