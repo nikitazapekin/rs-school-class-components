@@ -56,7 +56,8 @@ export interface AppStatee {
     params: {
         limit: number,
         offset: number,
-        query: string
+        query: string,
+        storedValue: string
 
     },
     //  isVisibleFlyoutElement: boolean
@@ -76,7 +77,8 @@ const initialState: AppStatee = {
 
         limit: 10,
         offset: 1,
-        query: ""
+        query: "",
+        storedValue: ""
     },
     //  isVisibleFlyoutElement: false
 };
@@ -114,7 +116,9 @@ const appSlicee = createSlice({
         setSearchParams(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
         },
-
+        setFirstPage(state) {
+            state.params.offset =  1
+        },
         setNextPage(state) {
             state.params.offset = state.params.offset + 1
         },
@@ -128,7 +132,33 @@ const appSlicee = createSlice({
         setUsers(state, action: PayloadAction<UserDataArray>) {
             state.users = action.payload
             console.log("USERS", state.users)
+        }, 
+      /*  setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
+            console.log("PAY", action.payload)
+            if( typeof action.payload!=null) {
+
+                state.params.storedValue = action.payload
+                state.params.query = action.payload
+            } else {
+                state.params.storedValue = ""
+                state.params.query =""
+            }
+            console.log(state.params.storedValue)
+            console.log(state.params.storedValue)
+        }, */
+        setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
+          //  console.log("PAY", action.payload);
+          //  if (action.payload !== null && action.payload !== undefined) {
+                state.params.storedValue = action.payload;
+                state.params.query = action.payload;
+         //   } else {
+          //      state.params.storedValue = "";
+          //      state.params.query = "";
+          //  }
+            console.log(state.params.storedValue);
+            console.log(state.params.query);
         }
+        
     },
 });
 
@@ -138,6 +168,8 @@ export const { setLoading, setError, setAlert, setAddToStoredElement,
     setNextPage,
     setPrevPage,
     setQueryPage,
-    setUsers
+    setUsers,
+    setFirstPage,
+    setStoredInLocalStorageQuery
 } = appSlicee.actions;
 export default appSlicee.reducer;

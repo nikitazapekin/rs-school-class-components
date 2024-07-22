@@ -1,5 +1,5 @@
 
-import { setSearchParams, setNextPage, setPrevPage, setQueryPage } from "../slices/appSlice"
+import { setSearchParams, setNextPage, setPrevPage, setQueryPage, setFirstPage } from "../slices/appSlice"
 import { AppDispatch } from "../store"
 export const setSearchParamsActionCreator = (offset: number, query: string) => (dispatch: AppDispatch) => {
     dispatch(setSearchParams({ offset, query }))
@@ -8,6 +8,10 @@ export const setSearchParamsActionCreator = (offset: number, query: string) => (
 
 
 //setNextPageActionCreator
+
+export const setFirstPageActionCreator = () => (dispatch: AppDispatch) => {
+    dispatch(setFirstPage())
+}
 
 
 export const setNextPageActionCreator = () => (dispatch: AppDispatch) => {

@@ -17,11 +17,20 @@ import Background from './components/Background';
  import ErrorComponent from './components/ErrorComponent';
 import Modal from './components/Modal';
 import { useSearchUsersQuery } from './store/slices/querySlice';
+import { useAppDispatch } from './hooks/redux';
+import { setStoredInLocalStorageActionCreator } from './store/action-creators/setStoredInLocalStorageQuery';
 //import DownloadCsvButton from './components/Download';
 //import trigger
 const App = () => {
+
+
+  const dispatch = useAppDispatch()
     const storedUsers = useSelector(storedUsersSelector);
 
+
+useEffect(()=> {
+dispatch(setStoredInLocalStorageActionCreator(String(localStorage.getItem("searchParam") != null ? localStorage.getItem("searchParam") : "" )))
+}, [])
    // const { handleInputChange, handleClick, isFetching, users, query } = useSearch();
  
 

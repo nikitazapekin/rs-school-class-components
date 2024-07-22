@@ -12,6 +12,7 @@ import { useLazySearchUsersQuery } from '@/store/slices/querySlice';
 import { useSelector } from 'react-redux';
 import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
+import { setFirstPage } from '@/store/slices/appSlice';
 const Header = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch()
@@ -20,58 +21,60 @@ const Header = () => {
 	const handleRedirect = () => {
 		navigate('/not-existing-page');
 	};
-	const handleInput= (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setQueryActionCreator(event.target.value))
 
 	};
- 
-	const { isDark} = useContext(ThemeContext);
+
+	const { isDark } = useContext(ThemeContext);
 	const [trigger, { data, error, isLoading }] = useLazySearchUsersQuery();
 
 	const handleSearch = () => {
-	  trigger({ query: params.query, page: params.offset, per_page: params.limit });
-	  localStorage.setItem('searchParam', params.query)
-	 // localStorage.setItem('searchParam', String(query));
+		dispatch(setFirstPage())
+		trigger({ query: params.query, page: params.offset, per_page: params.limit });
+		localStorage.setItem('searchParam', params.query)
+		// localStorage.setItem('searchParam', String(query));
 	};
 
 
 
 	useEffect(() => {
-   /*     if (isLoading) {
-            dispatch(setLoading(true));
-        } else {
-            dispatch(setLoading(false));
-        }
+		/*     if (isLoading) {
+				 dispatch(setLoading(true));
+			 } else {
+				 dispatch(setLoading(false));
+			 }
+	 
+			 if (error) {
+				 dispatch(setError(error.toString()));
+			 }
+	  */
+		if (data) {
+			/*   data.items.forEach(user => {
+				   dispatch(setAddToStoredElement(user));
+			   }); */
 
-        if (error) {
-            dispatch(setError(error.toString()));
-        }
- */
-        if (data) {
-         /*   data.items.forEach(user => {
-                dispatch(setAddToStoredElement(user));
-            }); */
+			dispatch(setUsersActionCreator(data.items))
 
-			dispatch(setUsersActionCreator(data.items ))
+			console.log("NEW", data)
+		}
+	}, [data]);
 
-			console.log("NEW" , data)
-        }
-    }, [data]);
-
-	useEffect(()=> {
-		trigger({ query: params.query, page: params.offset, per_page: params.limit });
-	}, [params.offset])
-  //console.log(data)
+	useEffect(() => {
+		trigger({ query: params.storedValue ?  params.storedValue : params.query, page: params.offset, per_page: params.limit });
+	//}, [params])
+	}, [params.offset, params.storedValue])
+	//console.log(data)
 	return (
 		<header className={`header ${isDark ? `header-dark` : ''}`}>
 			<div className="header__content">
 				<nav className="header__search">
 					<input type="text" className="search__bar" placeholder="Search..." //onChange={handleInputChange}
-					onChange={handleInput}
+						onChange={handleInput}
 					/>
 					<button className="search__btn" //onClick={handleClick} 
-					onClick={handleSearch}
-					aria-label="search">
+						onClick={handleSearch}
+						aria-label="search">
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
