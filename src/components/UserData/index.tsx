@@ -2,36 +2,17 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
 import Spinner from '../Spinner';
-import axios from 'axios';
-import { User } from './types';
+ 
+import { useLazyGetUserGithubQuery } from '@/store/slices/userQuerySlice';
+
 const UserData = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [isFetching, setIsFetching] = useState<boolean>(false);
-	const [user, setUser] = useState<User | null>(null);
-
+	const [trigger, { data, error, isLoading }] = useLazyGetUserGithubQuery();
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
-		const username = searchParams.get('username');
-
-		if (username) {
-			const fetchUserData = async () => {
-				try {
-					setIsFetching(true);
-					const response = await axios.get<User>(`https://api.github.com/users/${username}`);
-					const userData: User = response.data;
-					setUser(userData);
-					localStorage.setItem('user', JSON.stringify(userData));
-				} catch (error) {
-					console.error('Error fetching user data:', error);
-				} finally {
-					setIsFetching(false);
-				}
-			};
-
-			fetchUserData();
-		}
-	}, [location.search, navigate]);
+		trigger({ username: String(searchParams.get('username')) })
+	}, [location.search, navigate])
 
 	const handleReturn = () => {
 		const lastUrl = localStorage.getItem('lastUrl');
@@ -44,13 +25,13 @@ const UserData = () => {
 
 	return (
 		<aside className="sidebar">
-			{isFetching && <Spinner data-testid="spinner" />}
-			{user && (
+			{isLoading && <Spinner data-testid="spinner" />}
+			{data && (
 				<div>
-					<h2>{user.login}</h2>
-					<img src={user.avatar_url} alt={`${user.login}'s avatar`} />
-					<p>ID: {user.id}</p>
-					<p>Type: {user.type}</p>
+					<h2>{data.login}</h2>
+					<img src={data.avatar_url} alt={`${data.login}'s avatar`} />
+					<p>ID: {data.id}</p>
+					<p>Type: {data.type}</p>
 				</div>
 			)}
 			<button className="close__btn" onClick={handleReturn}>

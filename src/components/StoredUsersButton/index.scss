@@ -1,35 +1,17 @@
-/*
-.stored__users {
-    cursor: pointer;
-    position: fixed;
-    right: 0;
-    top: 90px;
-    z-index: 111;
-    padding: 7px;
- font-size: 35px;
-max-width: 300px;
-	transition: 1s;
-}
-
- 
-
-.stored__users:hover {
-	background-color: rgb(90, 90, 190);
-	color: #fff;
-}
-
-
-*/
-
 
 .stored__users {
     &__panel {
-        padding: 7px;
+        padding: 17px;
         position: fixed;
         bottom: 0;
         left: 0;
         z-index: 111;
-        background-color: rgb(238, 99, 99);
+        background-color: rgb(167, 158, 158);
+        border-radius: 20px;
+    }
+    &__btns {
+        display: flex;
+        column-gap: 20px;
     }
     &__btn {
         cursor: pointer;
@@ -53,32 +35,3 @@ max-width: 300px;
     }
 }
 
-
-
-/*
-
-&__btn {
-    cursor: pointer;
-   
-    z-index: 111;
-    padding: 7px;
- font-size: 35px;
-max-width: 300px;
-	transition: 1s;
-}
-    &__clear {
-transition: 1s;
-    }
-
-    
-
-&__btn:hover {
-	background-color: rgb(90, 90, 190);
-	color: #fff;
-}
-
-&__clear:hover {
-	background-color: rgb(158, 51, 51);
-	color: #fff;
-}
-    */

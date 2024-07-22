@@ -8,15 +8,15 @@ import { CSVLink } from 'react-csv';
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from './store/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersButton';
-import useSearch from './hooks/useSearch';
+ 
 
 
 
 import { ThemeProvider } from './components/ThemeContext';
 import Background from './components/Background';
 import ErrorComponent from './components/ErrorComponent';
-import Modal from './components/Modal';
-import { useSearchUsersQuery } from './store/slices/querySlice';
+ 
+ 
 import { useAppDispatch } from './hooks/redux';
 import { setStoredInLocalStorageActionCreator } from './store/action-creators/setStoredInLocalStorageQuery';
 import { isLoadingSelector } from './store/selectors/isLoadingSelector';
@@ -39,13 +39,12 @@ const App = () => {
             {storedUsers.length > 0 && (
               <StoredUsersButton />
             )}
-            <Modal />
             <ErrorBoundary>
               <ErrorComponent />
             </ErrorBoundary>
           </div>
           <Background />
-          {/* {isLoading && <Spinner />} */}
+           {isLoading && <Spinner />}
         </ThemeProvider>
       </ErrorBoundary>
     </>

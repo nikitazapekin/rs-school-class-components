@@ -11,7 +11,7 @@ import { getUsersSelector } from '@/store/selectors/getUsersSelector';
 import { isLoadingSelector } from '@/store/selectors/isLoadingSelector';
 import useURL from '@/hooks/useURL';
 const List = () => {
-	const {setPage, getCurrentParams} = useURL()
+	const {setPage} = useURL()
 	const dispatch = useAppDispatch()
 	const users = useSelector(getUsersSelector)
 	const params = useSelector(paramsSelector)

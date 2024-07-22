@@ -126,14 +126,11 @@ const appSlicee = createSlice({
         },
         setUsers(state, action: PayloadAction<UserDataArray>) {
             state.users = action.payload
-            console.log("USERS", state.users)
         },
 
         setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
             state.params.storedValue = action.payload;
             state.params.query = action.payload;
-            console.log(state.params.storedValue);
-            console.log(state.params.query);
         }
 
     },
