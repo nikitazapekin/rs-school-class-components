@@ -1,7 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
-
 interface UserItem {
     login: string;
     id: number;
@@ -23,8 +20,6 @@ interface UserItem {
     site_admin: boolean;
     score: number;
 }
-
-
 export type UserDataArray = Array<{
     login: string;
     id: number;
@@ -60,7 +55,6 @@ export interface AppStatee {
         storedValue: string
 
     },
-    //  isVisibleFlyoutElement: boolean
 }
 
 export interface SearchTypes {
@@ -80,7 +74,6 @@ const initialState: AppStatee = {
         query: "",
         storedValue: ""
     },
-    //  isVisibleFlyoutElement: false
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -110,14 +103,17 @@ const appSlicee = createSlice({
                 state.isModalOpen = !state.isModalOpen
             }
 
-   
+
             state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
         setSearchParams(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
+
+            state.params.query = action.payload.query
+            state.params.offset =action.payload.offset
         },
         setFirstPage(state) {
-            state.params.offset =  1
+            state.params.offset = 1
         },
         setNextPage(state) {
             state.params.offset = state.params.offset + 1
@@ -127,38 +123,19 @@ const appSlicee = createSlice({
         },
         setQueryPage(state, action: PayloadAction<string>) {
             state.params.query = action.payload
-            console.log(state.params.query)
         },
         setUsers(state, action: PayloadAction<UserDataArray>) {
             state.users = action.payload
             console.log("USERS", state.users)
-        }, 
-      /*  setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
-            console.log("PAY", action.payload)
-            if( typeof action.payload!=null) {
+        },
 
-                state.params.storedValue = action.payload
-                state.params.query = action.payload
-            } else {
-                state.params.storedValue = ""
-                state.params.query =""
-            }
-            console.log(state.params.storedValue)
-            console.log(state.params.storedValue)
-        }, */
         setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
-          //  console.log("PAY", action.payload);
-          //  if (action.payload !== null && action.payload !== undefined) {
-                state.params.storedValue = action.payload;
-                state.params.query = action.payload;
-         //   } else {
-          //      state.params.storedValue = "";
-          //      state.params.query = "";
-          //  }
+            state.params.storedValue = action.payload;
+            state.params.query = action.payload;
             console.log(state.params.storedValue);
             console.log(state.params.query);
         }
-        
+
     },
 });
 

@@ -2,82 +2,49 @@ import './index.scss';
 import Spinner from '../Spinner';
 import { MyComponentProps } from './types';
 import Card from '../Card';
-//import { setNextPageActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
+ 
 import { useAppDispatch } from '@/hooks/redux';
 import { useSelector } from 'react-redux';
 import { setNextPageActionCreator, setPrevPageActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
-import { paramsSelector } from '@/store/selectors/getSearchParams';
-import { useSearchUsersQuery } from '@/store/slices/querySlice';
-import { useEffect } from 'react';
+ import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { getUsersSelector } from '@/store/selectors/getUsersSelector';
-interface UserItem {
-	login: string;
-	id: number;
-	node_id: string;
-	avatar_url: string;
-	gravatar_id: string;
-	url: string;
-	html_url: string;
-	followers_url: string;
-	following_url: string;
-	gists_url: string;
-	starred_url: string;
-	subscriptions_url: string;
-	organizations_url: string;
-	repos_url: string;
-	events_url: string;
-	received_events_url: string;
-	type: string;
-	site_admin: boolean;
-	score: number;
-}
+import { isLoadingSelector } from '@/store/selectors/isLoadingSelector';
+import useURL from '@/hooks/useURL';
+ 
 const List = () => {
-	const dispatch = useAppDispatch()
-	const params = useSelector(paramsSelector)
-	const users = useSelector(getUsersSelector)
 
+	const {setPage, getCurrentParams} = useURL()
+	const dispatch = useAppDispatch()
+	const users = useSelector(getUsersSelector)
+	const params = useSelector(paramsSelector)
+	const isLoading = useSelector(isLoadingSelector)
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator())
-	}
 
+
+		console.log("PARAMSSSSSSSSSSS", JSON.stringify(params))
+		setPage(params.offset, params.query)
+	}
 	const handlePrev = () => {
 		window.scrollTo(0, 0);
 		dispatch(setPrevPageActionCreator())
+		setPage(params.offset, params.query)
 	}
-
-	//	const { data, error, isLoading } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: 10 });
-
-
 	return (
 		<section className="list">
 			<div className="list__container">
 
-			{/*}	{isLoading && <Spinner />} */}
-			{users.map(item=> (
-				<Card 
-				user={item}
-				key={item.id}
-				/>
-			))}
-			{/*}	
-				<div className="user__list" data-testid="elems">
+				{/*}
+			*/}
+				{isLoading && <Spinner />}
+				{users.map(item => (
+					<Card
+						user={item}
+						key={item.id}
+					/>
+				))}
 
-					{ data && (
-
-						data.items.map((item: UserItem) => (
-							<Card
-							user={item}
-							key={item.id}
-							/>
-						))
-					)
-					}
-				</div>
-			 
-
- 
-				*/}
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>
 						Prev

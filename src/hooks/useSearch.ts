@@ -21,7 +21,6 @@ const useSearch = () => {
 	const fetchUserData = async (page: number) => {
 		try {
 			setIsFetching(true);
-
 			let promptStored = localStorage.getItem('searchParam');
 			const res = await getUserData(batch.limit, page, String(promptStored));
 			setUsers(res);
