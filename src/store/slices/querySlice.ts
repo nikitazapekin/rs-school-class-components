@@ -5,8 +5,7 @@
 
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-// Define the response types
+ 
 interface UserItem {
     login: string;
     id: number;
@@ -40,7 +39,7 @@ export const githubApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.github.com/' }),
   endpoints: (builder) => ({
     searchUsers: builder.query<SearchUsersResponse, { query: string; page: number; per_page: number }>({
-      query: ({ query = 'type:user', page = 1, per_page = 30 }) => ({
+      query: ({ query = 'type:user', page = 1, per_page = 10 }) => ({
         url: 'search/users',
         params: {
           q: query || 'type:user',

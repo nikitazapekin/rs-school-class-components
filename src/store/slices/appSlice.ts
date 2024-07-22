@@ -104,7 +104,9 @@ const appSlicee = createSlice({
             if (state.storedElements.length == 1) {
                 state.isModalOpen = !state.isModalOpen
             }
-            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
+
+    //        state.storedElements = [...state.storedElements.filter(item => item.id !== action.payload)];
+          state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
         setSearchParams(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)

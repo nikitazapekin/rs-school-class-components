@@ -9,11 +9,6 @@ import { setNextPageActionCreator, setPrevPageActionCreator } from '@/store/acti
 import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { useSearchUsersQuery } from '@/store/slices/querySlice';
 import { useEffect } from 'react';
- 
-
-
-
-
 interface UserItem {
 	login: string;
 	id: number;
@@ -51,10 +46,7 @@ const List = () => {
 	}
 
 	const { data, error, isLoading } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: 10 });
-	useEffect(() => {
-		console.log("DATA", data)
-	}, [data])
-
+ 
 
 	return (
 		<section className="list">
@@ -73,23 +65,9 @@ const List = () => {
 					)
 					}
 				</div>
-				{/*
+			 
 
-{isFetching && <Spinner />}
-<div className="user__list" data-testid="elems">
-
-					{users ? (
-						users.map((item) => (
-							<Card
-								user={item}
-								key={item.id}
-							/>
-						))
-						) : (
-							<p className="list__error">No users found.</p>
-					)}
-				</div>
-					*/}
+ 
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>
 						Prev
