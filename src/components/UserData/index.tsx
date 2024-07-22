@@ -4,16 +4,18 @@ import './styles.scss';
 import Spinner from '../Spinner';
  
 import { useLazyGetUserGithubQuery } from '@/store/slices/userQuerySlice';
+import { useAppDispatch } from '@/hooks/redux';
+import { setSelectedElementActionCreator } from '@/store/action-creators/setSelectedElementActionCreator';
 
 const UserData = () => {
 	const location = useLocation();
+	const dispatch = useAppDispatch()
 	const navigate = useNavigate();
 	const [trigger, { data, error, isLoading }] = useLazyGetUserGithubQuery();
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
 		trigger({ username: String(searchParams.get('username')) })
-	}, [location.search, navigate])
-
+	}, [location.search])
 	const handleReturn = () => {
 		const lastUrl = localStorage.getItem('lastUrl');
 		if (lastUrl) {
@@ -22,7 +24,6 @@ const UserData = () => {
 			navigate('/main');
 		}
 	};
-
 	return (
 		<aside className="sidebar">
 			{isLoading && <Spinner data-testid="spinner" />}

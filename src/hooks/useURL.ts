@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { paramsSelector } from "@/store/selectors/getSearchParams";
 import { useNavigate } from "react-router-dom";

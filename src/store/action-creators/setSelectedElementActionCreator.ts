@@ -1,7 +1,6 @@
 
-import { setUsers } from "../slices/appSlice"
 import { AppDispatch } from "../store"
-export type UserDataArray = Array<{
+interface UserItem {
     login: string;
     id: number;
     node_id: string;
@@ -21,7 +20,7 @@ export type UserDataArray = Array<{
     type: string;
     site_admin: boolean;
     score: number;
-}>;
-export const setUsersActionCreator = (data: UserDataArray  ) => (dispatch: AppDispatch) => {
-   dispatch(setUsers(data))
- }
+}
+export const setSelectedElementActionCreator = (data: UserItem | null | undefined) => (dispatch: AppDispatch) => {
+    dispatch(setSelectedElementActionCreator(data))
+}

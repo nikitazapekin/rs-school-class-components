@@ -55,6 +55,7 @@ export interface AppStatee {
         storedValue: string
 
     },
+    selectedElement: UserItem | null
 }
 
 export interface SearchTypes {
@@ -74,6 +75,7 @@ const initialState: AppStatee = {
         query: "",
         storedValue: ""
     },
+    selectedElement: null
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -102,15 +104,13 @@ const appSlicee = createSlice({
             if (state.storedElements.length == 1) {
                 state.isModalOpen = !state.isModalOpen
             }
-
-
             state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
         setSearchParamsURL(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
 
             state.params.query = action.payload.query
-            state.params.offset =action.payload.offset
+            state.params.offset = action.payload.offset
         },
         setFirstPage(state) {
             state.params.offset = 1
@@ -127,12 +127,17 @@ const appSlicee = createSlice({
         setUsers(state, action: PayloadAction<UserDataArray>) {
             state.users = action.payload
         },
-
         setStoredInLocalStorageQuery(state, action: PayloadAction<string>) {
             state.params.storedValue = action.payload;
             state.params.query = action.payload;
-        }
+        },
+        setSelectedElement(state, action: PayloadAction<UserItem | undefined | null>) {
+            if(action.payload!=null && action.payload!=undefined) {
+                state.selectedElement = action.payload
 
+            }
+            console.log(state.selectedElement)
+        }
     },
 });
 
@@ -144,6 +149,7 @@ export const { setLoading, setError, setAlert, setAddToStoredElement,
     setQueryPage,
     setUsers,
     setFirstPage,
-    setStoredInLocalStorageQuery
+    setStoredInLocalStorageQuery,
+    setSelectedElement
 } = appSlicee.actions;
 export default appSlicee.reducer;
