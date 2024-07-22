@@ -19,9 +19,6 @@ const List = () => {
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator())
-
-
-		console.log("NEXTTTTTTT", params.query)
 		setPage(params.offset, params.query)
 	}
 	const handlePrev = () => {
@@ -32,9 +29,6 @@ const List = () => {
 	return (
 		<section className="list">
 			<div className="list__container">
-
-				{/*}
-			*/}
 				{isLoading && <Spinner />}
 				{users.map(item => (
 					<Card

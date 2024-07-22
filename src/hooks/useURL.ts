@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useAppDispatch } from "./redux";
+import { paramsSelector } from "@/store/selectors/getSearchParams";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "./redux"
+import { useSelector } from "react-redux";
+import { setQueryActionCreator } from "@/store/action-creators/setSearchParamsActionCreator";
+//import { setSearchParamsActionCreator } from "@/store/action-creators/setSearchParamsActionCreator";
+//import { setSearchParams } from "@/store/slices/appSlice";
 import { setSearchParamsActionCreator } from "@/store/action-creators/setSearchParamsActionCreator";
+import { setLoadingActionCreator } from "@/store/action-creators/setIsLoading";
+import { useLazySearchUsersQuery } from "@/store/slices/querySlice";
+import { setUsersActionCreator } from "@/store/action-creators/setUsersActionCreator";
 const useURL = () => {
     const dispatch = useAppDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
@@ -12,7 +21,7 @@ const useURL = () => {
 	};
 
 	const setPage = (page: number, query: string) => {
-        console.log("QUERYYYYYYYYYYYYY", query)
+       
 		const params: Record<string, string> = { page: String(page) };
 		if (query.length > 0) {
 			params.query = query;
@@ -23,14 +32,73 @@ const useURL = () => {
   */
     useEffect(() => {
 		const [page, query] = getCurrentParams();
-
-        console.log("PAGEEE", page)
 		setPage(Number(page), String(query));
 		localStorage.setItem('searchParam', String(query));
         dispatch(setSearchParamsActionCreator( Number(page), String(query)))
  
 	}, []); 
-    return {getCurrentParams, setPage}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const navigate = useNavigate();
+	//const dispatch = useAppDispatch()
+	const params = useSelector(paramsSelector)
+
+//	const { setPage } = useURL()
+	const handleRedirect = () => {
+		navigate('/not-existing-page');
+	};
+	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(setQueryActionCreator(event.target.value))
+
+	};
+	//const { isDark } = useContext(ThemeContext);
+	const [trigger, { data, error, isLoading }] = useLazySearchUsersQuery();
+
+	const handleSearch = () => {
+		trigger({ query: params.query, page: params.offset, per_page: params.limit });
+		localStorage.setItem('searchParam', params.query)
+		setPage(params.offset, params.query)
+dispatch(setSearchParamsActionCreator(  1, params.query ))
+		//dispatch(setSearchParams({ offset: 1, query: params.query }))
+	};
+	useEffect(() => {
+		if (isLoading) {
+			dispatch(setLoadingActionCreator(true))
+		} else {
+			dispatch(setLoadingActionCreator(false))
+		}
+		if (data) {
+			dispatch(setUsersActionCreator(data.items))
+		}
+	}, [data]);
+	useEffect(() => {
+		trigger({ query: params.storedValue ? params.storedValue : params.query, page: params.offset, per_page: params.limit });
+		setPage(params.offset, params.storedValue)
+	}, [params.storedValue])
+	useEffect(() => {
+		trigger({ query: params.query, page: params.offset, per_page: params.limit });
+		console.log("PAR", params.offset)
+		setPage(params.offset, params.query)
+	}, [params.offset])
+    return {getCurrentParams, setPage, handleInput, handleSearch, handleRedirect}
 }
 
 export default useURL

@@ -106,7 +106,7 @@ const appSlicee = createSlice({
 
             state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
-        setSearchParams(state, action: PayloadAction<SearchTypes>) {
+        setSearchParamsURL(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
 
             state.params.query = action.payload.query
@@ -141,7 +141,7 @@ const appSlicee = createSlice({
 
 export const { setLoading, setError, setAlert, setAddToStoredElement,
     setModalOpen, setClearStoredElements, setRemoveStoredElementById,
-    setSearchParams,
+    setSearchParamsURL,
     setNextPage,
     setPrevPage,
     setQueryPage,

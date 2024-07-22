@@ -1,8 +1,8 @@
 
-import { setSearchParams, setNextPage, setPrevPage, setQueryPage, setFirstPage } from "../slices/appSlice"
+import { setSearchParamsURL, setNextPage, setPrevPage, setQueryPage, setFirstPage } from "../slices/appSlice"
 import { AppDispatch } from "../store"
 export const setSearchParamsActionCreator = (offset: number, query: string) => (dispatch: AppDispatch) => {
-    dispatch(setSearchParams({ offset, query }))
+    dispatch(setSearchParamsURL({ offset, query }))
     // dispatch(setRemoveStoredElementById(id))
 }
 
