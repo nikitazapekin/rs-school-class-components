@@ -11,7 +11,7 @@ import { useLazySearchUsersQuery } from '@/store/slices/querySlice';
 import { useSelector } from 'react-redux';
 import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
-import { setFirstPage } from '@/store/slices/appSlice';
+import { setFirstPage, setSearchParams } from '@/store/slices/appSlice';
 import { setLoadingActionCreator } from '@/store/action-creators/setIsLoading';
 import useURL from '@/hooks/useURL';
 const Header = () => {
@@ -31,10 +31,12 @@ const Header = () => {
 	const [trigger, { data, error, isLoading }] = useLazySearchUsersQuery();
 
 	const handleSearch = () => {
-		dispatch(setFirstPage())
+	//	dispatch(setFirstPage())
 		trigger({ query: params.query, page: params.offset, per_page: params.limit });
 		localStorage.setItem('searchParam', params.query)
 		setPage(params.offset, params.query)
+
+dispatch(setSearchParams({offset: 1,query:  params.query}))
 	};
 	useEffect(() => {
 		if (isLoading) {
@@ -53,7 +55,18 @@ const Header = () => {
 
 		console.log("PAR" , params.offset)
 		setPage(params.offset, params.storedValue)
-	}, [params.offset, params.storedValue])
+	//}, [params.offset, params.storedValue])
+}, [ params.storedValue])
+
+
+useEffect(() => {
+	trigger({ query: params.query, page: params.offset, per_page: params.limit });
+
+
+	console.log("PAR" , params.offset)
+	setPage(params.offset, params.query)
+//}, [params.offset, params.storedValue])
+}, [ params.offset])
 	return (
 		<header className={`header ${isDark ? `header-dark` : ''}`}>
 			<div className="header__content">

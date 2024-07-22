@@ -12,12 +12,15 @@ const useURL = () => {
 	};
 
 	const setPage = (page: number, query: string) => {
+        console.log("QUERYYYYYYYYYYYYY", query)
 		const params: Record<string, string> = { page: String(page) };
 		if (query.length > 0) {
 			params.query = query;
 		}
 		setSearchParams(params);
 	};
+  /*
+  */
     useEffect(() => {
 		const [page, query] = getCurrentParams();
 
@@ -25,13 +28,8 @@ const useURL = () => {
 		setPage(Number(page), String(query));
 		localStorage.setItem('searchParam', String(query));
         dispatch(setSearchParamsActionCreator( Number(page), String(query)))
-	//	fetchUserData(Number(page));
-	/*	setBatch((prev) => ({
-			...prev,
-			offset: Number(page),
-		}));
-		setQuery(String(query)); */
-	}, []);
+ 
+	}, []); 
     return {getCurrentParams, setPage}
 }
 

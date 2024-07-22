@@ -10,9 +10,7 @@ import { setNextPageActionCreator, setPrevPageActionCreator } from '@/store/acti
 import { getUsersSelector } from '@/store/selectors/getUsersSelector';
 import { isLoadingSelector } from '@/store/selectors/isLoadingSelector';
 import useURL from '@/hooks/useURL';
- 
 const List = () => {
-
 	const {setPage, getCurrentParams} = useURL()
 	const dispatch = useAppDispatch()
 	const users = useSelector(getUsersSelector)
@@ -23,7 +21,7 @@ const List = () => {
 		dispatch(setNextPageActionCreator())
 
 
-		console.log("PARAMSSSSSSSSSSS", JSON.stringify(params))
+		console.log("NEXTTTTTTT", params.query)
 		setPage(params.offset, params.query)
 	}
 	const handlePrev = () => {
