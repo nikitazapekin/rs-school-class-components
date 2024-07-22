@@ -29,7 +29,7 @@ const App = () => {
      //   triggerGetPokemonByName('bulbasaur'); npm install file-saver --legacy-peer-deps
 
     };
-
+/*
  const [page, setPage] = useState(1)
 	const { data, error, isLoading } = useSearchUsersQuery({ query:``, page, per_page: 10 });
 	const handleSearch=()=> {
@@ -37,7 +37,7 @@ const App = () => {
 	}
 	useEffect(()=> {
 console.log(data)
-	}, [data])
+	}, [data]) */
     return (
         <>
             <ErrorBoundary>
@@ -61,8 +61,8 @@ console.log(data)
                     </div>
                
 
-
-				   <button onClick={handleSearch}> searc</button>
+{/*}
+				   <button onClick={handleSearch}> searc</button> */}
                     <Background />
 			 
 

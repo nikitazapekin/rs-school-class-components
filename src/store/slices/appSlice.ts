@@ -45,6 +45,7 @@ export type UserDataArray = Array<{
     type: string;
     site_admin: boolean;
     score: number;
+
 }>;
 export interface AppStatee {
     isLoading: boolean;
@@ -57,7 +58,8 @@ export interface AppStatee {
         offset: number,
         query: string
 
-    }
+    },
+    //  isVisibleFlyoutElement: boolean
 }
 
 export interface SearchTypes {
@@ -75,7 +77,8 @@ const initialState: AppStatee = {
         limit: 10,
         offset: 1,
         query: ""
-    }
+    },
+    //  isVisibleFlyoutElement: false
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -105,8 +108,8 @@ const appSlicee = createSlice({
                 state.isModalOpen = !state.isModalOpen
             }
 
-    //        state.storedElements = [...state.storedElements.filter(item => item.id !== action.payload)];
-          state.storedElements = state.storedElements.filter(item => item.id != action.payload)
+   
+            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
         setSearchParams(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
@@ -119,8 +122,12 @@ const appSlicee = createSlice({
             state.params.offset = state.params.offset - 1
         },
         setQueryPage(state, action: PayloadAction<string>) {
-          state.params.query = action.payload
-          console.log(state.params.query)
+            state.params.query = action.payload
+            console.log(state.params.query)
+        },
+        setUsers(state, action: PayloadAction<UserDataArray>) {
+            state.users = action.payload
+            console.log("USERS", state.users)
         }
     },
 });
@@ -130,6 +137,7 @@ export const { setLoading, setError, setAlert, setAddToStoredElement,
     setSearchParams,
     setNextPage,
     setPrevPage,
-    setQueryPage
+    setQueryPage,
+    setUsers
 } = appSlicee.actions;
 export default appSlicee.reducer;

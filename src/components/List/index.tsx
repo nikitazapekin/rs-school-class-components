@@ -9,6 +9,7 @@ import { setNextPageActionCreator, setPrevPageActionCreator } from '@/store/acti
 import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { useSearchUsersQuery } from '@/store/slices/querySlice';
 import { useEffect } from 'react';
+import { getUsersSelector } from '@/store/selectors/getUsersSelector';
 interface UserItem {
 	login: string;
 	id: number;
@@ -33,7 +34,7 @@ interface UserItem {
 const List = () => {
 	const dispatch = useAppDispatch()
 	const params = useSelector(paramsSelector)
-
+	const users = useSelector(getUsersSelector)
 
 	const handleNext = () => {
 		window.scrollTo(0, 0);
@@ -45,13 +46,21 @@ const List = () => {
 		dispatch(setPrevPageActionCreator())
 	}
 
-	const { data, error, isLoading } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: 10 });
- 
+	//	const { data, error, isLoading } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: 10 });
+
 
 	return (
 		<section className="list">
 			<div className="list__container">
-				{isLoading && <Spinner />}
+
+			{/*}	{isLoading && <Spinner />} */}
+			{users.map(item=> (
+				<Card 
+				user={item}
+				key={item.id}
+				/>
+			))}
+			{/*}	
 				<div className="user__list" data-testid="elems">
 
 					{ data && (
@@ -68,6 +77,7 @@ const List = () => {
 			 
 
  
+				*/}
 				<div className="list__btns">
 					<button className="list__prev list__btn" onClick={handlePrev}>
 						Prev

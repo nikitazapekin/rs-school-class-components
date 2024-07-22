@@ -29,6 +29,56 @@ max-width: 300px;
         bottom: 0;
         left: 0;
         z-index: 111;
-        background-color: red;
+        background-color: rgb(238, 99, 99);
+    }
+    &__btn {
+        cursor: pointer;
+   
+        z-index: 111;
+        padding: 7px;
+     font-size: 35px;
+    max-width: 300px;
+        transition: 1s;
+    }
+    &__text {
+        font-size: 32px;
+    }
+    &__download:hover, &__info:hover {
+        background-color: rgb(90, 90, 190);
+        color: #fff;
+    }
+    &__clear:hover {
+        background-color: rgb(158, 51, 51);
+        color: #fff;
     }
 }
+
+
+
+/*
+
+&__btn {
+    cursor: pointer;
+   
+    z-index: 111;
+    padding: 7px;
+ font-size: 35px;
+max-width: 300px;
+	transition: 1s;
+}
+    &__clear {
+transition: 1s;
+    }
+
+    
+
+&__btn:hover {
+	background-color: rgb(90, 90, 190);
+	color: #fff;
+}
+
+&__clear:hover {
+	background-color: rgb(158, 51, 51);
+	color: #fff;
+}
+    */

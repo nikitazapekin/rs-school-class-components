@@ -50,12 +50,12 @@ if(storedUsers.length==0){
                     ))}
                 </div>
                 <div className="modal__btns">
-                    <button className="modal__btn">
+                    <button className="modal__btn" onClick={handleClose}>
                         Download all
                     </button>
-                    <button className="modal__btn modal__clear" onClick={handleClear}>
+                {/*    <button className="modal__btn modal__clear" onClick={handleClear}>
                         Clear all
-                    </button>
+                    </button> */}
                 </div>
 
 
