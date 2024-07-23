@@ -7,10 +7,14 @@
 	right: 0;
 	top: 0;
 	width: 40%;
-	background-color: rgb(185, 92, 4);
+/*	background-color: rgb(185, 92, 4); */
+background-color: rgb(172, 164, 154);
 	height: 100vh;
+	transition: 1s;
 }
-
+.sidebar-dark {
+	background-color: rgb(80, 75, 75);
+}
 .close__btn {
 	position: relative;
 }

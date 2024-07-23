@@ -1,6 +1,5 @@
 import './index.scss';
 import Spinner from '../Spinner';
-import { MyComponentProps } from './types';
 import Card from '../Card';
  
 import { useAppDispatch } from '@/hooks/redux';

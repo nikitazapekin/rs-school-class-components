@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
 import Spinner from '../Spinner';
  
 import { useLazyGetUserGithubQuery } from '@/store/slices/userQuerySlice';
-import { useAppDispatch } from '@/hooks/redux';
-import { setSelectedElementActionCreator } from '@/store/action-creators/setSelectedElementActionCreator';
+import { useContext } from 'react';
+import ThemeContext from '../ThemeContext';
 
 const UserData = () => {
+	const { isDark }  = useContext(ThemeContext);
 	const location = useLocation();
-	const dispatch = useAppDispatch()
 	const navigate = useNavigate();
 	const [trigger, { data, error, isLoading }] = useLazyGetUserGithubQuery();
 	useEffect(() => {
@@ -24,8 +24,16 @@ const UserData = () => {
 			navigate('/main');
 		}
 	};
+
+	useEffect(()=> {
+console.log("DAARK", isDark)
+	}, [isDark])
+
+ 
 	return (
-		<aside className="sidebar">
+		<aside  
+		className={`sidebar ${isDark ? `sidebar-dark` : ''}`}
+		>
 			{isLoading && <Spinner data-testid="spinner" />}
 			{data && (
 				<div>

@@ -64,7 +64,7 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	appearance: none;
+	/*appearance: none; */
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -72,8 +72,9 @@
 	outline: none;
 	transition: background-color 0.3s;
 
-	&:checked::before {
 	/*	content: '✔'; */
+	/*
+	&:checked::before {
 	content: 'Add to favourite';
 		position: absolute;
 		top: 50%;
@@ -81,7 +82,7 @@
 		transform: translate(-50%, -50%);
 		color: #000;
 	}
-
+*/
 	&:hover {
 		background-color: #f0f0f0;
 	}
@@ -99,15 +100,4 @@
 	color: #fff;
 }
 
-/*
-&__btn {
-	padding: 10px 25px;
-	cursor: pointer;
-	transition: 1s;
-}
-
-&__btn:hover {
-	background-color: rgb(90, 90, 190);
-	color: #fff;
-}
-	*/
+ 

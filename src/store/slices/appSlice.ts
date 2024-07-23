@@ -92,7 +92,14 @@ const appSlicee = createSlice({
         },
 
         setAddToStoredElement(state, action: PayloadAction<UserItem>) {
-            state.storedElements = [...state.storedElements, action.payload];
+
+            if (!state.storedElements.some(item => item.id == action.payload.id)) {
+
+                state.storedElements = [...state.storedElements, action.payload];
+            } else {
+                state.storedElements = state.storedElements.filter(item => item.id != action.payload.id)
+            }
+           
         },
         setModalOpen(state) {
             state.isModalOpen = !state.isModalOpen
@@ -132,7 +139,7 @@ const appSlicee = createSlice({
             state.params.query = action.payload;
         },
         setSelectedElement(state, action: PayloadAction<UserItem | undefined | null>) {
-            if(action.payload!=null && action.payload!=undefined) {
+            if (action.payload != null && action.payload != undefined) {
                 state.selectedElement = action.payload
 
             }

@@ -10,9 +10,13 @@ const ThemeButton = () => {
   }, [isDark]);
 
   return (
+
+    <>
     <button className="theme__button" onClick={toggleTheme}>
       Switch Theme {isDark ? 'Dark' : 'Light'}
     </button>
+    
+    </>
   );
 };
 
