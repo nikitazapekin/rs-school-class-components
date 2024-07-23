@@ -3,7 +3,7 @@ import Header from './components/Header';
 import List from './components/List';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from './store/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersFlyoutElement';

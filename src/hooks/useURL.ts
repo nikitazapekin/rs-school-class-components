@@ -41,7 +41,7 @@ const useURL = () => {
         dispatch(setQueryActionCreator(event.target.value))
 
     };
-    const [trigger, { data, error, isLoading }] = useLazySearchUsersQuery();
+    const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
     const handleSearch = () => {
         window.scrollTo(0, 0);
         trigger({ query: params.query, page: params.offset, per_page: params.limit });

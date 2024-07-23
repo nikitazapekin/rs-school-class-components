@@ -9,7 +9,7 @@ const UserData = () => {
 	const { isDark }  = useContext(ThemeContext);
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [trigger, { data, error, isLoading }] = useLazyGetUserGithubQuery();
+	const [trigger, { data,  isLoading }] = useLazyGetUserGithubQuery();
 	useEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
 		trigger({ username: String(searchParams.get('username')) })
