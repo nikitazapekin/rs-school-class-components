@@ -1,7 +1,19 @@
-//import { AppStatee } from "../types";
-import appSlice from "./appSlice";
-import { setClearStoredElements } from "./appSlice";
 
+import appSlice from "./appSlice";
+import {
+    setClearStoredElements, setLoading, setAddToStoredElement,
+
+    setSearchParamsURL,
+    setNextPage,
+    setPrevPage,
+    setQueryPage,
+    setUsers,
+    setFirstPage,
+    setStoredInLocalStorageQuery,
+    
+    setRemoveStoredElementById
+} from "./appSlice";
+ 
 describe('appReducer sync actions', () => {
     const initialState = {
         isLoading: false,
@@ -54,6 +66,48 @@ describe('appReducer sync actions', () => {
             selectedElement: null
         });
     });
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState, setLoading(true))).toEqual({
+            isLoading: true,
+            error: null,
+            storedElements: [
+
+                {
+                    login: "Nik",
+                    id: 1,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                }
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+
 });
 
 
@@ -62,39 +116,13 @@ describe('appReducer sync actions', () => {
 
 
 
-/*//import { AppStatee } from "../types";
-import  {setClearStoredElements} from "./appSlice";
 
-
-
-describe('counter reducer sync actions', () => {
-   const initialState: AppStatee = {
-
-
+describe('appReducer sync actions', () => {
+    const initialState = {
         isLoading: false,
         error: null,
         storedElements: [
-            {
-                login: "Nik",
-                id: 1,
-                node_id: "1",
-                avatar_url: "dcdsc",
-                gravatar_id: "kjj",
-                url: "lmd",
-                html_url: "ldm",
-                followers_url: "ldmv",
-                following_url: "nkdv",
-                gists_url: "ndls",
-                starred_url: "cmk",
-                subscriptions_url: "kekc",
-                organizations_url: "kdc",
-                repos_url: "mld",
-                events_url: "kmd",
-                received_events_url: "dclm",
-                type: "dlcm",
-                site_admin: false,
-                score: 22
-              }
+
         ],
         users: [],
         params: {
@@ -104,112 +132,581 @@ describe('counter reducer sync actions', () => {
             storedValue: ""
         },
         selectedElement: null
- 
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState, setAddToStoredElement({
+
+            login: "Nik",
+            id: 1,
+            node_id: "1",
+            avatar_url: "dcdsc",
+            gravatar_id: "kjj",
+            url: "lmd",
+            html_url: "ldm",
+            followers_url: "ldmv",
+            following_url: "nkdv",
+            gists_url: "ndls",
+            starred_url: "cmk",
+            subscriptions_url: "kekc",
+            organizations_url: "kdc",
+            repos_url: "mld",
+            events_url: "kmd",
+            received_events_url: "dclm",
+            type: "dlcm",
+            site_admin: false,
+            score: 22
 
 
+        }))).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+                {
+                    login: "Nik",
+                    id: 1,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                }
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
 
-    }  
-    it('should handle initial state', () => {
-      expect(setClearStoredElements).toEqual({
-      
-
-        isLoading: false,
-        error: null,
-        storedElements: [
-            
-        ],
-        users: [],
-        params: {
-            limit: 10,
-            offset: 1,
-            query: "",
-            storedValue: ""
-        },
-        selectedElement: null
-      })
-    })
 
 })
-*/
 
 
 
-/*import counterReducer, {
-    CounterState,
-    increment,
-    decrement,
-    incrementByAmount,
-    counterStatus,
-    incrementAsync
-  } from './counterSlice'
-  
-  describe('counter reducer sync actions', () => {
-    const initialState: CounterState = {
-      value: 3,
-      status: counterStatus.idle,
-      error: ''
+
+
+
+
+
+describe('appReducer sync actions', () => {
+    const initialState = {
+        isLoading: false,
+        error: null,
+        storedElements: [
+
+        ],
+        users: [],
+        params: {
+            limit: 10,
+            offset: 1,
+            query: "",
+            storedValue: ""
+        },
+        selectedElement: null
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState,
+            setSearchParamsURL({ query: "test", offset: 10 })
+
+        )).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 10,
+                query: "test",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+})
+
+
+
+
+
+
+describe('appReducer sync actions', () => {
+    const initialState = {
+        isLoading: false,
+        error: null,
+        storedElements: [
+
+        ],
+        users: [],
+        params: {
+            limit: 10,
+            offset: 1,
+            query: "",
+            storedValue: ""
+        },
+        selectedElement: null
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState,
+          setNextPage()
+
+        )).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 2,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+})
+
+
+
+
+
+
+
+describe('appReducer sync actions', () => {
+    const initialState = {
+        isLoading: false,
+        error: null,
+        storedElements: [
+
+        ],
+        users: [],
+        params: {
+            limit: 10,
+            offset: 2,
+            query: "",
+            storedValue: ""
+        },
+        selectedElement: null
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState,
+          setPrevPage()
+
+        )).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+})
+
+
+
+
+
+
+
+
+
+
+describe('appReducer sync actions', () => {
+    const initialState = {
+        isLoading: false,
+        error: null,
+        storedElements: [
+
+        ],
+        users: [],
+        params: {
+            limit: 10,
+            offset: 1,
+            query: "",
+            storedValue: ""
+        },
+        selectedElement: null
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState,
+         setQueryPage("test")
+
+        )).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "test",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+})
+
+
+
+describe('appReducer sync actions', () => {
+    const initialState = {
+        isLoading: false,
+        error: null,
+        storedElements: [
+
+        ],
+        users: [],
+        params: {
+            limit: 10,
+            offset: 1,
+            query: "",
+            storedValue: ""
+        },
+        selectedElement: null
+    };
+
+    it('should handle clearing stored elements', () => {
+        expect(appSlice(initialState,
+      
+setUsers([
+    {
+        login: "Nik",
+        id: 1,
+        node_id: "1",
+        avatar_url: "dcdsc",
+        gravatar_id: "kjj",
+        url: "lmd",
+        html_url: "ldm",
+        followers_url: "ldmv",
+        following_url: "nkdv",
+        gists_url: "ndls",
+        starred_url: "cmk",
+        subscriptions_url: "kekc",
+        organizations_url: "kdc",
+        repos_url: "mld",
+        events_url: "kmd",
+        received_events_url: "dclm",
+        type: "dlcm",
+        site_admin: false,
+        score: 22
     }
-    it('should handle initial state', () => {
-      expect(counterReducer(undefined, { type: 'unknown' })).toEqual({
-        value: 0,
-        status: counterStatus.idle,
-        error: ''
-      })
+])
+        )).toEqual({
+            isLoading: false,
+            error: null,
+            storedElements: [
+            ],
+            users: [
+                {
+                    login: "Nik",
+                    id: 1,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                }
+            ],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        });
+    });
+
+
+})
+ 
+
+    describe('appReducer sync actions', () => {
+        const initialState = {
+            isLoading: false,
+            error: null,
+            storedElements: [
+    
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 3,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        };
+    
+        it('should handle clearing stored elements', () => {
+            expect(appSlice(initialState,
+        setFirstPage()
+    
+            )).toEqual({
+                isLoading: false,
+                error: null,
+                storedElements: [
+                ],
+                users: [
+                  
+                ],
+                params: {
+                    limit: 10,
+                    offset: 1,
+                    query: "",
+                    storedValue: ""
+                },
+                selectedElement: null
+            });
+        });
+    
+    
     })
-  
-    it('should handle increment', () => {
-      const actual = counterReducer(initialState, increment())
-      expect(actual.value).toEqual(4)
+
+
+
+
+
+    describe('appReducer sync actions', () => {
+        const initialState = {
+            isLoading: false,
+            error: null,
+            storedElements: [
+    
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        };
+    
+        it('should handle clearing stored elements', () => {
+            expect(appSlice(initialState,
+      setStoredInLocalStorageQuery("test")
+            )).toEqual({
+                isLoading: false,
+                error: null,
+                storedElements: [
+                ],
+                users: [
+                  
+                ],
+                params: {
+                    limit: 10,
+                    offset: 1,
+                    query: "test",
+                    storedValue: "test"
+                },
+                selectedElement: null
+            });
+        });
+    
+    
     })
-  
-    it('should handle decrement', () => {
-      const actual = counterReducer(initialState, decrement())
-      expect(actual.value).toEqual(2)
+
+
+
+
+
+
+
+
+    describe('appReducer sync actions', () => {
+        const initialState = {
+            isLoading: false,
+            error: null,
+            storedElements: [
+                {
+                    login: "Nik",
+                    id: 1,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                },
+                {
+                    login: "Nik",
+                    id: 2,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                },
+                {
+                    login: "Nik",
+                    id: 3,
+                    node_id: "1",
+                    avatar_url: "dcdsc",
+                    gravatar_id: "kjj",
+                    url: "lmd",
+                    html_url: "ldm",
+                    followers_url: "ldmv",
+                    following_url: "nkdv",
+                    gists_url: "ndls",
+                    starred_url: "cmk",
+                    subscriptions_url: "kekc",
+                    organizations_url: "kdc",
+                    repos_url: "mld",
+                    events_url: "kmd",
+                    received_events_url: "dclm",
+                    type: "dlcm",
+                    site_admin: false,
+                    score: 22
+                }
+            ],
+            users: [],
+            params: {
+                limit: 10,
+                offset: 1,
+                query: "",
+                storedValue: ""
+            },
+            selectedElement: null
+        };
+    
+        it('should handle clearing stored elements', () => {
+            expect(appSlice(initialState,
+   setRemoveStoredElementById(2)
+            )).toEqual({
+                isLoading: false,
+                error: null,
+                storedElements: [
+                    {
+                        login: "Nik",
+                        id: 1,
+                        node_id: "1",
+                        avatar_url: "dcdsc",
+                        gravatar_id: "kjj",
+                        url: "lmd",
+                        html_url: "ldm",
+                        followers_url: "ldmv",
+                        following_url: "nkdv",
+                        gists_url: "ndls",
+                        starred_url: "cmk",
+                        subscriptions_url: "kekc",
+                        organizations_url: "kdc",
+                        repos_url: "mld",
+                        events_url: "kmd",
+                        received_events_url: "dclm",
+                        type: "dlcm",
+                        site_admin: false,
+                        score: 22
+                    },
+                    {
+                        login: "Nik",
+                        id: 3,
+                        node_id: "1",
+                        avatar_url: "dcdsc",
+                        gravatar_id: "kjj",
+                        url: "lmd",
+                        html_url: "ldm",
+                        followers_url: "ldmv",
+                        following_url: "nkdv",
+                        gists_url: "ndls",
+                        starred_url: "cmk",
+                        subscriptions_url: "kekc",
+                        organizations_url: "kdc",
+                        repos_url: "mld",
+                        events_url: "kmd",
+                        received_events_url: "dclm",
+                        type: "dlcm",
+                        site_admin: false,
+                        score: 22
+                    }
+                ],
+                users: [
+                  
+                ],
+                params: {
+                    limit: 10,
+                    offset: 1,
+                    query: "",
+                    storedValue: ""
+                },
+                selectedElement: null
+            });
+        });
+    
+    
     })
-  
-    it('should handle incrementByAmount', () => {
-      const actual = counterReducer(initialState, incrementByAmount(2))
-      expect(actual.value).toEqual(5)
-    })
-  })
-  
-  describe('counter reducer async actions', () => {
-    const initialState: CounterState = {
-      value: 5,
-      status: counterStatus.idle,
-      error: ''
-    }
-  
-    it('should set status to "pending"', async () => {
-      const action = { type: incrementAsync.pending.type }
-      const state = counterReducer(initialState, action)
-      expect(state).toEqual({
-        ...initialState,
-        status: counterStatus.pending
-      })
-    })
-  
-    it('should set status to "idle"', async () => {
-      const amount = 2
-      const action = { type: incrementAsync.fulfilled.type, payload: amount }
-      const state = counterReducer(initialState, action)
-      expect(state).toEqual({
-        ...initialState,
-        value: initialState.value + amount,
-        status: counterStatus.idle
-      })
-    })
-  
-    it('should set status to "failed"', async () => {
-      const action = {
-        type: incrementAsync.rejected.type,
-        payload: 'loading error'
-      }
-      const state = counterReducer(initialState, action)
-      expect(state).toEqual({
-        ...initialState,
-        error: 'loading error',
-        status: counterStatus.failed
-      })
-    })
-  })*/

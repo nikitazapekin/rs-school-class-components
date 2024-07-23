@@ -16,10 +16,13 @@ import { useAppDispatch } from './hooks/redux';
 import { setStoredInLocalStorageActionCreator } from './store/action-creators/setStoredInLocalStorageQuery';
 import { isLoadingSelector } from './store/selectors/isLoadingSelector';
 import Spinner from './components/Spinner';
+ 
 const App = () => {
   const dispatch = useAppDispatch()
   const storedUsers = useSelector(storedUsersSelector);
   const isLoading = useSelector(isLoadingSelector)
+
+ 
   useEffect(() => {
     dispatch(setStoredInLocalStorageActionCreator(String(localStorage.getItem("searchParam") != null ? localStorage.getItem("searchParam") : "")))
   }, [])
