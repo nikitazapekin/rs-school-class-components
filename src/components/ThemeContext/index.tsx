@@ -36,36 +36,4 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 export default ThemeContext;
 
 
-
-
-
-/*
-import React, { createContext, ReactNode } from 'react';
-
-interface Theme {
  
-  isDark: boolean
-}
-
-const ThemeContext = createContext<Theme>({isDark: false});
-
-interface ThemeProviderProps {
-  children: ReactNode;
-}
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const theme: Theme = {
-  
-  isDark: false
-  };
-
-  return (
-    <ThemeContext.Provider value={theme}
-    >
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export default ThemeContext;
-*/
