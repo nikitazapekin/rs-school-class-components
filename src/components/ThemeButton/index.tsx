@@ -1,14 +1,9 @@
 
-import { useContext, useEffect } from 'react';
+import { useContext} from 'react';
 import ThemeContext from '../ThemeContext';
 import "./index.scss"
 const ThemeButton = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
-
-  useEffect(() => {
-    console.log({ isDark });
-  }, [isDark]);
-
   return (
 
     <>
