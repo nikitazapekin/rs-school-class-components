@@ -1,6 +1,14 @@
 import { RootState } from "../store";
-export const paramsSelector = (state: RootState) => state.appSlice.params
 
+export const paramsSelector = (state: RootState) => {
+  const appSlice = state.appSlice || {};
+  return appSlice.params || { query: "", offset: 1, limit: 10, storedValue: "" };
+};
+
+
+/*import { RootState } from "../store";
+export const paramsSelector = (state: RootState) => state.appSlice.params || {query: "", offset: 1, limit: 10, storedValue: ""}
+*/
 
 /*
 import configureMockStore from 'redux-mock-store';

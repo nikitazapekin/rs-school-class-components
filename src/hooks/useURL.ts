@@ -27,10 +27,12 @@ const useURL = () => {
     };
     useEffect(() => {
         const [page, query] = getCurrentParams();
-        setPage(Number(page), String(query));
-        localStorage.setItem('searchParam', String(query));
-        dispatch(setSearchParamsActionCreator(Number(page), String(query)))
+       
 
+            setPage(Number(page), String(query));
+            localStorage.setItem('searchParam', String(query));
+            dispatch(setSearchParamsActionCreator(Number(page), String(query)))
+     
     }, []);
     const navigate = useNavigate();
     const params = useSelector(paramsSelector)
@@ -39,7 +41,6 @@ const useURL = () => {
     };
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value))
-
     };
     const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
     const handleSearch = () => {
