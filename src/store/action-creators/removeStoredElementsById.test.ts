@@ -89,13 +89,6 @@ test('should handle a todo being added to an existing list', () => {
         isLoading: false,
         error: null,
         storedElements: [
-
-
-
-
-
-
-
             {
                 login: "Nik",
                 id: 1,
@@ -118,8 +111,6 @@ test('should handle a todo being added to an existing list', () => {
                 score: 22
               }, 
            
-        
-        
               {
                 login: "Joe",
                 id: 3,
