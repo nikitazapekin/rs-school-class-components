@@ -1,75 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-interface UserItem {
-    login: string;
-    id: number;
-    node_id: string;
-    avatar_url: string;
-    gravatar_id: string;
-    url: string;
-    html_url: string;
-    followers_url: string;
-    following_url: string;
-    gists_url: string;
-    starred_url: string;
-    subscriptions_url: string;
-    organizations_url: string;
-    repos_url: string;
-    events_url: string;
-    received_events_url: string;
-    type: string;
-    site_admin: boolean;
-    score: number;
-}
-export type UserDataArray = Array<{
-    login: string;
-    id: number;
-    node_id: string;
-    avatar_url: string;
-    gravatar_id: string;
-    url: string;
-    html_url: string;
-    followers_url: string;
-    following_url: string;
-    gists_url: string;
-    starred_url: string;
-    subscriptions_url: string;
-    organizations_url: string;
-    repos_url: string;
-    events_url: string;
-    received_events_url: string;
-    type: string;
-    site_admin: boolean;
-    score: number;
-
-}>;
-export interface AppStatee {
-    isLoading: boolean;
-    error: string | null;
-    storedElements: UserDataArray;
-    users: UserDataArray;
-    isModalOpen: boolean,
-    params: {
-        limit: number,
-        offset: number,
-        query: string,
-        storedValue: string
-
-    },
-    selectedElement: UserItem | null
-}
-
-export interface SearchTypes {
-    query: string,
-    offset: number,
-}
+import { AppStatee, UserDataArray, UserItem, SearchTypes } from '../types';
 const initialState: AppStatee = {
     isLoading: false,
     error: null,
     storedElements: [],
     users: [],
-    isModalOpen: false,
     params: {
-
         limit: 10,
         offset: 1,
         query: "",
@@ -81,38 +17,27 @@ const appSlicee = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setAlert(state, action: PayloadAction<number>) {
-            console.log(1111)
-        },
         setLoading(state, action: PayloadAction<boolean>) {
             state.isLoading = action.payload;
         },
         setError(state, action: PayloadAction<string | null>) {
             state.error = action.payload;
         },
-
         setAddToStoredElement(state, action: PayloadAction<UserItem>) {
-
             if (!state.storedElements.some(item => item.id == action.payload.id)) {
-
                 state.storedElements = [...state.storedElements, action.payload];
             } else {
                 state.storedElements = state.storedElements.filter(item => item.id != action.payload.id)
             }
-           
         },
-        setModalOpen(state) {
-            state.isModalOpen = !state.isModalOpen
+        setRemoveStoredElementById(state, action: PayloadAction<number>) {
+       
+            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
         },
         setClearStoredElements(state) {
             state.storedElements = []
         },
-        setRemoveStoredElementById(state, action: PayloadAction<number>) {
-            if (state.storedElements.length == 1) {
-                state.isModalOpen = !state.isModalOpen
-            }
-            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
-        },
+       
         setSearchParamsURL(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
 
@@ -147,9 +72,8 @@ const appSlicee = createSlice({
         }
     },
 });
-
-export const { setLoading, setError, setAlert, setAddToStoredElement,
-    setModalOpen, setClearStoredElements, setRemoveStoredElementById,
+export const { setLoading, setError, setAddToStoredElement,
+     setClearStoredElements,  
     setSearchParamsURL,
     setNextPage,
     setPrevPage,
@@ -157,6 +81,7 @@ export const { setLoading, setError, setAlert, setAddToStoredElement,
     setUsers,
     setFirstPage,
     setStoredInLocalStorageQuery,
-    setSelectedElement
+    setSelectedElement,
+    setRemoveStoredElementById
 } = appSlicee.actions;
 export default appSlicee.reducer;

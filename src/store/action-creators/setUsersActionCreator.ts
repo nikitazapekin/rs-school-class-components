@@ -1,6 +1,8 @@
 
 import { setUsers } from "../slices/appSlice"
 import { AppDispatch } from "../store"
+import { UserDataArray } from "../types"
+/*
 export type UserDataArray = Array<{
     login: string;
     id: number;
@@ -21,7 +23,7 @@ export type UserDataArray = Array<{
     type: string;
     site_admin: boolean;
     score: number;
-}>;
+}>; */
 export const setUsersActionCreator = (data: UserDataArray  ) => (dispatch: AppDispatch) => {
    dispatch(setUsers(data))
  }

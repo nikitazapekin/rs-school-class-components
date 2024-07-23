@@ -2,11 +2,9 @@ import {  useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
 import Spinner from '../Spinner';
- 
 import { useLazyGetUserGithubQuery } from '@/store/slices/userQuerySlice';
 import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';
-
 const UserData = () => {
 	const { isDark }  = useContext(ThemeContext);
 	const location = useLocation();
@@ -24,12 +22,6 @@ const UserData = () => {
 			navigate('/main');
 		}
 	};
-
-	useEffect(()=> {
-console.log("DAARK", isDark)
-	}, [isDark])
-
- 
 	return (
 		<aside  
 		className={`sidebar ${isDark ? `sidebar-dark` : ''}`}
