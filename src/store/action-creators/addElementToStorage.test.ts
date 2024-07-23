@@ -1,0 +1,109 @@
+
+
+
+
+import reducer, { setAddToStoredElement } from "../slices/appSlice"
+import { AppStatee } from "../types"
+const previousState: AppStatee =  {
+    isLoading: false,
+    error: null,
+    storedElements: [],
+    users: [],
+    params: {
+        limit: 10,
+        offset: 1,
+        query: "",
+        storedValue: ""
+    },
+    selectedElement: null
+}
+test('should handle a todo being added to an existing list', () => {
+    const expectedState = {
+      ...previousState,
+      storedElements: [...previousState.storedElements, {
+        login: "Nik",
+        id: 1,
+        node_id: "1",
+        avatar_url: "dcdsc",
+        gravatar_id: "kjj",
+        url: "lmd",
+        html_url: "ldm",
+        followers_url: "ldmv",
+        following_url: "nkdv",
+        gists_url: "ndls",
+        starred_url: "cmk",
+        subscriptions_url: "kekc",
+        organizations_url: "kdc",
+        repos_url: "mld",
+        events_url: "kmd",
+        received_events_url: "dclm",
+        type: "dlcm",
+        site_admin: false,
+        score: 22
+      }]
+    };
+  
+    expect(reducer(previousState, setAddToStoredElement({
+        login: "Nik",
+        id: 1,
+        node_id: "1",
+        avatar_url: "dcdsc",
+        gravatar_id: "kjj",
+        url: "lmd",
+        html_url: "ldm",
+        followers_url: "ldmv",
+        following_url: "nkdv",
+        gists_url: "ndls",
+        starred_url: "cmk",
+        subscriptions_url: "kekc",
+        organizations_url: "kdc",
+        repos_url: "mld",
+        events_url: "kmd",
+        received_events_url: "dclm",
+        type: "dlcm",
+        site_admin: false,
+        score: 22
+    }))).toEqual(expectedState);
+  });
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { loginRequest, loginSuccess } from "./actions";
+
+it('creates a LOGIN_REQUEST action', () => {
+  const expectedAction = {
+    type: 'LOGIN_REQUEST',
+  }
+
+  expect(loginRequest()).toEqual(expectedAction);
+});
+
+it('creates a LOGIN_SUCCESS action', () => {
+  const encoded = 'xxxx';
+  const expectedAction = {
+    type: 'LOGIN_SUCCESS',
+    payload: {
+      encoded
+    }
+  }
+
+  expect(loginSuccess(encoded)).toEqual(expectedAction)
+});
+*/
