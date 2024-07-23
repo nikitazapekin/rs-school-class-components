@@ -7,7 +7,9 @@ const Background = () => {
 
     const { isDark } = useContext(ThemeContext)
     return (
-        <div className={`background ${isDark ? `background-dark` : ''}`}>   </div>
+        <div className={`background ${isDark ? `background-dark` : ''}`}
+        data-testId="background"
+        >   </div>
     );
 }
 

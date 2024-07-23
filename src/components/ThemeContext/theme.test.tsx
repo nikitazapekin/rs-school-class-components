@@ -1,10 +1,8 @@
-// ThemeProvider.test.tsx
+
 import  { useContext } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ThemeContext, { ThemeProvider } from './index';
-
-// A simple component to test ThemeContext
 const TestComponent = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
   return (
