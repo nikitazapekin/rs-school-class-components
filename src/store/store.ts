@@ -5,7 +5,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { githubApi } from "./slices/querySlice";
 import { usersGithubApi } from "./slices/userQuerySlice";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   appSlice: appSlice,
   [githubApi.reducerPath]: githubApi.reducer,
   [usersGithubApi.reducerPath]: usersGithubApi.reducer,  
