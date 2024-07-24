@@ -71,18 +71,6 @@
 	cursor: pointer;
 	outline: none;
 	transition: background-color 0.3s;
-
-	/*	content: '✔'; */
-	/*
-	&:checked::before {
-	content: 'Add to favourite';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		color: #000;
-	}
-*/
 	&:hover {
 		background-color: #f0f0f0;
 	}
