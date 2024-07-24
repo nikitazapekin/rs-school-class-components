@@ -6,7 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { MemoryRouter } from 'react-router-dom';
 import Card from './index';
 import ThemeContext from '../ThemeContext';
-//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage';
+ 
 
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -79,23 +79,7 @@ describe('Card Component', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith(`/main/userdata?username=${user.login}`);
   });
-/*
-  it('should dispatch AddElementToStorage when checkbox is changed', () => {
-    render(
-      <Provider store={mockStore}>
-        <MemoryRouter>
-          <ThemeContext.Provider value={mockThemeContext}>
-            <Card user={user} />
-          </ThemeContext.Provider>
-        </MemoryRouter>
-      </Provider>
-    );
-
-    fireEvent.click(screen.getByRole('checkbox'));
-
-    expect(AddElementToStorage).toHaveBeenCalledWith(user);
-  });
-*/
+ 
   it('should check the checkbox if user is already stored', () => {
     const preloadedStore = configureStore({
       reducer: {
