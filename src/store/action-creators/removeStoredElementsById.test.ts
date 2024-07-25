@@ -2,11 +2,10 @@
 
 
 
-import reducer, { setRemoveStoredElementById } from "../slices/appSlice"
-import { AppStatee } from "../types"
-const previousState: AppStatee =  {
-    isLoading: false,
-    error: null,
+import reducer, { setRemoveStoredElementById } from "../slices/selectedElementsSlice"
+import { SelectedElementsState } from "../types"
+const previousState: SelectedElementsState =  {
+    
     storedElements: [{
         login: "Nik",
         id: 1,
@@ -75,19 +74,12 @@ const previousState: AppStatee =  {
     
     
     ],
-    users: [],
-    params: {
-        limit: 10,
-        offset: 1,
-        query: "",
-        storedValue: ""
-    },
+ 
     selectedElement: null
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
-        isLoading: false,
-        error: null,
+     
         storedElements: [
             {
                 login: "Nik",
@@ -135,13 +127,7 @@ test('should handle a todo being added to an existing list', () => {
             
 
         ],
-        users: [],
-        params: {
-            limit: 10,
-            offset: 1,
-            query: "",
-            storedValue: ""
-        },
+      
         selectedElement: null
     };
   

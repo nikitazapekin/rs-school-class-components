@@ -5,9 +5,7 @@ import { AppStatee } from "../types"
 const previousState: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
-    
-    ],
+   
     users: [],
     params: {
         limit: 10,
@@ -15,15 +13,12 @@ const previousState: AppStatee =  {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
+   
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: false,
         error: null,
-        storedElements: [
-           
-        ],
         users: [],
         params: {
             limit: 10,
@@ -31,7 +26,6 @@ test('should handle a todo being added to an existing list', () => {
             query: "",
             storedValue: ""
         },
-        selectedElement: null
     };
   
     expect(reducer(previousState, setFirstPage())).toEqual(expectedState);
@@ -41,9 +35,7 @@ test('should handle a todo being added to an existing list', () => {
   const previousState1: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
     
-    ],
     users: [],
     params: {
         limit: 10,
@@ -51,15 +43,13 @@ test('should handle a todo being added to an existing list', () => {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
+     
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: false,
         error: null,
-        storedElements: [
-           
-        ],
+       
         users: [],
         params: {
             limit: 10,
@@ -67,7 +57,7 @@ test('should handle a todo being added to an existing list', () => {
             query: "",
             storedValue: ""
         },
-        selectedElement: null
+     
     };
   
     expect(reducer(previousState2,setPrevPage())).toEqual(expectedState);
@@ -82,9 +72,7 @@ test('should handle a todo being added to an existing list', () => {
   const previousState2: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
     
-    ],
     users: [],
     params: {
         limit: 10,
@@ -92,15 +80,13 @@ test('should handle a todo being added to an existing list', () => {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
+    
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: false,
         error: null,
-        storedElements: [
-           
-        ],
+        
         users: [],
         params: {
             limit: 10,
@@ -108,7 +94,7 @@ test('should handle a todo being added to an existing list', () => {
             query: "",
             storedValue: ""
         },
-        selectedElement: null
+       
     };
   
     expect(reducer(previousState1,setNextPage())).toEqual(expectedState);
@@ -126,9 +112,7 @@ test('should handle a todo being added to an existing list', () => {
   const previousState3: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
     
-    ],
     users: [],
     params: {
         limit: 10,
@@ -136,15 +120,13 @@ test('should handle a todo being added to an existing list', () => {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
+   
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: false,
         error: null,
-        storedElements: [
-           
-        ],
+       
         users: [],
         params: {
             limit: 10,
@@ -152,7 +134,7 @@ test('should handle a todo being added to an existing list', () => {
             query: "test",
             storedValue: ""
         },
-        selectedElement: null
+       
     };
   
     expect(reducer(previousState3,setSearchParamsURL({offset:10, query: "test"}))).toEqual(expectedState);
@@ -168,9 +150,7 @@ test('should handle a todo being added to an existing list', () => {
   const previousState4: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
-    
-    ],
+
     users: [],
     params: {
         limit: 10,
@@ -178,15 +158,12 @@ test('should handle a todo being added to an existing list', () => {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: false,
         error: null,
-        storedElements: [
-           
-        ],
+    
         users: [],
         params: {
             limit: 10,
@@ -194,7 +171,7 @@ test('should handle a todo being added to an existing list', () => {
             query: "test",
             storedValue: ""
         },
-        selectedElement: null
+
     };
   
     expect(reducer(previousState4, setQueryPage("test"))).toEqual(expectedState);

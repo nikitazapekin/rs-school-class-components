@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppStatee, UserDataArray, UserItem, SearchTypes } from '../types';
+import { AppStatee, UserDataArray,  SearchTypes } from '../types';
 const initialState: AppStatee = {
     isLoading: false,
     error: null,
-    storedElements: [],
+ //   storedElements: [],
     users: [],
     params: {
         limit: 10,
@@ -11,7 +11,7 @@ const initialState: AppStatee = {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
+   // selectedElement: null
 };
 const appSlicee = createSlice({
     name: 'app',
@@ -23,20 +23,21 @@ const appSlicee = createSlice({
         setError(state, action: PayloadAction<string | null>) {
             state.error = action.payload;
         },
-        setAddToStoredElement(state, action: PayloadAction<UserItem>) {
+  /*      setAddToStoredElement(state, action: PayloadAction<UserItem>) {
             if (!state.storedElements.some(item => item.id == action.payload.id)) {
                 state.storedElements = [...state.storedElements, action.payload];
             } else {
                 state.storedElements = state.storedElements.filter(item => item.id != action.payload.id)
             }
-        },
+        }, 
         setRemoveStoredElementById(state, action: PayloadAction<number>) {
-       
-            state.storedElements = state.storedElements.filter(item => item.id != action.payload)
-        },
+            
+        state.storedElements = state.storedElements.filter(item => item.id != action.payload)
+    },
         setClearStoredElements(state) {
             state.storedElements = []
         },
+        */
        
         setSearchParamsURL(state, action: PayloadAction<SearchTypes>) {
             console.log(action.payload)
@@ -63,6 +64,7 @@ const appSlicee = createSlice({
             state.params.storedValue = action.payload;
             state.params.query = action.payload;
         },
+        /*
         setSelectedElement(state, action: PayloadAction<UserItem | undefined | null>) {
             if (action.payload != null && action.payload != undefined) {
                 state.selectedElement = action.payload
@@ -70,10 +72,12 @@ const appSlicee = createSlice({
             }
             console.log(state.selectedElement)
         }
+            */
     },
 });
-export const { setLoading, setError, setAddToStoredElement,
-     setClearStoredElements,  
+export const { setLoading, setError, 
+    //setAddToStoredElement,
+    // setClearStoredElements,  
     setSearchParamsURL,
     setNextPage,
     setPrevPage,
@@ -81,7 +85,7 @@ export const { setLoading, setError, setAddToStoredElement,
     setUsers,
     setFirstPage,
     setStoredInLocalStorageQuery,
-    setSelectedElement,
-    setRemoveStoredElementById
+  //  setSelectedElement,
+   // setRemoveStoredElementById
 } = appSlicee.actions;
 export default appSlicee.reducer;

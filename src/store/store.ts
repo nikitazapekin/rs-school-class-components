@@ -4,9 +4,11 @@ import appSlice from "./slices/appSlice";
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { githubApi } from "./slices/querySlice";
 import { usersGithubApi } from "./slices/userQuerySlice";
+import selectedElementsSlice from "./slices/selectedElementsSlice";
 
 export const rootReducer = combineReducers({
   appSlice: appSlice,
+  selectedElementsSlice: selectedElementsSlice,
   [githubApi.reducerPath]: githubApi.reducer,
   [usersGithubApi.reducerPath]: usersGithubApi.reducer,  
 });

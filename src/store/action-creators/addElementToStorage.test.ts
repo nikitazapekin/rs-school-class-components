@@ -2,19 +2,12 @@
 
 
 
-import reducer, { setAddToStoredElement } from "../slices/appSlice"
-import { AppStatee } from "../types"
-const previousState: AppStatee =  {
-    isLoading: false,
-    error: null,
+import reducer, { setAddToStoredElement } from "../slices/selectedElementsSlice"
+import { SelectedElementsState} from "../types"
+const previousState: SelectedElementsState =  {
+    
     storedElements: [],
-    users: [],
-    params: {
-        limit: 10,
-        offset: 1,
-        query: "",
-        storedValue: ""
-    },
+    
     selectedElement: null
 }
 test('should handle a todo being added to an existing list', () => {

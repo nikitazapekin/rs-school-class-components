@@ -7,9 +7,7 @@ import { AppStatee } from "../types"
 const previousState: AppStatee =  {
     isLoading: false,
     error: null,
-    storedElements: [
-    
-    ],
+   
     users: [],
     params: {
         limit: 10,
@@ -17,15 +15,12 @@ const previousState: AppStatee =  {
         query: "",
         storedValue: ""
     },
-    selectedElement: null
 }
 test('should handle a todo being added to an existing list', () => {
     const expectedState = {
         isLoading: true,
         error: null,
-        storedElements: [
-           
-        ],
+     
         users: [],
         params: {
             limit: 10,
@@ -33,7 +28,7 @@ test('should handle a todo being added to an existing list', () => {
             query: "",
             storedValue: ""
         },
-        selectedElement: null
+       
     };
   
     expect(reducer(previousState, setLoading(true))).toEqual(expectedState);
