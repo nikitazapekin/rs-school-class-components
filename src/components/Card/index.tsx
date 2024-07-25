@@ -24,12 +24,9 @@ const Card = ({ user }: UserItem) => {
 		}
 		navigate(`/main/userdata?username=${user.login}`);
 	};
-
-	const handleStore = () => {
-		dispatch(AddElementToStorage(user));
-	};
+ 
 	const handleCheckboxChange = () => {
-		handleStore();
+    dispatch(AddElementToStorage(user));
 		};
 		 
 	return (

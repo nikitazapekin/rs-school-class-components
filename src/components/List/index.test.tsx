@@ -1,3 +1,7 @@
+
+
+
+/*
 import { MemoryRouter } from "react-router-dom";
 import Card from "./index.tsx";
 import * as reduxHooks from "react-redux";
@@ -145,5 +149,4 @@ describe("Card Component", () => {
     });
 });
 
-
- 
+*/

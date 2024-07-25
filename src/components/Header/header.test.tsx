@@ -37,7 +37,7 @@ describe('Header Component', () => {
       </ThemeContext.Provider>
     );
 
-    // Check if the header is rendered with light theme
+ 
     expect(screen.getByRole('banner')).toHaveClass('header');
     expect(screen.getByRole('banner')).not.toHaveClass('header-dark');
   });
@@ -49,7 +49,7 @@ describe('Header Component', () => {
       </ThemeContext.Provider>
     );
 
-    // Check if the header is rendered with dark theme
+ 
     expect(screen.getByRole('banner')).toHaveClass('header');
     expect(screen.getByRole('banner')).toHaveClass('header-dark');
   });
@@ -86,7 +86,6 @@ describe('Header Component', () => {
         <Header />
       </ThemeContext.Provider>
     );
-
     const redirectButton = screen.getByRole('button', { name: /redirect to error page/i });
     fireEvent.click(redirectButton);
 
