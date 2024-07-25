@@ -43,7 +43,7 @@ const Card = ({ user }: UserItem) => {
 						className="user__checkbox"
 				 
 				onChange={handleCheckboxChange}
-						checked={users.some(storedUser => user.id === storedUser.id)}
+						checked={users && users.some(storedUser => user.id === storedUser.id)}
 						readOnly
  
 					/>
