@@ -1,4 +1,3 @@
-
 import './index.scss';
 import Spinner from '../Spinner';
 import Card from '../Card';
@@ -52,7 +51,10 @@ const List = () => {
 
 export default List;
 
-/* 
+
+
+
+/*
 import './index.scss';
 import Spinner from '../Spinner';
 import Card from '../Card';
@@ -63,7 +65,7 @@ import { paramsSelector } from '@/store/selectors/getSearchParams';
 import { getUsersSelector } from '@/store/selectors/getUsersSelector';
 import { isLoadingSelector } from '@/store/selectors/isLoadingSelector';
 import useURL from '@/hooks/useURL';
-
+ 
 
 const List = () => {
   const { setPage } = useURL();
@@ -83,7 +85,7 @@ const List = () => {
     dispatch(setPrevPageActionCreator());
     setPage(params.offset, params.query);
   };
-
+ 
   return (
     <section className="list">
       <div className="list__container">
@@ -106,4 +108,4 @@ const List = () => {
 };
 
 export default List;
-  */
+ */

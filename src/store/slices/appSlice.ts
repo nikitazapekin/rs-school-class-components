@@ -3,7 +3,7 @@ import { AppStatee, UserDataArray,  SearchTypes } from '../types';
 const initialState: AppStatee = {
     isLoading: false,
     error: null,
- //   storedElements: [],
+ 
     users: [],
     params: {
         limit: 10,
@@ -11,7 +11,7 @@ const initialState: AppStatee = {
         query: "",
         storedValue: ""
     },
-   // selectedElement: null
+ 
 };
 const appSlicee = createSlice({
     name: 'app',
