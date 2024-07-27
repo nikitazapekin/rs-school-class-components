@@ -44,7 +44,8 @@ export type UserDataArray = Array<{
 export interface AppStatee {
     isLoading: boolean;
     error: string | null;
-   // storedElements: UserDataArray;
+ 
+   isLoadingUserData: boolean;
     users: UserDataArray;
     params: {
         limit: number,
@@ -53,7 +54,7 @@ export interface AppStatee {
         storedValue: string
 
     },
-    //selectedElement: UserItem | null
+ 
 }
 
 

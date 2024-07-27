@@ -19,7 +19,7 @@ describe('appReducer sync actions', () => {
     const initialState = {
         isLoading: false,
         error: null,
-       
+        isLoadingUserData: false,
         users: [],
         params: {
             limit: 10,
@@ -34,7 +34,7 @@ describe('appReducer sync actions', () => {
         expect(appSlice(initialState, setLoading(true))).toEqual({
             isLoading: true,
             error: null,
-            
+            isLoadingUserData: false,
             users: [],
             params: {
                 limit: 10,
@@ -54,90 +54,7 @@ describe('appReducer sync actions', () => {
 
 
 
-
-
-
-/*
-describe('appReducer sync actions', () => {
-    const initialState = {
-        isLoading: false,
-        error: null,
-        storedElements: [
-
-        ],
-        users: [],
-        params: {
-            limit: 10,
-            offset: 1,
-            query: "",
-            storedValue: ""
-        },
-        selectedElement: null
-    };
-    it('should handle clearing stored elements', () => {
-        expect(appSlice(initialState, setAddToStoredElement({
-
-            login: "Nik",
-            id: 1,
-            node_id: "1",
-            avatar_url: "dcdsc",
-            gravatar_id: "kjj",
-            url: "lmd",
-            html_url: "ldm",
-            followers_url: "ldmv",
-            following_url: "nkdv",
-            gists_url: "ndls",
-            starred_url: "cmk",
-            subscriptions_url: "kekc",
-            organizations_url: "kdc",
-            repos_url: "mld",
-            events_url: "kmd",
-            received_events_url: "dclm",
-            type: "dlcm",
-            site_admin: false,
-            score: 22
-
-
-        }))).toEqual({
-            isLoading: false,
-            error: null,
-            storedElements: [
-                {
-                    login: "Nik",
-                    id: 1,
-                    node_id: "1",
-                    avatar_url: "dcdsc",
-                    gravatar_id: "kjj",
-                    url: "lmd",
-                    html_url: "ldm",
-                    followers_url: "ldmv",
-                    following_url: "nkdv",
-                    gists_url: "ndls",
-                    starred_url: "cmk",
-                    subscriptions_url: "kekc",
-                    organizations_url: "kdc",
-                    repos_url: "mld",
-                    events_url: "kmd",
-                    received_events_url: "dclm",
-                    type: "dlcm",
-                    site_admin: false,
-                    score: 22
-                }
-            ],
-            users: [],
-            params: {
-                limit: 10,
-                offset: 1,
-                query: "",
-                storedValue: ""
-            },
-            selectedElement: null
-        });
-    });
-    
-})
-*/
-
+ 
 
 
 
@@ -149,7 +66,7 @@ describe('appReducer sync actions', () => {
     const initialState = {
         isLoading: false,
         error: null,
-       
+        isLoadingUserData: false,
         users: [],
         params: {
             limit: 10,
@@ -167,7 +84,7 @@ describe('appReducer sync actions', () => {
         )).toEqual({
             isLoading: false,
             error: null,
-             
+            isLoadingUserData: false,
             users: [],
             params: {
                 limit: 10,
@@ -192,6 +109,7 @@ describe('appReducer sync actions', () => {
         isLoading: false,
         error: null,
         users: [],
+        isLoadingUserData: false,
         params: {
             limit: 10,
             offset: 1,
@@ -208,6 +126,7 @@ describe('appReducer sync actions', () => {
             isLoading: false,
             error: null,
             users: [],
+            isLoadingUserData: false,
             params: {
                 limit: 10,
                 offset: 2,
@@ -230,6 +149,7 @@ describe('appReducer sync actions', () => {
     const initialState = {
         isLoading: false,
         error: null,
+        isLoadingUserData: false,
         users: [],
         params: {
             limit: 10,
@@ -246,6 +166,7 @@ describe('appReducer sync actions', () => {
         )).toEqual({
             isLoading: false,
             error: null,
+            isLoadingUserData: false,
             users: [],
             params: {
                 limit: 10,
@@ -274,6 +195,7 @@ describe('appReducer sync actions', () => {
         error: null,
         
         users: [],
+        isLoadingUserData: false,
         params: {
             limit: 10,
             offset: 1,
@@ -291,6 +213,7 @@ describe('appReducer sync actions', () => {
             isLoading: false,
             error: null,
             users: [],
+            isLoadingUserData: false,
             params: {
                 limit: 10,
                 offset: 1,
@@ -309,6 +232,7 @@ describe('appReducer sync actions', () => {
     const initialState = {
         isLoading: false,
         error: null,
+        isLoadingUserData: false,
         users: [],
         params: {
             limit: 10,
@@ -347,7 +271,7 @@ setUsers([
         )).toEqual({
             isLoading: false,
             error: null,
-            
+            isLoadingUserData: false,
             users: [
                 {
                     login: "Nik",
@@ -389,7 +313,7 @@ setUsers([
         const initialState = {
             isLoading: false,
             error: null,
-            
+            isLoadingUserData: false,
             users: [],
             params: {
                 limit: 10,
@@ -407,7 +331,7 @@ setUsers([
             )).toEqual({
                 isLoading: false,
                 error: null,
-                
+                isLoadingUserData: false,
                 users: [
                   
                 ],
@@ -432,7 +356,7 @@ setUsers([
         const initialState = {
             isLoading: false,
             error: null,
-         
+            isLoadingUserData: false,
             users: [],
             params: {
                 limit: 10,
@@ -449,7 +373,7 @@ setUsers([
             )).toEqual({
                 isLoading: false,
                 error: null,
-                
+                isLoadingUserData: false,
                 users: [
                   
                 ],

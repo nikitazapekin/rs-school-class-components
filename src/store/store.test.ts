@@ -1,25 +1,9 @@
-// src/store/store.test.ts
-
-//import { configureStore } from '@reduxjs/toolkit';
-import { // rootReducer,
+ 
+import { 
      store } from './store';
 import { githubApi } from './slices/querySlice';
 import { usersGithubApi } from './slices/userQuerySlice';
-
-// Мок для проверки middleware
-
-/*
-const createMockStore = (initialState?: any) => {
-  return configureStore({
-    reducer: rootReducer,
-    preloadedState: initialState,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware()
-        .concat(githubApi.middleware)
-        .concat(usersGithubApi.middleware),
-  });
-};
-*/
+ 
 describe('Redux Store', () => {
   it('should be configured correctly', () => {
  

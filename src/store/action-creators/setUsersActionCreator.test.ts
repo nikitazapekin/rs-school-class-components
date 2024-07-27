@@ -7,7 +7,7 @@ import { AppStatee } from "../types"
 const previousState: AppStatee =  {
     isLoading: false,
     error: null,
-    
+    isLoadingUserData: false,
     users: [],
     params: {
         limit: 10,
