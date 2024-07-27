@@ -62,6 +62,11 @@ exports[`MainPage should render MainPage component correctly 1`] = `
           <div
             class="list__container"
           >
+            <p
+              class="list__nothing"
+            >
+              Nothing found
+            </p>
             <div
               class="list__btns"
             >
@@ -154,6 +159,11 @@ exports[`MainPage should render MainPage component correctly 1`] = `
         <div
           class="list__container"
         >
+          <p
+            class="list__nothing"
+          >
+            Nothing found
+          </p>
           <div
             class="list__btns"
           >

@@ -1,18 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorComponent should match the snapshot on initial render 1`] = `
-<DocumentFragment>
-  <div>
-    <button
-      class="throw__error"
-      data-testid="throw__error"
-    >
-      Throw Error
-    </button>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`TodoItem dc 1`] = `
 {
   "asFragment": [Function],
