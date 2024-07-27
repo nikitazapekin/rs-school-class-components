@@ -35,6 +35,11 @@ const List = () => {
         {users.map((item) => (
           <Card user={item} key={item.id} />
         ))}
+        {users.length==0 && (
+          <p className="list__nothing">
+            Nothing found
+          </p>
+        )}
 
         <div className="list__btns">
           <button className="list__prev list__btn" onClick={handlePrev}>

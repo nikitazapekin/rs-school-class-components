@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
-interface Theme {
+export interface Theme {
   isDark: boolean;
   toggleTheme: () => void;
 }
