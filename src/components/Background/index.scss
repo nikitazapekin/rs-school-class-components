@@ -1,0 +1,15 @@
+.background {
+	background-color: aliceblue;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -111;
+	transition: 1s;
+}
+
+.background-dark {
+	background-color: rgb(59, 59, 59);
+}

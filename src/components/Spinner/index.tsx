@@ -2,7 +2,7 @@ import './index.scss';
 const Spinner = () => {
 	return (
 		<>
-			<span className="loader"></span>
+			<span className="loader" data-testid="loader"></span>
 		</>
 	);
 };

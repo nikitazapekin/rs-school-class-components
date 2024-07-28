@@ -1,39 +1,56 @@
-import { Component } from 'react';
 import './index.scss';
 import Spinner from '../Spinner';
-import { MyComponentProps } from './types';
 import Card from '../Card';
-class List extends Component<MyComponentProps> {
-	render() {
-		const {  users, handleNext, handlePrev, isFetching, total } = this.props;
-		return (
-			<section className="list">
-				<div className="list__container">
-					{total == 0 && <p className="list__error">Please type username to search user on github or check your entered prompt </p>}
-					{isFetching && <Spinner />}
-					<div className="user__list">
-						{users &&
-							users.items.map((item, index) => (
-								<Card
-									html_url={item.html_url}
-									login={item.login}
-									avatar_url={item.avatar_url}
-									key={index}
-								/>
-							))}
-					</div>
-					<div className="list__btns">
-						<button className="list__prev list__btn" onClick={handlePrev}>
-							Prev
-						</button>
-						<button className="list__next list__btn" onClick={handleNext}>
-							Next
-						</button>
-					</div>
+import { useAppDispatch } from '@/hooks/redux';
+import { useSelector } from 'react-redux';
+import {
+	setNextPageActionCreator,
+	setPrevPageActionCreator,
+} from '@/store/action-creators/setSearchParamsActionCreator';
+import { paramsSelector } from '@/store/selectors/getSearchParams';
+import { getUsersSelector } from '@/store/selectors/getUsersSelector';
+import { isLoadingSelector } from '@/store/selectors/isLoadingSelector';
+import useURL from '@/hooks/useURL';
+
+const List = () => {
+	const { setPage } = useURL();
+	const dispatch = useAppDispatch();
+	const users = useSelector(getUsersSelector);
+	const params = useSelector(paramsSelector);
+	const isLoading = useSelector(isLoadingSelector);
+
+	const handleNext = () => {
+		window.scrollTo(0, 0);
+		dispatch(setNextPageActionCreator());
+		setPage(params.offset, params.query);
+	};
+
+	const handlePrev = () => {
+		window.scrollTo(0, 0);
+		dispatch(setPrevPageActionCreator());
+		setPage(params.offset, params.query);
+	};
+
+	return (
+		<section className="list">
+			<div className="list__container">
+				{isLoading && <Spinner />}
+				{users.map((item) => (
+					<Card user={item} key={item.id} />
+				))}
+				{users.length == 0 && <p className="list__nothing">Nothing found</p>}
+
+				<div className="list__btns">
+					<button className="list__prev list__btn" onClick={handlePrev}>
+						Prev
+					</button>
+					<button className="list__next list__btn" onClick={handleNext} data-testid="next">
+						Next
+					</button>
 				</div>
-			</section>
-		);
-	}
-}
+			</div>
+		</section>
+	);
+};
 
 export default List;
