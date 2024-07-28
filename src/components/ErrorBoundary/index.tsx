@@ -1,10 +1,8 @@
-
-
 import './index.scss';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 import { Component } from 'react';
 
-	export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props);
 		this.state = {
@@ -13,13 +11,13 @@ import { Component } from 'react';
 	}
 	static getDerivedStateFromError(): ErrorBoundaryState {
 		return { error: true };
-		}
-	 
+	}
+
 	componentDidCatch(error: Error) {
 		console.log('Error caught by ErrorBoundary:', error);
 		this.setState({ error: true });
 	}
-	
+
 	handleClose = () => {
 		this.setState({ error: false });
 	};
@@ -37,8 +35,8 @@ import { Component } from 'react';
 					</div>
 				</div>
 			);
-			}
-			
+		}
+
 		return this.props.children;
 	}
-} 
+}

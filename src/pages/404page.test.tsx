@@ -17,6 +17,5 @@ test('redirects to /main when pathname is /', () => {
 			<NotFoundPage />
 		</MemoryRouter>,
 	);
-expect(mockNavigate).toBeCalledTimes(0)
-	
+	expect(mockNavigate).toBeCalledTimes(0);
 });

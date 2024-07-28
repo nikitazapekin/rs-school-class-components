@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import './index.scss';
 
@@ -24,11 +23,11 @@ const Card = ({ user }: UserItem) => {
 		}
 		navigate(`/main/userdata?username=${user.login}`);
 	};
- 
+
 	const handleCheckboxChange = () => {
-    dispatch(AddElementToStorage(user));
-		};
-		 
+		dispatch(AddElementToStorage(user));
+	};
+
 	return (
 		<div className="user__link">
 			<div className={`user ${isDark ? `user-dark` : ``}`}>
@@ -38,11 +37,9 @@ const Card = ({ user }: UserItem) => {
 					<input
 						type="checkbox"
 						className="user__checkbox"
-				 
-				onChange={handleCheckboxChange}
-						checked={users && users.some(storedUser => user.id === storedUser.id)}
+						onChange={handleCheckboxChange}
+						checked={users && users.some((storedUser) => user.id === storedUser.id)}
 						readOnly
- 
 					/>
 					<button className="user__details" onClick={handleCardClick}>
 						Show details
@@ -54,6 +51,3 @@ const Card = ({ user }: UserItem) => {
 };
 
 export default Card;
-
- 
- 

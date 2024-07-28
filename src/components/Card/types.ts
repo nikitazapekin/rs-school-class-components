@@ -1,5 +1,3 @@
- 
-
 export interface UserItem {
 	user: {
 		login: string;
@@ -21,5 +19,5 @@ export interface UserItem {
 		type: string;
 		site_admin: boolean;
 		score: number;
-	}
+	};
 }

@@ -1,2 +1,2 @@
-import { RootState } from "../store";
-export const isLoadingSelector = (state: RootState) => state.appSlice.isLoading  
+import { RootState } from '../store';
+export const isLoadingSelector = (state: RootState) => state.appSlice.isLoading;
