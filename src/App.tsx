@@ -106,7 +106,8 @@ const App = ({ query }: SearchPageProps) => {
 
 	const [trigger, setTrigger] = useState(false);
 
-	const { data, error } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: params.limit }, {
+//const { data, error } = useSearchUsersQuery({ query: params.query, page: params.offset, per_page: params.limit }, {
+	const { data, error } = useSearchUsersQuery(query, {
 		skip: !trigger,
 	});
 

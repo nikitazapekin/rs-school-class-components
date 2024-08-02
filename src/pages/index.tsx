@@ -1,7 +1,7 @@
  
 import App from '../App';
 import Providers from '../redux/Provider';
- 
+ import { getServerSideProps } from './search';
  import { SearchPageProps } from './searchTypes';
 function MyApp(
 	{ query }: SearchPageProps
@@ -19,7 +19,7 @@ function MyApp(
 		</>
 	);
 }
-
+export { getServerSideProps };
 export default MyApp;
 
 
