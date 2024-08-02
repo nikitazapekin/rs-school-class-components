@@ -127,19 +127,20 @@ const useURL = () => {
             page: page
         }
         if (query) {
-            console.log("NEXTTTT",)
-            Object.assign(queryObj, { query: query });
+            if(query!=undefined) {
+
+                Object.assign(queryObj, { query: query });
+            }
             //    queryObj
             //queryObj['query'] = query
         }
         router.push({
             pathname: router.pathname,
             query: queryObj,
-            /* query: {
-                 page: page, query: query
-             } */
-        });
-
+            
+            });
+            /*
+*/
 
     };
     useEffect(() => {
@@ -176,7 +177,10 @@ console.log("NEX", params)
     useEffect(() => {
         if (router.isReady) {
             const {query, page} = router.query;
-            localStorage.setItem("searchParam", String(query))
+            if(query!=undefined) {
+
+                localStorage.setItem("searchParam", String(query))
+            }
             if(page && query) {
                 dispatch(setSearchParamsActionCreator( Number(page), String(query)))
             }
