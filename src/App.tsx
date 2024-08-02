@@ -189,17 +189,32 @@ import { getUserData } from './API';
 import { GetServerSideProps } from 'next';
 import { fetchUserData } from './redux/slices/appSlice';
 import { useLazySearchUsersQuery } from './redux/slices/querySlice';
-const App = () => {
+import { SearchPageProps } from './pages/searchTypes';
+import { useState } from 'react';
+import { useSearchUsersQuery } from './redux/slices/querySlice';
+const App = ({ query }: SearchPageProps) => {
 
 
 
-	const [trigger, { data }] = useLazySearchUsersQuery();
- 
+	//	const [trigger, { data }] = useLazySearchUsersQuery();
+
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
 	const isLoading = useSelector(isLoadingSelector);
 
- 
+	const [trigger, setTrigger] = useState(false);
+
+//	const { data, error } = useSearchUsersQuery(query, {
+	const { data, error } = useSearchUsersQuery({query: "test", page: 1, per_page: 10}, {
+		skip: !trigger,
+	});
+
+	const handleButtonClick = () => {
+		setTrigger(true);
+	};
+	useEffect(() => {
+		console.log("DATAS", data)
+	}, [data])
 	return (
 		<>
 			<ErrorBoundary>
@@ -222,7 +237,12 @@ const App = () => {
 				</ThemeProvider>
 
 
+				<button onClick={handleButtonClick}>
+					cli
+				</button>
+				{/*
 				<button onClick={() => trigger({ query: "test", page: 1, per_page: 20 })}>fetch</button>
+				*/}
 			</ErrorBoundary>
 		</>
 	);

@@ -1,42 +1,19 @@
  
-
-
-
-
-
-
-
-
-
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
-import { useEffect, useState } from 'react';
 import App from '../App';
 import Providers from '../redux/Provider';
-import { useAppDispatch } from '../hooks/redux';
-//import { useDispatch } from 'react-redux';
-import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
-import axios, { AxiosError, AxiosResponse } from 'axios';
  
+ import { SearchPageProps } from './searchTypes';
 function MyApp(
-
-
-	//users: ApiResp
-
- 
+	{ query }: SearchPageProps
 ) {
 
-	//const dispatch = useAppDispatch()
-/*
-	useEffect(()=> {
-console.log("USERSSSS")
-//dispatch(setUsersActionCreator(users))
-	}, [users])
-
-*/
+ 
 	return (
 		<>
 			<Providers>
-				<App />
+				<App 
+				query={query}
+				/>
 			 
 			</Providers>
 		</>
