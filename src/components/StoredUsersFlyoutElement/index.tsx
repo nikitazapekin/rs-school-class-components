@@ -5,15 +5,17 @@ import { useAppDispatch } from '../../hooks/redux';
 //import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
 //import { storedUsersSelector } from '@/store/selectors/getStoredElements';
-import { storedUsersSelector } from '../../lib/selectors/getStoredElements';
+import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
+//import { storedUsersSelector } from '../../lib/selectors/getStoredElements';
 import { useState } from 'react';
 import { UserItem } from './types';
+import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';
 const StoredUsersButton = () => {
 	const dispatch = useAppDispatch();
 	const users = useSelector(storedUsersSelector);
 
 	const handleClear = () => {
-	//	dispatch(clearStoredElementsActionCreator());
+		dispatch(clearStoredElementsActionCreator());
 	};
 	const [url, setUrl] = useState<string>();
 	const handleDownload = () => {
@@ -58,5 +60,4 @@ const StoredUsersButton = () => {
 export default StoredUsersButton;
 
  
-	/*
-*/
+ 

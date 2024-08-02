@@ -2,20 +2,20 @@ import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './styles.scss';
 import Spinner from '../Spinner';
-import { useLazyGetUserGithubQuery } from '../../lib/slices/userQuerySlice';
-//import { useLazyGetUserGithubQuery } from '@/store/slices/userQuerySlice';
+
+import { useLazyGetUserGithubQuery } from '../../redux/slices/userQuerySlice';
+ 
 import { useContext } from 'react';
-//import { useAppDispatch } from '@/hooks/redux';
+ 
 import { useAppDispatch } from '../../hooks/redux';
 
 import ThemeContext from '../ThemeContext';
 
 import { useSelector } from 'react-redux';
-
-import { setLoadingUserDataActionCreator } from '../../lib/action-creators/setLoadingUserDataActionCreator';
-//import { setLoadingUserDataActionCreator } from '@/store/action-creators/setLoadingUserDataActionCreator';
-//import { isLoadingUserDataSelector } from '@/store/selectors/isLoadingUserData';
-import { isLoadingUserDataSelector } from '../../lib/selectors/isLoadingUserData';
+import { setLoadingUserDataActionCreator } from '../../redux/action-creators/setLoadingUserDataActionCreator';
+ 
+import { isLoadingUserDataSelector } from '../../redux/selectors/isLoadingUserData';
+ 
 const UserData = () => {
 	const dispatch = useAppDispatch();
 	const { isDark } = useContext(ThemeContext);

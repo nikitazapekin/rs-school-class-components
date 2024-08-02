@@ -1,56 +1,4 @@
-/*
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
-import { useState } from 'react';
-import App from '../App';
-import Providers from '../redux/Provider';
-
-
-import axios, {AxiosError} from 'axios';
-
-
-type Repo = {
-  name: string;
-  stargazers_count: number;
-};
-
-export const getServerSideProps = (async () => {
-  // Fetch data from external API
-
-  console.log("fetching")
-  const res = await fetch('https://api.github.com/repos/vercel/next.js');
-  const repo: Repo = await res.json();
-
-  console.log('res', res);
-  // Pass data to the page via props
-  return { props: { repo } };
-}) satisfies GetServerSideProps<{ repo: Repo }>;
-
-function MyApp({
-  repo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [repoData, setRepoData] = useState<Repo>(repo);
-
-  const handleClick = async () => {
-	const res = await fetch('https://api.github.com/repos/vercel/next.js');
-	const newRepo: Repo = await res.json();
-	setRepoData(newRepo);
-  };
-
-  return (
-	<>
-	  <Providers>
-		<App />
-		<p>{repoData.stargazers_count}</p>
-		<button onClick={handleClick}>Fetch Latest Data</button>
-	  </Providers>
-	</>
-  );
-}
-
-export default MyApp;
-
- */
-
+ 
 
 
 
@@ -68,35 +16,13 @@ import { useAppDispatch } from '../hooks/redux';
 //import { useDispatch } from 'react-redux';
 import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-/*
-
-type Repo = {
-  name: string;
-  stargazers_count: number;
-};
-
-export const getServerSideProps = (async () => {
-  // Fetch data from external API
-
-  console.log("fetching")
-  const res = await fetch('https://api.github.com/repos/vercel/next.js');
-  const repo: Repo = await res.json();
-
-  console.log('res', res);
-  // Pass data to the page via props
-  return { props: { repo } };
-}) satisfies GetServerSideProps<{ repo: Repo }>;
-*/
+ 
 function MyApp(
 
 
-	users: ApiResp
+	//users: ApiResp
 
-	/* {
-  repo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>
-*/
-
+ 
 ) {
 
 	//const dispatch = useAppDispatch()
@@ -129,7 +55,7 @@ export default MyApp;
 
 
 
-
+/*
 
 export type UserDataArrayApi = Array<{
 	login: string;
@@ -213,7 +139,7 @@ export async function getServerSideProps(limit: number, offset: number, typedVal
 		}
 	}
 }
-
+*/
 
 
 

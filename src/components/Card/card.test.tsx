@@ -2,7 +2,8 @@ import { MemoryRouter } from 'react-router-dom';
 import Card from './index.tsx';
 import * as reduxHooks from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
+import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage.ts';
+//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useNavigate } from 'react-router-dom';
 
 jest.mock('react-redux');

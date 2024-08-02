@@ -167,16 +167,19 @@ import List from './components/List';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { storedUsersSelector } from './lib/selectors/getStoredElements';
+//import { storedUsersSelector } from './lib/selectors/getStoredElements';
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 import { ThemeProvider } from './components/ThemeContext';
 import Background from './components/Background';
 import ErrorComponent from './components/ErrorComponent';
 import { useAppDispatch } from './hooks/redux';
-import { setStoredInLocalStorageActionCreator } from './lib/action-creators/setStoredInLocalStorageQuery';
-import { isLoadingSelector } from './lib/selectors/isLoadingSelector';
+import { storedUsersSelector } from './redux/selectors/getStoredElements';
+import { setStoredInLocalStorageActionCreator } from './redux/action-creators/setStoredInLocalStorageQuery';
+import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
+//import { setStoredInLocalStorageActionCreator } from './lib/action-creators/setStoredInLocalStorageQuery';
+//import { isLoadingSelector } from './lib/selectors/isLoadingSelector';
 import Spinner from './components/Spinner';
-import { setTest } from './lib/slices/testSlice';
+ 
 import useCustomRouter from './hooks/useCustomRouter';
 import { useDispatch } from 'react-redux';
 import { setTesting } from './redux/slices/postsSlice';
@@ -185,14 +188,21 @@ import { getTest } from './redux/selectors/getTest';
 import { getUserData } from './API';
 import { GetServerSideProps } from 'next';
 import { fetchUserData } from './redux/slices/appSlice';
+import { useLazySearchUsersQuery } from './redux/slices/querySlice';
 const App = () => {
 
+
+
+	const [trigger, { data }] = useLazySearchUsersQuery();
 	//const dispatch = useDispatch()
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
 	const isLoading = useSelector(isLoadingSelector);
 	const test = useSelector(getTest)
 	const { goToHomePage } = useCustomRouter()
+	useEffect(()=> {
+console.log("DAT", data)
+	}, [data])
 	return (
 		<>
 			<ErrorBoundary>
@@ -209,11 +219,13 @@ const App = () => {
 						</ErrorBoundary>
 					</div>
 					<Background />
+		{/*
+					*/}
 					{isLoading && <Spinner />}
 				</ThemeProvider>
 			 
 
-			 <button onClick={()=>dispatch(fetchUserData({typedValue: "test", offset: 1, limit: 10}))}>fetch</button>
+			 <button onClick={()=>trigger({ query: "test", page: 1, per_page: 20 })}>fetch</button>
 			</ErrorBoundary>
 		</>
 	);

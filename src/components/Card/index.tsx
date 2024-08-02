@@ -1,18 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import './index.scss';
 
+import './index.scss';
 import ThemeContext from '../ThemeContext';
 import { useContext } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
-//import { useAppDispatch } from '@/hooks/redux.ts';
-import { AddElementToStorage } from '../../lib/action-creators/addElementToStorage';
-//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
+import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
 import { useSelector } from 'react-redux';
-//import { storedUsersSelector } from '@/store/selectors/getStoredElements';
-import { storedUsersSelector } from '../../lib/selectors/getStoredElements';
+import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
 import { UserElement, UserItem } from './types';
 const Card = ({ user }: UserItem) => {
-//	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const { isDark } = useContext(ThemeContext);
 	const users = useSelector(storedUsersSelector);
@@ -23,7 +18,6 @@ const Card = ({ user }: UserItem) => {
 		if (!currentUrl.includes('userdata')) {
 			localStorage.setItem('lastUrl', currentUrl);
 		}
-		//navigate(`/main/userdata?username=${user.login}`);
 	};
 
 	const handleCheckboxChange = () => {

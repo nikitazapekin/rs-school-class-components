@@ -94,21 +94,17 @@ export default useURL;
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-//import { paramsSelector } from '@/store/selectors/getSearchParams';
-
-import { paramsSelector } from '../lib/selectors/getSearchParams';
+import { paramsSelector } from '../redux/selectors/getSearchParams';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from './redux';
 import { useSelector } from 'react-redux';
-import { setQueryActionCreator } from '../lib/action-creators/setSearchParamsActionCreator';
-//import { setQueryActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
-//import { setSearchParamsActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
-import { setSearchParamsActionCreator } from '../lib/action-creators/setSearchParamsActionCreator';
-//import { setLoadingActionCreator } from '@/store/action-creators/setIsLoading';
-import { setLoadingActionCreator } from '../lib/action-creators/setIsLoading';
-import { useLazySearchUsersQuery } from '../lib/slices/querySlice';
-import { setUsersActionCreator } from '../lib/action-creators/setUsersActionCreator';
-//import { useLazySearchUsersQuery } from '@/store/slices/querySlice';
+
+import { setQueryActionCreator } from '../redux/action-creators/setSearchParamsActionCreator';
+import { setSearchParamsActionCreator } from '../redux/action-creators/setSearchParamsActionCreator';
+import { setLoadingActionCreator } from '../redux/action-creators/setIsLoading';
+import { useLazySearchUsersQuery } from '../redux/slices/querySlice';
+import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
+ 
 //import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
 import { useRouter } from 'next/router';
 const useURL = () => {
@@ -199,10 +195,10 @@ if(!query) {
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
     };
-    // const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
+     const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
     const handleSearch = () => {
         window.scrollTo(0, 0);
-        //	trigger({ query: params.query, page: params.offset, per_page: params.limit });
+        	trigger({ query: params.query, page: params.offset, per_page: params.limit });
         localStorage.setItem('searchParam', params.query);
         //   setPage(params.offset, params.query);
         router.push({
@@ -214,7 +210,6 @@ if(!query) {
         });
         dispatch(setSearchParamsActionCreator(1, params.query));
     };
-    /* 
     useEffect(() => {
         if (isLoading) {
             dispatch(setLoadingActionCreator(true));
@@ -236,7 +231,8 @@ if(!query) {
     useEffect(() => {
         trigger({ query: params.query, page: params.offset, per_page: params.limit });
         setPage(params.offset, params.query);
-    }, [params.offset]);
+        }, [params.offset]);
+        /* 
     */
     return { getCurrentParams, setPage, handleInput, handleSearch, handleRedirect };
 };
