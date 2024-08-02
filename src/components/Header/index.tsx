@@ -5,14 +5,22 @@ import ThemeButton from '../ThemeButton';
 import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';
 import useURL from '../../hooks/useURL';
+import { useAppDispatch } from '../../hooks/redux';
+import { setTypedValueActionCreator } from '../../redux/action-creators/setTypedValueActionCreator';
 const Header = () => {
 	const { isDark } = useContext(ThemeContext);
 	const { handleInput, handleRedirect, handleSearch } = useURL();
+	const dispatch = useAppDispatch()
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(setTypedValueActionCreator(event.target.value));
+	};
 	return (
 		<header className={`header ${isDark ? `header-dark` : ''}`}>
 			<div className="header__content">
 				<nav className="header__search">
-					<input type="text" className="search__bar" placeholder="Search..." onChange={handleInput} />
+					<input type="text" className="search__bar" placeholder="Search..." //onChange={handleInput}
+					onChange={handleChange}
+					/>
 					<button className="search__btn" onClick={handleSearch} aria-label="search">
 						<FontAwesomeIcon icon={faSearch} />
 					</button>

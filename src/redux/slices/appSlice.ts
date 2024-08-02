@@ -63,6 +63,7 @@ const initialState: AppStatee = {
 	error: null,
 	isLoadingUserData: false,
 	users: [],
+	typedValue: "",
 	params: {
 		limit: 10,
 		offset: 1,
@@ -109,6 +110,14 @@ const appSlicee = createSlice({
 			state.params.storedValue = action.payload;
 			state.params.query = action.payload;
 		},
+		setTypedValue(state, action: PayloadAction<string>) {
+		state.typedValue = action.payload
+		},
+		setNewSearchValue(state) {
+		//	state.typedValue = action.payload
+		state.params.query=state.typedValue
+		state.params.storedValue=state.typedValue
+			},
 	},
 
 
@@ -142,5 +151,7 @@ export const {
 	setUsers,
 	setFirstPage,
 	setStoredInLocalStorageQuery,
+	setTypedValue,
+	setNewSearchValue
 } = appSlicee.actions;
 export default appSlicee.reducer;

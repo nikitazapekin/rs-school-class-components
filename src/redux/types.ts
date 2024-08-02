@@ -46,6 +46,7 @@ export interface AppStatee {
 
 	isLoadingUserData: boolean;
 	users: UserDataArray;
+	typedValue: string;
 	params: {
 		limit: number;
 		offset: number;

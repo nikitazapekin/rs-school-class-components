@@ -107,6 +107,7 @@ import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCr
  
 //import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
 import { useRouter } from 'next/router';
+import { setNewSearchValueActionCreator } from '../redux/action-creators/setNewSearchValueActionCreator';
 const useURL = () => {
     const dispatch = useAppDispatch();
     const router = useRouter()
@@ -210,6 +211,7 @@ if(!query) {
         });
         dispatch(setSearchParamsActionCreator(1, params.query));
         */
+       dispatch(setNewSearchValueActionCreator())
     };
     /* 
     useEffect(() => {
