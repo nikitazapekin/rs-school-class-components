@@ -1,6 +1,5 @@
 import Providers from "../../redux/Provider";
 import Test from "./testComp";
-//import { getServerSideProps } from './search'; // Import getServerSideProps from the search file
 import { getServerSideProps } from "./search";
 import { SearchPageProps } from "./types";
 const Page = ({ query }: SearchPageProps) => {
@@ -13,7 +12,7 @@ const Page = ({ query }: SearchPageProps) => {
   );
 };
 
-export { getServerSideProps }; // Export getServerSideProps
+export { getServerSideProps }; 
 export default Page;
 
 
