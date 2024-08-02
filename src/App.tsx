@@ -1,166 +1,4 @@
-/*
-const App = () => {
-	return ( 
-		<>
-		App
-		</>
-	 );
-	 }
-	 
-	 export default App;
- */
-/*import { GetServerSideProps } from 'next';
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import { UserData, UserDataArray } from './API/types';
-import { fetchUserDataAdvanced, getUserData } from './API';
 
-export interface UserElement {
-	login: string;
-	id: number;
-	node_id: string;
-	avatar_url: string;
-	gravatar_id: string;
-	url: string;
-	html_url: string;
-	followers_url: string;
-	following_url: string;
-	gists_url: string;
-	starred_url: string;
-	subscriptions_url: string;
-	organizations_url: string;
-	repos_url: string;
-	events_url: string;
-	received_events_url: string;
-	type: string;
-	site_admin: boolean;
-	score: number;
-}
-
-// Your page component
-const App = ({ users }: { users: UserElement[] }) => {
-	return (
-		<div>
-			<h1>Users</h1>
-			<ul>
-				{users && users.length > 0 ? (
-					users.map((user: UserElement) => (
-						<li key={user.id}>{user.login}</li>
-					))
-				) : (
-					<li>No users found</li>
-				)}
-			</ul>
-		</div>
-	);
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const limit = 10; // Adjust as needed
-	const offset = 1; // Adjust as needed
-	const typedValue = 'test'; // Adjust based on your requirements
-
-	try {
-		const data = await getUserData(limit, offset, typedValue);
-		console.log('Fetched users:', data);
-		return {
-			props: {
-				users: data || [],
-			},
-		};
-	} catch (error) {
-		console.error('Error fetching user data:', error);
-		return {
-			props: {
-				users: [],
-			},
-		};
-	}
-};
-
-export default App;
-
-*/
-
-
-
-
-
-
-
-/*import { GetServerSideProps } from 'next';
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import { UserData, UserDataArray } from './API/types';
-import { fetchUserDataAdvanced, getUserData } from './API';
-
-
-export interface UserElement {
-	login: string;
-	id: number;
-	node_id: string;
-	avatar_url: string;
-	gravatar_id: string;
-	url: string;
-	html_url: string;
-	followers_url: string;
-	following_url: string;
-	gists_url: string;
-	starred_url: string;
-	subscriptions_url: string;
-	organizations_url: string;
-	repos_url: string;
-	events_url: string;
-	received_events_url: string;
-	type: string;
-	site_admin: boolean;
-	score: number;
-}
-// Your page component
-const App = ({ users }: { users: UserDataArray }) => {
-	return (
-		<div>
-			<h1>Users</h1>
-			<ul>
-				{users && users.map((user: UserElement) => (
-					<li key={user.id}>{user.login}</li>
-				))}
-			</ul>
-		</div>
-	);
-};
-
-  const getServerSideProps: GetServerSideProps = async (context) => {
-	const limit = 10; // Adjust as needed
-	const offset = 1; // Adjust as needed
-	const typedValue = ''; // Adjust based on ydour requirements
-
-	try {
-		const users = await getUserData(limit, offset, typedValue);
-		console.log(users)
-		return {
-			props: {
-				users,
-			},
-		};
-	} catch (error) {
-		console.error('Error fetching user data:', error);
-		return {
-			props: {
-				users: [],
-			},
-		};
-	}
-	};
-	
-export default App;
-*/
-
-
-
-
-
-/*
-
-*/
 
 import Header from './components/Header';
 import List from './components/List';
@@ -192,6 +30,7 @@ import { useLazySearchUsersQuery } from './redux/slices/querySlice';
 import { SearchPageProps } from './pages/searchTypes';
 import { useState } from 'react';
 import { useSearchUsersQuery } from './redux/slices/querySlice';
+import { setUsersActionCreator } from './redux/action-creators/setUsersActionCreator';
 const App = ({ query }: SearchPageProps) => {
 
 
@@ -204,8 +43,8 @@ const App = ({ query }: SearchPageProps) => {
 
 	const [trigger, setTrigger] = useState(false);
 
-//	const { data, error } = useSearchUsersQuery(query, {
-	const { data, error } = useSearchUsersQuery({query: "test", page: 1, per_page: 10}, {
+	//	const { data, error } = useSearchUsersQuery(query, {
+	const { data, error } = useSearchUsersQuery({ query: "test", page: 1, per_page: 10 }, {
 		skip: !trigger,
 	});
 
@@ -213,8 +52,17 @@ const App = ({ query }: SearchPageProps) => {
 		setTrigger(true);
 	};
 	useEffect(() => {
-		console.log("DATAS", data)
+		console.log("DATAS", data?.items)
+		dispatch(setUsersActionCreator(data?.items ? data.items : []))
+
 	}, [data])
+
+	useEffect(() => {
+		setTrigger(true)
+	}, [])
+	useEffect(() => {
+		//	setTrigger(false)
+	}, [trigger])
 	return (
 		<>
 			<ErrorBoundary>
@@ -222,10 +70,7 @@ const App = ({ query }: SearchPageProps) => {
 					<div className="container">
 						<Header />
 						<List />
-						{/*
 
-							{storedUsers.length > 0 && <StoredUsersButton />}
-						*/}
 						<ErrorBoundary>
 							<ErrorComponent />
 						</ErrorBoundary>
@@ -236,13 +81,11 @@ const App = ({ query }: SearchPageProps) => {
 					{isLoading && <Spinner />}
 				</ThemeProvider>
 
-
+				{JSON.stringify(trigger)}
 				<button onClick={handleButtonClick}>
 					cli
 				</button>
-				{/*
-				<button onClick={() => trigger({ query: "test", page: 1, per_page: 20 })}>fetch</button>
-				*/}
+
 			</ErrorBoundary>
 		</>
 	);

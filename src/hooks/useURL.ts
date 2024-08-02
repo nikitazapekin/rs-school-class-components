@@ -195,9 +195,9 @@ if(!query) {
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
     };
-     const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
+   //  const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
     const handleSearch = () => {
-        window.scrollTo(0, 0);
+    /*    window.scrollTo(0, 0);
         	trigger({ query: params.query, page: params.offset, per_page: params.limit });
         localStorage.setItem('searchParam', params.query);
         //   setPage(params.offset, params.query);
@@ -209,7 +209,9 @@ if(!query) {
             }
         });
         dispatch(setSearchParamsActionCreator(1, params.query));
+        */
     };
+    /* 
     useEffect(() => {
         if (isLoading) {
             dispatch(setLoadingActionCreator(true));
@@ -219,7 +221,7 @@ if(!query) {
         if (data) {
             dispatch(setUsersActionCreator(data.items));
         }
-    }, [data, isLoading]);
+        }, [data, isLoading]);
     useEffect(() => {
         trigger({
             query: params.storedValue ? params.storedValue : params.query,
@@ -228,11 +230,12 @@ if(!query) {
         });
         setPage(params.offset, params.storedValue);
     }, [params.storedValue]);
+
+
     useEffect(() => {
         trigger({ query: params.query, page: params.offset, per_page: params.limit });
         setPage(params.offset, params.query);
         }, [params.offset]);
-        /* 
     */
     return { getCurrentParams, setPage, handleInput, handleSearch, handleRedirect };
 };
