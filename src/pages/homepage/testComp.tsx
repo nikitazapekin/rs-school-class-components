@@ -1,6 +1,81 @@
+import React, { useState } from 'react';
+import { useSearchUsersQuery } from '../../redux/slices/querySlice';
+import Providers from '../../redux/Provider';
+import { SearchPageProps } from './types'; 
+
+const Test = ({ query }: SearchPageProps) => {
+  const [trigger, setTrigger] = useState(false);
+
+  const { data, error, isLoading } = useSearchUsersQuery(query, {
+    skip: !trigger,
+  });
+
+  const handleButtonClick = () => {
+    setTrigger(true);
+  };
+
+  return (
+    <Providers>
+      <div>
+        <h1>Search Results</h1>
+        <button onClick={handleButtonClick}>Fetch Data</button>
+        {isLoading && <div>Loading...</div>}
+        {error && <div>Error loading data</div>}
+        {data && data.items.map(user => (
+          <div key={user.id}>{user.login}</div>
+        ))}
+      </div>
+    </Providers>
+  );
+};
+
+export default Test;
+
+
+/*import React, { useEffect, useState } from 'react';
 import { useSearchUsersQuery } from '../../redux/slices/querySlice';
 import Providers from '../../redux/Provider';
 import { SearchPageProps } from './types'; // Adjust the import path as needed
+
+const Test = ({ query }: SearchPageProps) => {
+  const [trigger, setTrigger] = useState(false);
+
+  const { data, error, isLoading, refetch } = useSearchUsersQuery(query, {
+    skip: !trigger,
+  });
+
+  const handleButtonClick = () => {
+    setTrigger(true);
+    refetch();
+  };
+
+  useEffect(()=> {
+console.log("DAT" , data)
+  }, [data])
+
+  return (
+    <Providers>
+      <div>
+        <h1>Search Results</h1>
+        <button onClick={handleButtonClick}>Fetch Data</button>
+        {isLoading && <div>Loading...</div>}
+        {error && <div>Error loading data</div>}
+        {data && data.items.map(user => (
+          <div key={user.id}>{user.login}</div>
+        ))}
+      </div>
+    </Providers>
+  );
+};
+
+export default Test;
+*/
+
+
+
+/*import { useSearchUsersQuery } from '../../redux/slices/querySlice';
+import Providers from '../../redux/Provider';
+import { SearchPageProps } from './types'; 
 
 const Test = ({ query }: SearchPageProps) => {
   const { data, error, isLoading } = useSearchUsersQuery(query);
@@ -22,7 +97,7 @@ const Test = ({ query }: SearchPageProps) => {
 
 export default Test;
 
-
+*/
 
 
 

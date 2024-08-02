@@ -179,7 +179,7 @@ import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
 //import { setStoredInLocalStorageActionCreator } from './lib/action-creators/setStoredInLocalStorageQuery';
 //import { isLoadingSelector } from './lib/selectors/isLoadingSelector';
 import Spinner from './components/Spinner';
- 
+
 import useCustomRouter from './hooks/useCustomRouter';
 import { useDispatch } from 'react-redux';
 import { setTesting } from './redux/slices/postsSlice';
@@ -194,15 +194,12 @@ const App = () => {
 
 
 	const [trigger, { data }] = useLazySearchUsersQuery();
-	//const dispatch = useDispatch()
+ 
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
 	const isLoading = useSelector(isLoadingSelector);
-	const test = useSelector(getTest)
-	const { goToHomePage } = useCustomRouter()
-	useEffect(()=> {
-console.log("DAT", data)
-	}, [data])
+
+ 
 	return (
 		<>
 			<ErrorBoundary>
@@ -219,13 +216,13 @@ console.log("DAT", data)
 						</ErrorBoundary>
 					</div>
 					<Background />
-		{/*
+					{/*
 					*/}
 					{isLoading && <Spinner />}
 				</ThemeProvider>
-			 
 
-			 <button onClick={()=>trigger({ query: "test", page: 1, per_page: 20 })}>fetch</button>
+
+				<button onClick={() => trigger({ query: "test", page: 1, per_page: 20 })}>fetch</button>
 			</ErrorBoundary>
 		</>
 	);
@@ -241,7 +238,7 @@ useEffect(() => {
 	//		setStoredInLocalStorageActionCreator(
 	//			String(localStorage.getItem('searchParam') != null ? localStorage.getItem('searchParam') : ''),
 	//		),
-	//	); 
+	//	);
 }, []);
 const getServerSideProps: GetServerSideProps = async (context) => {
 	const limit = 10; // Adjust as needed
