@@ -98,6 +98,7 @@ import { setUsersActionCreator } from './redux/action-creators/setUsersActionCre
 import { paramsSelector } from './redux/selectors/getSearchParams';
 
 const App = ({ query }: SearchPageProps) => {
+	console.log("QUER", query)
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
 	const isLoading = useSelector(isLoadingSelector);
