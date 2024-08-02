@@ -31,7 +31,7 @@ const List = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator());
 		console.log("NEXT", JSON.stringify(params))
-		setPage(params.offset , params.query);
+		setPage(params.offset+1 , params.query);
 		//setPage(params.offset + 1, params.query);
 	};
 
@@ -39,7 +39,7 @@ const List = () => {
 		window.scrollTo(0, 0);
 		dispatch(setPrevPageActionCreator());
 		//setPage(params.offset-1, params.query);
-		setPage(params.offset, params.query);
+		setPage(params.offset-1, params.query);
 	};
 
 	return (
