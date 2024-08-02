@@ -101,7 +101,9 @@ const appSlicee = createSlice({
 			state.params.offset = state.params.offset - 1;
 		},
 		setQueryPage(state, action: PayloadAction<string>) {
+			console.log("PAYLOAD", action.payload)
 			state.params.query = action.payload;
+			console.log("NEW PARAMS", state.params)
 		},
 		setUsers(state, action: PayloadAction<UserDataArray>) {
 			state.users = action.payload;

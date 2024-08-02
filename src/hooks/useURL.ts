@@ -104,84 +104,93 @@ import { setSearchParamsActionCreator } from '../redux/action-creators/setSearch
 import { setLoadingActionCreator } from '../redux/action-creators/setIsLoading';
 import { useLazySearchUsersQuery } from '../redux/slices/querySlice';
 import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
- 
+
 //import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
 import { useRouter } from 'next/router';
 import { setNewSearchValueActionCreator } from '../redux/action-creators/setNewSearchValueActionCreator';
+import { typedValueSelector } from '../redux/selectors/typedValueSelector';
+import { setStoredInLocalStorageActionCreator } from '../redux/action-creators/setStoredInLocalStorageQuery';
 const useURL = () => {
     const dispatch = useAppDispatch();
     const router = useRouter()
+    const params = useSelector(paramsSelector);
     //	const [searchParams, setSearchParams] = useSearchParams();
     const getCurrentParams = () => {
-        //	const page = parseInt(searchParams.get('page') || '1', 10);
-        //	const query = searchParams.get('query') || '';
-        //	return [page, query];
+
     };
 
     const setPage = (page: number, query: string) => {
-        /*   const params: Record<string, string> = { page: String(page) };
-           if (query.length > 0) {
-               params.query = query;
-           } 
-   
-           */
-        //	setSearchParams(params);
-
-        /*
-        
-            const queryParams = {
-                page: 1,
-                query: 'test',
-              };
-        */
 
 
-              const queryObj = {
-                page: page
-              }
-              if(query) {
-        console.log("NEXTTTT", )
-                Object.assign(queryObj, { query: query });
-                //    queryObj
-//queryObj['query'] = query
-              }
+
+        const queryObj = {
+            page: page
+        }
+        if (query) {
+            console.log("NEXTTTT",)
+            Object.assign(queryObj, { query: query });
+            //    queryObj
+            //queryObj['query'] = query
+        }
         router.push({
             pathname: router.pathname,
-             query: queryObj,
-           /* query: {
-                page: page, query: query
-            } */
+            query: queryObj,
+            /* query: {
+                 page: page, query: query
+             } */
         });
 
 
     };
     useEffect(() => {
+
+        console.log("PAR", JSON.stringify(params))
+        const storedParam = localStorage.getItem("searchParam")
+        console.log(storedParam)
+        if(storedParam) {
+          //  dispatch(setStoredInLocalStorageActionCreator(storedParam))
+            dispatch(setQueryActionCreator(storedParam))
+        }
         //	const [page, query] = getCurrentParams();
 
         //	setPage(Number(page), String(query));
         //	localStorage.setItem('searchParam', String(query));
         //	dispatch(setSearchParamsActionCreator(Number(page), String(query)));
     }, []);
-
+useEffect(()=> {
+console.log("NEX", params)
+}, [params])
     useEffect(() => {
         const { page, query } = router.query;
         console.log("QUERYYY", query)
-if(!query) {
-    router.push({
-        pathname: router.pathname,
+      /*  if (!query) {
+            router.push({
+                pathname: router.pathname,
 
-        //   query: queryParams,
-        query: {
-            page: page, 
-        }
-})
-}
+                query: {
+                    page: page,
+                }
+            })
+        } */
     }, [])
     useEffect(() => {
         if (router.isReady) {
-            const { page, query } = router.query;
-            dispatch(setSearchParamsActionCreator(Number(page), String(query)));
-            //   setPage(page);
+            const {query, page} = router.query;
+            localStorage.setItem("searchParam", String(query))
+            if(page && query) {
+                dispatch(setSearchParamsActionCreator( Number(page), String(query)))
+            }
+          //  if(page && query) {
+
+            //    dispatch(setSearchParamsActionCreator(Number(page), String(query)));
+         /*   } else {
+                const item = localStorage.getItem("searchParam")
+                if(item) {
+
+                }
+            }
+            */
+             //   setPage(page);
             // setQuery(query);
 
             console.log("Current", page, query)
@@ -189,56 +198,28 @@ if(!query) {
     }, [router.isReady, router.query]);
 
     //const navigate = useNavigate();
-    const params = useSelector(paramsSelector);
     const handleRedirect = () => {
         //navigate('/not-existing-page');
     };
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
     };
-   //  const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
+    const typedValue = useSelector(typedValueSelector)
     const handleSearch = () => {
-    /*    window.scrollTo(0, 0);
-        	trigger({ query: params.query, page: params.offset, per_page: params.limit });
-        localStorage.setItem('searchParam', params.query);
-        //   setPage(params.offset, params.query);
+        localStorage.setItem('searchParam', String(typedValue));
+        dispatch(setNewSearchValueActionCreator())
+
+
         router.push({
             pathname: router.pathname,
-            //   query: queryParams,
+
             query: {
-                page: 1, query: params.query
+                page:1,
+                query: typedValue
             }
-        });
-        dispatch(setSearchParamsActionCreator(1, params.query));
-        */
-       dispatch(setNewSearchValueActionCreator())
+        })
     };
-    /* 
-    useEffect(() => {
-        if (isLoading) {
-            dispatch(setLoadingActionCreator(true));
-        } else {
-            dispatch(setLoadingActionCreator(false));
-        }
-        if (data) {
-            dispatch(setUsersActionCreator(data.items));
-        }
-        }, [data, isLoading]);
-    useEffect(() => {
-        trigger({
-            query: params.storedValue ? params.storedValue : params.query,
-            page: params.offset,
-            per_page: params.limit,
-        });
-        setPage(params.offset, params.storedValue);
-    }, [params.storedValue]);
 
-
-    useEffect(() => {
-        trigger({ query: params.query, page: params.offset, per_page: params.limit });
-        setPage(params.offset, params.query);
-        }, [params.offset]);
-    */
     return { getCurrentParams, setPage, handleInput, handleSearch, handleRedirect };
 };
 export default useURL;
