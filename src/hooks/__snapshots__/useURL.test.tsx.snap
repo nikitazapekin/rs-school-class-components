@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useURL should match snapshot 1`] = `
+{
+  "all": [
+    {
+      "getCurrentParams": [Function],
+      "handleInput": [Function],
+      "handleRedirect": [Function],
+      "handleSearch": [Function],
+      "setPage": [Function],
+    },
+    {
+      "getCurrentParams": [Function],
+      "handleInput": [Function],
+      "handleRedirect": [Function],
+      "handleSearch": [Function],
+      "setPage": [Function],
+    },
+    {
+      "getCurrentParams": [Function],
+      "handleInput": [Function],
+      "handleRedirect": [Function],
+      "handleSearch": [Function],
+      "setPage": [Function],
+    },
+    {
+      "getCurrentParams": [Function],
+      "handleInput": [Function],
+      "handleRedirect": [Function],
+      "handleSearch": [Function],
+      "setPage": [Function],
+    },
+  ],
+  "current": {
+    "getCurrentParams": [Function],
+    "handleInput": [Function],
+    "handleRedirect": [Function],
+    "handleSearch": [Function],
+    "setPage": [Function],
+  },
+  "error": undefined,
+}
+`;

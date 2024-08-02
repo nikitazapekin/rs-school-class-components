@@ -1,4 +1,4 @@
-interface UserItem {
+export interface UserItem {
 	login: string;
 	id: number;
 	node_id: string;

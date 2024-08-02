@@ -4,7 +4,8 @@ import './index.scss';
 import ThemeButton from '../ThemeButton';
 import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';
-import useURL from '@/hooks/useURL';
+import useURL from '../../hooks/useURL';
+//import useURL from '@/hooks/useURL';
 const Header = () => {
 	const { isDark } = useContext(ThemeContext);
 	const { handleInput, handleRedirect, handleSearch } = useURL();

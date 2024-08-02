@@ -1,4 +1,4 @@
-import NotFound from '@/components/NotFound';
+ 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const NotFoundPage = () => {
@@ -11,7 +11,7 @@ const NotFoundPage = () => {
 	}, []);
 	return (
 		<>
-			<NotFound />
+ 
 		</>
 	);
 };

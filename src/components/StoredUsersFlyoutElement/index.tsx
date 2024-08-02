@@ -1,15 +1,19 @@
 import './index.scss';
-import { useAppDispatch } from '@/hooks/redux.ts';
-import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
+//import { useAppDispatch } from '@/hooks/redux.ts';
+//import Stored
+import { useAppDispatch } from '../../hooks/redux';
+//import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '@/store/selectors/getStoredElements';
+//import { storedUsersSelector } from '@/store/selectors/getStoredElements';
+import { storedUsersSelector } from '../../lib/selectors/getStoredElements';
 import { useState } from 'react';
+import { UserItem } from './types';
 const StoredUsersButton = () => {
 	const dispatch = useAppDispatch();
 	const users = useSelector(storedUsersSelector);
 
 	const handleClear = () => {
-		dispatch(clearStoredElementsActionCreator());
+	//	dispatch(clearStoredElementsActionCreator());
 	};
 	const [url, setUrl] = useState<string>();
 	const handleDownload = () => {
@@ -17,7 +21,7 @@ const StoredUsersButton = () => {
 
 		const titleKeys = Object.keys(users[0]);
 		const refinedData = [titleKeys];
-		users.forEach((item) => {
+		users.forEach((item: UserItem) => {
 			refinedData.push(Object.values(item).map((value) => String(value)));
 		});
 
@@ -52,3 +56,7 @@ const StoredUsersButton = () => {
 };
 
 export default StoredUsersButton;
+
+ 
+	/*
+*/
