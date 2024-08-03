@@ -27,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/notFound": [
+    "/not": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/notFound.js"
+      "static/chunks/pages/not.js"
     ]
   },
   "ampFirstPages": []

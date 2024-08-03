@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';
-import './index.scss';
+import styles from "./index.module.scss";
+
 const Background = () => {
 	const { isDark } = useContext(ThemeContext);
 	return (
-		<div className={`background ${isDark ? `background-dark` : ''}`} data-testid="background">
+		<div className={`${styles.background} ${isDark ? styles['background-dark'] : ''}`} data-testid="background">
 			{' '}
 		</div>
 	);

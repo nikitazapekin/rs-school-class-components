@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/notFound": "pages/notFound.js"
+  "/not": "pages/not.js",
+  "/details": "pages/details.js"
 }

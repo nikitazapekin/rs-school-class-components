@@ -1,19 +1,19 @@
-//import './index.scss';
-import { useNavigate } from 'react-router-dom';
-const NotFound = () => {
-	const navigate = useNavigate();
-	const handleClick = () => {
-		navigate('/main');
-	};
+//import { useNavigate } from 'react-router-dom';
+import Link from "next/link";
+import styles from "./index.module.scss";
+
+const NotFoundComponent = () => {
 	return (
-		<div className="not">
-			<p className="not__title">404</p>
-			<p className="not__text">Page was not found</p>
-			<button className="not__btn" onClick={handleClick}>
+		<div className={styles.not}>
+			<p className={styles.not__title}>404</p>
+			<p className={styles.not__text}>Page was not found</p>
+			<Link href="/">
+			<div className={styles.not__btn} >
 				Back to homepage
-			</button>
+			</div>
+			</Link>
 		</div>
 	);
 };
 
-export default NotFound;
+export default NotFoundComponent;

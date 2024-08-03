@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import './index.scss';
+import styles from "./index.module.scss";
 
 const ErrorComponent: React.FC = () => {
 	const [counter, setCounter] = useState<number>(0);
@@ -14,7 +14,7 @@ const ErrorComponent: React.FC = () => {
 
 	return (
 		<div>
-			<button className="throw__error" onClick={handleClick} data-testid="throw__error">
+			<button className={styles.throw__error} onClick={handleClick} data-testid="throw__error">
 				Throw Error
 			</button>
 		</div>

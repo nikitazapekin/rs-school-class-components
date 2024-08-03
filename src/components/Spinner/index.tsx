@@ -1,8 +1,9 @@
 //import './index.scss';
+import styles from "./index.module.scss"
 const Spinner = () => {
 	return (
 		<>
-			<span className="loader" data-testid="loader"></span>
+			<span className={styles.loader} data-testid="loader"></span>
 		</>
 	);
 };

@@ -1,15 +1,11 @@
-//import './index.scss';
-//import { useAppDispatch } from '@/hooks/redux.ts';
-//import Stored
 import { useAppDispatch } from '../../hooks/redux';
-//import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
-//import { storedUsersSelector } from '@/store/selectors/getStoredElements';
 import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
-//import { storedUsersSelector } from '../../lib/selectors/getStoredElements';
 import { useState } from 'react';
+import styles from "./index.module.scss";
 import { UserItem } from './types';
 import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';
+
 const StoredUsersButton = () => {
 	const dispatch = useAppDispatch();
 	const users = useSelector(storedUsersSelector);
@@ -17,7 +13,9 @@ const StoredUsersButton = () => {
 	const handleClear = () => {
 		dispatch(clearStoredElementsActionCreator());
 	};
+
 	const [url, setUrl] = useState<string>();
+
 	const handleDownload = () => {
 		if (users.length === 0) return;
 
@@ -38,18 +36,18 @@ const StoredUsersButton = () => {
 	};
 
 	return (
-		<div className="stored__users__panel">
-			<p className="stored__users__text">You chose {users.length} users</p>
-			<div className="stored__users__btns">
+		<div className={styles.stored__users__panel}>
+			<p className={styles.stored__users__text}>You chose {users.length} users</p>
+			<div className={styles.stored__users__btns}>
 				<a
-					className="stored__users__btn stored__users__download"
+					className={`${styles.stored__users__btn} ${styles.stored__users__download}`}
 					href={url}
 					download={`${users.length}__users.csv`}
 					onClick={handleDownload}
 				>
 					download
 				</a>
-				<button className="stored__users__btn stored__users__clear" onClick={handleClear}>
+				<button className={`${styles.stored__users__btn} ${styles.stored__users__clear}`} onClick={handleClear}>
 					Unselect all
 				</button>
 			</div>
@@ -58,6 +56,3 @@ const StoredUsersButton = () => {
 };
 
 export default StoredUsersButton;
-
- 
- 
