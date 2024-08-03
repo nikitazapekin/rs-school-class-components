@@ -11,6 +11,9 @@ function MyApp(
 	return (
 		<>
 			<Providers>
+				{/*
+				sd
+				*/}
 				<App 
 				query={query}
 				/>

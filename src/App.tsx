@@ -1,85 +1,4 @@
-/*
-import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
-import List from './components/List';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import { useSelector } from 'react-redux';
-import { ThemeProvider } from './components/ThemeContext';
-import Background from './components/Background';
-import ErrorComponent from './components/ErrorComponent';
-import { useAppDispatch } from './hooks/redux';
-import { storedUsersSelector } from './redux/selectors/getStoredElements';
-import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
-import Spinner from './components/Spinner';
-import { useSearchUsersQuery } from './redux/slices/querySlice';
-import { SearchPageProps } from './pages/searchTypes';
-import { setUsersActionCreator } from './redux/action-creators/setUsersActionCreator';
-import { paramsSelector } from './redux/selectors/getSearchParams';
-
-const App = ({ query }: SearchPageProps) => {
-	const dispatch = useAppDispatch();
-	const storedUsers = useSelector(storedUsersSelector);
-	const isLoading = useSelector(isLoadingSelector);
-	const params = useSelector(paramsSelector);
-
-	const [initialLoad, setInitialLoad] = useState(true);
-	const [trigger, setTrigger] = useState(false);
-
-	const { data, error } = useSearchUsersQuery(
-		{ query: params.query, page: params.offset, per_page: params.limit },
-		{ skip: !(initialLoad || trigger) }
-	);
-console.log(data)
-	const handleButtonClick = () => {
-		setTrigger(true);
-	};
-
-	useEffect(() => {
-		if (data) {
-			console.log("DATAS", data.items);
-			dispatch(setUsersActionCreator(data.items ? data.items : []));
-		}
-	}, [data, dispatch]);
-
-	useEffect(() => {
-		if (trigger) {
-			setTrigger(false);
-		}
-	}, [trigger]);
-
-	useEffect(() => {
-		if (initialLoad) {
-			setInitialLoad(false);
-		}
-	}, [initialLoad]);
-
-	return (
-		<>
-			<ErrorBoundary>
-				<ThemeProvider>
-					<div className="container">
-						<Header />
-						<List />
-						<ErrorBoundary>
-							<ErrorComponent />
-						</ErrorBoundary>
-					</div>
-					<Background />
-					{(isLoading || trigger) && <Spinner />}
-				</ThemeProvider>
-				<button onClick={handleButtonClick}>
-					Fetch Data
-				</button>
-			</ErrorBoundary>
-		</>
-	);
-};
-
-export default App;
-*/
-
-
-
+ 
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import List from './components/List';
@@ -156,8 +75,13 @@ const App = ({ query }: SearchPageProps) => {
 
 export default App;
 
-{/*
-	<Header />
-					<Background />
+/*
+
+const App = () => {
+	return ( <>
 	
-	*/}
+	</> );
+}
+ 
+export default App;
+	*/

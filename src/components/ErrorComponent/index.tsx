@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.scss';
+//import './index.scss';
 
 const ErrorComponent: React.FC = () => {
 	const [counter, setCounter] = useState<number>(0);

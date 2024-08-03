@@ -1,4 +1,4 @@
-import './index.scss';
+//import './index.scss';
 import Spinner from '../Spinner';
 import Card from '../Card';
 

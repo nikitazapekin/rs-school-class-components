@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import './index.scss';
+//import './index.scss';
 import ThemeButton from '../ThemeButton';
 import { useContext } from 'react';
 import ThemeContext from '../ThemeContext';

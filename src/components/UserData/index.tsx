@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './styles.scss';
+//import './styles.scss';
 import Spinner from '../Spinner';
 
 import { useLazyGetUserGithubQuery } from '../../redux/slices/userQuerySlice';

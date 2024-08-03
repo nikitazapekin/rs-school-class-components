@@ -1,4 +1,4 @@
-import './index.scss';
+//import './index.scss';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 import { Component } from 'react';
 

@@ -1,4 +1,4 @@
-import './index.scss';
+//import './index.scss';
 //import { useAppDispatch } from '@/hooks/redux.ts';
 //import Stored
 import { useAppDispatch } from '../../hooks/redux';
