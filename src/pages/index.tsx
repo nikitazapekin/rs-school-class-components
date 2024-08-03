@@ -13,9 +13,7 @@ function MyApp(
 				<App 
 				query={query}
 				/>
-				{/*
 			 
-				*/} 
 			</Providers>
 		</>
 	);

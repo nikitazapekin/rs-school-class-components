@@ -53,21 +53,49 @@ const UserData = () => {
 	);
 };
 
-export default UserData;
+export default UserData; 
+
 /*
-		<aside className={`sidebar ${isDark ? `sidebar-dark` : ''}`}>
-			{loading && <Spinner data-testid="spinner" />}
-			{data && (
-				<div>
-					<h2>{data.login}</h2>
-					<img src={data.avatar_url} alt={`${data.login}'s avatar`} />
-					<p>ID: {data.id}</p>
-					<p>Type: {data.type}</p>
-				</div>
-			)}
-			<button className="close__btn" onClick={handleReturn}>
-				Close
-			</button>
-		 
-		
-		</aside>*/
+import StoredUsersButton from './components/StoredUsersFlyoutElement';
+const App = ({ query }: SearchPageProps) => {
+	const dispatch = useAppDispatch();
+	const storedUsers = useSelector(storedUsersSelector);
+	const isLoading = useSelector(isLoadingSelector);
+	const [trigger, setTrigger] = useState(false);
+	const { data, error } = useSearchUsersQuery(query, {
+		skip: !trigger,
+	});
+	const handleButtonClick = () => {
+		setTrigger(true);
+	};
+
+	useEffect(() => {
+		if (data) {
+			dispatch(setUsersActionCreator(data.items ? data.items : []));
+		}
+	}, [data, dispatch, trigger]);
+	useEffect(() => {
+		setTrigger(true);
+		handleButtonClick()
+	}, [])
+	return (
+		<>
+			<ErrorBoundary>
+				<ThemeProvider>
+						<div className="container">
+							<List />
+							<ErrorBoundary>
+								<ErrorComponent />
+							</ErrorBoundary>
+						</div>
+						{storedUsers.length > 0 && <StoredUsersButton />}
+						{isLoading && <Spinner />}
+				</ThemeProvider>
+
+			</ErrorBoundary>
+		</>
+	);
+};
+
+export default App;
+*/
