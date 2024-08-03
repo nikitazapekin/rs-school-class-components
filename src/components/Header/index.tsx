@@ -10,7 +10,7 @@ import { setTypedValueActionCreator } from '../../redux/action-creators/setTyped
 
 const Header = () => {
 	const { isDark } = useContext(ThemeContext);
-	const { handleRedirect, handleSearch } = useURL();
+	const { handleSearch } = useURL();
 	const dispatch = useAppDispatch();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ const Header = () => {
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
-				<button className={styles.redirect__btn} onClick={handleRedirect}>
+				<button className={styles.redirect__btn}  >
 					Redirect to error page
 				</button>
 				<ThemeButton />

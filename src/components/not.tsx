@@ -1,3 +1,5 @@
+import NotFoundComponent from "./NotFound";
+
 interface LayoutProps {
     children: React.ReactNode;
 }
@@ -6,36 +8,9 @@ const NotLayout = ({ children }: LayoutProps) => {
     return (<>
 
 
-	fderfe
-	rg
-	gr
-	rge
-	eg
-
-	ev
  {children}
-      
-		
-	fderfe
-	rg
-	gr
-	rge
-	eg
-
-	ev
-	
-	fderfe
-	rg
-	gr
-	rge
-	eg
-
-	ev
-
-
-	wrapppeer
-
-
+   
+<NotFoundComponent />
 	<div style={{height: "400px", width: "400px", backgroundColor: "red"}}>dds</div>
     </>);
 }

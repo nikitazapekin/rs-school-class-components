@@ -201,10 +201,7 @@ console.log("NEX", params)
         }
     }, [router.isReady, router.query]);
 
-    //const navigate = useNavigate();
-    const handleRedirect = () => {
-        //navigate('/not-existing-page');
-    };
+     
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
     };
@@ -223,8 +220,10 @@ console.log("NEX", params)
             }
         })
     };
+    const handleOpen = () => {
 
-    return { getCurrentParams, setPage, handleInput, handleSearch, handleRedirect };
+    }
+    return { getCurrentParams, setPage, handleInput, handleSearch };
 };
 export default useURL;
 

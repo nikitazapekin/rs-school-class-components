@@ -6,18 +6,16 @@ import Providers from '../redux/Provider';
 function MyApp(
 	{ query }: SearchPageProps
 ) {
-
- 
 	return (
 		<>
 			<Providers>
 				fe
-		{/*
-				*/} 
 				<App 
 				query={query}
 				/>
+				{/*
 			 
+				*/} 
 			</Providers>
 		</>
 	);
