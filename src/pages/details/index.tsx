@@ -10,9 +10,10 @@ const Details = (
     return (<>
         <Providers>
             <DetailsLayout>
-                <App
+                acs
+            {/*}    <App
                     query={query}
-                />
+                /> */}
             </DetailsLayout>
         </Providers>
     </>);

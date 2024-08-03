@@ -57,13 +57,4 @@ const App = ({ query }: SearchPageProps) => {
 
 export default App;
 
-/*
-
-const App = () => {
-	return ( <>
-	
-	</> );
-}
  
-export default App;
-	*/

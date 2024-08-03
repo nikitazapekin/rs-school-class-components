@@ -4,21 +4,22 @@ import Providers from '../redux/Provider';
  import { getServerSideProps } from './search';
  import { SearchPageProps } from './searchTypes';
 function MyApp(
-	{ query }: SearchPageProps
+//	{ query }: SearchPageProps
 ) {
 	return (
 		<>
 			<Providers>
 				fe
-				<App 
+			{/*	<App 
 				query={query}
-				/>
+				/> 
+				*/}
 			 
 			</Providers>
 		</>
 	);
 }
-export { getServerSideProps };
+//export { getServerSideProps };
 export default MyApp;
 
 
