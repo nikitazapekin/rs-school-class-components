@@ -31,30 +31,18 @@ const List = () => {
 		dispatch(setPrevPageActionCreator());
 		setPage(params.offset - 1, params.query);
 	};
-	/*
-useEffect(async ()=> {
-const users = await getUserData(  params.limit,  params.offset, params.query, )
-console.log("US", users)
-}, [params])
-*/
-
-
-
+ 
 useEffect(() => {
 	const fetchData = async () => {
-	//	setLoading(true);
-	//	setError(null);
+ 
 		try {
 			const data = await getUserData(params.limit, params.offset, params.query);
 			dispatch(setUsersActionCreator(data))
-		//	setUsers(data);
+	 
 		} catch (err) {
-	//		setError('Failed to fetch user data.');
-		} finally {
-	//		setLoading(false);
-		}
+	 
+		}  
 	};
-
 	fetchData();
 }, [params.limit, params.offset, params.query]); 
 	return (

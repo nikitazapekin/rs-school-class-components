@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { AppStatee, SearchTypes, UserDataArray } from '../types';
+import { AppStatee, SearchTypes, User, UserDataArray } from '../types';
 import { AxiosResponse, AxiosError }from 'axios';
 import axios from 'axios';
 /*
@@ -71,6 +71,27 @@ const initialState: AppStatee = {
 		storedValue: '',
 	},
 	status: 'idle',
+	clickedUser: {
+		login: "",
+	id: 0,
+	node_id:"" ,
+	avatar_url: "",
+	gravatar_id:"" ,
+	url:"" ,
+	html_url:"" ,
+	followers_url: "",
+	following_url:"" ,
+	gists_url: "",
+	starred_url: "",
+	subscriptions_url:  "",
+	organizations_url: "",
+	repos_url:"" ,
+	events_url:"" ,
+	received_events_url:"" ,
+	type: "",
+	site_admin: false,
+	score: 0
+	}
    
 };
 const appSlicee = createSlice({
@@ -120,6 +141,13 @@ const appSlicee = createSlice({
 		state.params.query=state.typedValue
 		state.params.storedValue=state.typedValue
 			},
+			setClickedUser(state, action: PayloadAction<User>) {
+				//	state.typedValue = action.payload
+			//	state.params.query=state.typedValue
+			//	state.params.storedValue=state.typedValue
+			state.clickedUser = action.payload
+			console.log("CLICKE", JSON.stringify(state.clickedUser))
+					},
 	},
 
 
@@ -154,6 +182,7 @@ export const {
 	setFirstPage,
 	setStoredInLocalStorageQuery,
 	setTypedValue,
-	setNewSearchValue
+	setNewSearchValue,
+	setClickedUser
 } = appSlicee.actions;
 export default appSlicee.reducer;

@@ -41,7 +41,10 @@ const Layout = ({ children, //users
   return (
     <>
       <Providers>
+
         {children}
+
+        <App />
         {/*
         <App />
         */}

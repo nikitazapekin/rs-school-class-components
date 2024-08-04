@@ -33,18 +33,16 @@ interface MyAppProps {
 }
 
 const MyApp = ({ users }: MyAppProps) => {
-  console.log(users); // Проверяем данные пользователей
+  
 
   return (
     <>
+		{/*
       <Providers>
         <App />
       </Providers>
-	  {users.map(item=> (
-		<div>
-			{item.login}
-		</div>
-	  ))}
+		*/}
+	 
     </>
   );
 };

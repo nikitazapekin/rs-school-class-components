@@ -54,6 +54,7 @@ export interface AppStatee {
 		storedValue: string;
 	};
 	status: string,
+	clickedUser: UserItem,
 	
 }
 

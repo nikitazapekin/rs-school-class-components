@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
 import { UserElement, UserItem } from './types';
 import Link from "next/link";
+import { paramsSelector } from "../../redux/selectors/getSearchParams";
 
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
@@ -25,6 +26,8 @@ const Card = ({ user }: UserItem) => {
 		dispatch(AddElementToStorage(user));
 	};
 
+
+const params = useSelector(paramsSelector) 
 	return (
 		<div className={styles.user__link}>
 			<div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}>
@@ -38,7 +41,9 @@ const Card = ({ user }: UserItem) => {
 						checked={users && users.some((storedUser: UserElement) => user.id === storedUser.id)}
 						readOnly
 					/>
-					<Link href="/details" className={styles.user__details}>
+					<Link //href="/details"
+					href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
+					className={styles.user__details}>
 						Show Details
 					</Link>
 					{/*

@@ -184,18 +184,7 @@ console.log("NEX", params)
             if(page && query) {
                 dispatch(setSearchParamsActionCreator( Number(page), String(query)))
             }
-          //  if(page && query) {
-
-            //    dispatch(setSearchParamsActionCreator(Number(page), String(query)));
-         /*   } else {
-                const item = localStorage.getItem("searchParam")
-                if(item) {
-
-                }
-            }
-            */
-             //   setPage(page);
-            // setQuery(query);
+         
 
             console.log("Current", page, query)
         }

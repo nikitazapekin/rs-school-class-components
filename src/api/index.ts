@@ -79,3 +79,47 @@ export async function getUserData(limit: number, offset: number, typedValue: str
 		}
 	}
 }
+
+
+
+
+interface User {
+	login: string;
+	id: number;
+	node_id: string;
+	avatar_url: string;
+	gravatar_id: string;
+	url: string;
+	html_url: string;
+	followers_url: string;
+	following_url: string;
+	gists_url: string;
+	starred_url: string;
+	subscriptions_url: string;
+	organizations_url: string;
+	repos_url: string;
+	events_url: string;
+	received_events_url: string;
+	type: string;
+	site_admin: boolean;
+	score: number;
+}
+export const getPersonalData = async (username: string): Promise<User> => {
+	//https://api.github.com/users/octocat
+
+	try {
+		const response: AxiosResponse<User> = await axios.get(`https://api.github.com/users/${username}`);
+		console.log("REW", JSON.stringify(response))
+		return response.data
+	} catch (error) {
+		if (axios.isAxiosError(error)) {
+			const axiosError = error as AxiosError;
+			console.error('Error fetching data:', axiosError.message);
+		} else {
+			console.error('Unknown error:', error);
+		}
+		throw new Error('Error fetching data');
+	}
+
+
+}

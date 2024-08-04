@@ -8,16 +8,22 @@ const Details = (
     username: string
 ) => {
     return (<>
+
+    csacsa
+    {/*
         <Providers>
-            <DetailsLayout>
+        <DetailsLayout>
                 acs
-            {/*}    <App
+             <App
                     query={query}
-                /> */}
+                />  
             </DetailsLayout>
         </Providers>
+    */}
     </>);
 }
+Details.Layout = DetailsLayout;
+
 
 export { getServerSideProps };
 export default Details;
