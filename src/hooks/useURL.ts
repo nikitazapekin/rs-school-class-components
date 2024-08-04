@@ -112,9 +112,9 @@ import { typedValueSelector } from '../redux/selectors/typedValueSelector';
 import { setStoredInLocalStorageActionCreator } from '../redux/action-creators/setStoredInLocalStorageQuery';
 const useURL = () => {
     const dispatch = useAppDispatch();
-    const router = useRouter()
+  //  const router = useRouter()
     const params = useSelector(paramsSelector);
-    //	const [searchParams, setSearchParams] = useSearchParams();
+    
     const getCurrentParams = () => {
 
     };
@@ -131,15 +131,14 @@ const useURL = () => {
 
                 Object.assign(queryObj, { query: query });
             }
-            //    queryObj
-            //queryObj['query'] = query
+            
         }
+        /*
         router.push({
             pathname: router.pathname,
             query: queryObj,
             
             });
-            /*
 */
 
     };
@@ -162,18 +161,12 @@ useEffect(()=> {
 console.log("NEX", params)
 }, [params])
     useEffect(() => {
-        const { page, query } = router.query;
-        console.log("QUERYYY", query)
-      /*  if (!query) {
-            router.push({
-                pathname: router.pathname,
-
-                query: {
-                    page: page,
-                }
-            })
-        } */
+       // const { page, query } = router.query;
+      //  console.log("QUERYYY", query)
+     
     }, [])
+    /*
+
     useEffect(() => {
         if (router.isReady) {
             const {query, page} = router.query;
@@ -189,7 +182,7 @@ console.log("NEX", params)
             console.log("Current", page, query)
         }
     }, [router.isReady, router.query]);
-
+*/
      
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
@@ -199,7 +192,7 @@ console.log("NEX", params)
         localStorage.setItem('searchParam', String(typedValue));
         dispatch(setNewSearchValueActionCreator())
 
-
+/*
         router.push({
             pathname: router.pathname,
 
@@ -208,6 +201,7 @@ console.log("NEX", params)
                 query: typedValue
             }
         })
+            */
     };
     const handleOpen = () => {
 

@@ -4,7 +4,7 @@ import Background from "../Background";
 import Header from "../Header";
 import React from "react";
 import { ThemeProvider } from "../ThemeContext";
-import App from "../../App";
+ 
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,11 +12,7 @@ interface LayoutProps {
 const MainLayout = ({ children }: LayoutProps) => (
   <Providers>
     <ThemeProvider>
-    {/*
-      <App />
-      
-      */}
-
+   
       <Header />
     <div className="main-container">
       <div className="content-wrapper">{children}</div>
