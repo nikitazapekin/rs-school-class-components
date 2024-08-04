@@ -13,7 +13,7 @@ import { storedUsersSelector } from './redux/selectors/getStoredElements';
 import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
 import Spinner from './components/Spinner';
 import { useSearchUsersQuery } from './redux/slices/querySlice';
-import { SearchPageProps } from './pages/searchTypes';
+ 
 import { setUsersActionCreator } from './redux/action-creators/setUsersActionCreator';
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 import { GetServerSidePropsContext } from 'next';
