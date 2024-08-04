@@ -3,7 +3,7 @@
 
 "use client"
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+
 import { paramsSelector } from '../redux/selectors/getSearchParams';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from './redux';
@@ -15,14 +15,15 @@ import { setLoadingActionCreator } from '../redux/action-creators/setIsLoading';
 import { useLazySearchUsersQuery } from '../redux/slices/querySlice';
 import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
 
-//import { setUsersActionCreator } from '@/store/action-creators/setUsersActionCreator';
-import { useRouter } from 'next/router';
+
 import { setNewSearchValueActionCreator } from '../redux/action-creators/setNewSearchValueActionCreator';
 import { typedValueSelector } from '../redux/selectors/typedValueSelector';
 import { setStoredInLocalStorageActionCreator } from '../redux/action-creators/setStoredInLocalStorageQuery';
+
+import { useRouter, useSearchParams } from 'next/navigation';  
 const useURL = () => {
     const dispatch = useAppDispatch();
-  //  const router = useRouter()
+    const router = useRouter()
     const params = useSelector(paramsSelector);
     
     const getCurrentParams = () => {
@@ -34,7 +35,7 @@ const useURL = () => {
 
 
         const queryObj = {
-            page: page
+            page: String(page)
         }
         if (query) {
             if(query!=undefined) {
@@ -43,9 +44,34 @@ const useURL = () => {
             }
             
         }
-        /*
-        router.push({
-            pathname: router.pathname,
+
+      //  const handleNavigation = () => {
+      //      router.push('/new-page');
+      //  };
+    
+   //     router.push()
+
+ //  const handleNavigation = () => {
+    // Construct query parameters as a URLSearchParams object or manually
+  //  const queryObj = {
+   //     page: params.offset,
+//        query: params.query || ''
+  //  };
+
+    // Convert query object to query string
+    const queryString = new URLSearchParams(queryObj).toString();
+
+    // Construct the new URL
+   // const newUrl = `/?${queryString}`;
+const newUrl  = `/?page=${String(page)}${query ? `query=${query}` : ``}`
+    // Push the new URL
+    console.log("NEW", newUrl)
+    router.push(newUrl);
+//};
+
+   /*
+   router.push({
+       pathname: router.pathname,
             query: queryObj,
             
             });

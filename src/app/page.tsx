@@ -1,14 +1,13 @@
+import Layout from "../components/Layout";
 
 const MyApp = ( ) => {
   
 
   return (
     <>
-		{/*
-      <Providers>
-        <App />
-      </Providers>
-		*/}
+    <Layout>
+	 <></>
+    </Layout>
 	 
     </>
   );

@@ -13,19 +13,11 @@ const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
 	const { isDark } = useContext(ThemeContext);
 	const users = useSelector(storedUsersSelector);
-
-	 useEffect(()=> {
-console.log("darkkkk", isDark)
-	 }, [isDark])
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
 	};
-
-
 const params = useSelector(paramsSelector) 
 	return (
- 
-
 		<div className={styles.user__link}>
 			<div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}>
 				<img className={styles.user__logo} src={user.avatar_url} alt="user" />
@@ -38,16 +30,12 @@ const params = useSelector(paramsSelector)
 						checked={users && users.some((storedUser: UserElement) => user.id === storedUser.id)}
 						readOnly
 					/>
-					<Link //href="/details"
+					<Link 
 					href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
 					className={styles.user__details}>
 						Show Details
 					</Link>
-					{/*
-					<button className={styles.user__details} onClick={handleCardClick}>
-					Show details
-					</button>
-					*/}
+				 
 				</div>
 			</div>
 		</div>
