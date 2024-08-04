@@ -56,81 +56,14 @@ const clickedElement = useSelector(clickedUserSelector)
 			<p>ID: {clickedElement.id}</p>
 			<p>Type: {clickedElement.type}</p>
 		  </div>
-	 {/*
-		<button className={styles.closeBtn} //onClick={handleReturn}
-		>
-		Close
-		</button>
-		*/}
+	
 
 		<Link href={`/?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`}>
 		Close
 		</Link>
-			{/*
-		{data && (
-			<div>
-			<h2>{data.login}</h2>
-			<img 
-			  src={data.avatar_url} 
-			  alt={`${data.login}'s avatar`} 
-			  className={styles.avatar}
-			/>
-			<p>ID: {data.id}</p>
-			<p>Type: {data.type}</p>
-		  </div>
-		)}
-		<button className={styles.closeBtn} onClick={handleReturn}>
-		Close
-		</button>
-			  {loading && <Spinner className={styles.spinner} data-testid="spinner" />}
-		*/}
+		
 		</aside>
 	);
 };
 
 export default UserData;
-
-/*
-import StoredUsersButton from './components/StoredUsersFlyoutElement';
-const App = ({ query }: SearchPageProps) => {
-	const dispatch = useAppDispatch();
-	const storedUsers = useSelector(storedUsersSelector);
-	const isLoading = useSelector(isLoadingSelector);
-	const [trigger, setTrigger] = useState(false);
-	const { data, error } = useSearchUsersQuery(query, {
-		skip: !trigger,
-	});
-	const handleButtonClick = () => {
-		setTrigger(true);
-	};
-
-	useEffect(() => {
-		if (data) {
-			dispatch(setUsersActionCreator(data.items ? data.items : []));
-		}
-	}, [data, dispatch, trigger]);
-	useEffect(() => {
-		setTrigger(true);
-		handleButtonClick()
-	}, [])
-	return (
-		<>
-			<ErrorBoundary>
-				<ThemeProvider>
-						<div className="container">
-							<List />
-							<ErrorBoundary>
-								<ErrorComponent />
-							</ErrorBoundary>
-						</div>
-						{storedUsers.length > 0 && <StoredUsersButton />}
-						{isLoading && <Spinner />}
-				</ThemeProvider>
-
-			</ErrorBoundary>
-		</>
-	);
-};
-
-export default App;
-*/

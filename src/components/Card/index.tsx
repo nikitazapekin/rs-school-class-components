@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
-import ThemeContext from '../ThemeContext';
-import { useContext } from 'react';
+import ThemeContext, { ThemeProvider } from '../ThemeContext';
+import { useContext, useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
 import { useSelector } from 'react-redux';
@@ -14,14 +14,9 @@ const Card = ({ user }: UserItem) => {
 	const { isDark } = useContext(ThemeContext);
 	const users = useSelector(storedUsersSelector);
 
-	const handleCardClick = () => {
-		const currentParams = new URLSearchParams(location.search);
-		const currentUrl = `${window.location.pathname}?${currentParams.toString()}`;
-		if (!currentUrl.includes('userdata')) {
-			localStorage.setItem('lastUrl', currentUrl);
-		}
-	};
-
+	 useEffect(()=> {
+console.log("darkkkk", isDark)
+	 }, [isDark])
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
 	};
@@ -29,6 +24,8 @@ const Card = ({ user }: UserItem) => {
 
 const params = useSelector(paramsSelector) 
 	return (
+ 
+
 		<div className={styles.user__link}>
 			<div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}>
 				<img className={styles.user__logo} src={user.avatar_url} alt="user" />
@@ -54,6 +51,7 @@ const params = useSelector(paramsSelector)
 				</div>
 			</div>
 		</div>
+		 
 	);
 };
 

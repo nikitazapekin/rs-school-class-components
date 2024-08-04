@@ -12,6 +12,7 @@ import { getUsersSelector } from '../../redux/selectors/getUsersSelector';
 import { getUserData } from '../../api';
 import { useEffect } from 'react';
 import { setUsersActionCreator } from '../../redux/action-creators/setUsersActionCreator';
+import { ThemeProvider } from '../ThemeContext';
 const List = () => {
 	const { setPage } = useURL();
 	const dispatch = useAppDispatch();
@@ -46,6 +47,8 @@ useEffect(() => {
 	fetchData();
 }, [params.limit, params.offset, params.query]); 
 	return (
+		<ThemeProvider>
+
 		<section className={styles.list}>
 			<div className={styles.list__container}>
 				{isLoading && <Spinner />}
@@ -63,6 +66,7 @@ useEffect(() => {
 				</div>
 			</div>
 		</section>
+		</ThemeProvider>
 	);
 };
 
