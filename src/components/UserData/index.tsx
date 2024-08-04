@@ -20,11 +20,12 @@ import { paramsSelector } from '../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 const UserData = () => {
 	const dispatch = useAppDispatch();
-	const router = useRouter()
+//	const router = useRouter()
 	const { isDark } = useContext(ThemeContext);
 const params = useSelector(paramsSelector)
 	const loading = useSelector(isLoadingUserDataSelector);
 const clickedElement = useSelector(clickedUserSelector)
+/*
 	useEffect(() => {
 		if (router.isReady) {
 			const { user } = router.query;
@@ -43,7 +44,7 @@ const clickedElement = useSelector(clickedUserSelector)
 
 		}
 	}, [router])
- 
+ */
 	return (
 		<aside className={`${styles.sidebar} ${isDark ? styles.sidebarDark : ''}`}>
 				<div>
