@@ -35,8 +35,8 @@ const List = () => {
  
 useEffect(() => {
 	const fetchData = async () => {
- 
 		try {
+			console.log("FETCHING", params.limit, params.offset, params.query )
 			const data = await getUserData(params.limit, params.offset, params.query);
 			dispatch(setUsersActionCreator(data))
 	 

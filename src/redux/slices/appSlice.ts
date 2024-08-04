@@ -140,6 +140,7 @@ const appSlicee = createSlice({
 		//	state.typedValue = action.payload
 		state.params.query=state.typedValue
 		state.params.storedValue=state.typedValue
+		state.params.offset=1
 			},
 			setClickedUser(state, action: PayloadAction<User>) {
 				//	state.typedValue = action.payload

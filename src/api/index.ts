@@ -58,10 +58,11 @@ async function fetchUserDataAdvanced(url: string): Promise<UserData> {
 export async function getUserData(limit: number, offset: number, typedValue: string): Promise<UserDataArray> {
 	let url: string;
 	if (typedValue.trim() === '') {
+console.log("P", offset)
 		url = `https://api.github.com/users?page=${offset}&per_page=${limit}`;
 		try {
 			const data = await fetchUserData(url);
-			console.log('Data:', data);
+			console.log('Data without:', data);
 			return data;
 		} catch (error) {
 			console.error(error);

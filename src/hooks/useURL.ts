@@ -1,4 +1,4 @@
- 
+
 
 
 "use client"
@@ -20,106 +20,51 @@ import { setNewSearchValueActionCreator } from '../redux/action-creators/setNewS
 import { typedValueSelector } from '../redux/selectors/typedValueSelector';
 import { setStoredInLocalStorageActionCreator } from '../redux/action-creators/setStoredInLocalStorageQuery';
 
-import { useRouter, useSearchParams } from 'next/navigation';  
+import { useRouter, useSearchParams } from 'next/navigation';
 const useURL = () => {
     const dispatch = useAppDispatch();
     const router = useRouter()
+    const searchParam = useSearchParams()
     const params = useSelector(paramsSelector);
-    
+
     const getCurrentParams = () => {
 
     };
 
     const setPage = (page: number, query: string) => {
-
-
-
-        const queryObj = {
-            page: String(page)
-        }
-        if (query) {
-            if(query!=undefined) {
-
-                Object.assign(queryObj, { query: query });
-            }
-            
-        }
-
-      //  const handleNavigation = () => {
-      //      router.push('/new-page');
-      //  };
-    
-   //     router.push()
-
- //  const handleNavigation = () => {
-    // Construct query parameters as a URLSearchParams object or manually
-  //  const queryObj = {
-   //     page: params.offset,
-//        query: params.query || ''
-  //  };
-
-    // Convert query object to query string
-    const queryString = new URLSearchParams(queryObj).toString();
-
-    // Construct the new URL
-   // const newUrl = `/?${queryString}`;
-const newUrl  = `/?page=${String(page)}${query ? `query=${query}` : ``}`
-    // Push the new URL
-    console.log("NEW", newUrl)
-    router.push(newUrl);
-//};
-
-   /*
-   router.push({
-       pathname: router.pathname,
-            query: queryObj,
-            
-            });
-*/
-
+        const newUrl = `/?page=${String(page)}${query ? `query=${query}` : ``}`
+        router.push(newUrl);
     };
     useEffect(() => {
-
-        console.log("PAR", JSON.stringify(params))
         const storedParam = localStorage.getItem("searchParam")
-        console.log(storedParam)
-        if(storedParam) {
-          //  dispatch(setStoredInLocalStorageActionCreator(storedParam))
+        if (storedParam) {
             dispatch(setQueryActionCreator(storedParam))
         }
-        //	const [page, query] = getCurrentParams();
-
-        //	setPage(Number(page), String(query));
-        //	localStorage.setItem('searchParam', String(query));
-        //	dispatch(setSearchParamsActionCreator(Number(page), String(query)));
     }, []);
+  
 useEffect(()=> {
-console.log("NEX", params)
-}, [params])
+   /* const page = searchParam.get('page');
+    const query = searchParam.get('query')
+    let url =""
+    if(!page ) */
+    let url =`?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`
+    router.push(url)
+}, [])
     useEffect(() => {
-       // const { page, query } = router.query;
-      //  console.log("QUERYYY", query)
-     
-    }, [])
-    /*
+        const page = searchParam.get('page');
+        const query = searchParam.get('query')
+        if(query!=undefined) {
 
-    useEffect(() => {
-        if (router.isReady) {
-            const {query, page} = router.query;
-            if(query!=undefined) {
-
-                localStorage.setItem("searchParam", String(query))
-            }
-            if(page && query) {
-                dispatch(setSearchParamsActionCreator( Number(page), String(query)))
-            }
-         
-
-            console.log("Current", page, query)
+            localStorage.setItem("searchParam", String(query))
         }
-    }, [router.isReady, router.query]);
-*/
-     
+        if(page && query) {
+            dispatch(setSearchParamsActionCreator( Number(page), String(query)))
+        }
+
+
+    }, [router]);
+   
+
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
     };
@@ -127,21 +72,12 @@ console.log("NEX", params)
     const handleSearch = () => {
         localStorage.setItem('searchParam', String(typedValue));
         dispatch(setNewSearchValueActionCreator())
-
-/*
-        router.push({
-            pathname: router.pathname,
-
-            query: {
-                page:1,
-                query: typedValue
-            }
-        })
-            */
+        const newUrl = `/?page=${String(1)}query=${typedValue}`
+    
+        router.push(newUrl);
+      
     };
-    const handleOpen = () => {
-
-    }
+   
     return { getCurrentParams, setPage, handleInput, handleSearch };
 };
 export default useURL;
