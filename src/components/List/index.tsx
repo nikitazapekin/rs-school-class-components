@@ -9,24 +9,20 @@ import { isLoadingSelector } from '../../redux/selectors/isLoadingSelector';
 import useURL from '../../hooks/useURL';
 import { UserItem } from './types';
 import { getUsersSelector } from '../../redux/selectors/getUsersSelector';
-import { fetchUserData } from '../../redux/slices/appSlice';
+import { getUserData } from '../../api';
 import { useEffect } from 'react';
-
+import { setUsersActionCreator } from '../../redux/action-creators/setUsersActionCreator';
 const List = () => {
 	const { setPage } = useURL();
 	const dispatch = useAppDispatch();
 	const users = useSelector(getUsersSelector);
 	const params = useSelector(paramsSelector);
-	/*useEffect(() => {
-		dispatch(fetchUserData({ typedValue: params.storedValue ? params.storedValue : params.query, offset: params.offset, limit: params.limit }))
-		console.log("render")
-	}, [params.storedValue, params.offset]) */
+ 
 	const isLoading = useSelector(isLoadingSelector);
 
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator());
-		console.log("NEXT", JSON.stringify(params));
 		setPage(params.offset + 1, params.query);
 	};
 
@@ -35,7 +31,32 @@ const List = () => {
 		dispatch(setPrevPageActionCreator());
 		setPage(params.offset - 1, params.query);
 	};
+	/*
+useEffect(async ()=> {
+const users = await getUserData(  params.limit,  params.offset, params.query, )
+console.log("US", users)
+}, [params])
+*/
 
+
+
+useEffect(() => {
+	const fetchData = async () => {
+	//	setLoading(true);
+	//	setError(null);
+		try {
+			const data = await getUserData(params.limit, params.offset, params.query);
+			dispatch(setUsersActionCreator(data))
+		//	setUsers(data);
+		} catch (err) {
+	//		setError('Failed to fetch user data.');
+		} finally {
+	//		setLoading(false);
+		}
+	};
+
+	fetchData();
+}, [params.limit, params.offset, params.query]); 
 	return (
 		<section className={styles.list}>
 			<div className={styles.list__container}>
