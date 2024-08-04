@@ -1,3 +1,5 @@
+
+"use client"
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Spinner from '../Spinner';
@@ -13,21 +15,23 @@ import { useSelector } from 'react-redux';
 import { setLoadingUserDataActionCreator } from '../../redux/action-creators/setLoadingUserDataActionCreator';
 import { isLoadingUserDataSelector } from '../../redux/selectors/isLoadingUserData';
 import { getPersonalData } from '../../api';
-import { useRouter } from 'next/router';
+
+import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/router';
 import { SetClickedUserActionCreator } from '../../redux/action-creators/setClickedUserActionCreator';
 import { clickedUserSelector } from '../../redux/selectors/getClickedElement';
 import { paramsSelector } from '../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 const UserData = () => {
 	const dispatch = useAppDispatch();
-//	const router = useRouter()
+	const router = useRouter()
 	const { isDark } = useContext(ThemeContext);
 const params = useSelector(paramsSelector)
 	const loading = useSelector(isLoadingUserDataSelector);
 const clickedElement = useSelector(clickedUserSelector)
 /*
-	useEffect(() => {
-		if (router.isReady) {
+useEffect(() => {
+	if (router.isReady) {
 			const { user } = router.query;
 			const fetchData = async () => {
 				try {
@@ -42,9 +46,9 @@ const clickedElement = useSelector(clickedUserSelector)
 			fetchData();
 
 
-		}
-	}, [router])
- */
+			}
+			}, [router])
+		 */
 	return (
 		<aside className={`${styles.sidebar} ${isDark ? styles.sidebarDark : ''}`}>
 				<div>
