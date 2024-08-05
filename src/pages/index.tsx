@@ -3,99 +3,11 @@ import { GetServerSidePropsContext } from 'next';
 import axios from 'axios';
 import App from '../App';
 import Providers from '../redux/Provider';
-
-// Тип данных для пользователей
-type UserDataArray = Array<{
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
-  score: number;
-}>;
-
-// Пропсы компонента
-interface MyAppProps {
-  users: UserDataArray;
-}
-
-const MyApp = ({ users }: MyAppProps) => {
-  
-
-  return (
-    <>
-		{/*
-      <Providers>
-        <App />
-      </Providers>
-		*/}
-	 
-    </>
-  );
-};
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { query } = context;
-  const page = parseInt(query.page as string, 10) || 1;
-  console.log("PAGE", page);
-
-  const limit = 10;
-  try {
-	const res = await axios.get(`https://api.github.com/users?per_page=${limit}&page=${page}`, {
-		headers: {
-		  'Cache-Control': 'no-cache',
-		  'Pragma': 'no-cache'
-		}
-	  });
-	  
-   // const res = await axios.get(`https://api.github.com/users?per_page=${limit}&page=${page}`);
-    const users: UserDataArray = res.data;
-    console.log("USERS", users[0]);
-
-    return {
-      props: {
-        users, // Передаем данные в компонент
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    return {
-      props: {
-        users: [], // В случае ошибки возвращаем пустой массив
-      },
-    };
-  }
-}
-
-export default MyApp;
-
-
-
-
-
-
-/* 
-import App from '../App';
-import Providers from '../redux/Provider';
-import { GetServerSidePropsContext } from 'next';
-import axios from 'axios';
- import { SearchPageProps } from './searchTypes';
-
-
- 
+import { GetServerSideProps } from 'next';
+import { AxiosError, AxiosResponse } from 'axios';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../hooks/redux';
+import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
 type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -117,93 +29,67 @@ type UserDataArray = Array<{
 	site_admin: boolean;
 	score: number;
 }>;
-function MyApp(
-	users: UserDataArray
-//	{ query }: SearchPageProps
-) {
-	console.log(users)
-	return (
-		<>
-			<Providers>
-				fe
-				<App />
-			 
-			 
-			</Providers>
-		</>
-	);
-}
-//export { getServerSideProps };
-export default MyApp;
 
-
-async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { query } = context;
-    const page = parseInt(query.page as string, 10) || 1;
-    console.log("PAGE", page);
-  
-    const limit = 10;
-    try {
-      const res = await axios.get(`https://api.github.com/users?per_page=${limit}&page=${page}`);
-      const users: UserDataArray = res.data;
-      console.log("USERS", users);
-  
-      return {
-      //  props: {
-          users, // передаем данные в компонент
-       // },
-      };
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      return {
-    //    props: {
-          users: [], // в случае ошибки возвращаем пустой массив
-      //  },
-      };
-    }
-  }
-
-*/
-
-
-
-
-
-
-/*
-
-export type UserDataArrayApi = Array<{
-	login: string;
-	id: number;
-	node_id: string;
-	avatar_url: string;
-	gravatar_id: string;
-	url: string;
-	html_url: string;
-	followers_url: string;
-	following_url: string;
-	gists_url: string;
-	starred_url: string;
-	subscriptions_url: string;
-	organizations_url: string;
-	repos_url: string;
-	events_url: string;
-	received_events_url: string;
-	type: string;
-	site_admin: boolean;
-	score: number;
-}>;
-export interface UserDataApi {
+interface UserData {
 	total_count: number;
 	incomplete_results: boolean;
-	items: UserDataArrayApi;
+	items: UserDataArray;
 }
 
+interface Props {
+	users: UserDataArray;
+	query: string;
+	page: number;
+	limit: number;
+}
 
-export async function fetchUserDataAdvanced(url: string): Promise<UserDataApi> {
+const UsersPage = ({ users, query, page, limit }: Props) => {
+	//dispatch(setUsersActionCreator(data))
+	const dispatch = useAppDispatch()
+	useEffect(() => {
+		dispatch(setUsersActionCreator(users))
+	}, [users])
+	return (
+		<div>
+			 
+		</div>
+	);
+};
+
+export default UsersPage;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const { query, page , limit = '10' } = context.query;
+	const offset = parseInt(page as string, 10);
+	const perPage = parseInt(limit as string, 10);
+
+	let url: string;
+
+	if (!query) {
+		url = `https://api.github.com/users?page=${offset}&per_page=${perPage}`;
+	} else {
+		url = `https://api.github.com/search/users?q=${query}&page=${offset}&per_page=${perPage}`;
+	}
+console.log("URL", url)
 	try {
-		const response: AxiosResponse<UserDataApi> = await axios.get(url);
-		return response.data;
+		let users: UserDataArray = [];
+
+		if (!query) {
+			const response: AxiosResponse<UserDataArray> = await axios.get(url);
+			users = response.data;
+		} else {
+			const response: AxiosResponse<UserData> = await axios.get(url);
+			users = response.data.items;
+		}
+console.log("USERRR", users[0])
+		return {
+			props: {
+				users,
+				query: query || '',
+				page: offset,
+				limit: perPage,
+			},
+		};
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
 			const axiosError = error as AxiosError;
@@ -211,115 +97,16 @@ export async function fetchUserDataAdvanced(url: string): Promise<UserDataApi> {
 		} else {
 			console.error('Unknown error:', error);
 		}
-		throw new Error('Error fetching data');
+		return {
+			props: {
+				users: [],
+				query: query || '',
+				page: offset,
+				limit: perPage,
+			},
+		};
 	}
-}
-export interface ApiResp {
-	props: {
-		users: UserDataArrayApi
-	}
-}
-export async function getServerSideProps(limit: number, offset: number, typedValue: string): Promise<ApiResp> {
-	let url: string;
-	if (typedValue && typedValue.trim() === '') {
-		url = `https://api.github.com/search/users?q=type:user&page=${offset}&per_page=${limit}`;
-		try {
-			const data = await fetchUserDataAdvanced(url);
-			console.log('Data:', data);
-			return {
-				props: {
-					users: data.items
-				}
-			}
-		} catch (error) {
-			console.error(error);
-			throw error;
-		}
-	} else {
-		url = `https://api.github.com/search/users?q=${typedValue}&page=${offset}&per_page=${limit}`;
-		try {
-			const data = await fetchUserDataAdvanced(url);
-			console.log('Data:', data);
-			//	return data.items;
-
-
-			return {
-				props: {
-					users: data.items
-				}
-			}
-		} catch (error) {
-			console.error(error);
-			throw error;
-		}
-	}
-}
-*/
+};
 
 
 
-
-/*
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-
-import { Outlet } from "react-router-dom";
-import App from "../App";
-import Layout from "../components/Layout";
-import Providers from "../redux/Provider";
- 
-import { useAppDispatch } from "../hooks/redux";
-import { setTesting } from "../redux/slices/postsSlice";
-import { useDispatch } from "react-redux";
- 
-type Repo = {
-  name: string
-  stargazers_count: number
-}
- 
-export const getServerSideProps = (async () => {
-  // Fetch data from external API
-  const res = await fetch('https://api.github.com/repos/vercel/next.js')
-  const repo: Repo = await res.json()
-
-  console.log("res", res)
-  // Pass data to the page via props
-  return { props: { repo } }
-}) satisfies GetServerSideProps<{ repo: Repo }>
- 
-
-
-function MyApp(
-	{
-		repo,
-	  }: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
-
- const handleClich = () => {
-
- }	
-	return (
-	<> 	
-<Providers>
-
-<p>{repo.stargazers_count}</p>
-	<App />  
-</Providers>	
- 
- 
-	</>
-	);
-}
-export default MyApp;
-
-*/
-
-
-
-
-
-
-{/*
-<Layout>
-
-</Layout>
-*/}

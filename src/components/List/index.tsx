@@ -37,8 +37,8 @@ useEffect(() => {
 	const fetchData = async () => {
  
 		try {
-			const data = await getUserData(params.limit, params.offset, params.query);
-			dispatch(setUsersActionCreator(data))
+		//	const data = await getUserData(params.limit, params.offset, params.query);
+		//	dispatch(setUsersActionCreator(data))
 	 
 		} catch (err) {
 	 

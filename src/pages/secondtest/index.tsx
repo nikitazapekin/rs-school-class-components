@@ -29,7 +29,6 @@ type UserDataArray = Array<{
   score: number;
 }>;
 
-// Пропсы компонента
 interface MyAppProps {
   users: UserDataArray;
   currentPage: number;
@@ -40,7 +39,6 @@ const MyApp = ({ users, currentPage }: MyAppProps) => {
   const [page, setPage] = useState(currentPage);
 
   useEffect(() => {
-    // Обновляем состояние при изменении параметра запроса
     if (router.query.page) {
       setPage(parseInt(router.query.page as string, 10));
     }
@@ -51,18 +49,14 @@ const MyApp = ({ users, currentPage }: MyAppProps) => {
     setPage(nextPage);
     router.push(`/secondtest?page=${nextPage}`);
   };
-
+console.log("USSeeeeeeeeeeeeeeeeeeeee", users)
   return (
     <>
       <Providers>
         <App />
       </Providers>
         <button onClick={handleClick}>Next Page</button>
-      {users.map(item => (
-        <div key={item.id}>
-          {item.login}
-        </div>
-      ))}
+     
     </>
   );
 };
@@ -74,7 +68,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const limit = 10;
   try {
-    const res = await axios.get(`https://api.github.com/users?per_page=${limit}&page=${page}`, {
+    //https://api.github.com/search/users?q=${typedValue}&page=${offset}&per_page=${limit}
+    const res = await axios.get(`https://api.github.com/search/users?q=react&page=${page}&per_page=${limit}`, {
       headers: {
         'Cache-Control': 'no-cache',
         'Pragma': 'no-cache'
@@ -94,8 +89,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     console.error("Error fetching users:", error);
     return {
       props: {
-        users: [], // В случае ошибки возвращаем пустой массив
-        currentPage: page // Передаем текущую страницу даже в случае ошибки
+        users: [],  
+        currentPage: page 
       },
     };
   }
