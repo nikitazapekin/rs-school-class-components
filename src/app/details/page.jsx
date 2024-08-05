@@ -1,7 +1,7 @@
 
 "use client"
 
-import DetailsLayout from "../../components/details";
+import DetailsLayout from "../components/details";
 
 const Deatils = () => {
   return ( <>

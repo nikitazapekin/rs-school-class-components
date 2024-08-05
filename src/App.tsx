@@ -1,21 +1,21 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
-import List from './components/List';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import Header from './app/components/Header';
+import List from './app/components/List';
+import { ErrorBoundary } from './app/components/ErrorBoundary';
 import { useSelector } from 'react-redux';
-import { ThemeProvider } from './components/ThemeContext';
-import Background from './components/Background';
-import ErrorComponent from './components/ErrorComponent';
+import { ThemeProvider } from './app/components/ThemeContext';
+import Background from './app/components/Background';
+import ErrorComponent from './app/components/ErrorComponent';
 import { useAppDispatch } from './hooks/redux';
 import { storedUsersSelector } from './redux/selectors/getStoredElements';
 import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
-import Spinner from './components/Spinner';
+import Spinner from './app/components/Spinner';
 import { useSearchUsersQuery } from './redux/slices/querySlice';
  
 import { setUsersActionCreator } from './redux/action-creators/setUsersActionCreator';
-import StoredUsersButton from './components/StoredUsersFlyoutElement';
+import StoredUsersButton from './app/components/StoredUsersFlyoutElement';
 import { GetServerSidePropsContext } from 'next';
 import axios from 'axios';
 //import { UserDataArray } from './redux/types';
