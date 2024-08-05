@@ -7,12 +7,35 @@ import React from "react";
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
-
+import { store } from "../src/store/store";
+import { Provider } from "react-redux";
 startTransition(() => {
   hydrateRoot(
     document,
     <StrictMode>
+      <Provider store={store}>
+
       <RemixBrowser />
+      </Provider>
     </StrictMode>
   );
 });
+
+
+/*
+startTransition(() => {
+  
+  if(typeof window.globalStore === 'undefined'){
+    window.globalStore = store;
+  }
+
+  hydrateRoot(
+    document,
+    <StrictMode>
+      <Provider store={window.globalStore}>
+        <RemixBrowser />
+      </Provider>
+    </StrictMode>
+  );
+});
+*/

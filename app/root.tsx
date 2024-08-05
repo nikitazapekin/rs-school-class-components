@@ -6,7 +6,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
  import React from "react";
-
+import { Provider } from "react-redux";
+import { store } from "../src/store/store";
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -17,9 +18,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Provider store={store}>
+
         {children}
         <ScrollRestoration />
         <Scripts />
+        </Provider>
       </body>
     </html>
   );
