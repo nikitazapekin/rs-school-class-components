@@ -1,4 +1,4 @@
-// pages/index.tsx (или другой файл страницы)
+ 
 import { GetServerSidePropsContext } from 'next';
 import axios from 'axios';
 import App from '../App';
@@ -29,13 +29,11 @@ type UserDataArray = Array<{
 	site_admin: boolean;
 	score: number;
 }>;
-
 interface UserData {
 	total_count: number;
 	incomplete_results: boolean;
 	items: UserDataArray;
 }
-
 interface Props {
 	users: UserDataArray;
 	query: string;
@@ -44,7 +42,6 @@ interface Props {
 }
 
 const UsersPage = ({ users, query, page, limit }: Props) => {
-	//dispatch(setUsersActionCreator(data))
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(setUsersActionCreator(users))
