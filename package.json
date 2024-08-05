@@ -4,9 +4,16 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
+		"build": "remix vite:build",
+		"dev": "remix vite:dev",
+	
+		"start": "remix-serve ./build/server/index.js",
+		"typecheck": "tsc",
+
+
 		"test": "jest",
-		"dev": "vite",
-		"build": "tsc && vite build",
+		 
+	 
 		"coverage": "npm test --coverage --watchAll --collectCoverageFrom='src/components/**/*.{ts,tsx}'",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
@@ -19,6 +26,9 @@
 		"@fortawesome/free-solid-svg-icons": "^6.5.2",
 		"@fortawesome/react-fontawesome": "^0.2.2",
 		"@reduxjs/toolkit": "^2.2.6",
+		"@remix-run/node": "^2.11.0",
+		"@remix-run/react": "^2.11.0",
+		"@remix-run/serve": "^2.11.0",
 		"@tanstack/react-query": "^5.51.15",
 		"@testing-library/react-hooks": "^8.0.1",
 		"@types/react-redux": "^7.1.33",
@@ -26,6 +36,7 @@
 		"axios": "^1.7.2",
 		"file-saver": "^2.0.5",
 		"husky": "^9.0.11",
+		"isbot": "^5.1.14",
 		"jest-mock-extended": "^3.0.7",
 		"json2csv": "^6.0.0-alpha.2",
 		"react": "^18.2.0",
@@ -39,6 +50,7 @@
 		"redux-thunk": "^3.1.0"
 	},
 	"devDependencies": {
+		"@remix-run/dev": "^2.11.0",
 		"@testing-library/jest-dom": "^6.4.8",
 		"@testing-library/react": "^14.3.1",
 		"@testing-library/user-event": "^14.5.2",
