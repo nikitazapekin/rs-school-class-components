@@ -50,6 +50,10 @@ const appSlicee = createSlice({
 			state.params.storedValue = action.payload;
 			state.params.query = action.payload;
 		},
+		setTets(state) {
+			console.log("TESST")
+		//	state.isLoading = !state.isLoading
+		}
 	},
 });
 export const {
@@ -63,5 +67,6 @@ export const {
 	setUsers,
 	setFirstPage,
 	setStoredInLocalStorageQuery,
+	setTets
 } = appSlicee.actions;
 export default appSlicee.reducer;

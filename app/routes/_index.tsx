@@ -1,6 +1,64 @@
+ 
+import React from 'react';
+import { getTest } from "../../src/teststore/selector";
+import { useAppDispatch, useAppSelector } from '../../src/teststore/hooks';
+import { setTest } from '../../src/teststore/slice';
+
+export default function Index() {
+  const dispatch = useAppDispatch();
+  const testValue = useAppSelector(getTest);
+
+  return (
+    <>
+      <div>{testValue}</div>
+      <button onClick={() => dispatch(setTest('New Test'))}>
+        Update Test
+      </button>
+    </>
+  );
+}
+
+/*
+import type { MetaFunction } from '@remix-run/node';
+import React from 'react';
+ 
+import {getTest} from "../../src/teststore/selector"
+import { useAppDispatch, useAppSelector } from '../../src/teststore/hooks';
+import { setTest } from '../../src/teststore/slice';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'New Remix App' },
+    { name: 'description', content: 'Welcome to Remix!' },
+  ];
+};
+
+export default function Index() {
+  const dispatch = useAppDispatch();
+  const testValue = useAppSelector(getTest);
+
+  return (
+    <>
+      
+      <div>{testValue}</div>
+      <button onClick={() => dispatch(setTest('New Test'))}>
+        Update Test
+      </button>
+    </>
+  );
+}
+*/
+
+
+/*
 import type { MetaFunction } from "@remix-run/node";
 import React from "react";
 import App from "../../src/App"
+import { getTest } from "../../src/store/selectors/getTest"
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../src/hooks/redux";
+import { setTets } from "../../src/store/slices/appSlice";
+import Test from "../../src/components/Test/index"
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -9,47 +67,26 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return (
+const dispatch = useAppDispatch()
+
+ const is = useSelector(getTest)
+   return (
     <>
-   
+
+
 <App />
-    
+   acsacs 
+{is}
+
+<button onClick={dispatch(setTets())}
+>
+  dd
+</button>
+ 
+
     </>
   );
 }
-/*
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>*/
+
+
+*/

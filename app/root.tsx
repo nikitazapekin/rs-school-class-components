@@ -5,9 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
- import React from "react";
+import React from "react";
 import { Provider } from "react-redux";
-import { store } from "../src/store/store";
+import { store } from "../src/teststore/store";
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -19,11 +20,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Provider store={store}>
-
-        {children}
+          {children}
+        </Provider>
         <ScrollRestoration />
         <Scripts />
-        </Provider>
       </body>
     </html>
   );
@@ -32,3 +32,43 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+
+/*
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "@remix-run/react";
+ import React from "react";
+import { Provider } from "react-redux";
+//import { store } from "../src/store/store";
+import {store} from "../src/teststore/store"
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        
+        <Provider store={store}>
+
+        {children}
+        </Provider>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}
+*/
