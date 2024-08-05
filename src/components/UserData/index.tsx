@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Spinner from '../Spinner';
-
 import { useLazyGetUserGithubQuery } from '../../redux/slices/userQuerySlice';
 import styles from "./styles.module.scss"
 import { useContext } from 'react';
-
 import { useAppDispatch } from '../../hooks/redux';
-
 import ThemeContext from '../ThemeContext';
 import { useSelector } from 'react-redux';
 import { setLoadingUserDataActionCreator } from '../../redux/action-creators/setLoadingUserDataActionCreator';
@@ -25,6 +22,7 @@ const UserData = () => {
 const params = useSelector(paramsSelector)
 	const loading = useSelector(isLoadingUserDataSelector);
 const clickedElement = useSelector(clickedUserSelector)
+/*
 	useEffect(() => {
 		if (router.isReady) {
 			const { user } = router.query;
@@ -43,7 +41,7 @@ const clickedElement = useSelector(clickedUserSelector)
 
 		}
 	}, [router])
- 
+ */
 	return (
 		<aside className={`${styles.sidebar} ${isDark ? styles.sidebarDark : ''}`}>
 				<div>

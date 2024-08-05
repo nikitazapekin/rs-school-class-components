@@ -105,11 +105,8 @@ interface User {
 	score: number;
 }
 export const getPersonalData = async (username: string): Promise<User> => {
-	//https://api.github.com/users/octocat
-
 	try {
 		const response: AxiosResponse<User> = await axios.get(`https://api.github.com/users/${username}`);
-		console.log("REW", JSON.stringify(response))
 		return response.data
 	} catch (error) {
 		if (axios.isAxiosError(error)) {

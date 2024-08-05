@@ -1,8 +1,7 @@
  
-import { GetServerSidePropsContext } from 'next';
+ 
 import axios from 'axios';
-import App from '../App';
-import Providers from '../redux/Provider';
+ 
 import { GetServerSideProps } from 'next';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect } from 'react';
@@ -41,7 +40,7 @@ interface Props {
 	limit: number;
 }
 
-const UsersPage = ({ users, query, page, limit }: Props) => {
+const UsersPage = ({ users }: Props) => {
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(setUsersActionCreator(users))
@@ -59,32 +58,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { query, page , limit = '10' } = context.query;
 	const offset = parseInt(page as string, 10);
 	const perPage = parseInt(limit as string, 10);
-
 	let url: string;
-
 	if (!query) {
-		url = `https://api.github.com/users?page=${offset}&per_page=${perPage}`;
+		url = `https://api.github.com/search/users?q=type:user&page=${offset}&per_page=${perPage}`;
 	} else {
 		url = `https://api.github.com/search/users?q=${query}&page=${offset}&per_page=${perPage}`;
 	}
-console.log("URL", url)
 	try {
 		let users: UserDataArray = [];
 
 		if (!query) {
-			const response: AxiosResponse<UserDataArray> = await axios.get(url);
-			users = response.data;
+			const response: AxiosResponse<UserData> = await axios.get(url);
+			users = response.data.items;
 		} else {
 			const response: AxiosResponse<UserData> = await axios.get(url);
 			users = response.data.items;
 		}
-console.log("USERRR", users[0])
 		return {
 			props: {
 				users,
-				query: query || '',
-				page: offset,
-				limit: perPage,
 			},
 		};
 	} catch (error) {
@@ -97,9 +89,7 @@ console.log("USERRR", users[0])
 		return {
 			props: {
 				users: [],
-				query: query || '',
-				page: offset,
-				limit: perPage,
+			 
 			},
 		};
 	}

@@ -7,9 +7,7 @@ import Layout from '../components/Layout';
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
     const AppLayout = Component.Layout || Layout;
-    console.log("COMP", Component.Layout)
     return (
       <MainLayout>
         <AppLayout>
