@@ -1,7 +1,6 @@
  
- 
 import axios from 'axios';
- 
+
 import { GetServerSideProps } from 'next';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect } from 'react';
@@ -77,7 +76,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		return {
 			props: {
 				users,
-			},
+				},
 		};
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
@@ -90,10 +89,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			props: {
 				users: [],
 			 
-			},
+				},
 		};
 	}
 };
 
 
 
+/*
+*/

@@ -32,20 +32,7 @@ const List = () => {
 		dispatch(setPrevPageActionCreator());
 		setPage(params.offset - 1, params.query);
 	};
- 
-useEffect(() => {
-	const fetchData = async () => {
- 
-		try {
-		//	const data = await getUserData(params.limit, params.offset, params.query);
-		//	dispatch(setUsersActionCreator(data))
-	 
-		} catch (err) {
-	 
-		}  
-	};
-	fetchData();
-}, [params.limit, params.offset, params.query]); 
+  
 	return (
 		<ThemeProvider>
 

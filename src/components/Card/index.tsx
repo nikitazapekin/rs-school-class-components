@@ -8,15 +8,11 @@ import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
 import { UserElement, UserItem } from './types';
 import Link from "next/link";
 import { paramsSelector } from "../../redux/selectors/getSearchParams";
-
+import Image from "next/image";
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
 	const { isDark } = useContext(ThemeContext);
 	const users = useSelector(storedUsersSelector);
-
-	 useEffect(()=> {
-console.log("darkkkk", isDark)
-	 }, [isDark])
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
 	};
@@ -24,11 +20,11 @@ console.log("darkkkk", isDark)
 
 const params = useSelector(paramsSelector) 
 	return (
- 
-
 		<div className={styles.user__link}>
 			<div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}>
-				<img className={styles.user__logo} src={user.avatar_url} alt="user" />
+				<Image
+				loader={()=> user.avatar_url}
+				className={styles.user__logo} src={user.avatar_url} alt="user"  width={300} height={300} />
 				<div className={styles.user__content}>
 					<p className={styles.user__login}>{user.login}</p>
 					<input
@@ -38,16 +34,12 @@ const params = useSelector(paramsSelector)
 						checked={users && users.some((storedUser: UserElement) => user.id === storedUser.id)}
 						readOnly
 					/>
-					<Link //href="/details"
+					<Link  
 					href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
 					className={styles.user__details}>
 						Show Details
 					</Link>
-					{/*
-					<button className={styles.user__details} onClick={handleCardClick}>
-					Show details
-					</button>
-					*/}
+				 
 				</div>
 			</div>
 		</div>
@@ -57,7 +49,16 @@ const params = useSelector(paramsSelector)
 
 export default Card;
 
-
+/*
+	<Image
+				loader={() => clickedElement.avatar_url} 
+					src={clickedElement.avatar_url}
+					alt={`${clickedElement.login}'s avatar`}
+					className={styles.avatar}
+					width={500}
+					height={500}
+				/>
+				*/
 
 
 

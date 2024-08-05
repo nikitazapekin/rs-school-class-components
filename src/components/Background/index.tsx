@@ -6,7 +6,7 @@ const Background = () => {
 	const { isDark } = useContext(ThemeContext);
 	return (
 		<div className={`${styles.background} ${isDark ? styles['background-dark'] : ''}`} data-testid="background">
-			{' '}
+ 
 		</div>
 	);
 };
