@@ -1,19 +1,18 @@
  
 import React from 'react';
-import { getTest } from "../../src/teststore/selector";
-import { useAppDispatch, useAppSelector } from '../../src/teststore/hooks';
-import { setTest } from '../../src/teststore/slice';
-
+ 
+//import { setTest } from '../../src/teststore/slice';
+import App from "../../src/App"
+import { setTets } from '../../src/store/slices/appSlice';
+import { ThemeProvider } from '../../src/components/ThemeContext';
 export default function Index() {
-  const dispatch = useAppDispatch();
-  const testValue = useAppSelector(getTest);
-
   return (
     <>
-      <div>{testValue}</div>
-      <button onClick={() => dispatch(setTest('New Test'))}>
-        Update Test
-      </button>
+<ThemeProvider>
+
+      <App />
+</ThemeProvider>
+   
     </>
   );
 }

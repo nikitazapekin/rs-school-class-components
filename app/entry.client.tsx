@@ -26,7 +26,8 @@ import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 //import { store } from '../src/store/store';
 import { Provider } from 'react-redux';
-import {store} from "../src/teststore/store"
+//import {store} from "../src/teststore/store"
+import { store } from '../src/store/store';
 startTransition(() => {
   hydrateRoot(
     document,
