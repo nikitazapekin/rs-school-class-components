@@ -65,3 +65,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	   },
 	 };
   }
+
+ //npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom ts-node --legacy-peer-deps
