@@ -10,16 +10,21 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 const MainLayout = ({ children }: LayoutProps) => (
+<>
+{/*
   <Providers>
-    <ThemeProvider>
+  <ThemeProvider>
    
       <Header />
     <div className="main-container">
       <div className="content-wrapper">{children}</div>
       <Background />
     </div>
-      </ThemeProvider>
-  </Providers>
+    </ThemeProvider>
+    </Providers>
+    */}
+    {children}
+</>
 );
 export default MainLayout;
 

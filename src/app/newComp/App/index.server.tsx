@@ -37,7 +37,7 @@ export default async function App() {
 //	} else {
 //		url = `https://api.github.com/search/users?q=${query}&page=${offset}&per_page=${perPage}`;
 //		}
-//  const response = await axios.get(url);
+// 
 
 
   return (
