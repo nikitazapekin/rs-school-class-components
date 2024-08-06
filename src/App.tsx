@@ -12,9 +12,6 @@ import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
 import Spinner from './components/Spinner';
  
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
-import { GetServerSidePropsContext } from 'next';
-import axios from 'axios';
- 
 const App = ( ) => {
 	 
 	const storedUsers = useSelector(storedUsersSelector);
@@ -45,25 +42,3 @@ export default App;
  
 
 
-
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-	const { query } = context;
- 
-    const page = parseInt(query.page as string, 10) || 1;
-	 console.log(page)
-
-	 const limit = 10;
-
-	 const res = await axios.get(`https://api.github.com/users?per_page=${limit}&page=${page}`);
-	 const users = res.data;
-   
-	 return {
-	   props: {
-		 users,
-	 
-	   },
-	 };
-  }
-
- //npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom ts-node --legacy-peer-deps

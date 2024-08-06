@@ -15,9 +15,8 @@ const List = () => {
 	const dispatch = useAppDispatch();
 	const users = useSelector(getUsersSelector);
 	const params = useSelector(paramsSelector);
- 
-	const isLoading = useSelector(isLoadingSelector);
 
+	const isLoading = useSelector(isLoadingSelector);
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator());

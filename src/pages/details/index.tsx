@@ -4,7 +4,6 @@ import DetailsLayout from '../../components/details';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { SetClickedUserActionCreator } from '../../redux/action-creators/setClickedUserActionCreator';
-//import { SetClickedUserActionCreator } from '../../redux/action-creators/setClickedUserActionCreator';
 interface Props {
     user: User
 }
