@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from '../../redux/store';
 import StoredUsersButton from './index';
 import { useAppDispatch } from '../../hooks/redux';
-//import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
+
 import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';
 import { UserItem } from './types';
 import { useSelector } from 'react-redux'; // Импортируйте useSelector из react-redux

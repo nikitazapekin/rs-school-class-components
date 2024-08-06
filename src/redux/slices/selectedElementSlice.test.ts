@@ -1,6 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
+
 import selectedElementsReducer, {
-//  initialState,
   setAddToStoredElement,
   setClearStoredElements,
   setSelectedElement,

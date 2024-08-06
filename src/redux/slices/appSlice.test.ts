@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+
 import appReducer, {
   initialState,
   setLoading,
