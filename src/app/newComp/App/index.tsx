@@ -12,6 +12,7 @@ import { setNextPageActionCreator } from "../../../redux/action-creators/setSear
 import StoredUsersButton from "../StoredUsersFlyoutElement";
 import ErrorComponent from "../ErrorComponent";
 import { ErrorBoundary } from "../ErrorBoundary";
+import Providers from "../../../redux/Provider";
 type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -55,14 +56,14 @@ const storedUsers = useSelector(storedUsersSelector);
 	};
   return (
   <>
+<Providers>
 
 <ErrorBoundary>
 
 <section className={styles.list}>
 			<div className={styles.list__container}>
 			{/*}	{isLoading && <Spinner />} */}
-		{/*
-					*/}
+	 
 				{users.map((item) => (
 					<Card user={item} key={item.id} />
 					))}
@@ -83,6 +84,7 @@ const storedUsers = useSelector(storedUsersSelector);
  <ErrorComponent />
  
 	</ErrorBoundary>
+						</Providers>
   </>
   );
   }

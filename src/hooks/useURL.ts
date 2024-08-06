@@ -45,7 +45,7 @@ const useURL = () => {
 useEffect(()=> {
   
     let url =`?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`
-    router.push(url)
+  //  router.push(url)
 }, [])
     useEffect(() => {
         const page = searchParam.get('page');
