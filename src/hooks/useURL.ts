@@ -32,7 +32,7 @@ const useURL = () => {
     };
 
     const setPage = (page: number, query: string) => {
-        const newUrl = `/?page=${String(page)}${query ? `query=${query}` : ``}`
+        const newUrl = `/?page=${String(page)}${query ? `&query=${query}` : ``}`
         router.push(newUrl);
     };
     useEffect(() => {
@@ -43,10 +43,7 @@ const useURL = () => {
     }, []);
   
 useEffect(()=> {
-   /* const page = searchParam.get('page');
-    const query = searchParam.get('query')
-    let url =""
-    if(!page ) */
+  
     let url =`?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`
     router.push(url)
 }, [])
@@ -61,9 +58,7 @@ useEffect(()=> {
             dispatch(setSearchParamsActionCreator( Number(page), String(query)))
         }
 
-
     }, [router]);
-   
 
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setQueryActionCreator(event.target.value));
@@ -72,7 +67,7 @@ useEffect(()=> {
     const handleSearch = () => {
         localStorage.setItem('searchParam', String(typedValue));
         dispatch(setNewSearchValueActionCreator())
-        const newUrl = `/?page=${String(1)}query=${typedValue}`
+        const newUrl = `/?page=${String(1)}&query=${typedValue}`
     
         router.push(newUrl);
       
