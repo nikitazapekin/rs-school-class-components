@@ -85,6 +85,5 @@ describe('Background component', () => {
     expect(backgroundDiv).toHaveClass('background');
     expect(backgroundDiv).not.toHaveClass('background-dark');
   });
-      /*
-  */
+    
 });
