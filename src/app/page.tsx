@@ -1,4 +1,4 @@
-import App from "./newComp/App/index.server";
+import App from "./newComp/App";
 import axios, {AxiosError, AxiosResponse} from "axios";
 interface SearchParams {
   [key: string]: string | undefined;
@@ -45,16 +45,16 @@ if(searchParams?.query!=undefined) {
 url =`https://api.github.com/search/users?q=${searchParams.typedValue}&page=${searchParams.page}&per_page=${10}`
 }
 else {
- url= `https://api.github.com/users?page=${searchParams!.page}&per_page=${10}`
+  url = `https://api.github.com/search/users?q=type:user&page=${searchParams!.page}&per_page=${10}`;
 }
 const response: AxiosResponse<UserData> = await axios.get(url);
-//const response = await axios.get(url);
+
 console.log(response.data)
   return ( 
     <>
 
     
-      <App />
+      <App users={response.data.items} />
     </>
   );
 }

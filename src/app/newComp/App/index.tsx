@@ -20,32 +20,27 @@ type UserDataArray = Array<{
 	type: string;
 	site_admin: boolean;
 	score: number;
-}>;
-interface UserData {
-	total_count: number;
-	incomplete_results: boolean;
-	items: UserDataArray;
-}
+}>; 
 
-
-export default async function App() {
+interface AppProps {
+	users: UserDataArray;
+  }
+function App({ users }: AppProps) {
 	let url: string;
-//console.log("LOC", window.location)
-
-//	if (!query) {
-//		url = `https://api.github.com/search/users?q=type:user&page=${offset}&per_page=${perPage}`;
-//	} else {
-//		url = `https://api.github.com/search/users?q=${query}&page=${offset}&per_page=${perPage}`;
-//		}
-// 
-
 
   return (
   <>
+
   
+  {users.map(item=> (
+	<div>
+		{item.login}
+	</div>
+  ))}
   </>
   );
   }
+  export default  App
   /* 
 */
 /*
