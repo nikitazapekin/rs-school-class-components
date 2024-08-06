@@ -1,9 +1,11 @@
-import { useContext } from 'react';
-import ThemeContext from '../ThemeContext';
+ 
 import styles from "./index.module.scss";
+import { useSelector } from 'react-redux';
+import { getThemeSelector } from '../../redux/selectors/getTheme';
 
 const Background = () => {
-	const { isDark } = useContext(ThemeContext);
+	const isDark = useSelector(getThemeSelector)
+	 
 	return (
 		<div className={`${styles.background} ${isDark ? styles['background-dark'] : ''}`} data-testid="background">
  

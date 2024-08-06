@@ -9,10 +9,7 @@ import { isLoadingSelector } from '../../redux/selectors/isLoadingSelector';
 import useURL from '../../hooks/useURL';
 import { UserItem } from './types';
 import { getUsersSelector } from '../../redux/selectors/getUsersSelector';
-import { getUserData } from '../../api';
-import { useEffect } from 'react';
-import { setUsersActionCreator } from '../../redux/action-creators/setUsersActionCreator';
-import { ThemeProvider } from '../ThemeContext';
+ 
 const List = () => {
 	const { setPage } = useURL();
 	const dispatch = useAppDispatch();
@@ -34,7 +31,7 @@ const List = () => {
 	};
   
 	return (
-		<ThemeProvider>
+		 
 
 		<section className={styles.list}>
 			<div className={styles.list__container}>
@@ -53,7 +50,7 @@ const List = () => {
 				</div>
 			</div>
 		</section>
-		</ThemeProvider>
+	 
 	);
 };
 

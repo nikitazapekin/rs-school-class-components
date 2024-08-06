@@ -1,8 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header from './index';
-import ThemeContext from '../ThemeContext';
-import useURL from '@/hooks/useURL';
+import useURL from '../../hooks/useURL';
 
 jest.mock('@/hooks/useURL', () => ({
 	__esModule: true,
@@ -22,18 +21,14 @@ const mockHandleSearch = jest.fn();
 	handleRedirect: mockHandleRedirect,
 	handleSearch: mockHandleSearch,
 }));
-
-const mockThemeContextValue = {
-	isDark: false,
-	toggleTheme: jest.fn(),
-};
+ 
 
 describe('Header Component', () => {
 	test('renders Header with light theme by default', () => {
 		render(
-			<ThemeContext.Provider value={mockThemeContextValue}>
+		 
 				<Header />
-			</ThemeContext.Provider>,
+		 
 		);
 
 		expect(screen.getByRole('banner')).toHaveClass('header');
@@ -42,9 +37,9 @@ describe('Header Component', () => {
 
 	test('renders Header with dark theme', () => {
 		render(
-			<ThemeContext.Provider value={{ ...mockThemeContextValue, isDark: true }}>
+		 
 				<Header />
-			</ThemeContext.Provider>,
+		 
 		);
 
 		expect(screen.getByRole('banner')).toHaveClass('header');
@@ -53,9 +48,9 @@ describe('Header Component', () => {
 
 	test('calls handleInput when typing in the search bar', () => {
 		render(
-			<ThemeContext.Provider value={mockThemeContextValue}>
+			 
 				<Header />
-			</ThemeContext.Provider>,
+		 
 		);
 
 		const searchInput = screen.getByPlaceholderText('Search...');
@@ -66,9 +61,9 @@ describe('Header Component', () => {
 
 	test('calls handleSearch when clicking the search button', () => {
 		render(
-			<ThemeContext.Provider value={mockThemeContextValue}>
+		 
 				<Header />
-			</ThemeContext.Provider>,
+		 
 		);
 
 		const searchButton = screen.getByRole('button', { name: /search/i });
@@ -79,9 +74,9 @@ describe('Header Component', () => {
 
 	test('calls handleRedirect when clicking the redirect button', () => {
 		render(
-			<ThemeContext.Provider value={mockThemeContextValue}>
+		 
 				<Header />
-			</ThemeContext.Provider>,
+		 
 		);
 		const redirectButton = screen.getByRole('button', { name: /redirect to error page/i });
 		fireEvent.click(redirectButton);

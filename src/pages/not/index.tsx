@@ -1,4 +1,4 @@
-// pages/not/index.tsx
+ 
 import React from 'react';
 import NotLayout from '../../components/not';
 

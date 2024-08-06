@@ -2,7 +2,6 @@ export interface BatchTypes {
 	limit: number;
 	offset: number;
 }
-
 export interface UserItem {
 	login: string;
 	id: number;

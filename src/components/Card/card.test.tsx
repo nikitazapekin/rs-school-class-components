@@ -3,16 +3,13 @@ import Card from './index.tsx';
 import * as reduxHooks from 'react-redux';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage.ts';
-//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useNavigate } from 'react-router-dom';
-
 jest.mock('react-redux');
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
 	useNavigate: jest.fn(),
 }));
 const mockedDispatch = jest.spyOn(reduxHooks, 'useDispatch');
-
 describe('Card Component', () => {
 	it('renders correctly', () => {
 		const mockDispatchFn = jest.fn();
@@ -80,8 +77,7 @@ describe('Card Component', () => {
 				/>
 			</MemoryRouter>,
 		);
-
-		expect(screen.getByRole('checkbox')).toBeInTheDocument();
+	expect(screen.getByRole('checkbox')).toBeInTheDocument();
 		fireEvent.click(screen.getByRole('checkbox'));
 
 		expect(dispatch).toHaveBeenCalledTimes(1);

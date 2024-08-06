@@ -1,6 +1,4 @@
 import styles from "./index.module.scss";
-import ThemeContext, { ThemeProvider } from '../ThemeContext';
-import { useContext, useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
 import { useSelector } from 'react-redux';
@@ -9,9 +7,10 @@ import { UserElement, UserItem } from './types';
 import Link from "next/link";
 import { paramsSelector } from "../../redux/selectors/getSearchParams";
 import Image from "next/image";
+import { getThemeSelector } from "../../redux/selectors/getTheme";
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
-	const { isDark } = useContext(ThemeContext);
+	const isDark = useSelector(getThemeSelector)
 	const users = useSelector(storedUsersSelector);
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
@@ -35,6 +34,7 @@ const params = useSelector(paramsSelector)
 						readOnly
 					/>
 					<Link  
+					style={{backgroundColor: "rgb(90, 90, 190)", padding: "10px", color: "#fff", textDecoration: "none", borderRadius: "10px"}}
 					href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
 					className={styles.user__details}>
 						Show Details

@@ -1,20 +1,16 @@
 
 import styles from "./styles.module.scss"
-import { useContext } from 'react';
-import { useAppDispatch } from '../../hooks/redux';
-import ThemeContext from '../ThemeContext';
 import { useSelector } from 'react-redux';
-import { isLoadingUserDataSelector } from '../../redux/selectors/isLoadingUserData';
-import { useRouter } from 'next/router';
-import { clickedUserSelector } from '../../redux/selectors/getClickedElement';
+import { clickedUserSelector } from "../../redux/selectors/getClickedElement";
 import { paramsSelector } from '../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 import Image from "next/image";
+import { getThemeSelector } from "../../redux/selectors/getTheme";
+ 
 const UserData = () => {
-	const { isDark } = useContext(ThemeContext);
 	const params = useSelector(paramsSelector)
-	const loading = useSelector(isLoadingUserDataSelector);
 	const clickedElement = useSelector(clickedUserSelector)
+	const isDark = useSelector(getThemeSelector)
 	return (
 		<aside className={`${styles.sidebar} ${isDark ? styles.sidebarDark : ''}`}>
 			<div>

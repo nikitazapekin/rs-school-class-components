@@ -1,64 +1,12 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { AppStatee, SearchTypes, User, UserDataArray } from '../types';
-import { AxiosResponse, AxiosError }from 'axios';
-import axios from 'axios';
-/*
-export type UserDataArray = Array<{
-	login: string;
-	id: number;
-	node_id: string;
-	avatar_url: string;
-	gravatar_id: string;
-	url: string;
-	html_url: string;
-	followers_url: string;
-	following_url: string;
-	gists_url: string;
-	starred_url: string;
-	subscriptions_url: string;
-	organizations_url: string;
-	repos_url: string;
-	events_url: string;
-	received_events_url: string;
-	type: string;
-	site_admin: boolean;
-	score: number;
-}>; */
+import { createSlice, PayloadAction  } from '@reduxjs/toolkit';
+import { AppStatee, SearchTypes,  UserDataArray } from '../types';
+ import {User} from "../types"
 export interface UserData {
 	total_count: number;
 	incomplete_results: boolean;
 	items: UserDataArray;
 }
-
-
-export const fetchUserData = createAsyncThunk(
-	'users/fetchUserData',
-	async ({ limit, offset, typedValue }: { limit: number; offset: number; typedValue: string }, thunkAPI) => {
-	  let url: string;
-	  if (typedValue.trim() === '') {
-		url = `https://api.github.com/search/users?q=type:user&page=${offset}&per_page=${limit}`;
-	  } else {
-		url = `https://api.github.com/search/users?q=${typedValue}&page=${offset}&per_page=${limit}`;
-	  }
-  
-	  try {
-		const response: AxiosResponse<UserData> = await axios.get(url);
-		return response.data.items;
-	  } catch (error) {
-		if (axios.isAxiosError(error)) {
-		  const axiosError = error as AxiosError;
-		  return thunkAPI.rejectWithValue(axiosError.message);
-		} else {
-		  return thunkAPI.rejectWithValue('Unknown error');
-		}
-	  }
-	}
-  );
-
-  
-
-  
-const initialState: AppStatee = {
+export const initialState: AppStatee = {
 	isLoading: false,
 	error: null,
 	isLoadingUserData: false,
@@ -122,9 +70,7 @@ const appSlicee = createSlice({
 			state.params.offset = state.params.offset - 1;
 		},
 		setQueryPage(state, action: PayloadAction<string>) {
-			console.log("PAYLOAD", action.payload)
 			state.params.query = action.payload;
-			console.log("NEW PARAMS", state.params)
 		},
 		setUsers(state, action: PayloadAction<UserDataArray>) {
 			state.users = action.payload;
@@ -137,37 +83,17 @@ const appSlicee = createSlice({
 		state.typedValue = action.payload
 		},
 		setNewSearchValue(state) {
-		//	state.typedValue = action.payload
 		state.params.query=state.typedValue
 		state.params.storedValue=state.typedValue
 			},
 			setClickedUser(state, action: PayloadAction<User>) {
-				//	state.typedValue = action.payload
-			//	state.params.query=state.typedValue
-			//	state.params.storedValue=state.typedValue
+			 
 			state.clickedUser = action.payload
-			console.log("CLICKE", JSON.stringify(state.clickedUser))
+			 
 					},
 	},
 
-
-	extraReducers: (builder) => {
-		builder
-		  .addCase(fetchUserData.pending, (state) => {
-			state.status = 'loading';
-		  })
-		  .addCase(fetchUserData.fulfilled, (state, action) => {
-			state.status = 'succeeded';
-			console.log("US", action.payload)
-			state.users = action.payload;
-			console.log("USs", state.users)
-		  })
-		  .addCase(fetchUserData.rejected, (state, action) => {
-			state.status = 'failed';
-			state.error = action.payload as string;
-		  });
-	  },
-
+ 
 
 });
 export const {
@@ -182,7 +108,8 @@ export const {
 	setFirstPage,
 	setStoredInLocalStorageQuery,
 	setTypedValue,
+	setClickedUser,
 	setNewSearchValue,
-	setClickedUser
+	 
 } = appSlicee.actions;
 export default appSlicee.reducer;
