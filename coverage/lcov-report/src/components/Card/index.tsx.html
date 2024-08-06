@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>48/50</span>
+                <span class='fraction'>0/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>48/50</span>
+                <span class='fraction'>0/50</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,106 +113,106 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styles from "./index.module.scss";
-import { useAppDispatch } from '../../hooks/redux';
-import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
-import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
-import { UserElement, UserItem } from './types';
-import Link from "next/link";
-import { paramsSelector } from "../../redux/selectors/getSearchParams";
-import Image from "next/image";
-import { getThemeSelector } from "../../redux/selectors/getTheme";
-const Card = ({ user }: UserItem) =&gt; {
-	const dispatch = useAppDispatch();
-	const isDark = useSelector(getThemeSelector)
-	const users = useSelector(storedUsersSelector);
-	const handleCheckboxChange = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import styles from "./index.module.scss";</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { useAppDispatch } from '../../hooks/redux';</span>
+<span class="cstat-no" title="statement not covered" >import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';</span>
+<span class="cstat-no" title="statement not covered" >import { useSelector } from 'react-redux';</span>
+<span class="cstat-no" title="statement not covered" >import { storedUsersSelector } from '../../redux/selectors/getStoredElements';</span>
+<span class="cstat-no" title="statement not covered" >import { UserElement, UserItem } from './types';</span>
+<span class="cstat-no" title="statement not covered" >import Link from "next/link";</span>
+<span class="cstat-no" title="statement not covered" >import { paramsSelector } from "../../redux/selectors/getSearchParams";</span>
+<span class="cstat-no" title="statement not covered" >import Image from "next/image";</span>
+<span class="cstat-no" title="statement not covered" >import { getThemeSelector } from "../../redux/selectors/getTheme";</span>
+<span class="cstat-no" title="statement not covered" >const Card = ({ user }: UserItem) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >	const dispatch = useAppDispatch();</span>
+<span class="cstat-no" title="statement not covered" >	const isDark = useSelector(getThemeSelector)</span>
+<span class="cstat-no" title="statement not covered" >	const users = useSelector(storedUsersSelector);</span>
+<span class="cstat-no" title="statement not covered" >	const handleCheckboxChange = () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >		dispatch(AddElementToStorage(user));</span>
 <span class="cstat-no" title="statement not covered" >	};</span>
-&nbsp;
-&nbsp;
-const params = useSelector(paramsSelector) 
-	return (
-		&lt;div className={styles.user__link}&gt;
-			&lt;div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}&gt;
-				&lt;Image
-				loader={()=&gt; user.avatar_url}
-				className={styles.user__logo} src={user.avatar_url} alt="user"  width={300} height={300} /&gt;
-				&lt;div className={styles.user__content}&gt;
-					&lt;p className={styles.user__login}&gt;{user.login}&lt;/p&gt;
-					&lt;input
-						type="checkbox"
-						className={styles.user__checkbox}
-						onChange={handleCheckboxChange}
-						checked={users &amp;&amp; users.some((storedUser: UserElement) =&gt; user.id === storedUser.id)}
-						readOnly
-					/&gt;
-					&lt;Link  
-					style={{backgroundColor: "rgb(90, 90, 190)", padding: "10px", color: "#fff", textDecoration: "none", borderRadius: "10px"}}
-					href={`/details?page=${params.offset}${params.query<span class="branch-0 cbranch-no" title="branch not covered" > ? `&amp;query=${params.query}` </span>: ``}&amp;user=${user.login}`}
-					className={styles.user__details}&gt;
-						Show Details
-					&lt;/Link&gt;
-				 
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-		 
-	);
-};
-&nbsp;
-export default Card;
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const params = useSelector(paramsSelector) </span>
+<span class="cstat-no" title="statement not covered" >	return (</span>
+<span class="cstat-no" title="statement not covered" >		&lt;div className={styles.user__link}&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;Image</span>
+<span class="cstat-no" title="statement not covered" >				loader={()=&gt; user.avatar_url}</span>
+<span class="cstat-no" title="statement not covered" >				className={styles.user__logo} src={user.avatar_url} alt="user"  width={300} height={300} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;div className={styles.user__content}&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;p className={styles.user__login}&gt;{user.login}&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;input</span>
+<span class="cstat-no" title="statement not covered" >						type="checkbox"</span>
+<span class="cstat-no" title="statement not covered" >						className={styles.user__checkbox}</span>
+<span class="cstat-no" title="statement not covered" >						onChange={handleCheckboxChange}</span>
+<span class="cstat-no" title="statement not covered" >						checked={users &amp;&amp; users.some((storedUser: UserElement) =&gt; user.id === storedUser.id)}</span>
+<span class="cstat-no" title="statement not covered" >						readOnly</span>
+<span class="cstat-no" title="statement not covered" >					/&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;Link  </span>
+<span class="cstat-no" title="statement not covered" >					style={{backgroundColor: "rgb(90, 90, 190)", padding: "10px", color: "#fff", textDecoration: "none", borderRadius: "10px"}}</span>
+<span class="cstat-no" title="statement not covered" >					href={`/details?page=${params.offset}${params.query ? `&amp;query=${params.query}` : ``}&amp;user=${user.login}`}</span>
+<span class="cstat-no" title="statement not covered" >					className={styles.user__details}&gt;</span>
+<span class="cstat-no" title="statement not covered" >						Show Details</span>
+<span class="cstat-no" title="statement not covered" >					&lt;/Link&gt;</span>
+<span class="cstat-no" title="statement not covered" >				 </span>
+<span class="cstat-no" title="statement not covered" >				&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >		&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >		 </span>
+<span class="cstat-no" title="statement not covered" >	);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export default Card;</span>
  </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -220,7 +220,7 @@ export default Card;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-06T21:04:46.293Z
+                at 2024-08-06T21:32:44.699Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

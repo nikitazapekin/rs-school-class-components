@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.96% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/58</span>
+                <span class='fraction'>0/58</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.96% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/58</span>
+                <span class='fraction'>0/58</span>
             </div>
         
             
@@ -121,15 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -177,17 +169,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useAppDispatch } from '../../hooks/redux';
-import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
-import { useState } from 'react';
-import styles from "./index.module.scss";
-import { UserItem } from './types';
-import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';
-&nbsp;
-const StoredUsersButton = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useAppDispatch } from '../../hooks/redux';</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { useSelector } from 'react-redux';</span>
+<span class="cstat-no" title="statement not covered" >import { storedUsersSelector } from '../../redux/selectors/getStoredElements';</span>
+<span class="cstat-no" title="statement not covered" >import { useState } from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import styles from "./index.module.scss";</span>
+<span class="cstat-no" title="statement not covered" >import { UserItem } from './types';</span>
+<span class="cstat-no" title="statement not covered" >import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const StoredUsersButton = () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	const dispatch = useAppDispatch();</span>
 <span class="cstat-no" title="statement not covered" >	const users = useSelector(storedUsersSelector);</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -235,8 +235,8 @@ const StoredUsersButton = <span class="fstat-no" title="function not covered" >(
 <span class="cstat-no" title="statement not covered" >		&lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >	);</span>
 <span class="cstat-no" title="statement not covered" >};</span>
-&nbsp;
-export default StoredUsersButton;
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export default StoredUsersButton;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +244,7 @@ export default StoredUsersButton;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-06T21:04:46.293Z
+                at 2024-08-06T21:32:44.699Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
