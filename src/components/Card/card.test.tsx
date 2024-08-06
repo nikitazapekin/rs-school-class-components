@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, //fireEvent 
+import { render,  
 
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer, RootState } from '../../redux/store';
 import Card from './index';
-//import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
+ 
 
 const initialState: RootState = {
   appSlice: {
@@ -104,23 +104,5 @@ describe('Card component', () => {
     };
     const { container } = renderWithRedux(<Card user={user} />, { store: configureStore({ reducer: rootReducer, preloadedState: darkThemeState }) });
     expect(container.firstChild).not.toHaveClass('user-dark');
-  });
-  /*
-  */
- /*
-it('should handle checkbox change', () => {
-    const { getByRole, store } = renderWithRedux(<Card user={user} />);
-    const checkbox = getByRole('checkbox');
-    expect(checkbox).not.toBeChecked();
-    fireEvent.click(checkbox);
-    const actions = store.getActions();
-    expect(actions).toContainEqual(AddElementToStorage(user));
-  });
-
-  it('should have correct link to user details', () => {
-    const { getByText } = renderWithRedux(<Card user={user} />);
-    const link = getByText('Show Details');
-    expect(link).toHaveAttribute('href', '/details?page=1&user=testuser'); // Assuming params.offset is 1 by default
-    });
-  */
+  }); 
 });
