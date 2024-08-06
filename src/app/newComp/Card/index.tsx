@@ -9,7 +9,7 @@ import { storedUsersSelector } from '../../../redux/selectors/getStoredElements'
 import { UserElement, UserItem } from './types';
 import Link from "next/link";
 import { paramsSelector } from "../../../redux/selectors/getSearchParams";
-
+import Image from "next/image";
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
 	//const { isDark } = useContext(ThemeContext);
@@ -23,7 +23,12 @@ const params = useSelector(paramsSelector)
 		<div className={styles.user__link}>
 			<div className={`${styles.user}`}
 			>
-				<img className={styles.user__logo} src={user.avatar_url} alt="user" />
+				<Image 
+				loader={()=>user.avatar_url}
+				className={styles.user__logo} src={user.avatar_url} alt="user"
+				width={300}
+				height={300}
+				/>
 				<div className={styles.user__content}>
 					<p className={styles.user__login}>{user.login}</p>
 					<input

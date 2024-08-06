@@ -40,21 +40,17 @@ interface UserDataProps {
 }
 const UserData = ({user}: UserDataProps) => {
     const dispatch = useAppDispatch();
-    const router = useRouter();
-    const searchParams = useSearchParams();
-  //  const { isDark } = useContext(ThemeContext);
     const params = useSelector(paramsSelector);
     const loading = useSelector(isLoadingUserDataSelector);
-   
 
-    
- 
     return (
         <aside className={`${styles.sidebar} 
 		`
 		}>
             <div>
                 <h2>{user.login}</h2>
+				{/*
+				*/}
                 <Image
 				loader={()=>user.avatar_url}
                     src={user.avatar_url}
@@ -62,7 +58,7 @@ const UserData = ({user}: UserDataProps) => {
                     className={styles.avatar}
 					width={400}
 					height={400}
-                />
+					/>
                 <p>ID: {user.id}</p>
                 <p>Type: {user.type}</p>
             </div>
