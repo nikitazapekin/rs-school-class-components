@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SelectedElementsState, UserItem } from '../types';
-const initialState: SelectedElementsState = {
+export const initialState: SelectedElementsState = {
 	storedElements: [],
 
 	selectedElement: null,
