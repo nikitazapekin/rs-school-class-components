@@ -1,4 +1,4 @@
-
+/*
 // components/Layout.tsx
 import { ReactNode } from "react";
 import { GetServerSidePropsContext } from 'next';
@@ -31,3 +31,12 @@ const Layout = ({ children,
 };
 
 export default Layout; 
+*/
+
+const Layout = () => {
+  return ( <>
+  
+  </> );
+}
+ 
+export default Layout;
