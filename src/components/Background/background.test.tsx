@@ -49,11 +49,10 @@ const initialState: RootState = {
     selectedElement: null,
   },
   themeSlice: {
-    isDark: false, // Initial state for themeSlice
+    isDark: false, 
   },
 };
-
-// Helper function to render with Redux store
+ 
 const renderWithRedux = (
   component: React.ReactNode,
   { store = configureStore({ reducer: rootReducer, preloadedState: initialState }) } = {}
@@ -73,7 +72,7 @@ describe('Background component', () => {
   });
   it('should render with dark background when dark mode is enabled', () => {
       const { getByTestId, store } = renderWithRedux(<Background />);
-    store.dispatch(SetIsDarkActionCreator()); // Pass true to set dark mode
+    store.dispatch(SetIsDarkActionCreator());  
     const backgroundDiv = getByTestId('background');
     expect(backgroundDiv).not.toHaveClass('background-dark');
     expect(backgroundDiv).toHaveClass('background');
@@ -81,7 +80,7 @@ describe('Background component', () => {
 
   it('should not have dark background when light mode is enabled', () => {
       const { getByTestId, store } = renderWithRedux(<Background />);
-    store.dispatch(SetIsDarkActionCreator()); // Pass false to set light mode
+    store.dispatch(SetIsDarkActionCreator());  
     const backgroundDiv = getByTestId('background');
     expect(backgroundDiv).toHaveClass('background');
     expect(backgroundDiv).not.toHaveClass('background-dark');

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.42% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/28</span>
+                <span class='fraction'>0/58</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>0/58</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -117,114 +117,126 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import './index.scss';
-import { useAppDispatch } from '@/hooks/redux.ts';
-import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
-import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '@/store/selectors/getStoredElements';
-import { useState } from 'react';
-const StoredUsersButton = () =&gt; {
-	const dispatch = useAppDispatch();
-	const users = useSelector(storedUsersSelector);
-&nbsp;
-	const handleClear = () =&gt; {
-		dispatch(clearStoredElementsActionCreator());
-	};
-	const [url, setUrl] = useState&lt;string&gt;();
-	const handleDownload = () =&gt; {
-		<span class="missing-if-branch" title="if path not taken" >I</span>if (users.length === 0) <span class="cstat-no" title="statement not covered" >return;</span>
-&nbsp;
-		const titleKeys = Object.keys(users[0]);
-		const refinedData = [titleKeys];
-		users.forEach((item) =&gt; {
-			refinedData.push(Object.values(item).map((value) =&gt; String(value)));
-		});
-&nbsp;
-		let csvContent = '';
-		refinedData.forEach((row) =&gt; {
-			csvContent += row.join(';') + '\n';
-		});
-&nbsp;
-		const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-		const url = URL.createObjectURL(blob);
-		setUrl(url);
-	};
-&nbsp;
-	return (
-		&lt;div className="stored__users__panel"&gt;
-			&lt;p className="stored__users__text"&gt;You chose {users.length} users&lt;/p&gt;
-			&lt;div className="stored__users__btns"&gt;
-				&lt;a
-					className="stored__users__btn stored__users__download"
-					href={url}
-					download={`${users.length}__users.csv`}
-					onClick={handleDownload}
-				&gt;
-					download
-				&lt;/a&gt;
-				&lt;button className="stored__users__btn stored__users__clear" onClick={handleClear}&gt;
-					Unselect all
-				&lt;/button&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	);
-};
-&nbsp;
-export default StoredUsersButton;
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useAppDispatch } from '../../hooks/redux';</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { useSelector } from 'react-redux';</span>
+<span class="cstat-no" title="statement not covered" >import { storedUsersSelector } from '../../redux/selectors/getStoredElements';</span>
+<span class="cstat-no" title="statement not covered" >import { useState } from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import styles from "./index.module.scss";</span>
+<span class="cstat-no" title="statement not covered" >import { UserItem } from './types';</span>
+<span class="cstat-no" title="statement not covered" >import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const StoredUsersButton = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >	const dispatch = useAppDispatch();</span>
+<span class="cstat-no" title="statement not covered" >	const users = useSelector(storedUsersSelector);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	const handleClear = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		dispatch(clearStoredElementsActionCreator());</span>
+<span class="cstat-no" title="statement not covered" >	};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	const [url, setUrl] = useState&lt;string&gt;();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	const handleDownload = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		if (users.length === 0) return;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		const titleKeys = Object.keys(users[0]);</span>
+<span class="cstat-no" title="statement not covered" >		const refinedData = [titleKeys];</span>
+<span class="cstat-no" title="statement not covered" >		users.forEach((item: UserItem) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >			refinedData.push(Object.values(item).map((value) =&gt; String(value)));</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		let csvContent = '';</span>
+<span class="cstat-no" title="statement not covered" >		refinedData.forEach((row) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >			csvContent += row.join(';') + '\n';</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >		const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });</span>
+<span class="cstat-no" title="statement not covered" >		const url = URL.createObjectURL(blob);</span>
+<span class="cstat-no" title="statement not covered" >		setUrl(url);</span>
+<span class="cstat-no" title="statement not covered" >	};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >	return (</span>
+<span class="cstat-no" title="statement not covered" >		&lt;div className={styles.stored__users__panel}&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;p className={styles.stored__users__text}&gt;You chose {users.length} users&lt;/p&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;div className={styles.stored__users__btns}&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;a</span>
+<span class="cstat-no" title="statement not covered" >					className={`${styles.stored__users__btn} ${styles.stored__users__download}`}</span>
+<span class="cstat-no" title="statement not covered" >					href={url}</span>
+<span class="cstat-no" title="statement not covered" >					download={`${users.length}__users.csv`}</span>
+<span class="cstat-no" title="statement not covered" >					onClick={handleDownload}</span>
+<span class="cstat-no" title="statement not covered" >				&gt;</span>
+<span class="cstat-no" title="statement not covered" >					download</span>
+<span class="cstat-no" title="statement not covered" >				&lt;/a&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;button className={`${styles.stored__users__btn} ${styles.stored__users__clear}`} onClick={handleClear}&gt;</span>
+<span class="cstat-no" title="statement not covered" >					Unselect all</span>
+<span class="cstat-no" title="statement not covered" >				&lt;/button&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >		&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >	);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export default StoredUsersButton;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -232,7 +244,7 @@ export default StoredUsersButton;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-28T10:23:11.524Z
+                at 2024-08-06T17:21:38.780Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
