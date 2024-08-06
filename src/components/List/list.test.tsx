@@ -5,10 +5,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer, RootState } from '../../redux/store';
 import List from './index';
 import useURL from '../../hooks/useURL';
-//import Spinner from '../Spinner';
-//import Card from '../Card';
-
-// Мокаем хук useURL
 jest.mock('../../hooks/useURL', () => ({
   __esModule: true,
   default: jest.fn().mockReturnValue({
@@ -76,7 +72,7 @@ const renderWithRedux = (
 
 describe('List component', () => {
   it('should render correctly with users and spinner', () => {
-    const { container, //getByText
+    const { container, 
 
      } = renderWithRedux(<List />);
     expect(container.firstChild).toHaveClass('list');
