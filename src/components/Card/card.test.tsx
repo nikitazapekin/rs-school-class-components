@@ -106,9 +106,9 @@ describe('Card component', () => {
     expect(container.firstChild).not.toHaveClass('user-dark');
   });
   /*
-*/
-  /*
-  it('should handle checkbox change', () => {
+  */
+ /*
+it('should handle checkbox change', () => {
     const { getByRole, store } = renderWithRedux(<Card user={user} />);
     const checkbox = getByRole('checkbox');
     expect(checkbox).not.toBeChecked();
@@ -121,6 +121,6 @@ describe('Card component', () => {
     const { getByText } = renderWithRedux(<Card user={user} />);
     const link = getByText('Show Details');
     expect(link).toHaveAttribute('href', '/details?page=1&user=testuser'); // Assuming params.offset is 1 by default
-  });
+    });
   */
 });
