@@ -11,10 +11,6 @@ const NotLayout = ({ children }: LayoutProps) => {
  {children}
    
 <NotFoundComponent />
-
-
-wrapper
-	<div style={{height: "400px", width: "400px", backgroundColor: "red"}}>dds</div>
     </>);
 }
 

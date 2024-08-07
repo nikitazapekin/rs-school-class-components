@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should render correctly with light theme by default 1`] = `
+<DocumentFragment>
+  <div
+    class="user__link"
+  >
+    <div
+      class="user "
+    >
+      <img
+        alt="user"
+        class="user__logo"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        loading="lazy"
+        src="https://via.placeholder.com/150"
+        srcset="https://via.placeholder.com/150 1x, https://via.placeholder.com/150 2x"
+        style="color: transparent;"
+        width="300"
+      />
+      <div
+        class="user__content"
+      >
+        <p
+          class="user__login"
+        >
+          testuser
+        </p>
+        <input
+          class="user__checkbox"
+          readonly=""
+          type="checkbox"
+        />
+        <a
+          class="user__details"
+          href="/details?page=1&user=testuser"
+          style="background-color: rgb(90, 90, 190); padding: 10px; color: rgb(255, 255, 255); text-decoration: none; border-radius: 10px;"
+        >
+          Show Details
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
