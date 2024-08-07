@@ -1,7 +1,5 @@
 
-
 import React from 'react';
- 
 import List from './components/List';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { useSelector } from 'react-redux';

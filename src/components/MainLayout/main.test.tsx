@@ -9,37 +9,24 @@ describe('MainLayout component', () => {
 
     const childText = 'Child Element';
 
-    // Act
     render(
       <MainLayout>
         <div>{childText}</div>
       </MainLayout>
     );
 
-    // Assert
-    // Проверка наличия дочернего элемента
     expect(screen.getByText(childText)).toBeInTheDocument();
-
-    // Проверка наличия компонента Header
     expect(screen.getByText('Header Component')).toBeInTheDocument();
 
-    // Проверка наличия компонента Background
     expect(screen.getByText('Background Component')).toBeInTheDocument();
   });
-
   test('renders elements in the correct structure', () => {
-    // Arrange
     const childText = 'Child Element';
-
-    // Act
     render(
       <MainLayout>
         <div>{childText}</div>
       </MainLayout>
     );
-
-    // Assert
-    // Проверка структуры компонентов
     const mainContainer = screen.getByText(childText).parentElement?.parentElement;
     expect(mainContainer).toHaveClass('main-container');
 

@@ -1,12 +1,8 @@
-// DetailsLayout.test.tsx
+
 import React from 'react';
 import { render, screen } from '@testing-library/react';
  
-import DetailsLayout from './details'; 
-import UserData from './UserData';
-import App from '../App';
-
- 
+import DetailsLayout from './details';  
 jest.mock('./UserData', () => () => <div>UserData Component</div>);
 jest.mock('../App', () => () => <div>App Component</div>);
 

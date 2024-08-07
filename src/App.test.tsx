@@ -9,7 +9,6 @@ import List from './components/List';
 import ErrorComponent from './components/ErrorComponent';
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 import Spinner from './components/Spinner';
-import { UserDataArray } from './redux/types';
 jest.mock('./components/List');
 jest.mock('./components/ErrorComponent');
 jest.mock('./components/StoredUsersFlyoutElement');
@@ -22,7 +21,7 @@ jest.mock('./redux/selectors/isLoadingSelector', () => ({
 }));
 
 
-const mockStore = (storedUsers: UserDataArray = [], isLoading = false) => {
+const mockStore = () => {
   return configureStore({
     reducer: {
     },

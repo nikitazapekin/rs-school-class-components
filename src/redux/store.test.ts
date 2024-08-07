@@ -12,8 +12,7 @@ import selectedElementsSliceReducer, {
 } from "./slices/selectedElementsSlice";
 import themeSliceReducer from "./slices/themeSlice";
 import { UserItem } from "./types";
-
-// Создание тестового хранилища
+ 
 const store = configureStore({
   reducer: {
     app: appSliceReducer,
@@ -23,8 +22,7 @@ const store = configureStore({
 });
 
 describe("Redux Store", () => {
-    /*
-    */
+  
   it("should handle initial state", () => {
     const state = store.getState();
     expect(state.app).toEqual({

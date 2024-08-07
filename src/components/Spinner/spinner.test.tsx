@@ -5,7 +5,7 @@ import Spinner from './index';
 
 describe('Spinner component', () => {
   test('renders spinner with correct data-testid', () => {
-    // Act
+
     render(<Spinner />);
 
     const loaderElement = screen.getByTestId('loader');

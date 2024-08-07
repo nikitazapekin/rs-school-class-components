@@ -1,16 +1,12 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer, RootState } from '../../redux/store';
 import Card from './index';
 import { createSerializer } from '@emotion/jest';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../hooks/redux';
 import { AddElementToStorage } from '../../redux/action-creators/addElementToStorage';
-import { storedUsersSelector } from '../../redux/selectors/getStoredElements';
-import { paramsSelector } from "../../redux/selectors/getSearchParams";
-import { getThemeSelector } from "../../redux/selectors/getTheme";
+
 
 expect.addSnapshotSerializer(createSerializer());
 
@@ -128,7 +124,7 @@ describe('Card component', () => {
     expect(mockDispatch).not.toHaveBeenCalledWith(AddElementToStorage(user));
   });
   it('should check the checkbox if the user is already in the stored users', () => {
-    const storedUsers = [user];
+   
  
 
     const { getByRole } = renderWithRedux(<Card user={user} />);

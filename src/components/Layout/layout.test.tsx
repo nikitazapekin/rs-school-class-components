@@ -1,11 +1,8 @@
-// Layout.test.tsx
+
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import Layout from './index';  
-import Providers from '../../redux/Provider';
-import App from '../../App';
-
  
 jest.mock('../../App', () => () => <div>App Component</div>);
 

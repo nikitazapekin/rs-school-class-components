@@ -3,7 +3,6 @@ import { RootState } from '../store';
 
 describe('isLoadingSelector', () => {
   it('should return the correct isLoading value from state', () => {
-    // Тестовое состояние
     const mockState: RootState = {
       appSlice: {
         isLoading: true,  
