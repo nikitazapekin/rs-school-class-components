@@ -2,7 +2,7 @@
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 import { Component } from 'react';
 import styles from "./index.module.scss";
-
+import React from 'react';
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props);

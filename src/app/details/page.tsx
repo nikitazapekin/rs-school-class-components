@@ -2,7 +2,7 @@ import DetailsLayout from "../components/details";
 import Header from "../components/Header";
  import axios, {AxiosResponse} from "axios";
 import UserData from "../components/UserData";
-
+import React from "react";
 interface SearchParams {
   query?: string;
   page?: string;

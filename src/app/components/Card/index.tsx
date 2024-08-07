@@ -1,5 +1,6 @@
 "use client"
 import styles from "./index.module.scss";
+import React from "react";
 //import ThemeContext, { ThemeProvider } from '../ThemeContext';
 import { useContext, useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/redux';

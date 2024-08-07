@@ -2,6 +2,7 @@
 
 
 "use client"
+import React from 'react';
 import { useEffect } from 'react';
 import { useAppDispatch } from './redux';
 import { useSelector } from 'react-redux';

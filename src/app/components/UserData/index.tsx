@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 import { useAppDispatch } from '../../../hooks/redux';
 //import ThemeContext from '../ThemeContext';
 import { useSelector } from 'react-redux';
- 
+ import React from 'react';
 import { paramsSelector } from '../../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 import styles from "./styles.module.scss";

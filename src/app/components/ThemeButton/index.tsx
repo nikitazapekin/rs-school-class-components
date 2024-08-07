@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../../hooks/redux";
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from "../../../redux/selectors/getTheme";
 import { SetIsDarkActionCreator } from "../../../redux/action-creators/setIsDark";
-
+ 
 const ThemeButton = () => {
 	const dispatch = useAppDispatch()
 	const isDark = useSelector(getThemeSelector)

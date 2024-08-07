@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from "./index.module.scss"
- 
+ import React from 'react';
 import useURL from '../../../hooks/useURL';
 import { useAppDispatch } from '../../../hooks/redux';
 import { setTypedValueActionCreator } from '../../../redux/action-creators/setTypedValueActionCreator';

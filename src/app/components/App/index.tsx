@@ -1,7 +1,7 @@
  "use client"
  import styles from "./index.module.scss"
  import Card from "../Card";
- 
+ import React from "react";
 import { useAppDispatch } from "../../../hooks/redux";
 import { useSelector } from "react-redux";
 import { paramsSelector } from "../../../redux/selectors/getSearchParams";

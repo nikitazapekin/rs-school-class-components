@@ -2,7 +2,7 @@ import App from "./components/App";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import Header from "./components/Header";
 import Providers from "../redux/Provider";
-
+import React from "react";
 interface SearchParams {
   query?: string;
   page?: string;
