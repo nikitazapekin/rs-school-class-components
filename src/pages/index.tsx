@@ -1,6 +1,6 @@
  
 import axios from 'axios';
-
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import { AxiosError, AxiosResponse } from 'axios';
 import { useEffect } from 'react';

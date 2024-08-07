@@ -7,6 +7,7 @@ import { UserElement, UserItem } from './types';
 import Link from "next/link";
 import { paramsSelector } from "../../redux/selectors/getSearchParams";
 import Image from "next/image";
+import React from "react";
 import { getThemeSelector } from "../../redux/selectors/getTheme";
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-
+import React from "react";
 import styles from "./index.module.scss";
 import { useAppDispatch } from '../../hooks/redux';
 import { useSelector } from 'react-redux';

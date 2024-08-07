@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../hooks/redux';
 import { setTypedValueActionCreator } from '../../redux/action-creators/setTypedValueActionCreator';
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from '../../redux/selectors/getTheme';
-
+import React from 'react';
 const Header = () => {
 	const isDark = useSelector(getThemeSelector)
 	const { handleSearch } = useURL();

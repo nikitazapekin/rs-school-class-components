@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import DetailsLayout from '../../components/details';
 import { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { SetClickedUserActionCreator } from '../../redux/action-creators/setClickedUserActionCreator';
 interface Props {
