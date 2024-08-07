@@ -10,8 +10,7 @@ import { setPrevPageActionCreator } from "../../../redux/action-creators/setSear
 import { storedUsersSelector } from "../../../redux/selectors/getStoredElements";
 import { setNextPageActionCreator } from "../../../redux/action-creators/setSearchParamsActionCreator";
 import StoredUsersButton from "../StoredUsersFlyoutElement";
-import ErrorComponent from "../ErrorComponent";
-import { ErrorBoundary } from "../ErrorBoundary";
+
 import Providers from "../../../redux/Provider";
 type UserDataArray = Array<{
 	login: string;
@@ -57,7 +56,7 @@ const storedUsers = useSelector(storedUsersSelector);
   return (
   <>
 <Providers>
-<ErrorBoundary>
+
 <section className={styles.list}>
 			<div className={styles.list__container}>
 				{users.map((item) => (
@@ -77,9 +76,7 @@ const storedUsers = useSelector(storedUsersSelector);
 			</div>
 		</section>
 		{storedUsers.length > 0 && <StoredUsersButton />}
- <ErrorComponent />
- 
-	</ErrorBoundary>
+
 						</Providers>
   </>
   );
