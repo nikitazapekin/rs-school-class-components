@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should render correctly with dark theme when enabled 1`] = `
+<DocumentFragment>
+  <div
+    class="user__link"
+  >
+    <div
+      class="user user-dark"
+    >
+      <img
+        alt="user"
+        class="user__logo"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        loading="lazy"
+        src="https://via.placeholder.com/150"
+        srcset="https://via.placeholder.com/150 1x, https://via.placeholder.com/150 2x"
+        style="color: transparent;"
+        width="300"
+      />
+      <div
+        class="user__content"
+      >
+        <p
+          class="user__login"
+        >
+          testuser
+        </p>
+        <input
+          class="user__checkbox"
+          readonly=""
+          type="checkbox"
+        />
+        <a
+          class="user__details"
+          href="/details?page=1&user=testuser"
+        >
+          Show Details
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card component should render correctly with light theme by default 1`] = `
+<DocumentFragment>
+  <div
+    class="user__link"
+  >
+    <div
+      class="user "
+    >
+      <img
+        alt="user"
+        class="user__logo"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        loading="lazy"
+        src="https://via.placeholder.com/150"
+        srcset="https://via.placeholder.com/150 1x, https://via.placeholder.com/150 2x"
+        style="color: transparent;"
+        width="300"
+      />
+      <div
+        class="user__content"
+      >
+        <p
+          class="user__login"
+        >
+          testuser
+        </p>
+        <input
+          class="user__checkbox"
+          readonly=""
+          type="checkbox"
+        />
+        <a
+          class="user__details"
+          href="/details?page=1&user=testuser"
+        >
+          Show Details
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Card component should render correctly with no user data 1`] = `
+<DocumentFragment>
+  <div
+    class="user__link"
+  >
+    <div
+      class="user "
+    >
+      <img
+        alt="user"
+        class="user__logo"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        src=""
+        style="color: transparent;"
+        width="300"
+      />
+      <div
+        class="user__content"
+      >
+        <p
+          class="user__login"
+        />
+        <input
+          class="user__checkbox"
+          readonly=""
+          type="checkbox"
+        />
+        <a
+          class="user__details"
+          href="/details?page=1&user="
+        >
+          Show Details
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

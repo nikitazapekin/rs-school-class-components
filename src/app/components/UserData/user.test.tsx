@@ -1,32 +1,68 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '@/store/store';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { useSelector as useSelectorMock } from 'react-redux';
 import UserData from './index';
-import ThemeContext, { Theme } from '../ThemeContext';
-import { jest } from '@jest/globals';
+import { paramsSelector } from '../../../redux/selectors/getSearchParams';
+import { User } from './index';
 
-const mockThemeContext: Theme = {
-	isDark: false,
-	toggleTheme: jest.fn(),
-};
+// Mocking the necessary modules and components
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(),
+}));
 
-const renderWithProviders = (ui: React.ReactElement) => {
-	return render(
-		<Provider store={store}>
-			<BrowserRouter>
-				<ThemeContext.Provider value={mockThemeContext}>{ui}</ThemeContext.Provider>
-			</BrowserRouter>
-		</Provider>,
-	);
-};
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href }: { children: React.ReactNode; href: string }) => <a href={href}>{children}</a>,
+}));
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) => (
+    <img src={src} alt={alt} width={width} height={height} />
+  ),
+}));
 
 describe('UserData Component', () => {
-	test('renders spinner when loading', async () => {
-		renderWithProviders(<UserData />);
+  it('renders user data correctly', () => {
+    const user: User = {
+        login: 'testuser',
+        id: 123,
+        node_id: 'node123',
+        avatar_url: 'https://example.com/avatar.jpg',
+        gravatar_id: '',
+        url: 'https://example.com',
+        html_url: 'https://example.com',
+        followers_url: 'https://example.com',
+        following_url: 'https://example.com',
+        gists_url: 'https://example.com',
+        starred_url: 'https://example.com',
+        subscriptions_url: 'https://example.com',
+        organizations_url: 'https://example.com',
+        repos_url: 'https://example.com',
+        events_url: 'https://example.com',
+        received_events_url: 'https://example.com',
+        type: 'User',
+        site_admin: false,
+        score: 1,
+    };
 
-		expect(screen.getByTestId('loader')).toBeInTheDocument();
+    // Cast useSelectorMock to the correct type
+    /*
+    (useSelectorMock as jest.Mock).mockImplementation((selector) => {
+      if (selector === paramsSelector) {
+        return { offset: 1, query: 'test' };
+      }
+    });
+*/
+    const { getByText, getByAltText } = render(<UserData user={user} />);
 
-		await waitFor(() => expect(screen.queryByTestId('loader')).toBeNull());
-	});
+    expect(getByText('testuser')).toBeInTheDocument();
+    expect(getByAltText("testuser's avatar")).toBeInTheDocument();
+    expect(getByText('ID: 123')).toBeInTheDocument();
+    expect(getByText('Type: User')).toBeInTheDocument();
+    expect(getByText('Close').closest('a')).toHaveAttribute(
+      'href',
+      '/?page=1&query=test'
+    );
+  });
 });

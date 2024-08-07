@@ -19,6 +19,3 @@ describe('ErrorComponent', () => {
     expect(component.container).toBeInTheDocument();
   }); 
 });
-
-
- 

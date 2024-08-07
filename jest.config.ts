@@ -1,17 +1,29 @@
-export default {
-	testEnvironment: 'jsdom',
-	transform: {
-		'^.+\\.tsx?$': 'ts-jest',
-	},
-	moduleNameMapper: {
-		'\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-		'^.+\\.svg$': 'jest-transformer-svg',
-		'^@/(.*)$': '<rootDir>/src/$1',
-	},
-	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
 
-	collectCoverage: true,
-	coverageDirectory: '<rootDir>/coverage',
-	coverageReporters: ['html', 'text', 'text-summary', 'lcov'],
-	collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts', '!src/index.tsx', '!src/**/*.test.{ts,tsx}'],
+const createJestConfig = nextJest({ 
+  dir: './',
+});
+
+const config: Config = {
+  clearMocks: true,
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+  },
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  coverageReporters: ['html', 'text', 'text-summary', 'lcov'],
+  collectCoverageFrom: [
+    '**/*.{ts,tsx}',            
+    '!**/*.d.ts',              
+    '!**/node_modules/**',     
+    '!**/*.test.{ts,tsx}',      
+    '!**/index.tsx',            
+    '!**/types.ts',            
+  ],
 };
+
+export default createJestConfig(config);

@@ -1,5 +1,6 @@
+"use client"
 import styles from "./index.module.scss";
-import ThemeContext, { ThemeProvider } from '../ThemeContext';
+//import ThemeContext, { ThemeProvider } from '../ThemeContext';
 import { useContext, useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/redux';
 import { AddElementToStorage } from '../../../redux/action-creators/addElementToStorage';
@@ -8,19 +9,26 @@ import { storedUsersSelector } from '../../../redux/selectors/getStoredElements'
 import { UserElement, UserItem } from './types';
 import Link from "next/link";
 import { paramsSelector } from "../../../redux/selectors/getSearchParams";
-
+import Image from "next/image";
+import { getThemeSelector } from "../../../redux/selectors/getTheme";
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
-	const { isDark } = useContext(ThemeContext);
-	const users = useSelector(storedUsersSelector);
+	const isDark = useSelector(getThemeSelector)
+const users = useSelector(storedUsersSelector);
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
 	};
 const params = useSelector(paramsSelector) 
 	return (
 		<div className={styles.user__link}>
-			<div className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}>
-				<img className={styles.user__logo} src={user.avatar_url} alt="user" />
+			<div  className={`${styles.user} ${isDark ? styles['user-dark'] : ''}`}
+			>
+				<Image 
+				loader={()=>user.avatar_url}
+				className={styles.user__logo} src={user.avatar_url} alt="user"
+				width={300}
+				height={300}
+				/>
 				<div className={styles.user__content}>
 					<p className={styles.user__login}>{user.login}</p>
 					<input
@@ -31,7 +39,7 @@ const params = useSelector(paramsSelector)
 						readOnly
 					/>
 					<Link 
-					href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
+				href={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}
 					className={styles.user__details}>
 						Show Details
 					</Link>

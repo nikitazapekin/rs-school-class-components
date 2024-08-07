@@ -1,15 +1,18 @@
-import App from "../../App";
-import UserData from "./UserData";
-
+ 
+ 
+import App from "./App";
 interface LayoutProps {
     children: React.ReactNode;
 }
 const DetailsLayout = ({ children }: LayoutProps) => {
     return (
         <>
+       
             {children}
-            <UserData />
-            <App />
+          
+       {/*
+       <App />
+       */}
         </>
     );
 }
