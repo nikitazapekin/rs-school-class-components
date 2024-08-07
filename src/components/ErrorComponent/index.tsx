@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from "./index.module.scss";
+import { ErrorBoundary } from '../ErrorBoundary';
 
 const ErrorComponent: React.FC = () => {
 	const [counter, setCounter] = useState<number>(0);
@@ -14,9 +15,12 @@ const ErrorComponent: React.FC = () => {
 
 	return (
 		<div>
+			<ErrorBoundary>
+
 			<button className={styles.throw__error} onClick={handleClick} data-testid="throw__error">
 				Throw Error
 			</button>
+			</ErrorBoundary>
 		</div>
 	);
 };

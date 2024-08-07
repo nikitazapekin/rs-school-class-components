@@ -8,6 +8,7 @@ import { setTypedValueActionCreator } from '../../redux/action-creators/setTyped
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from '../../redux/selectors/getTheme';
 import React from 'react';
+import Link from 'next/link';
 const Header = () => {
 	const isDark = useSelector(getThemeSelector)
 	const { handleSearch } = useURL();
@@ -29,9 +30,10 @@ const Header = () => {
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
-				<button className={styles.redirect__btn}  >
+				<Link href="/cdsvddsv">
 					Redirect to error page
-				</button>
+				</Link>
+
 				<ThemeButton />
 			</div>
 		</header>
@@ -40,4 +42,3 @@ const Header = () => {
 
 export default Header;
 
- 

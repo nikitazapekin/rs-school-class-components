@@ -5,7 +5,7 @@ import { useState } from 'react';
 import styles from "./index.module.scss";
 import { UserItem } from './types';
 import { clearStoredElementsActionCreator } from '../../redux/action-creators/clearStoredElementsActionCreator';
-
+import React from 'react';
 const StoredUsersButton = () => {
 	const dispatch = useAppDispatch();
 	const users = useSelector(storedUsersSelector);

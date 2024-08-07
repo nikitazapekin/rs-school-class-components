@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import styles from "./index.module.scss";
-
+import React from "react";
 const NotFoundComponent = () => {
 	return (
 		<div className={styles.not}>

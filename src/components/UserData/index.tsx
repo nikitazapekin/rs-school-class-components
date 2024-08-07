@@ -6,7 +6,7 @@ import { paramsSelector } from '../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 import Image from "next/image";
 import { getThemeSelector } from "../../redux/selectors/getTheme";
- 
+ import React from "react";
 const UserData = () => {
 	const params = useSelector(paramsSelector)
 	const clickedElement = useSelector(clickedUserSelector)
