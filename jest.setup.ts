@@ -16,7 +16,7 @@ import '@testing-library/jest-dom';
         return true;
       }
 
-      // Show the original error for everything else
+   
       originalConsole.error(...args);
     },
   };
