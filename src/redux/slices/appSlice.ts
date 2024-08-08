@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppStatee, SearchTypes, User, UserDataArray } from '../types';
 
 
@@ -73,9 +73,8 @@ const appSlicee = createSlice({
 			state.params.offset = state.params.offset - 1;
 		},
 		setQueryPage(state, action: PayloadAction<string>) {
-			console.log("PAYLOAD", action.payload)
 			state.params.query = action.payload;
-			console.log("NEW PARAMS", state.params)
+		
 		},
 		setUsers(state, action: PayloadAction<UserDataArray>) {
 			state.users = action.payload;
@@ -88,17 +87,12 @@ const appSlicee = createSlice({
 		state.typedValue = action.payload
 		},
 		setNewSearchValue(state) {
-		//	state.typedValue = action.payload
 		state.params.query=state.typedValue
 		state.params.storedValue=state.typedValue
 		state.params.offset=1
 			},
 			setClickedUser(state, action: PayloadAction<User>) {
-				//	state.typedValue = action.payload
-			//	state.params.query=state.typedValue
-			//	state.params.storedValue=state.typedValue
 			state.clickedUser = action.payload
-			console.log("CLICKE", JSON.stringify(state.clickedUser))
 					},
 	},
 

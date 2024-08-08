@@ -4,10 +4,8 @@ import { render } from '@testing-library/react';
  
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-//import { rootReducer, RootState } from '../../redux/store';  
 import { RootState, rootReducer  } from '../../../redux/store';
 import Background from './index';
-//import { SetIsDarkActionCreator } from '../../redux/action-creators/setIsDark'; 
 import { SetIsDarkActionCreator } from '../../../redux/action-creators/setIsDark';
 const initialState: RootState = {
   appSlice: {

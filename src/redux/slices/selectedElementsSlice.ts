@@ -26,7 +26,6 @@ const selectedElementsSlice = createSlice({
 			if (action.payload != null && action.payload != undefined) {
 				state.selectedElement = action.payload;
 			}
-			console.log(state.selectedElement);
 		},
 	},
 });

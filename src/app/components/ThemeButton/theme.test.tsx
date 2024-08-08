@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from '../../../redux/store';
 import ThemeButton from './index';
-//import { SetIsDarkActionCreator } from '../../../redux/action-creators/setIsDark';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { RootState } from '../../../redux/store';
  import { SetIsDarkActionCreator } from '../../../redux/action-creators/setIsDark';

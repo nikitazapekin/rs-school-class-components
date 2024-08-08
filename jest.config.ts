@@ -20,9 +20,9 @@ const config: Config = {
     '**/*.{ts,tsx}',            
     '!**/*.d.ts',              
     '!**/node_modules/**',     
- //  '!**/*.test.{ts,tsx}',      
-   // '!**/index.tsx',            
-    '!**/types.ts',            
+    '!jest.config.ts',
+    '!**/types.ts',       
+    '!**/.next/types/**'     
   ],
 };
 

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { RootState, rootReducer } from '../../../redux/store';
 import AppWrapper from './index';
-import App from '../App';
+
 
 jest.mock('../App', () => jest.fn(() => <div>Mocked App Component</div>));
 

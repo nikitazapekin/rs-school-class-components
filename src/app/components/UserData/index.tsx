@@ -1,16 +1,11 @@
 "use client";
-import { useEffect, useContext } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';  
-import Spinner from '../Spinner';
-import { useAppDispatch } from '../../../hooks/redux';
-//import ThemeContext from '../ThemeContext';
+
 import { useSelector } from 'react-redux';
  import React from 'react';
 import { paramsSelector } from '../../../redux/selectors/getSearchParams';
 import Link from 'next/link';
 import styles from "./styles.module.scss";
- 
-import { isLoadingUserDataSelector } from '../../../redux/selectors/isLoadingUserData';
+
 import Image from 'next/image';
 
 export interface User {

@@ -9,6 +9,7 @@ import { setTypedValueActionCreator } from '../../../redux/action-creators/setTy
 import ThemeButton from '../ThemeButton';
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from '../../../redux/selectors/getTheme';
+import Link from 'next/link';
 const Header = () => {
 const { handleSearch } = useURL();
 const dispatch = useAppDispatch();
@@ -31,10 +32,9 @@ const dispatch = useAppDispatch();
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
-				<button className={styles.redirect__btn}  >
+				<Link href="/cdsvddsv">
 					Redirect to error page
-				</button>
-		
+				</Link>
 			<ThemeButton /> 
 			</div>
 		</header>
