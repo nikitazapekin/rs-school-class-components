@@ -9,10 +9,7 @@ import { useAppDispatch } from '../../hooks/redux';
 import { setStoredInLocalStorageActionCreator } from '../../store/action-creators/setStoredInLocalStorageQuery';
 import { isLoadingSelector } from '../../store/selectors/isLoadingSelector';
 import Spinner from '../Spinner';
-
-  import { AppProps } from './types';
-const App = (//{users}: AppProps
-
+const App = (
 ) => {
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
@@ -27,20 +24,16 @@ const App = (//{users}: AppProps
 	}, []);
 	return (
 		<>
-		
-			 
-					<div className="container">
-						<Header />
-						<List />
-						{storedUsers.length > 0 && <StoredUsersButton />}
-					
-					</div>
-					<Background />
-					{isLoading && <Spinner />}
-			 
+			<div className="container">
+				<Header />
+				<List />
+				{storedUsers.length > 0 && <StoredUsersButton />}
+
+			</div>
+			<Background />
+			{isLoading && <Spinner />}
 		</>
 	);
 };
 
 export default App;
- 

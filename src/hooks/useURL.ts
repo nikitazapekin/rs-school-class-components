@@ -16,11 +16,12 @@ const useURL = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const dispatch = useAppDispatch();
-	const [searchParams, setSearchParams] = useSearchParams();
+	const searchParams = useSelector(paramsSelector)
+	//const [searchParams, setSearchParams] = useSearchParams();
 	const getCurrentParams = () => {
-		const page = parseInt(searchParams.get('page') || '1', 10);
-		const query = searchParams.get('query') || '';
-		return [page, query];
+	//	const page = parseInt(searchParams.get('page') || '1', 10);
+	//	const query = searchParams.get('query') || '';
+	//	return [page, query];
 	};
 /*
 	const setPage = (page: number, query: string) => {
@@ -31,6 +32,8 @@ const useURL = () => {
 		console.log(page)
 		};
 */
+
+/*
 const setPage = (page: number, query: string) => {
     console.log("Setting page to:", page, "with query:", query);
     const params = new URLSearchParams(location.search);
@@ -38,14 +41,32 @@ const setPage = (page: number, query: string) => {
     navigate(`?${params.toString()}`);
     console.log("Navigated to:", `?${params.toString()}`);
 };
+*/
+const setPage = (page: number, query: string) => {
+    console.log("Setting page to:", page, "with query:", query);
+    
+    const params = new URLSearchParams(location.search);
 
-	useEffect(() => {
-		const [page, query] = getCurrentParams();
+    params.set("page", String(page));
+
+    if (query) {
+        params.set("query", query);
+    } else {
+        params.delete("query"); 
+    }
+
+    navigate(`?${params.toString()}`);
+    console.log("Navigated to:", `?${params.toString()}`);
+};
+/*
+useEffect(() => {
+	const [page, query] = getCurrentParams();
 
 		setPage(Number(page), String(query));
 		localStorage.setItem('searchParam', String(query));
 		dispatch(setSearchParamsActionCreator(Number(page), String(query)));
 	}, []);
+*/
 	//const navigate = useNavigate();
 	const params = useSelector(paramsSelector);
 	const handleRedirect = () => {
@@ -54,14 +75,27 @@ const setPage = (page: number, query: string) => {
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setQueryActionCreator(event.target.value));
 	};
+	const handleSearch = () => {
+		window.scrollTo(0, 0);
+		dispatch(setSearchParamsActionCreator(1, searchParams.query));
+		const params = new URLSearchParams(location.search);
+		params.set("page", String(1));
+		params.set("query", String(searchParams.query))
+		/*if (query) {
+			params.set("query", query);
+		} else {
+			params.delete("query"); 
+		} */
+	
+		navigate(`?${params.toString()}`);
+		console.log("Navigated to:", `?${params.toString()}`);
+	}
 //	const [trigger, { data, isLoading }] = useLazySearchUsersQuery();
 /*
 	const handleSearch = () => {
-		window.scrollTo(0, 0);
 		trigger({ query: params.query, page: params.offset, per_page: params.limit });
 		localStorage.setItem('searchParam', params.query);
 		setPage(params.offset, params.query);
-		dispatch(setSearchParamsActionCreator(1, params.query));
 	};
 	useEffect(() => {
 		if (isLoading) {
@@ -87,7 +121,7 @@ const setPage = (page: number, query: string) => {
 	}, [params.offset]);
 */
 	return { getCurrentParams, setPage, handleInput,
-		// handleSearch,
+		 handleSearch,
 		 handleRedirect };
 };
 export default useURL;

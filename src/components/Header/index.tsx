@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { getThemeSelector } from '@/store/selectors/getTheme';
 const Header = () => {
 const isDark = useSelector(getThemeSelector)
-	const { handleInput, handleRedirect, //handleSearch 
+	const { handleInput, handleRedirect, handleSearch 
 
 	} = useURL();
 	return (
@@ -15,7 +15,7 @@ const isDark = useSelector(getThemeSelector)
 			<div className="header__content">
 				<nav className="header__search">
 					<input type="text" className="search__bar" placeholder="Search..." onChange={handleInput} />
-					<button className="search__btn" // onClick={handleSearch}
+					<button className="search__btn" onClick={handleSearch}
 					 aria-label="search">
 						<FontAwesomeIcon icon={faSearch} />
 					</button>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import  styles from './index.scss';
+import  './index.scss';
 import { useAppDispatch } from '@/hooks/redux.ts';
 import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useSelector } from 'react-redux';
