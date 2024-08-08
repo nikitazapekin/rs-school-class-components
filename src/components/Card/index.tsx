@@ -1,18 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import './index.scss';
-
-import ThemeContext from '../ThemeContext';
-import { useContext } from 'react';
+import  styles from './index.scss';
 import { useAppDispatch } from '@/hooks/redux.ts';
 import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from '@/store/selectors/getStoredElements';
-
 import { UserItem } from './types';
+import { getThemeSelector } from '@/store/selectors/getTheme';
+ 
 const Card = ({ user }: UserItem) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const { isDark } = useContext(ThemeContext);
+const isDark = useSelector(getThemeSelector)
 	const users = useSelector(storedUsersSelector);
 
 	const handleCardClick = () => {
@@ -51,3 +49,4 @@ const Card = ({ user }: UserItem) => {
 };
 
 export default Card;
+ 

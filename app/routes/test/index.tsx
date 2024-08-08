@@ -1,4 +1,23 @@
- 
+import { useNavigate, useLocation } from "@remix-run/react";
+import React from "react";
+function MyComponent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    const params = new URLSearchParams(location.search);
+    params.set("page", "1");
+    navigate(`?${params.toString()}`);
+  };
+
+  return (
+    <button onClick={handleClick}>Перейти на страницу 1</button>
+  );
+}
+
+export default MyComponent;
+
+/*
 import axios from "axios";
 import { useLoaderData } from "@remix-run/react";
 import { redirect } from "@remix-run/node";
@@ -28,7 +47,6 @@ export default function Index() {
     </div>
   );
   }
-  /*
 */
 
 /*

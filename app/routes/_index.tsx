@@ -2,13 +2,14 @@
 
 
 import React, { useEffect } from 'react';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useLoaderData } from "@remix-run/react";
 import { redirect } from "@remix-run/node";
-import { ThemeProvider } from '../../src/components/ThemeContext';
-import { useAppDispatch } from '../../src/hooks/redux'; // Adjust the path as needed
-//import { setUsersActionCreator } from '../../src/redux/action-creators/setUsersActionCreator'; // Adjust the path as needed
+
+import { useAppDispatch } from '../../src/hooks/redux'; 
 import { setUsersActionCreator } from "../../src/store/action-creators/setUsersActionCreator"
+import App from "../../src/components/App/index"
+import Background from '../../src/components/Background';
 type UserDataArray = Array<{
   login: string;
   id: number;
@@ -72,16 +73,13 @@ export default function Index() {
   }, [users, dispatch]);
 
   return (
-    <ThemeProvider>
-      <div>
-        {users.map((user) => (
-          <div key={user.id}>
-            <p>{user.login}</p>
-            <img src={user.avatar_url} alt={user.login} width={50} />
-          </div>
-        ))}
-      </div>
-    </ThemeProvider>
+
+   <>
+      <App // users={users} 
+      />
+      <Background />
+      </>
+ 
   );
 }
 

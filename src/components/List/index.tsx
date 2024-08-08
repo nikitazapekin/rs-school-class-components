@@ -22,13 +22,13 @@ const List = () => {
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator());
-		setPage(params.offset, params.query);
+		setPage(params.offset+1, params.query);
 	};
 
 	const handlePrev = () => {
 		window.scrollTo(0, 0);
 		dispatch(setPrevPageActionCreator());
-		setPage(params.offset, params.query);
+		setPage(params.offset-1, params.query);
 	};
 
 	return (
