@@ -7,7 +7,6 @@ import {
 } from "@remix-run/react";
 import React from "react";
 import { Provider } from "react-redux";
-//import { store } from "../src/teststore/store";
 import { store } from "../src/store/store";
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
