@@ -10,9 +10,7 @@ const DetailsLayout = ({ children }: LayoutProps) => {
        
             {children}
           
-       {/*
-       <App />
-       */}
+    
         </>
     );
 }

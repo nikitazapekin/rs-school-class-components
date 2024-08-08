@@ -28,6 +28,7 @@
 		"@types/react-redux": "^7.1.33",
 		"@types/redux-thunk": "^2.1.0",
 		"axios": "^1.7.2",
+		"axios-mock-adapter": "^2.0.0",
 		"file-saver": "^2.0.5",
 		"husky": "^9.0.11",
 		"jest-mock-extended": "^3.0.7",
