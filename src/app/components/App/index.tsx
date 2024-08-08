@@ -1,7 +1,7 @@
  "use client"
  import styles from "./index.module.scss"
  import Card from "../Card";
- import React from "react";
+ import React, { useEffect } from "react";
 import { useAppDispatch } from "../../../hooks/redux";
 import { useSelector } from "react-redux";
 import { paramsSelector } from "../../../redux/selectors/getSearchParams";
@@ -12,6 +12,7 @@ import { setNextPageActionCreator } from "../../../redux/action-creators/setSear
 import StoredUsersButton from "../StoredUsersFlyoutElement";
 
 import Providers from "../../../redux/Provider";
+import { setUsersActionCreator } from "../../../redux/action-creators/setUsersActionCreator";
 type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -53,6 +54,9 @@ const storedUsers = useSelector(storedUsersSelector);
 		dispatch(setPrevPageActionCreator());
 		setPage(params.offset - 1, params.query);
 	};
+	useEffect(()=> {
+dispatch(setUsersActionCreator(users))
+	}, [users])
   return (
   <>
 <Providers>

@@ -1,4 +1,4 @@
- 
+ "use client"
 import styles from "./index.module.scss";
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from "../../../redux/selectors/getTheme";

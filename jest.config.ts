@@ -20,7 +20,7 @@ const config: Config = {
     '**/*.{ts,tsx}',            
     '!**/*.d.ts',              
     '!**/node_modules/**',     
-   // '!**/*.test.{ts,tsx}',      
+ //  '!**/*.test.{ts,tsx}',      
    // '!**/index.tsx',            
     '!**/types.ts',            
   ],

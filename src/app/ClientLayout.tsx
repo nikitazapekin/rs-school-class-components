@@ -1,5 +1,6 @@
  
 import Providers from "../redux/Provider"
+ 
 import MainLayout from "./components/MainLayout"
 import React from "react"
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -8,6 +9,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   <MainLayout>
 
   {children}
+ 
   </MainLayout>
   </Providers>
 

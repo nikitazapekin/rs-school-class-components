@@ -3,6 +3,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import Header from "./components/Header";
 import Providers from "../redux/Provider";
 import React from "react";
+import Background from "./components/Background";
 interface SearchParams {
   query?: string;
   page?: string;
@@ -35,16 +36,16 @@ interface UserData {
   incomplete_results: boolean;
   items: UserDataArray;
 }
-
+ 
 const MyApp = async ({
-  searchParams,
+  searchParams = {}, 
 }: {
   searchParams?: SearchParams;
 }) => {
   console.log('searchParams Values', searchParams);
   
-  const query = searchParams?.query || 'type:user';  
-  const page = searchParams?.page || '1'; 
+  const query = searchParams.query || 'type:user';  
+  const page = searchParams.page || '1'; 
   
   const url = `https://api.github.com/search/users?q=${query}&page=${page}&per_page=10`;
 
@@ -55,6 +56,7 @@ const MyApp = async ({
         <Providers>
           <Header />
           <App users={response.data.items} />
+          <Background />
         </Providers>
       </>
     );
@@ -70,4 +72,3 @@ const MyApp = async ({
 }
 
 export default MyApp;
- 

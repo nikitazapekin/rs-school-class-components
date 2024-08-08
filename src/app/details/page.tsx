@@ -3,6 +3,8 @@ import Header from "../components/Header";
  import axios, {AxiosResponse} from "axios";
 import UserData from "../components/UserData";
 import React from "react";
+import Providers from "../../redux/Provider";
+import AppWrapper from "../components/AppWrapper";
 interface SearchParams {
   query?: string;
   page?: string;
@@ -40,10 +42,14 @@ const Deatils = async (
   const user = searchParams!.user
   const response: AxiosResponse<User> = await axios.get(`https://api.github.com/users/${user}`);
   return (<>
+  <Providers>
+
     <DetailsLayout>
       <Header />
       <UserData user={response.data} />
+	  <AppWrapper />
     </DetailsLayout>
+  </Providers>
   </>);
 }
 
