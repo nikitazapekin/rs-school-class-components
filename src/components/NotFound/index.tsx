@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react';
 import './index.scss';
- import React from 'react';
+ 
 const NotFound = () => {
 	 
 	 

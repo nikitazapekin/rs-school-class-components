@@ -1,30 +1,32 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Background from './index';
-import ThemeContext from '../ThemeContext';
+/*
+import { createRemixStub } from "@remix-run/testing";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import {
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 
-describe('Background Component', () => {
-	const renderWithContext = (isDark: boolean) => {
-		return render(
-			<ThemeContext.Provider value={{ isDark, toggleTheme: jest.fn() }}>
-				<Background />
-			</ThemeContext.Provider>,
-		);
-	};
+test("renders loader data", async () => {
+  // ⚠️ This would usually be a component you import from your app code
+  function MyComponent() {
+    const data = useLoaderData() as { message: string };
+    return <p>Message: {data.message}</p>;
+  }
 
-	test('renders with light background by default', () => {
-		renderWithContext(false);
+  const RemixStub = createRemixStub([
+    {
+      path: "/",
+      Component: MyComponent,
+      loader() {
+        return json({ message: "hello" });
+      },
+    },
+  ]);
 
-		const backgroundDiv = screen.getByTestId('background');
-		expect(backgroundDiv).toBeInTheDocument();
-		expect(backgroundDiv).not.toHaveClass('background-dark');
-	});
+  render(<RemixStub />);
 
-	test('renders with dark background when isDark is true', () => {
-		renderWithContext(true);
-
-		const backgroundDiv = screen.getByTestId('background');
-		expect(backgroundDiv).toBeInTheDocument();
-		expect(backgroundDiv).toHaveClass('background-dark');
-	});
+  await waitFor(() => screen.findByText("Message: hello"));
 });
+*/

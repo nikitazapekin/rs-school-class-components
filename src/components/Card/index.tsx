@@ -1,13 +1,16 @@
 
 import './index.scss';
-import { useAppDispatch } from '@/hooks/redux.ts';
-import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
+
+import {useAppDispatch} from "../../hooks/redux"
+//import { useAppDispatch } from '@/hooks/redux.ts';
+import { AddElementToStorage } from "../../store/action-creators/addElementToStorage"
+//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '@/store/selectors/getStoredElements';
+import { storedUsersSelector } from '../../store/selectors/getStoredElements';
 import { UserItem } from './types';
-import { getThemeSelector } from '@/store/selectors/getTheme';
+import { getThemeSelector } from '../../store/selectors/getTheme';
 import { Link } from '@remix-run/react';
-import { paramsSelector } from '@/store/selectors/getSearchParams';
+import { paramsSelector } from '../../store/selectors/getSearchParams';
 const Card = ({ user }: UserItem) => {
 	const dispatch = useAppDispatch();
 	const isDark = useSelector(getThemeSelector)

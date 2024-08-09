@@ -14,7 +14,6 @@ const App = (
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
 	const isLoading = useSelector(isLoadingSelector);
-
 	useEffect(() => {
 		dispatch(
 			setStoredInLocalStorageActionCreator(
