@@ -1,16 +1,17 @@
+// jest.config.ts
 import type { Config } from '@jest/types';
-import path from 'path';
 
 const config: Config.InitialOptions = {
+  testEnvironment: 'jest-environment-jsdom',
+
   preset: 'ts-jest',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest', // Используем babel-jest для обработки файлов
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
-  testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js',
-    '^@/(.*)$': '<rootDir>/src/$1', // Алиасы путей для TypeScript
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy', 
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js' 
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   collectCoverage: true,
@@ -18,19 +19,15 @@ const config: Config.InitialOptions = {
   coverageProvider: 'v8',
   coverageReporters: ['html', 'text', 'text-summary', 'lcov'],
   collectCoverageFrom: [
-    '**/*.{ts,tsx}',
-    '!**/*.d.ts',
-    '!**/node_modules/**',
-    '!**/*.test.{ts,tsx}',
-    '!**/index.tsx',
-    '!**/types.ts',
-    '!babel.config.ts',
-    '!jest.config.ts',
-    '!vite.config.ts',
-    '!**/entry.client.tsx',
-    '!**/entry.server.tsx',
+    '**/*.{ts,tsx}',            
+    '!**/*.d.ts',              
+    '!**/node_modules/**',     
+    '!**/*.test.{ts,tsx}',      
+    '!**/index.tsx',            
+    '!**/types.ts',            
   ],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+ // setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
+ setupFilesAfterEnv: ['<rootDir>/setupTests.ts']
 };
 
 export default config;

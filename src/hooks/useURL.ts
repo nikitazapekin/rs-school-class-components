@@ -8,8 +8,10 @@ import { setQueryActionCreator } from '../store/action-creators/setSearchParamsA
 import { setSearchParamsActionCreator } from '../store/action-creators/setSearchParamsActionCreator';
   
 //import { useNavigate, useLocation } from "./node_modules/@remix-run/react";
-
+//import { useNavigate, useLocation } from "../../node_modules/remix-run";
 import { useNavigate, useLocation } from "@remix-run/react";
+ 
+
 const useURL = () => {
 	const navigate = useNavigate();
 	const location = useLocation();

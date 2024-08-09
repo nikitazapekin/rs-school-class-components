@@ -1,6 +1,6 @@
 import reducer, { setAddToStoredElement } from '../slices/selectedElementsSlice';
 import { SelectedElementsState } from '../types';
-const previousState: SelectedElementsState = {
+let previousState: SelectedElementsState = {
 	storedElements: [],
 
 	selectedElement: null,
