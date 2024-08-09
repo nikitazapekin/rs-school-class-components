@@ -1,31 +1,21 @@
-import { useNavigate } from 'react-router-dom';
-import  './index.scss';
+
+import './index.scss';
 import { useAppDispatch } from '@/hooks/redux.ts';
 import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from '@/store/selectors/getStoredElements';
 import { UserItem } from './types';
 import { getThemeSelector } from '@/store/selectors/getTheme';
- 
+import { Link } from '@remix-run/react';
+import { paramsSelector } from '@/store/selectors/getSearchParams';
 const Card = ({ user }: UserItem) => {
-	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-const isDark = useSelector(getThemeSelector)
+	const isDark = useSelector(getThemeSelector)
 	const users = useSelector(storedUsersSelector);
-
-	const handleCardClick = () => {
-		const currentParams = new URLSearchParams(location.search);
-		const currentUrl = `${window.location.pathname}?${currentParams.toString()}`;
-		if (!currentUrl.includes('userdata')) {
-			localStorage.setItem('lastUrl', currentUrl);
-		}
-		navigate(`/main/userdata?username=${user.login}`);
-	};
-
 	const handleCheckboxChange = () => {
 		dispatch(AddElementToStorage(user));
 	};
-
+	const params = useSelector(paramsSelector)
 	return (
 		<div className="user__link">
 			<div className={`user ${isDark ? `user-dark` : ``}`}>
@@ -39,14 +29,13 @@ const isDark = useSelector(getThemeSelector)
 						checked={users && users.some((storedUser) => user.id === storedUser.id)}
 						readOnly
 					/>
-					<button className="user__details" onClick={handleCardClick}>
-						Show details
-					</button>
-				</div>
+					<Link to={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}>
+					Show details
+					</Link>
+			</div>
 			</div>
 		</div>
 	);
 };
 
 export default Card;
- 

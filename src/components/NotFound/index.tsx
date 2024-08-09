@@ -1,17 +1,16 @@
+import { Link } from '@remix-run/react';
 import './index.scss';
-import { useNavigate } from 'react-router-dom';
+ import React from 'react';
 const NotFound = () => {
-	const navigate = useNavigate();
-	const handleClick = () => {
-		navigate('/main');
-	};
+	 
+	 
 	return (
 		<div className="not">
 			<p className="not__title">404</p>
 			<p className="not__text">Page was not found</p>
-			<button className="not__btn" onClick={handleClick}>
-				Back to homepage
-			</button>
+	<Link to="/">
+	Back to homepage
+	</Link>
 		</div>
 	);
 };

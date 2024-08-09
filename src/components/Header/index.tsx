@@ -7,8 +7,7 @@ import { useSelector } from 'react-redux';
 import { getThemeSelector } from '@/store/selectors/getTheme';
 const Header = () => {
 const isDark = useSelector(getThemeSelector)
-	const { handleInput, handleRedirect, handleSearch 
-
+	const { handleInput, handleSearch 
 	} = useURL();
 	return (
 		<header className={`header ${isDark ? `header-dark` : ''}`}>
@@ -20,7 +19,7 @@ const isDark = useSelector(getThemeSelector)
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
-				<button className="redirect__btn" onClick={handleRedirect}>
+				<button className="redirect__btn" >
 					Redirect to error page
 				</button>
 				<ThemeButton />

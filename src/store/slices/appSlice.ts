@@ -1,23 +1,52 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppStatee, UserDataArray, SearchTypes } from '../types';
-const initialState: AppStatee = {
+import { createSlice, PayloadAction  } from '@reduxjs/toolkit';
+import { AppStatee, SearchTypes,  UserDataArray } from '../types';
+ import {User} from "../types"
+export interface UserData {
+	total_count: number;
+	incomplete_results: boolean;
+	items: UserDataArray;
+}
+export const initialState: AppStatee = {
 	isLoading: false,
 	error: null,
 	isLoadingUserData: false,
 	users: [],
+	typedValue: "",
 	params: {
 		limit: 10,
 		offset: 1,
 		query: '',
 		storedValue: '',
 	},
+	status: 'idle',
+	clickedUser: {
+		login: "",
+	id: 0,
+	node_id:"" ,
+	avatar_url: "",
+	gravatar_id:"" ,
+	url:"" ,
+	html_url:"" ,
+	followers_url: "",
+	following_url:"" ,
+	gists_url: "",
+	starred_url: "",
+	subscriptions_url:  "",
+	organizations_url: "",
+	repos_url:"" ,
+	events_url:"" ,
+	received_events_url:"" ,
+	type: "",
+	site_admin: false,
+	score: 0
+	}
+   
 };
 const appSlicee = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {
 		setLoading(state, action: PayloadAction<boolean>) {
-			console.log('LOOO', action.payload);
 			state.isLoading = action.payload;
 		},
 		setLoadingUserData(state, action: PayloadAction<boolean>) {
@@ -50,11 +79,22 @@ const appSlicee = createSlice({
 			state.params.storedValue = action.payload;
 			state.params.query = action.payload;
 		},
-		setTets(state) {
-			console.log("TESST")
-		//	state.isLoading = !state.isLoading
-		}
+		setTypedValue(state, action: PayloadAction<string>) {
+		state.typedValue = action.payload
+		},
+		setNewSearchValue(state) {
+		state.params.query=state.typedValue
+		state.params.storedValue=state.typedValue
+			},
+			setClickedUser(state, action: PayloadAction<User>) {
+			 
+			state.clickedUser = action.payload
+			 
+					},
 	},
+
+ 
+
 });
 export const {
 	setLoading,
@@ -67,6 +107,9 @@ export const {
 	setUsers,
 	setFirstPage,
 	setStoredInLocalStorageQuery,
-	setTets
+	setTypedValue,
+	setClickedUser,
+	setNewSearchValue,
+	 
 } = appSlicee.actions;
 export default appSlicee.reducer;

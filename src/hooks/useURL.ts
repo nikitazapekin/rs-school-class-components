@@ -58,20 +58,29 @@ const setPage = (page: number, query: string) => {
     navigate(`?${params.toString()}`);
     console.log("Navigated to:", `?${params.toString()}`);
 };
-/*
-useEffect(() => {
-	const [page, query] = getCurrentParams();
+ 
+interface ParamsTypes {
+    query: string;
+    page: number;
+}
 
-		setPage(Number(page), String(query));
-		localStorage.setItem('searchParam', String(query));
-		dispatch(setSearchParamsActionCreator(Number(page), String(query)));
+const getPageAndQuery = (): ParamsTypes => {
+    const params = new URLSearchParams(location.search);
+ 
+    const page = parseInt(params.get("page") || '1', 10);
+    const query = params.get("query") || '';
+
+    return { page, query };
+};
+
+useEffect(() => {
+const params  = getPageAndQuery()
+		setPage(Number(params.page), String(params.query));
+		localStorage.setItem('searchParam', String(params.query));
+		dispatch(setSearchParamsActionCreator(Number(params.page), String(params.query)));
 	}, []);
-*/
-	//const navigate = useNavigate();
-	const params = useSelector(paramsSelector);
-	const handleRedirect = () => {
-	//	navigate('/not-existing-page');
-	};
+	 
+	
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setQueryActionCreator(event.target.value));
 	};
@@ -81,11 +90,7 @@ useEffect(() => {
 		const params = new URLSearchParams(location.search);
 		params.set("page", String(1));
 		params.set("query", String(searchParams.query))
-		/*if (query) {
-			params.set("query", query);
-		} else {
-			params.delete("query"); 
-		} */
+	
 	
 		navigate(`?${params.toString()}`);
 		console.log("Navigated to:", `?${params.toString()}`);
@@ -122,6 +127,6 @@ useEffect(() => {
 */
 	return { getCurrentParams, setPage, handleInput,
 		 handleSearch,
-		 handleRedirect };
+	 };
 };
 export default useURL;
