@@ -8,8 +8,6 @@ import { RootState } from '../../store/store';
 import { UserItem } from './types';
  
 jest.mock('../Spinner', () => () => <div>Spinner</div>);
-
-// Мок компонента Card
 jest.mock('../Card', () => ( user : UserItem) => <div>{user.login}</div>);
 
 const initialState: RootState = {
