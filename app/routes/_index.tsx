@@ -10,7 +10,7 @@ import { useAppDispatch } from '../../src/hooks/redux';
 import { setUsersActionCreator } from "../../src/store/action-creators/setUsersActionCreator"
 import App from "../../src/components/App/index"
 import Background from '../../src/components/Background';
-import {CatchBoundary} from "../../src/components/catchBoundary/index"
+ 
 type UserDataArray = Array<{
   login: string;
   id: number;
@@ -83,5 +83,4 @@ export default function Index() {
  
   );
 }
-
-export { CatchBoundary };
+ 

@@ -5,6 +5,7 @@ import ThemeButton from '../ThemeButton';
 import useURL from '@/hooks/useURL';
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from '@/store/selectors/getTheme';
+import { Link } from '@remix-run/react';
 const Header = () => {
 const isDark = useSelector(getThemeSelector)
 	const { handleInput, handleSearch 
@@ -19,9 +20,10 @@ const isDark = useSelector(getThemeSelector)
 						<FontAwesomeIcon icon={faSearch} />
 					</button>
 				</nav>
-				<button className="redirect__btn" >
-					Redirect to error page
-				</button>
+			 
+				<Link to="/dcfewfe">
+				Redirect to not found page
+				</Link>
 				<ThemeButton />
 			</div>
 		</header>
