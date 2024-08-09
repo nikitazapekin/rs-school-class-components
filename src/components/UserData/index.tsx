@@ -1,6 +1,6 @@
  
  
-import './styles.scss';
+//import './styles.scss';
 import Spinner from '../Spinner';
  
 

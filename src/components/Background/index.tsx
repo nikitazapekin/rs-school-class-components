@@ -1,5 +1,5 @@
- 
-import './index.scss';
+ import styles from "./index.css"
+//import './index.scss';
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from '../../store/selectors/getTheme';
 const Background = () => {
@@ -16,3 +16,7 @@ export default Background;
 
 
 
+export function links() {
+	return [{ rel: 'stylesheet', href: styles }];
+  }
+  

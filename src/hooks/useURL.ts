@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
  
-import { paramsSelector } from '@/store/selectors/getSearchParams';
+import { paramsSelector } from '../store/selectors/getSearchParams';
 
 import { useAppDispatch } from './redux';
 import { useSelector } from 'react-redux';
-import { setQueryActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
-import { setSearchParamsActionCreator } from '@/store/action-creators/setSearchParamsActionCreator';
- 
-
+import { setQueryActionCreator } from '../store/action-creators/setSearchParamsActionCreator';
+import { setSearchParamsActionCreator } from '../store/action-creators/setSearchParamsActionCreator';
+  
+//import { useNavigate, useLocation } from "./node_modules/@remix-run/react";
 
 import { useNavigate, useLocation } from "@remix-run/react";
 const useURL = () => {

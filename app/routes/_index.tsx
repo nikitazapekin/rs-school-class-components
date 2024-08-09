@@ -1,6 +1,4 @@
-
-
-
+ 
 import React, { useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { useLoaderData } from "@remix-run/react";
@@ -10,6 +8,8 @@ import { useAppDispatch } from '../../src/hooks/redux';
 import { setUsersActionCreator } from "../../src/store/action-creators/setUsersActionCreator"
 import App from "../../src/components/App/index"
 import Background from '../../src/components/Background';
+ 
+
  
 type UserDataArray = Array<{
   login: string;
@@ -59,7 +59,8 @@ console.log(users)
     } else {
       console.error('Unknown error:', error);
     }
-    return redirect("/");
+    return { users: [], query: "", page: 1, limit: 10 };
+ 
   }
 }
 
@@ -83,4 +84,4 @@ export default function Index() {
  
   );
 }
- 
+  

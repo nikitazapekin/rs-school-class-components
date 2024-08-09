@@ -1,6 +1,6 @@
  
 
-import './index.scss';
+//import './index.scss';
 import { useSelector } from 'react-redux';
 import { getThemeSelector } from "../../store/selectors/getTheme"
 

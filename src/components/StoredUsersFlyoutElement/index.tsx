@@ -1,4 +1,4 @@
-import './index.scss';
+//import './index.scss';
 import { useAppDispatch } from '@/hooks/redux';
 import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
