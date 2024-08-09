@@ -1,7 +1,7 @@
  
 import './index.scss';
 import { useSelector } from 'react-redux';
-import { getThemeSelector } from '@/store/selectors/getTheme';
+import { getThemeSelector } from '../../store/selectors/getTheme';
 const Background = () => {
 	 const isDark = useSelector(getThemeSelector)
 	return (
