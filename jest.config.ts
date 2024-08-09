@@ -1,3 +1,27 @@
+// jest.config.ts
+import type { Config } from '@jest/types';
+
+const config: Config.InitialOptions = {
+  testEnvironment: 'jest-environment-jsdom',
+
+  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
+  },
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy', // Мокаем CSS/SCSS файлы
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js' // Мокаем изображения, если используются
+  },
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+ // setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
+ setupFilesAfterEnv: ['<rootDir>/setupTests.ts']
+};
+
+export default config;
+
+
+/*
 module.exports = {
 	preset: 'ts-jest',
 	testEnvironment: 'jsdom', // или node, в зависимости от вашей среды
@@ -13,6 +37,7 @@ module.exports = {
 	  '^@/(.*)$': '<rootDir>/src/$1',
 	},
   };
+  */
   
 /*
 import type { Config } from 'jest';

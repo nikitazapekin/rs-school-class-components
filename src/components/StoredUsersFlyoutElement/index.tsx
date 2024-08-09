@@ -1,5 +1,5 @@
 import './index.scss';
-import { useAppDispatch } from '@/hooks/redux.ts';
+import { useAppDispatch } from '@/hooks/redux';
 import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from '@/store/selectors/getStoredElements';

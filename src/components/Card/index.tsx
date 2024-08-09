@@ -1,10 +1,9 @@
 
 import './index.scss';
 
-import {useAppDispatch} from "../../hooks/redux"
-//import { useAppDispatch } from '@/hooks/redux.ts';
+import {useAppDispatch} from "../../hooks/redux" 
 import { AddElementToStorage } from "../../store/action-creators/addElementToStorage"
-//import { AddElementToStorage } from '@/store/action-creators/addElementToStorage.ts';
+
 import { useSelector } from 'react-redux';
 import { storedUsersSelector } from '../../store/selectors/getStoredElements';
 import { UserItem } from './types';
@@ -35,6 +34,8 @@ const Card = ({ user }: UserItem) => {
 					<Link to={`/details?page=${params.offset}${params.query ? `&query=${params.query}` : ``}&user=${user.login}`}>
 					Show details
 					</Link>
+					{/*
+					*/}
 			</div>
 			</div>
 		</div>

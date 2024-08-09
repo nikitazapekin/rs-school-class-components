@@ -36,3 +36,69 @@ const App = (
 };
 
 export default App;
+
+
+/*
+{
+
+
+
+
+	  
+	  
+	"compilerOptions": {
+		
+		
+
+		"target": "esnext",
+
+		"forceConsistentCasingInFileNames": true,
+
+		
+		"jsx": "react-jsx",
+
+		"module": "esnext",
+		 
+		 
+	 
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"baseUrl": "./src",
+	 
+		
+	//	"target": "ES2020",
+	 
+		"useDefineForClassFields": true,
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+	//	"module": "ESNext",
+		"skipLibCheck": true,
+ 
+		//"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true, 
+		 
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+
+		"paths": {
+			"@/*": ["./*"]
+		}
+		
+	},
+	"include": ["src", "./jest.setup.ts"],
+	"exclude": ["node_modules", "dist"],
+	"references": [{ "path": "./tsconfig.node.json" }]
+}
+
+*/
+
+
+
+
+
+

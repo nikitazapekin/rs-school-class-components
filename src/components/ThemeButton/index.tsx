@@ -2,9 +2,10 @@
 
 import './index.scss';
 import { useSelector } from 'react-redux';
-import { getThemeSelector } from '@/store/selectors/getTheme';
-import { useAppDispatch } from '@/hooks/redux';
-import { setTheme } from '@/store/slices/themeSlice';
+import { getThemeSelector } from "../../store/selectors/getTheme"
+//import { getThemeSelector } from '@/store/selectors/getTheme';
+import { useAppDispatch } from '../../hooks/redux';
+import { setTheme } from '../../store/slices/themeSlice';
 const ThemeButton = () => {
 	const isDark  = useSelector(getThemeSelector)
 	const dispatch = useAppDispatch()

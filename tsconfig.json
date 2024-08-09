@@ -1,56 +1,41 @@
+
+
+
+
+
+
 {
-
-
-
-
-	  
-	  
+	"include": [
+	  "**/*.ts",
+	  "**/*.tsx",
+	  "**/.server/**/*.ts",
+	  "**/.server/**/*.tsx",
+	  "**/.client/**/*.ts",
+	  "**/.client/**/*.tsx"
+  , "app/components/NoteList.jsx", "app/root.jsx"  ],
 	"compilerOptions": {
-		
-		
-
-		"target": "esnext",
-
-		"forceConsistentCasingInFileNames": true,
-
-		
-		"jsx": "react-jsx",
-
-		"module": "esnext",
-		 
-		 
+	  "lib": ["DOM", "DOM.Iterable", "ES2022"],
+	  "types": ["@remix-run/node", "vite/client", "@testing-library/jest-dom", "jest",  "node"],
 	 
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"moduleResolution": "node",
-		"baseUrl": "./src",
-	 
-		
-	//	"target": "ES2020",
-	 
-		"useDefineForClassFields": true,
-		"lib": ["ES2020", "DOM", "DOM.Iterable"],
-	//	"module": "ESNext",
-		"skipLibCheck": true,
-
-		/* Bundler mode */
-		//"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true, 
-		/* Linting */
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-
+	  "isolatedModules": true,
+	  "esModuleInterop": true,
+	  "jsx": "react-jsx",
+	  "module": "commonjs",
+	   "moduleResolution": "node",
+	  "resolveJsonModule": true,
+	  "target": "ES2022",
+	  "strict": true,
+	  "allowJs": true,
+	  "skipLibCheck": true,
+	  "forceConsistentCasingInFileNames": true,
+	  "baseUrl": "./src",
+	  
 		"paths": {
 			"@/*": ["./*"]
-		}
-		
-	},
-	"include": ["src", "./jest.setup.ts"],
-	"exclude": ["node_modules", "dist"],
-	"references": [{ "path": "./tsconfig.node.json" }]
-}
+		},
+  
+	  // Vite takes care of building everything, not tsc.
+	  "noEmit": true
+	}
+  }
+  
