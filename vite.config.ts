@@ -1,24 +1,19 @@
+import { vitePlugin as remix } from '@remix-run/dev';
+import { installGlobals } from '@remix-run/node';
 import { defineConfig } from 'vite';
-
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-import { vitePlugin as remix } from "@remix-run/dev";
-// https://vitejs.dev/config/
+installGlobals();
+
 export default defineConfig({
-	plugins:  [ //react(),
-     tsconfigPaths(),
-		remix({
-			future: {
-			  v3_fetcherPersist: true,
-			  v3_relativeSplatPath: true,
-			  v3_throwAbortReason: true,
-			},
-		  })
-
-
-	],
+  plugins: [
+    remix({
+     
+      ignoredRouteFiles: ['**/__*.*', '**/*.test.{js,jsx,ts,tsx}'],
+    }),
+    tsconfigPaths(),
+  ],
 });
-
 
 /*
 import { defineConfig } from "vite";

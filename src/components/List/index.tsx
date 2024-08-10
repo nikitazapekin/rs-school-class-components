@@ -58,7 +58,7 @@ const styles: Record<string, CSSProperties> = {
     marginTop: '90px',
   },
   container: {
-    // Additional styles if needed
+  
   },
   btns: {
     display: 'flex',
@@ -75,7 +75,7 @@ const styles: Record<string, CSSProperties> = {
     border: 'none',
   },
   next: {
-    // Styles for the "Next" button if different from the "Prev" button
+ 
   },
   btnHover: {
     backgroundColor: 'rgb(90, 90, 190)',

@@ -8,7 +8,8 @@
 		"dev": "remix dev",
 		"start": "remix-serve",
 		"typecheck": "tsc",
-		"test": "jest",
+		"test": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"coverage": "npm test --coverage --watchAll --collectCoverageFrom='src/components/**/*.{ts,tsx}'",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
@@ -82,6 +83,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.14.0",
 		"@typescript-eslint/parser": "^6.14.0",
 		"@vitejs/plugin-react": "^4.2.1",
+		"@vitest/coverage-v8": "^2.0.5",
 		"autoprefixer": "^10.4.19",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^29.7.0",
@@ -107,7 +109,8 @@
 		"ts-node": "^10.9.2",
 		"typescript": "^5.2.2",
 		"vite": "^5.0.8",
-		"vite-tsconfig-paths": "^4.3.1"
+		"vite-tsconfig-paths": "^4.3.1",
+		"vitest": "^2.0.5"
 	},
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write",
