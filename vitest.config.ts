@@ -5,17 +5,17 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./test/setup-test-env.ts'],
     coverage: {
-      provider: 'v8',
-      reporter: ['html', 'text', 'text-summary', 'lcov'],
-      include: ['**/*.{ts,tsx}'],
-      exclude: [
-        '**/*.d.ts',
-        '**/node_modules/**',
-        '**/types.ts',
-        '**/.next/types/**',
-        'vitest.config.ts'
-      ],
-    },
+        provider: 'v8',
+        reporter: ['text', 'text-summary', 'html', 'lcov'],
+        include: ['**/*.{ts,tsx}'],
+        exclude: [
+          '**/*.d.ts',
+          '**/node_modules/**',
+          '**/types.ts',
+          '**/.next/types/**',
+          'vitest.config.ts'
+        ],
+      },
   },
 });
 
