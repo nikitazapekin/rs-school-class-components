@@ -34,7 +34,7 @@ const List: React.FC = () => {
 
   return (
     <section  data-testid="list" style={styles.list}>
-      <div style={styles.container}>
+      <div style={styles.container} data-testid="card">
         {isLoading && <Spinner />}
         {users.map((item) => (
           <Card user={item} key={item.id} />
@@ -94,63 +94,4 @@ const styles: Record<string, CSSProperties> = {
 };
 
 export default List;
-
-
-/*
-//import './index.scss';
-import Spinner from '../Spinner';
-import Card from '../Card';
-import { useAppDispatch } from '../..//hooks/redux';
-import { useSelector } from 'react-redux';
-import {
-	setNextPageActionCreator,
-	setPrevPageActionCreator,
-} from '../../store/action-creators/setSearchParamsActionCreator';
-import { paramsSelector } from '../../store/selectors/getSearchParams';
-import { getUsersSelector } from '../../store/selectors/getUsersSelector';
-import { isLoadingSelector } from '../../store/selectors/isLoadingSelector';
-import useURL from '../../hooks/useURL';
-
-const List = () => {
-	const { setPage } = useURL();
-	const dispatch = useAppDispatch();
-	const users = useSelector(getUsersSelector);
-	const params = useSelector(paramsSelector);
-	const isLoading = useSelector(isLoadingSelector);
-
-	const handleNext = () => {
-		window.scrollTo(0, 0);
-		dispatch(setNextPageActionCreator());
-		setPage(params.offset+1, params.query);
-	};
-
-	const handlePrev = () => {
-		window.scrollTo(0, 0);
-		dispatch(setPrevPageActionCreator());
-		setPage(params.offset-1, params.query);
-	};
-
-	return (
-		<section className="list">
-			<div className="list__container">
-				{isLoading && <Spinner />}
-				{users.map((item) => (
-					<Card user={item} key={item.id} />
-				))}
-				{users.length == 0 && <p className="list__nothing">Nothing found</p>}
-
-				<div className="list__btns">
-					<button className="list__prev list__btn" onClick={handlePrev}>
-						Prev
-					</button>
-					<button className="list__next list__btn" onClick={handleNext} data-testid="next">
-						Next
-					</button>
-				</div>
-			</div>
-		</section>
-	);
-};
-
-export default List;
-*/
+ 

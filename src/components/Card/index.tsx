@@ -22,7 +22,6 @@ const Card: React.FC<UserItem> = ({ user }) => {
   };
 
   const handleDetailsClick = () => {
-	console.log(11)
     const queryParams = new URLSearchParams();
     queryParams.append('page', String(params.offset));
     if (params.query) {

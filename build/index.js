@@ -340,9 +340,6 @@ function App() {
   }, this);
 }
 
-// app/routes/errorpage.test.tsx
-var errorpage_test_exports = {};
-
 // app/routes/details/index.tsx
 var details_exports = {};
 __export(details_exports, {
@@ -628,70 +625,81 @@ import { Link as Link2 } from "@remix-run/react";
 import { jsxDEV as jsxDEV6 } from "react/jsx-dev-runtime";
 var Header = () => {
   let isDark = useSelector5(getThemeSelector), { handleInput, handleSearch } = useURL_default();
-  return /* @__PURE__ */ jsxDEV6("header", { style: { ...styles2.header, ...isDark ? styles2.headerDark : {} }, children: /* @__PURE__ */ jsxDEV6("div", { style: styles2.content, children: [
-    /* @__PURE__ */ jsxDEV6("nav", { style: styles2.search, children: [
-      /* @__PURE__ */ jsxDEV6(
-        "input",
-        {
-          type: "text",
-          style: styles2.searchBar,
-          placeholder: "Search...",
-          onChange: handleInput
-        },
-        void 0,
-        !1,
-        {
+  return /* @__PURE__ */ jsxDEV6(
+    "header",
+    {
+      "data-testid": "header",
+      style: { ...styles2.header, ...isDark ? styles2.headerDark : {} },
+      children: /* @__PURE__ */ jsxDEV6("div", { style: styles2.content, children: [
+        /* @__PURE__ */ jsxDEV6("nav", { style: styles2.search, children: [
+          /* @__PURE__ */ jsxDEV6(
+            "input",
+            {
+              type: "text",
+              style: styles2.searchBar,
+              placeholder: "Search...",
+              onChange: handleInput
+            },
+            void 0,
+            !1,
+            {
+              fileName: "src/components/Header/index.tsx",
+              lineNumber: 20,
+              columnNumber: 11
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV6(
+            "button",
+            {
+              style: styles2.searchBtn,
+              onClick: handleSearch,
+              "aria-label": "search",
+              children: /* @__PURE__ */ jsxDEV6(FontAwesomeIcon, { icon: faSearch }, void 0, !1, {
+                fileName: "src/components/Header/index.tsx",
+                lineNumber: 31,
+                columnNumber: 13
+              }, this)
+            },
+            void 0,
+            !1,
+            {
+              fileName: "src/components/Header/index.tsx",
+              lineNumber: 26,
+              columnNumber: 11
+            },
+            this
+          )
+        ] }, void 0, !0, {
           fileName: "src/components/Header/index.tsx",
-          lineNumber: 18,
-          columnNumber: 11
-        },
-        this
-      ),
-      /* @__PURE__ */ jsxDEV6(
-        "button",
-        {
-          style: styles2.searchBtn,
-          onClick: handleSearch,
-          "aria-label": "search",
-          children: /* @__PURE__ */ jsxDEV6(FontAwesomeIcon, { icon: faSearch }, void 0, !1, {
-            fileName: "src/components/Header/index.tsx",
-            lineNumber: 29,
-            columnNumber: 13
-          }, this)
-        },
-        void 0,
-        !1,
-        {
+          lineNumber: 19,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ jsxDEV6(Link2, { to: "/dcfewfe", style: styles2.redirectBtn, children: "Redirect to not found page" }, void 0, !1, {
           fileName: "src/components/Header/index.tsx",
-          lineNumber: 24,
-          columnNumber: 11
-        },
-        this
-      )
-    ] }, void 0, !0, {
+          lineNumber: 35,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ jsxDEV6(ThemeButton_default, {}, void 0, !1, {
+          fileName: "src/components/Header/index.tsx",
+          lineNumber: 38,
+          columnNumber: 9
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "src/components/Header/index.tsx",
+        lineNumber: 18,
+        columnNumber: 7
+      }, this)
+    },
+    void 0,
+    !1,
+    {
       fileName: "src/components/Header/index.tsx",
-      lineNumber: 17,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV6(Link2, { to: "/dcfewfe", style: styles2.redirectBtn, children: "Redirect to not found page" }, void 0, !1, {
-      fileName: "src/components/Header/index.tsx",
-      lineNumber: 33,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV6(ThemeButton_default, {}, void 0, !1, {
-      fileName: "src/components/Header/index.tsx",
-      lineNumber: 36,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "src/components/Header/index.tsx",
-    lineNumber: 16,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "src/components/Header/index.tsx",
-    lineNumber: 15,
-    columnNumber: 5
-  }, this);
+      lineNumber: 16,
+      columnNumber: 5
+    },
+    this
+  );
 }, styles2 = {
   header: {
     width: "100%",
@@ -755,20 +763,19 @@ var Card = ({ user }) => {
   let dispatch = useAppDispatch(), isDark = useSelector6(getThemeSelector), users = useSelector6(storedUsersSelector), params = useSelector6(paramsSelector), navigate = useNavigate2(), location = useLocation2(), handleCheckboxChange = () => {
     dispatch(AddElementToStorage(user));
   }, handleDetailsClick = () => {
-    console.log(11);
     let queryParams = new URLSearchParams();
     queryParams.append("page", String(params.offset)), params.query && queryParams.append("query", params.query), queryParams.append("user", user.login), navigate(`/details?${queryParams.toString()}`, { state: { from: location } });
   };
   return /* @__PURE__ */ jsxDEV7("div", { style: styles3.userLink, children: /* @__PURE__ */ jsxDEV7("div", { style: { ...styles3.user, ...isDark ? styles3.userDark : {} }, children: [
     /* @__PURE__ */ jsxDEV7("img", { className: "user__logo", src: user.avatar_url, alt: "user", style: styles3.userLogo }, void 0, !1, {
       fileName: "src/components/Card/index.tsx",
-      lineNumber: 39,
+      lineNumber: 38,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ jsxDEV7("div", { style: styles3.userContent, children: [
       /* @__PURE__ */ jsxDEV7("p", { style: styles3.userLogin, children: user.login }, void 0, !1, {
         fileName: "src/components/Card/index.tsx",
-        lineNumber: 41,
+        lineNumber: 40,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ jsxDEV7(
@@ -784,28 +791,28 @@ var Card = ({ user }) => {
         !1,
         {
           fileName: "src/components/Card/index.tsx",
-          lineNumber: 42,
+          lineNumber: 41,
           columnNumber: 11
         },
         this
       ),
       /* @__PURE__ */ jsxDEV7("button", { onClick: handleDetailsClick, style: styles3.userDetails, children: "Show details" }, void 0, !1, {
         fileName: "src/components/Card/index.tsx",
-        lineNumber: 49,
+        lineNumber: 48,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "src/components/Card/index.tsx",
-      lineNumber: 40,
+      lineNumber: 39,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "src/components/Card/index.tsx",
-    lineNumber: 38,
+    lineNumber: 37,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "src/components/Card/index.tsx",
-    lineNumber: 37,
+    lineNumber: 36,
     columnNumber: 5
   }, this);
 }, styles3 = {
@@ -887,7 +894,7 @@ var List = () => {
   }, handlePrev = () => {
     window.scrollTo(0, 0), dispatch(setPrevPageActionCreator()), setPage(params.offset - 1, params.query);
   };
-  return /* @__PURE__ */ jsxDEV8("section", { style: styles4.list, children: /* @__PURE__ */ jsxDEV8("div", { style: styles4.container, children: [
+  return /* @__PURE__ */ jsxDEV8("section", { "data-testid": "list", style: styles4.list, children: /* @__PURE__ */ jsxDEV8("div", { style: styles4.container, "data-testid": "card", children: [
     isLoading && /* @__PURE__ */ jsxDEV8(Spinner_default, {}, void 0, !1, {
       fileName: "src/components/List/index.tsx",
       lineNumber: 38,
@@ -932,9 +939,7 @@ var List = () => {
   list: {
     marginTop: "90px"
   },
-  container: {
-    // Additional styles if needed
-  },
+  container: {},
   btns: {
     display: "flex",
     columnGap: "30px",
@@ -949,9 +954,7 @@ var List = () => {
     backgroundColor: "transparent",
     border: "none"
   },
-  next: {
-    // Styles for the "Next" button if different from the "Prev" button
-  },
+  next: {},
   btnHover: {
     backgroundColor: "rgb(90, 90, 190)",
     color: "#fff"
@@ -1001,7 +1004,7 @@ var StoredUsersButton = () => {
     let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" }), url2 = URL.createObjectURL(blob);
     setUrl(url2);
   };
-  return /* @__PURE__ */ jsxDEV9("div", { style: styles5.panel, children: [
+  return /* @__PURE__ */ jsxDEV9("div", { style: styles5.panel, "data-testid": "stored-users-button", children: [
     /* @__PURE__ */ jsxDEV9("p", { style: styles5.text, children: [
       "You chose ",
       users.length,
@@ -1134,32 +1137,32 @@ var App2 = () => {
     /* @__PURE__ */ jsxDEV11("div", { className: "container", children: [
       /* @__PURE__ */ jsxDEV11(Header_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 33,
+        lineNumber: 30,
         columnNumber: 4
       }, this),
       /* @__PURE__ */ jsxDEV11(List_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 34,
+        lineNumber: 31,
         columnNumber: 5
       }, this),
       storedUsers.length > 0 && /* @__PURE__ */ jsxDEV11(StoredUsersFlyoutElement_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 35,
+        lineNumber: 32,
         columnNumber: 32
       }, this)
     ] }, void 0, !0, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 32,
+      lineNumber: 29,
       columnNumber: 4
     }, this),
     /* @__PURE__ */ jsxDEV11(Background_default, {}, void 0, !1, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 38,
+      lineNumber: 35,
       columnNumber: 4
     }, this)
   ] }, void 0, !0, {
     fileName: "src/components/App/index.tsx",
-    lineNumber: 30,
+    lineNumber: 27,
     columnNumber: 3
   }, this);
 }, App_default = App2;
@@ -1281,6 +1284,80 @@ function Index() {
   }, this);
 }
 
+// app/routes/home/index.tsx
+var home_exports = {};
+__export(home_exports, {
+  default: () => Index2,
+  loader: () => loader3,
+  meta: () => meta
+});
+import { useLoaderData as useLoaderData3 } from "@remix-run/react";
+import { useState as useState3 } from "react";
+import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
+async function loader3() {
+  return {
+    message: "hello from loader"
+  };
+}
+var meta = () => [
+  { title: "New Remix App" },
+  { name: "description", content: "Welcome to Remix!" }
+];
+function Index2() {
+  let loaderData = useLoaderData3(), [notes, setNotes] = useState3([
+    {
+      id: 1,
+      text: "This is a note"
+    }
+  ]);
+  return /* @__PURE__ */ jsxDEV14("main", { className: "container", children: [
+    /* @__PURE__ */ jsxDEV14("h1", { children: "Welcome to Remix" }, void 0, !1, {
+      fileName: "app/routes/home/index.tsx",
+      lineNumber: 29,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV14("p", { children: loaderData.message }, void 0, !1, {
+      fileName: "app/routes/home/index.tsx",
+      lineNumber: 30,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV14(
+      "button",
+      {
+        onClick: () => setNotes([
+          ...notes,
+          {
+            id: notes.length + 1,
+            text: `Note ${notes.length + 1}`
+          }
+        ]),
+        children: "Create a Note"
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/home/index.tsx",
+        lineNumber: 31,
+        columnNumber: 7
+      },
+      this
+    ),
+    /* @__PURE__ */ jsxDEV14("ul", { children: notes.map((note) => /* @__PURE__ */ jsxDEV14("li", { children: note.text }, note.id, !1, {
+      fileName: "app/routes/home/index.tsx",
+      lineNumber: 46,
+      columnNumber: 18
+    }, this)) }, void 0, !1, {
+      fileName: "app/routes/home/index.tsx",
+      lineNumber: 44,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/home/index.tsx",
+    lineNumber: 28,
+    columnNumber: 5
+  }, this);
+}
+
 // app/routes/$.tsx
 var __exports = {};
 __export(__exports, {
@@ -1289,23 +1366,23 @@ __export(__exports, {
 
 // src/components/NotFound/index.tsx
 import { useNavigate as useNavigate3 } from "@remix-run/react";
-import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
+import { jsxDEV as jsxDEV15 } from "react/jsx-dev-runtime";
 var NotFound = () => {
   let navigate = useNavigate3(), handleBackToHomepage = () => {
     navigate("/");
   };
-  return /* @__PURE__ */ jsxDEV14("div", { style: styles6.not, "data-testid": "not-found", children: [
-    /* @__PURE__ */ jsxDEV14("p", { style: styles6.title, children: "404" }, void 0, !1, {
+  return /* @__PURE__ */ jsxDEV15("div", { style: styles6.not, "data-testid": "not-found", children: [
+    /* @__PURE__ */ jsxDEV15("p", { style: styles6.title, children: "404" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 11,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV14("p", { style: styles6.text, children: "Page was not found" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV15("p", { style: styles6.text, children: "Page was not found" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 12,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV14("button", { onClick: handleBackToHomepage, style: styles6.button, children: "Back to homepage" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV15("button", { onClick: handleBackToHomepage, style: styles6.button, children: "Back to homepage" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 13,
       columnNumber: 7
@@ -1348,8 +1425,8 @@ var NotFound = () => {
 }, NotFound_default = NotFound;
 
 // app/routes/$.tsx
-import { Fragment as Fragment5, jsxDEV as jsxDEV15 } from "react/jsx-dev-runtime";
-var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__ */ jsxDEV15("div", { "data-testid": "not-found", children: /* @__PURE__ */ jsxDEV15(NotFound_default, {}, void 0, !1, {
+import { Fragment as Fragment5, jsxDEV as jsxDEV16 } from "react/jsx-dev-runtime";
+var NotPage = () => /* @__PURE__ */ jsxDEV16(Fragment5, { children: /* @__PURE__ */ jsxDEV16("div", { "data-testid": "not-found", children: /* @__PURE__ */ jsxDEV16(NotFound_default, {}, void 0, !1, {
   fileName: "app/routes/$.tsx",
   lineNumber: 7,
   columnNumber: 3
@@ -1364,7 +1441,7 @@ var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__
 }, this), __default = NotPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-642CQBNA.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GLWUXGRW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MBVIMSKI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-HNQFHEJY.js", imports: ["/build/_shared/chunk-UJAXAMTK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-2GLO2YK3.js", imports: ["/build/_shared/chunk-UJAXAMTK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/errorpage.test": { id: "routes/errorpage.test", parentId: "root", path: "errorpage/test", index: void 0, caseSensitive: void 0, module: "/build/routes/errorpage.test-BXALXYXV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "a007dd31", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723301259196 }, url: "/build/manifest-A007DD31.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-4N2SQCHD.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TN4BLI4Q.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T7WTDN37.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-T4DEV42B.js", imports: ["/build/_shared/chunk-AIKSV2JJ.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-45PFYMZR.js", imports: ["/build/_shared/chunk-AIKSV2JJ.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/home": { id: "routes/home", parentId: "root", path: "home", index: void 0, caseSensitive: void 0, module: "/build/routes/home-HYCVNV4Z.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "903ef852", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723318623213 }, url: "/build/manifest-903EF852.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, unstable_singleFetch: !1, unstable_lazyRouteDiscovery: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1375,14 +1452,6 @@ var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_
     index: void 0,
     caseSensitive: void 0,
     module: root_exports
-  },
-  "routes/errorpage.test": {
-    id: "routes/errorpage.test",
-    parentId: "root",
-    path: "errorpage/test",
-    index: void 0,
-    caseSensitive: void 0,
-    module: errorpage_test_exports
   },
   "routes/details": {
     id: "routes/details",
@@ -1399,6 +1468,14 @@ var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_
     index: !0,
     caseSensitive: void 0,
     module: index_exports
+  },
+  "routes/home": {
+    id: "routes/home",
+    parentId: "root",
+    path: "home",
+    index: void 0,
+    caseSensitive: void 0,
+    module: home_exports
   },
   "routes/$": {
     id: "routes/$",
