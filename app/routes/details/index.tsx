@@ -7,7 +7,7 @@ import App from "../../../src/components/App";
 import Background from "../../../src/components/Background";
 import { useAppDispatch } from "../../../src/hooks/redux";
 import { setClickedUser } from "../../../src/store/slices/appSlice";
-import Spinner from "@/components/Spinner";
+import Spinner from "../../../src/components/Spinner";
 import { useNavigation } from '@remix-run/react';
 interface User {
     login: string;

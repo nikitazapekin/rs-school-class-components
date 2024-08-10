@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import Spinner from '../Spinner';
 import { useSelector } from 'react-redux';
-import { isLoadingUserDataSelector } from '@/store/selectors/isLoadingUserData';
-import { getThemeSelector } from '@/store/selectors/getTheme';
-import { clickedUserSelector } from '@/store/selectors/getClickedElement';
-import { paramsSelector } from '@/store/selectors/getSearchParams';
+import { isLoadingUserDataSelector } from '../../store/selectors/isLoadingUserData';
+import { getThemeSelector } from '../../store/selectors/getTheme';
+import { clickedUserSelector } from '../../store/selectors/getClickedElement';
+import { paramsSelector } from '../../store/selectors/getSearchParams';
 import { Link } from '@remix-run/react';
 
 const UserData: React.FC = () => {
