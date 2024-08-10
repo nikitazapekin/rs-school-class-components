@@ -33,7 +33,7 @@ const List: React.FC = () => {
   };
 
   return (
-    <section style={styles.list}>
+    <section  data-testid="list" style={styles.list}>
       <div style={styles.container}>
         {isLoading && <Spinner />}
         {users.map((item) => (

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '@/hooks/redux';
-import { clearStoredElementsActionCreator } from '@/store/action-creators/clearStoredElementsActionCreator';
+import { useAppDispatch } from '../../hooks/redux';
+import { clearStoredElementsActionCreator } from '../../store/action-creators/clearStoredElementsActionCreator';
 import { useSelector } from 'react-redux';
-import { storedUsersSelector } from '@/store/selectors/getStoredElements';
+import { storedUsersSelector } from '../../store/selectors/getStoredElements';
 
 const StoredUsersButton: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ const StoredUsersButton: React.FC = () => {
   };
 
   return (
-    <div style={styles.panel}>
+    <div style={styles.panel}  data-testid="stored-users-button">
       <p style={styles.text}>You chose {users.length} users</p>
       <div style={styles.buttons}>
         <a

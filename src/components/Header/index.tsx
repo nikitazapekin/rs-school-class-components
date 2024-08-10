@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import ThemeButton from '../ThemeButton';
-import useURL from '@/hooks/useURL';
+import useURL from "../../hooks/useURL"
+//import useURL from '../src/hooks/useURL';
 import { useSelector } from 'react-redux';
-import { getThemeSelector } from '@/store/selectors/getTheme';
+import { getThemeSelector } from '../../store/selectors/getTheme';
 import { Link } from '@remix-run/react';
 import React, { CSSProperties } from 'react';
 
@@ -12,7 +13,8 @@ const Header = () => {
   const { handleInput, handleSearch } = useURL();
 
   return (
-    <header style={{ ...styles.header, ...(isDark ? styles.headerDark : {}) }}>
+    <header  data-testid="header"
+     style={{ ...styles.header, ...(isDark ? styles.headerDark : {}) }}>
       <div style={styles.content}>
         <nav style={styles.search}>
           <input

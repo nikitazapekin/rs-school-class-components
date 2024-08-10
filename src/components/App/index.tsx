@@ -8,9 +8,6 @@ import Background from '../Background';
 import { useAppDispatch } from '../../hooks/redux';
 import { setStoredInLocalStorageActionCreator } from '../../store/action-creators/setStoredInLocalStorageQuery';
 import { isLoadingSelector } from '../../store/selectors/isLoadingSelector';
-import Spinner from '../Spinner';
-
-import { useNavigation } from '@remix-run/react';
  
 
 const App = () => {
