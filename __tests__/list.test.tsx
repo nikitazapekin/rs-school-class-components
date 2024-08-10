@@ -139,7 +139,7 @@ describe('List Component', () => {
     );
     const nothingFoundElements = screen.queryAllByText('Nothing found');
     expect(nothingFoundElements.length).toBe(2);
-   // expect(screen.getByText('Nothing found')).not.toBeInTheDocument();
+ 
   });
   
  

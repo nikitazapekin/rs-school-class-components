@@ -9,27 +9,11 @@ import { rootReducer } from '../../src/store/store';
 import { setClickedUser } from '../../src/store/slices/appSlice';
 import { useLoaderData } from '@remix-run/react';
 import { MemoryRouter } from 'react-router-dom';
-/*
-vi.mock('axios');
-
-vi.mock('@remix-run/react', async () => {
-  const actual = await vi.importActual<typeof import('@remix-run/react')>('@remix-run/react');
-  return {
-    ...actual,
-    useLoaderData: vi.fn(),
-    useNavigation: () => ({ state: 'idle' }),  
-  };
-});
-
-vi.mock('../../src/hooks/redux', () => ({
-  useAppDispatch: () => vi.fn(),
-}));
-*/
-// Мокируем axios
+ 
 vi.mock('axios');
 
 
-// Мокаем useLoaderData и useNavigate
+ 
 vi.mock('@remix-run/react', async () => {
     const actual = await vi.importActual<typeof import('@remix-run/react')>('@remix-run/react');
     return {
@@ -37,11 +21,11 @@ vi.mock('@remix-run/react', async () => {
       useLoaderData: vi.fn(),
       useNavigation: () => ({ state: 'idle' }),
       useNavigate: vi.fn(() => vi.fn()), 
-   //   useNavigate: vi.fn(), // Мокаем useNavigate
+ 
     };
   });
   
-// Мокируем useAppDispatch
+ 
 vi.mock('../../../src/hooks/redux', () => ({
   useAppDispatch: () => vi.fn(),
 }));
@@ -102,9 +86,7 @@ selectedElement: null,
 
 
 
-
-
-    // Привязываем mockDispatch к store.dispatch
+ 
     store.dispatch = mockDispatch;
 
     it('should dispatch setClickedUser with fetched user', async () => {
@@ -129,14 +111,9 @@ selectedElement: null,
         site_admin: false,
         score: 0,
       };
-  
-      // Мокируем данные, которые возвращает useLoaderData
+   
       vi.mocked(useLoaderData).mockReturnValue({ user, query: 'type:user', page: 1, limit: 10 });
-  
-      // Мокируем состояние useNavigation
-      //vi.mocked(useNavigation).mockReturnValue({ state: 'idle' });
-  
-      // Рендерим компонент
+   
       render(
         <MemoryRouter>
 
@@ -145,8 +122,7 @@ selectedElement: null,
         </Provider>
         </MemoryRouter>
       );
-  
-      // Проверяем, что dispatch вызывается с корректными данными
+   
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith(setClickedUser(user));
       });

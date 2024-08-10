@@ -19,6 +19,12 @@ export default defineConfig({
             '**/root.tsx',
             'remix.config.ts',
             'vite.config.ts',
+            '**/removeStoredElementByIdActionCreator.ts',
+            '**/setClickedUserActionCreator.ts',
+            '**/setIsDark.ts',
+            '**/setIsLoading.ts',
+            '**/setLoadingUserDataActionCreator.ts',
+        
         ],
       },
   },

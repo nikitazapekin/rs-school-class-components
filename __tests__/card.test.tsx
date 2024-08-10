@@ -10,8 +10,7 @@ import { AddElementToStorage } from '../src/store/action-creators/addElementToSt
 import { storedUsersSelector } from '../src/store/selectors/getStoredElements';
 import { getThemeSelector } from '../src/store/selectors/getTheme';
 import { paramsSelector } from '../src/store/selectors/getSearchParams';
-
-// Мокаем хуки useNavigate и useLocation
+ 
 vi.mock('@remix-run/react', () => ({
   useNavigate: vi.fn(),
   useLocation: vi.fn(),
