@@ -448,7 +448,6 @@ var UserData = () => {
               style: {
                 borderRadius: "50%",
                 maxWidth: "100px"
-                // Adjusted size for a more appropriate display
               }
             },
             void 0,
@@ -1134,7 +1133,7 @@ var App2 = () => {
       )
     );
   }, []), /* @__PURE__ */ jsxDEV11(Fragment2, { children: [
-    /* @__PURE__ */ jsxDEV11("div", { className: "container", children: [
+    /* @__PURE__ */ jsxDEV11("div", { className: "container", "data-testid": "app", children: [
       /* @__PURE__ */ jsxDEV11(Header_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
         lineNumber: 30,
@@ -1367,7 +1366,7 @@ var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__
 }, this), __default = NotPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-SJXKVVWU.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-JMKKOCVI.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GL5F2DHH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-VQFGQ7KK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-UB5P2Y6Z.js", imports: ["/build/_shared/chunk-5GOIZJAD.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-MHVJJFL4.js", imports: ["/build/_shared/chunk-5GOIZJAD.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "c9742df9", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723319332072 }, url: "/build/manifest-C9742DF9.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-HQ5QFN36.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-CBLLWCXY.js", "/build/_shared/chunk-LFRHN66C.js", "/build/_shared/chunk-JMKKOCVI.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-US4UBA2D.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-VQFGQ7KK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-RHOJ3AZD.js", imports: ["/build/_shared/chunk-IXWMQZDO.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-XZP235BN.js", imports: ["/build/_shared/chunk-IXWMQZDO.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "da936e97", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723330778858 }, url: "/build/manifest-DA936E97.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, unstable_singleFetch: !1, unstable_lazyRouteDiscovery: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

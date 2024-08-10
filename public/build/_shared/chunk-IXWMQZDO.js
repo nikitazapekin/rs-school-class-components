@@ -9,7 +9,7 @@ import {
   setTheme,
   useDispatch,
   useSelector
-} from "/build/_shared/chunk-JKX5JPF7.js";
+} from "/build/_shared/chunk-LFRHN66C.js";
 import {
   Link,
   useLocation,
@@ -4587,7 +4587,7 @@ var App = () => {
     );
   }, []);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_jsx_dev_runtime8.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "container", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "container", "data-testid": "app", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Header_default, {}, void 0, false, {
         fileName: "src/components/App/index.tsx",
         lineNumber: 30,
@@ -4648,4 +4648,4 @@ object-assign/index.js:
   @license MIT
   *)
 */
-//# sourceMappingURL=/build/_shared/chunk-5GOIZJAD.js.map
+//# sourceMappingURL=/build/_shared/chunk-IXWMQZDO.js.map

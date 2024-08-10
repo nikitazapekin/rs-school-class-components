@@ -5,11 +5,11 @@ import {
   getThemeSelector,
   paramsSelector,
   useAppDispatch
-} from "/build/_shared/chunk-5GOIZJAD.js";
+} from "/build/_shared/chunk-IXWMQZDO.js";
 import {
   setClickedUser,
   useSelector
-} from "/build/_shared/chunk-JKX5JPF7.js";
+} from "/build/_shared/chunk-LFRHN66C.js";
 import {
   Link,
   useLoaderData,
@@ -88,7 +88,6 @@ var UserData = () => {
               style: {
                 borderRadius: "50%",
                 maxWidth: "100px"
-                // Adjusted size for a more appropriate display
               }
             },
             void 0,
@@ -186,7 +185,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\details\\index.tsx"
   );
-  import.meta.hot.lastModified = "1723306689000.0442";
+  import.meta.hot.lastModified = "1723326767623.6223";
 }
 var Deatils = () => {
   _s();
@@ -252,4 +251,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-MHVJJFL4.js.map
+//# sourceMappingURL=/build/routes/details-XZP235BN.js.map
