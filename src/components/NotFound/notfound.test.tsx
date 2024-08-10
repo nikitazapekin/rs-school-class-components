@@ -7,7 +7,7 @@ test('renders the NotFound component', () => {
     render(<NotFound />);
     
     // Проверяем, что компонент присутствует в документе
-    expect(screen.getByTestId('not-found')).toBeInTheDocument();
+   expect(screen.getByTestId('not-found')).toBeInTheDocument();
   });
  /*
 test('renders the NotFound component with correct content', () => {

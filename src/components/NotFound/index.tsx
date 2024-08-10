@@ -1,7 +1,6 @@
 
  import "~/index.css"
 import { useNavigate, useLocation } from "@remix-run/react";
-import {Button} from "../Test/button"
 const style = {
   color: 'red',
   fontSize: '20px',
@@ -25,7 +24,6 @@ const NotFound = () => {
       </button>
 
 
-      <Button />
     </div>
   );
 };

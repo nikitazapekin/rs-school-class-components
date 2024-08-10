@@ -1,17 +1,17 @@
-// jest.config.ts
 import type { Config } from '@jest/types';
 
 const config: Config.InitialOptions = {
-  testEnvironment: 'jest-environment-jsdom',
-
   preset: 'ts-jest',
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest', // Используйте babel-jest для обработки файлов
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!@remix-run/react|@web3-storage|other-package-you-need).+\\.js$'
+  ],
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy', 
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js' 
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    '@/(.*)': '<rootDir>/src/$1' 
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   collectCoverage: true,
@@ -24,10 +24,14 @@ const config: Config.InitialOptions = {
     '!**/node_modules/**',     
     '!**/*.test.{ts,tsx}',      
     '!**/index.tsx',            
-    '!**/types.ts',            
+    '!**/types.ts',       
+    '!babel.config.ts',        
+    '!jest.config.ts',         
+    '!vite.config.ts',          
+    '!**/entry.client.tsx',     
+    '!**/entry.server.tsx',        
   ],
- // setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
- setupFilesAfterEnv: ['<rootDir>/setupTests.ts']
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
 };
 
 export default config;
