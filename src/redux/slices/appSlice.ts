@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction  } from '@reduxjs/toolkit';
-import { AppStatee, SearchTypes,  UserDataArray } from '../types';
- import {User} from "../types"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AppStatee, SearchTypes, UserDataArray } from '../types';
+import { User } from "../types"
 export interface UserData {
 	total_count: number;
 	incomplete_results: boolean;
@@ -21,26 +21,26 @@ export const initialState: AppStatee = {
 	status: 'idle',
 	clickedUser: {
 		login: "",
-	id: 0,
-	node_id:"" ,
-	avatar_url: "",
-	gravatar_id:"" ,
-	url:"" ,
-	html_url:"" ,
-	followers_url: "",
-	following_url:"" ,
-	gists_url: "",
-	starred_url: "",
-	subscriptions_url:  "",
-	organizations_url: "",
-	repos_url:"" ,
-	events_url:"" ,
-	received_events_url:"" ,
-	type: "",
-	site_admin: false,
-	score: 0
+		id: 0,
+		node_id: "",
+		avatar_url: "",
+		gravatar_id: "",
+		url: "",
+		html_url: "",
+		followers_url: "",
+		following_url: "",
+		gists_url: "",
+		starred_url: "",
+		subscriptions_url: "",
+		organizations_url: "",
+		repos_url: "",
+		events_url: "",
+		received_events_url: "",
+		type: "",
+		site_admin: false,
+		score: 0
 	}
-   
+
 };
 const appSlicee = createSlice({
 	name: 'app',
@@ -80,20 +80,46 @@ const appSlicee = createSlice({
 			state.params.query = action.payload;
 		},
 		setTypedValue(state, action: PayloadAction<string>) {
-		state.typedValue = action.payload
+			state.typedValue = action.payload
 		},
 		setNewSearchValue(state) {
-		state.params.query=state.typedValue
-		state.params.storedValue=state.typedValue
-			},
-			setClickedUser(state, action: PayloadAction<User>) {
-			 
+			state.params.query = state.typedValue
+			state.params.storedValue = state.typedValue
+		},
+		setClickedUser(state, action: PayloadAction<User>) {
+
 			state.clickedUser = action.payload
-			 
-					},
+
+		},
+
+		setClearClickedUser(state) {
+
+			state.clickedUser = {
+				login: "",
+				id: 0,
+				node_id: "",
+				avatar_url: "",
+				gravatar_id: "",
+				url: "",
+				html_url: "",
+				followers_url: "",
+				following_url: "",
+				gists_url: "",
+				starred_url: "",
+				subscriptions_url: "",
+				organizations_url: "",
+				repos_url: "",
+				events_url: "",
+				received_events_url: "",
+				type: "",
+				site_admin: false,
+				score: 0
+			}
+
+		},
 	},
 
- 
+
 
 });
 export const {
@@ -110,6 +136,7 @@ export const {
 	setTypedValue,
 	setClickedUser,
 	setNewSearchValue,
-	 
+	setClearClickedUser
+
 } = appSlicee.actions;
 export default appSlicee.reducer;

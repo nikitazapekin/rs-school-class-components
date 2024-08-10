@@ -7,10 +7,16 @@ import Link from 'next/link';
 import Image from "next/image";
 import { getThemeSelector } from "../../redux/selectors/getTheme";
  import React from "react";
+import { useAppDispatch } from "../../hooks/redux";
+import { setClearClickedUser } from "../../redux/slices/appSlice";
 const UserData = () => {
 	const params = useSelector(paramsSelector)
 	const clickedElement = useSelector(clickedUserSelector)
 	const isDark = useSelector(getThemeSelector)
+	const dispatch = useAppDispatch()
+	const handleClear = () => {
+dispatch(setClearClickedUser())
+	}
 	return (
 		<aside className={`${styles.sidebar} ${isDark ? styles.sidebarDark : ''}`}>
 			<div>
@@ -26,7 +32,7 @@ const UserData = () => {
 				<p>ID: {clickedElement.id}</p>
 				<p>Type: {clickedElement.type}</p>
 			</div>
-			<Link href={`/?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`}>
+			<Link onClick={handleClear} href={`/?page=${params.offset}${params.query ? `&query=${params.query}` : ``}`}>
 				Close
 			</Link>
 

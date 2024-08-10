@@ -1,26 +1,39 @@
 import { GetServerSideProps } from 'next';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import DetailsLayout from '../../components/details';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import { useAppDispatch } from '../../hooks/redux';
 import { SetClickedUserActionCreator } from '../../redux/action-creators/setClickedUserActionCreator';
-interface Props {
-    user: User
-}
-const Details = (
-    { user }: Props
-) => {
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        dispatch(SetClickedUserActionCreator(user))
-    }, [user])
-    return (<>
+import Spinner from '../../components/Spinner';
 
-    </>);
+interface Props {
+    user: User;
 }
+
+const Details = ({ user }: Props) => {
+    const dispatch = useAppDispatch();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        dispatch(SetClickedUserActionCreator(user));
+        setLoading(false);
+    }, [user, dispatch]);
+
+    if (loading) {
+        return <Spinner />
+    }
+
+    return (
+        <>
+          
+        </>
+    );
+};
+
 Details.Layout = DetailsLayout;
 export default Details;
+
 interface User {
     login: string;
     id: number;
@@ -43,22 +56,17 @@ interface User {
     score: number;
 }
 
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { user } = context.query;
+    const username = user as string;
 
- 
-  const username = user as string;
     try {
         const response: AxiosResponse<User> = await axios.get(`https://api.github.com/users/${username}`);
-        console.log(response)
-        console.log(username)
         return {
             props: {
-
                 user: response.data
             }
-        }
+        };
     } catch (error) {
         if (axios.isAxiosError(error)) {
             const axiosError = error as AxiosError;
@@ -68,9 +76,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
         throw new Error('Error fetching data');
     }
-
-
-} 
-
-
- 
+};

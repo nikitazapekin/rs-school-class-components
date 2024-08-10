@@ -1,11 +1,11 @@
- 
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/redux';
 import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
+import Spinner from '../components/Spinner';
+
 type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -40,12 +40,21 @@ interface Props {
 }
 
 const UsersPage = ({ users }: Props) => {
-	const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch();
+	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
-		dispatch(setUsersActionCreator(users))
-	}, [users])
+		dispatch(setUsersActionCreator(users));
+		setLoading(false);
+	}, [users, dispatch]);
+
+	if (loading) {
+		return <Spinner />;
+	}
+
 	return (
 		<div>
+		 
 			 
 		</div>
 	);
@@ -54,7 +63,7 @@ const UsersPage = ({ users }: Props) => {
 export default UsersPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { query, page , limit = '10' } = context.query;
+	const { query, page, limit = '10' } = context.query;
 	const offset = parseInt(page as string, 10);
 	const perPage = parseInt(limit as string, 10);
 	let url: string;
@@ -66,17 +75,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	try {
 		let users: UserDataArray = [];
 
-		if (!query) {
-			const response: AxiosResponse<UserData> = await axios.get(url);
-			users = response.data.items;
-		} else {
-			const response: AxiosResponse<UserData> = await axios.get(url);
-			users = response.data.items;
-		}
+		const response: AxiosResponse<UserData> = await axios.get(url);
+		users = response.data.items;
+
 		return {
 			props: {
 				users,
-				},
+			},
 		};
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
@@ -88,11 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		return {
 			props: {
 				users: [],
-			 
-				},
+			},
 		};
 	}
 };
-
-
  

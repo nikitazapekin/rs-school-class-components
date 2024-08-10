@@ -22,7 +22,8 @@ const config: Config = {
     '!**/node_modules/**',     
     '!**/*.test.{ts,tsx}',      
     '!**/index.tsx',            
-    '!**/types.ts',            
+    '!**/types.ts',           
+    '!jest.config.ts',   
   ],
 };
 

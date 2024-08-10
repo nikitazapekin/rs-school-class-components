@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 import App from "../../App";
 import Providers from "../../redux/Provider";
-import { ErrorBoundary } from "../ErrorBoundary";
+
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,14 +17,13 @@ const Layout = ({ children,
 
   return (
     <>
-<ErrorBoundary>
 
       <Providers>
         {children}
         <App />
 
       </Providers>
-</ErrorBoundary>
+
 
 
     </>

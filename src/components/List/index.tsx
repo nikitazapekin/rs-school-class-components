@@ -10,13 +10,15 @@ import { isLoadingSelector } from '../../redux/selectors/isLoadingSelector';
 import useURL from '../../hooks/useURL';
 import { UserItem } from './types';
 import { getUsersSelector } from '../../redux/selectors/getUsersSelector';
+import { clickedUserSelector } from '../../redux/selectors/getClickedElement';
  
 const List = () => {
 	const { setPage } = useURL();
 	const dispatch = useAppDispatch();
 	const users = useSelector(getUsersSelector);
 	const params = useSelector(paramsSelector);
-
+const clickedUser = useSelector(clickedUserSelector)
+console.log(clickedUser)
 	const isLoading = useSelector(isLoadingSelector);
 	const handleNext = () => {
 		window.scrollTo(0, 0);
@@ -44,7 +46,7 @@ const List = () => {
 					<button className={`${styles.list__prev} ${styles.list__btn}`} onClick={handlePrev}>
 						Prev
 					</button>
-					<button className={`${styles.list__next} ${styles.list__btn}`} onClick={handleNext} data-testid="next">
+					<button className={`${styles.list__next} ${styles.list__btn}`} onClick={handleNext} data-testid="next" disabled={clickedUser.login ? true : false}>
 						Next
 					</button>
 				</div>
