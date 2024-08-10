@@ -2,14 +2,15 @@
 import React, { useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { useLoaderData } from "@remix-run/react";
-import { redirect } from "@remix-run/node";
+
 
 import { useAppDispatch } from '../../src/hooks/redux'; 
 import { setUsersActionCreator } from "../../src/store/action-creators/setUsersActionCreator"
 import App from "../../src/components/App/index"
 import Background from '../../src/components/Background';
  
- 
+ import { useNavigation } from '@remix-run/react';
+import Spinner from '@/components/Spinner';
  
 type UserDataArray = Array<{
   login: string;
@@ -73,15 +74,24 @@ export default function Index() {
       dispatch(setUsersActionCreator(users));
     }
   }, [users, dispatch]);
-
+  const { state } = useNavigation();
+  console.log(state)
   return (
 
    <>
+ 
+      {state === 'loading' && (
+    <div style={{width: "100%", height: "100vh",position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center"} }>
+    <Spinner />
+ 
+    </div>
+			)
+			}
       <App 
-      />
+        />
       <Background />
       </>
- 
-  );
+      
+      );
 }
   

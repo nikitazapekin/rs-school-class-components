@@ -65,6 +65,9 @@ const Deatils = () => {
     useEffect(()=> {
 dispath(setClickedUser(user))
     }, [user])
+    if(!user) {
+        return <div style={{width: "300px", height: "800px", backgroundColor: "red"}}>Load</div>
+    }
     return (
         <>
             <App />

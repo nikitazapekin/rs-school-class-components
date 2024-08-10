@@ -358,14 +358,41 @@ import { useState } from "react";
 
 // src/components/Spinner/index.tsx
 import { Fragment, jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
-var Spinner = () => /* @__PURE__ */ jsxDEV3(Fragment, { children: /* @__PURE__ */ jsxDEV3("span", { className: "loader", "data-testid": "loader" }, void 0, !1, {
+var Spinner = () => /* @__PURE__ */ jsxDEV3(Fragment, { children: [
+  /* @__PURE__ */ jsxDEV3("style", { children: `
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        ` }, void 0, !1, {
+    fileName: "src/components/Spinner/index.tsx",
+    lineNumber: 23,
+    columnNumber: 7
+  }, this),
+  /* @__PURE__ */ jsxDEV3("span", { style: {
+    width: "48px",
+    height: "48px",
+    border: "5px solid #fff",
+    borderBottomColor: "#7700ff",
+    borderRadius: "50%",
+    display: "inline-block",
+    boxSizing: "border-box",
+    animation: "spin 0.8s linear infinite",
+    margin: "0 auto",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 111111111111111100
+  }, "data-testid": "loader" }, void 0, !1, {
+    fileName: "src/components/Spinner/index.tsx",
+    lineNumber: 31,
+    columnNumber: 7
+  }, this)
+] }, void 0, !0, {
   fileName: "src/components/Spinner/index.tsx",
-  lineNumber: 5,
-  columnNumber: 4
-}, this) }, void 0, !1, {
-  fileName: "src/components/Spinner/index.tsx",
-  lineNumber: 4,
-  columnNumber: 3
+  lineNumber: 22,
+  columnNumber: 5
 }, this), Spinner_default = Spinner;
 
 // src/components/UserData/index.tsx
@@ -1107,37 +1134,32 @@ var App2 = () => {
     /* @__PURE__ */ jsxDEV11("div", { className: "container", children: [
       /* @__PURE__ */ jsxDEV11(Header_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 27,
-        columnNumber: 5
+        lineNumber: 51,
+        columnNumber: 4
       }, this),
       /* @__PURE__ */ jsxDEV11(List_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 28,
+        lineNumber: 52,
         columnNumber: 5
       }, this),
       storedUsers.length > 0 && /* @__PURE__ */ jsxDEV11(StoredUsersFlyoutElement_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 29,
+        lineNumber: 53,
         columnNumber: 32
       }, this)
     ] }, void 0, !0, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 26,
+      lineNumber: 50,
       columnNumber: 4
     }, this),
     /* @__PURE__ */ jsxDEV11(Background_default, {}, void 0, !1, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 32,
+      lineNumber: 56,
       columnNumber: 4
-    }, this),
-    isLoading && /* @__PURE__ */ jsxDEV11(Spinner_default, {}, void 0, !1, {
-      fileName: "src/components/App/index.tsx",
-      lineNumber: 33,
-      columnNumber: 18
     }, this)
   ] }, void 0, !0, {
     fileName: "src/components/App/index.tsx",
-    lineNumber: 25,
+    lineNumber: 31,
     columnNumber: 3
   }, this);
 }, App_default = App2;
@@ -1157,26 +1179,30 @@ var Deatils = () => {
   let { user } = useLoaderData(), dispath = useAppDispatch();
   return useEffect3(() => {
     dispath(setClickedUser(user));
-  }, [user]), /* @__PURE__ */ jsxDEV12(Fragment3, { children: [
+  }, [user]), user ? /* @__PURE__ */ jsxDEV12(Fragment3, { children: [
     /* @__PURE__ */ jsxDEV12(App_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 70,
+      lineNumber: 73,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ jsxDEV12(Background_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 71,
+      lineNumber: 74,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ jsxDEV12(UserData_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 72,
+      lineNumber: 75,
       columnNumber: 11
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/details/index.tsx",
-    lineNumber: 69,
+    lineNumber: 72,
     columnNumber: 9
+  }, this) : /* @__PURE__ */ jsxDEV12("div", { style: { width: "300px", height: "800px", backgroundColor: "red" }, children: "Load" }, void 0, !1, {
+    fileName: "app/routes/details/index.tsx",
+    lineNumber: 69,
+    columnNumber: 16
   }, this);
 }, details_default = Deatils;
 
@@ -1196,6 +1222,7 @@ var setUsersActionCreator = (data) => (dispatch) => {
 };
 
 // app/routes/_index.tsx
+import { useNavigation } from "@remix-run/react";
 import { Fragment as Fragment4, jsxDEV as jsxDEV13 } from "react/jsx-dev-runtime";
 async function loader2({ request }) {
   let url = new URL(request.url), search = new URLSearchParams(url.search), query = search.get("query") || "type:user", page = parseInt(search.get("page") || "1", 10), limit = parseInt(search.get("limit") || "10", 10);
@@ -1208,9 +1235,20 @@ async function loader2({ request }) {
 }
 function Index() {
   let { users } = useLoaderData2(), dispatch = useAppDispatch();
-  return useEffect4(() => {
+  useEffect4(() => {
     users.length > 0 && dispatch(setUsersActionCreator(users));
-  }, [users, dispatch]), /* @__PURE__ */ jsxDEV13(Fragment4, { children: [
+  }, [users, dispatch]);
+  let { state } = useNavigation();
+  return console.log(state), /* @__PURE__ */ jsxDEV13(Fragment4, { children: [
+    state === "loading" && /* @__PURE__ */ jsxDEV13("div", { style: { width: "100%", height: "100vh", position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsxDEV13(Spinner_default, {}, void 0, !1, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 85,
+      columnNumber: 5
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 84,
+      columnNumber: 5
+    }, this),
     /* @__PURE__ */ jsxDEV13(
       App_default,
       {},
@@ -1218,19 +1256,19 @@ function Index() {
       !1,
       {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 80,
+        lineNumber: 90,
         columnNumber: 7
       },
       this
     ),
     /* @__PURE__ */ jsxDEV13(Background_default, {}, void 0, !1, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 82,
+      lineNumber: 92,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/_index.tsx",
-    lineNumber: 79,
+    lineNumber: 81,
     columnNumber: 4
   }, this);
 }
@@ -1244,34 +1282,61 @@ __export(__exports, {
 // src/components/NotFound/index.tsx
 import { useNavigate as useNavigate3 } from "@remix-run/react";
 import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
-var style = {
-  color: "red",
-  fontSize: "20px"
-}, NotFound = () => {
-  let navigate = useNavigate3();
-  return /* @__PURE__ */ jsxDEV14("div", { className: "not", "data-testid": "not-found", children: [
-    /* @__PURE__ */ jsxDEV14("p", { style, className: "not__title", children: "404" }, void 0, !1, {
+var NotFound = () => {
+  let navigate = useNavigate3(), handleBackToHomepage = () => {
+    navigate("/");
+  };
+  return /* @__PURE__ */ jsxDEV14("div", { style: styles6.not, "data-testid": "not-found", children: [
+    /* @__PURE__ */ jsxDEV14("p", { style: styles6.title, children: "404" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
-      lineNumber: 18,
+      lineNumber: 11,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV14("p", { className: "not__text", children: "Page was not found" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV14("p", { style: styles6.text, children: "Page was not found" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
-      lineNumber: 19,
+      lineNumber: 12,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV14("button", { onClick: () => {
-      navigate("/");
-    }, className: "not__button", children: "Back to homepage" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV14("button", { onClick: handleBackToHomepage, style: styles6.button, children: "Back to homepage" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
-      lineNumber: 20,
+      lineNumber: 13,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "src/components/NotFound/index.tsx",
-    lineNumber: 17,
+    lineNumber: 10,
     columnNumber: 5
   }, this);
+}, styles6 = {
+  not: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    height: "100vh"
+  },
+  title: {
+    fontSize: "106px"
+  },
+  text: {
+    fontSize: "56px"
+  },
+  button: {
+    marginTop: "30px",
+    padding: "20px",
+    cursor: "pointer",
+    borderRadius: "20px",
+    fontSize: "30px",
+    transition: "background-color 1s, color 1s",
+    backgroundColor: "transparent",
+    color: "#000",
+    border: "none",
+    textDecoration: "none"
+  },
+  buttonHover: {
+    backgroundColor: "rgb(90, 90, 190)",
+    color: "#fff"
+  }
 }, NotFound_default = NotFound;
 
 // app/routes/$.tsx
@@ -1291,7 +1356,7 @@ var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__
 }, this), __default = NotPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-642CQBNA.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GLWUXGRW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-V7WMFV3M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-YY6TOX4Z.js", imports: ["/build/_shared/chunk-6RXLGMZT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-DQYA3DSG.js", imports: ["/build/_shared/chunk-6RXLGMZT.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/errorpage.test": { id: "routes/errorpage.test", parentId: "root", path: "errorpage/test", index: void 0, caseSensitive: void 0, module: "/build/routes/errorpage.test-BXALXYXV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "50c2b300", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723286806683 }, url: "/build/manifest-50C2B300.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-642CQBNA.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GLWUXGRW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MBVIMSKI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-LC3KL6T2.js", imports: ["/build/_shared/chunk-3HDIZ6F6.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-QALFFQ26.js", imports: ["/build/_shared/chunk-3HDIZ6F6.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/errorpage.test": { id: "routes/errorpage.test", parentId: "root", path: "errorpage/test", index: void 0, caseSensitive: void 0, module: "/build/routes/errorpage.test-BXALXYXV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "b5980bd7", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723300738433 }, url: "/build/manifest-B5980BD7.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, unstable_singleFetch: !1, unstable_lazyRouteDiscovery: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
