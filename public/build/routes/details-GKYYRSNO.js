@@ -5,14 +5,15 @@ import {
   getThemeSelector,
   paramsSelector,
   useAppDispatch
-} from "/build/_shared/chunk-3HDIZ6F6.js";
+} from "/build/_shared/chunk-UJAXAMTK.js";
 import {
   setClickedUser,
   useSelector
 } from "/build/_shared/chunk-JKX5JPF7.js";
 import {
   Link,
-  useLoaderData
+  useLoaderData,
+  useNavigation
 } from "/build/_shared/chunk-2TPTIFO2.js";
 import {
   createHotContext
@@ -185,7 +186,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\details\\index.tsx"
   );
-  import.meta.hot.lastModified = "1723290999562.9033";
+  import.meta.hot.lastModified = "1723301011917.2275";
 }
 var Deatils = () => {
   _s();
@@ -196,41 +197,51 @@ var Deatils = () => {
   (0, import_react3.useEffect)(() => {
     dispath(setClickedUser(user));
   }, [user]);
-  if (!user) {
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: {
-      width: "300px",
-      height: "800px",
-      backgroundColor: "red"
-    }, children: "Load" }, void 0, false, {
-      fileName: "app/routes/details/index.tsx",
-      lineNumber: 74,
-      columnNumber: 12
-    }, this);
-  }
+  const {
+    state
+  } = useNavigation();
+  console.log(state);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(App_default, {}, void 0, false, {
+    state === "loading" && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: {
+      width: "100%",
+      height: "100vh",
+      position: "relative",
+      zIndex: "111111",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Spinner_default, {}, void 0, false, {
+      fileName: "app/routes/details/index.tsx",
+      lineNumber: 90,
+      columnNumber: 5
+    }, this) }, void 0, false, {
       fileName: "app/routes/details/index.tsx",
       lineNumber: 81,
+      columnNumber: 29
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(App_default, {}, void 0, false, {
+      fileName: "app/routes/details/index.tsx",
+      lineNumber: 93,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Background_default, {}, void 0, false, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 82,
+      lineNumber: 94,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(UserData_default, {}, void 0, false, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 83,
+      lineNumber: 95,
       columnNumber: 11
     }, this)
   ] }, void 0, true, {
     fileName: "app/routes/details/index.tsx",
-    lineNumber: 80,
+    lineNumber: 79,
     columnNumber: 10
   }, this);
 };
-_s(Deatils, "2z70gmRmeq7iftpNG1HzPz7Hg0Q=", false, function() {
-  return [useLoaderData, useAppDispatch];
+_s(Deatils, "u7wKP1F6xXqlF1DiBa55jL9cNFk=", false, function() {
+  return [useLoaderData, useAppDispatch, useNavigation];
 });
 _c = Deatils;
 var details_default = Deatils;
@@ -241,4 +252,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-QALFFQ26.js.map
+//# sourceMappingURL=/build/routes/details-GKYYRSNO.js.map

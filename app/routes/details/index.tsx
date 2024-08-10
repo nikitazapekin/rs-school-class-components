@@ -7,6 +7,8 @@ import App from "../../../src/components/App";
 import Background from "../../../src/components/Background";
 import { useAppDispatch } from "../../../src/hooks/redux";
 import { setClickedUser } from "../../../src/store/slices/appSlice";
+import Spinner from "@/components/Spinner";
+import { useNavigation } from '@remix-run/react';
 interface User {
     login: string;
     id: number;
@@ -65,11 +67,18 @@ const Deatils = () => {
     useEffect(()=> {
 dispath(setClickedUser(user))
     }, [user])
-    if(!user) {
-        return <div style={{width: "300px", height: "800px", backgroundColor: "red"}}>Load</div>
-    }
+    const { state } = useNavigation();
+    console.log(state)
     return (
         <>
+
+{state === 'loading' && (
+    <div style={{width: "100%", height: "100vh",position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center"} }>
+    <Spinner />
+ 
+    </div>
+			)
+			}
             <App />
             <Background />
           <UserData />

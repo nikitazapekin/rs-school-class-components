@@ -25,28 +25,10 @@ const App = () => {
 		);
 	}, []);
 
-	//const { state } = useNavigation();
-	//console.log(state)
+	 
 	return (
 		<>
-		
-{/*
-		</>
-		)}
- {state === 'loading' ? (
-    <div>
-    loading
-    </div>
-    ) : (
-      <>
-    
-			{state === 'loading' && (
-    <div>
-    loading
-    </div>
-			)
-			}
-		*/}
+	 
 			<div className="container">
 			<Header />
 				<List />
@@ -56,9 +38,7 @@ const App = () => {
 			<Background />
 
 			
-			{/*
-			{isLoading && <Spinner />}
-			*/}
+		 
 		</>
 	);
 };

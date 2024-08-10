@@ -1134,37 +1134,38 @@ var App2 = () => {
     /* @__PURE__ */ jsxDEV11("div", { className: "container", children: [
       /* @__PURE__ */ jsxDEV11(Header_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 51,
+        lineNumber: 33,
         columnNumber: 4
       }, this),
       /* @__PURE__ */ jsxDEV11(List_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 52,
+        lineNumber: 34,
         columnNumber: 5
       }, this),
       storedUsers.length > 0 && /* @__PURE__ */ jsxDEV11(StoredUsersFlyoutElement_default, {}, void 0, !1, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 53,
+        lineNumber: 35,
         columnNumber: 32
       }, this)
     ] }, void 0, !0, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 50,
+      lineNumber: 32,
       columnNumber: 4
     }, this),
     /* @__PURE__ */ jsxDEV11(Background_default, {}, void 0, !1, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 56,
+      lineNumber: 38,
       columnNumber: 4
     }, this)
   ] }, void 0, !0, {
     fileName: "src/components/App/index.tsx",
-    lineNumber: 31,
+    lineNumber: 30,
     columnNumber: 3
   }, this);
 }, App_default = App2;
 
 // app/routes/details/index.tsx
+import { useNavigation } from "@remix-run/react";
 import { Fragment as Fragment3, jsxDEV as jsxDEV12 } from "react/jsx-dev-runtime";
 async function loader({ request }) {
   let url = new URL(request.url), search = new URLSearchParams(url.search), query = search.get("query") || "type:user", page = parseInt(search.get("page") || "1", 10), limit = parseInt(search.get("limit") || "10", 10), username = search.get("user");
@@ -1177,32 +1178,39 @@ async function loader({ request }) {
 }
 var Deatils = () => {
   let { user } = useLoaderData(), dispath = useAppDispatch();
-  return useEffect3(() => {
+  useEffect3(() => {
     dispath(setClickedUser(user));
-  }, [user]), user ? /* @__PURE__ */ jsxDEV12(Fragment3, { children: [
+  }, [user]);
+  let { state } = useNavigation();
+  return console.log(state), /* @__PURE__ */ jsxDEV12(Fragment3, { children: [
+    state === "loading" && /* @__PURE__ */ jsxDEV12("div", { style: { width: "100%", height: "100vh", position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsxDEV12(Spinner_default, {}, void 0, !1, {
+      fileName: "app/routes/details/index.tsx",
+      lineNumber: 77,
+      columnNumber: 5
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/details/index.tsx",
+      lineNumber: 76,
+      columnNumber: 5
+    }, this),
     /* @__PURE__ */ jsxDEV12(App_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 73,
+      lineNumber: 82,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ jsxDEV12(Background_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 74,
+      lineNumber: 83,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ jsxDEV12(UserData_default, {}, void 0, !1, {
       fileName: "app/routes/details/index.tsx",
-      lineNumber: 75,
+      lineNumber: 84,
       columnNumber: 11
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/details/index.tsx",
-    lineNumber: 72,
+    lineNumber: 73,
     columnNumber: 9
-  }, this) : /* @__PURE__ */ jsxDEV12("div", { style: { width: "300px", height: "800px", backgroundColor: "red" }, children: "Load" }, void 0, !1, {
-    fileName: "app/routes/details/index.tsx",
-    lineNumber: 69,
-    columnNumber: 16
   }, this);
 }, details_default = Deatils;
 
@@ -1222,7 +1230,7 @@ var setUsersActionCreator = (data) => (dispatch) => {
 };
 
 // app/routes/_index.tsx
-import { useNavigation } from "@remix-run/react";
+import { useNavigation as useNavigation2 } from "@remix-run/react";
 import { Fragment as Fragment4, jsxDEV as jsxDEV13 } from "react/jsx-dev-runtime";
 async function loader2({ request }) {
   let url = new URL(request.url), search = new URLSearchParams(url.search), query = search.get("query") || "type:user", page = parseInt(search.get("page") || "1", 10), limit = parseInt(search.get("limit") || "10", 10);
@@ -1238,7 +1246,7 @@ function Index() {
   useEffect4(() => {
     users.length > 0 && dispatch(setUsersActionCreator(users));
   }, [users, dispatch]);
-  let { state } = useNavigation();
+  let { state } = useNavigation2();
   return console.log(state), /* @__PURE__ */ jsxDEV13(Fragment4, { children: [
     state === "loading" && /* @__PURE__ */ jsxDEV13("div", { style: { width: "100%", height: "100vh", position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ jsxDEV13(Spinner_default, {}, void 0, !1, {
       fileName: "app/routes/_index.tsx",
@@ -1356,7 +1364,7 @@ var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__
 }, this), __default = NotPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-642CQBNA.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GLWUXGRW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MBVIMSKI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-LC3KL6T2.js", imports: ["/build/_shared/chunk-3HDIZ6F6.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-QALFFQ26.js", imports: ["/build/_shared/chunk-3HDIZ6F6.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/errorpage.test": { id: "routes/errorpage.test", parentId: "root", path: "errorpage/test", index: void 0, caseSensitive: void 0, module: "/build/routes/errorpage.test-BXALXYXV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "b5980bd7", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723300738433 }, url: "/build/manifest-B5980BD7.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-642CQBNA.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GLWUXGRW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MBVIMSKI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-HNQFHEJY.js", imports: ["/build/_shared/chunk-UJAXAMTK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-GKYYRSNO.js", imports: ["/build/_shared/chunk-UJAXAMTK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/errorpage.test": { id: "routes/errorpage.test", parentId: "root", path: "errorpage/test", index: void 0, caseSensitive: void 0, module: "/build/routes/errorpage.test-BXALXYXV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "e0c4d0c8", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723301012748 }, url: "/build/manifest-E0C4D0C8.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, unstable_singleFetch: !1, unstable_lazyRouteDiscovery: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

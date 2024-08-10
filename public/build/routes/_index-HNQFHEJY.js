@@ -3,7 +3,7 @@ import {
   Background_default,
   Spinner_default,
   useAppDispatch
-} from "/build/_shared/chunk-3HDIZ6F6.js";
+} from "/build/_shared/chunk-UJAXAMTK.js";
 import {
   setUsers
 } from "/build/_shared/chunk-JKX5JPF7.js";
@@ -116,4 +116,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   Index as default
 };
-//# sourceMappingURL=/build/routes/_index-LC3KL6T2.js.map
+//# sourceMappingURL=/build/routes/_index-HNQFHEJY.js.map
