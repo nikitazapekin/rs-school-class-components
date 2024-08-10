@@ -5,7 +5,7 @@ import {
   getThemeSelector,
   paramsSelector,
   useAppDispatch
-} from "/build/_shared/chunk-UJSK3VHB.js";
+} from "/build/_shared/chunk-AFXLO7UK.js";
 import {
   setClickedUser,
   useSelector
@@ -13,7 +13,7 @@ import {
 import {
   Link,
   useLoaderData
-} from "/build/_shared/chunk-CWHREAFJ.js";
+} from "/build/_shared/chunk-2TPTIFO2.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-WYKJAU76.js";
@@ -116,7 +116,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\details\\index.tsx"
   );
-  import.meta.hot.lastModified = "1723197528802.0984";
+  import.meta.hot.lastModified = "1723281666454.1392";
 }
 var Deatils = () => {
   _s();
@@ -161,4 +161,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-CIB5JURO.js.map
+//# sourceMappingURL=/build/routes/details-3ZZJG54K.js.map

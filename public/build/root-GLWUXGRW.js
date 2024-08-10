@@ -10,7 +10,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration
-} from "/build/_shared/chunk-CWHREAFJ.js";
+} from "/build/_shared/chunk-2TPTIFO2.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-WYKJAU76.js";
@@ -43,7 +43,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\root.tsx"
   );
-  import.meta.hot.lastModified = "1723132431029.172";
+  import.meta.hot.lastModified = "1723283655397.5793";
 }
 function Layout({
   children
@@ -83,12 +83,12 @@ function Layout({
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ScrollRestoration, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 39,
+        lineNumber: 40,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Scripts, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
@@ -106,7 +106,7 @@ _c = Layout;
 function App() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Outlet, {}, void 0, false, {
     fileName: "app/root.tsx",
-    lineNumber: 46,
+    lineNumber: 47,
     columnNumber: 10
   }, this);
 }
@@ -121,4 +121,4 @@ export {
   Layout,
   App as default
 };
-//# sourceMappingURL=/build/root-ZRYA5F3B.js.map
+//# sourceMappingURL=/build/root-GLWUXGRW.js.map

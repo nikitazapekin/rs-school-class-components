@@ -7,9 +7,12 @@ import {
 } from "@remix-run/react";
 import React from "react";
 import { Provider } from "react-redux";
+ 
 import { store } from "../src/store/store";
 export function Layout({ children }: { children: React.ReactNode }) {
+ 
   return (
+
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
@@ -19,6 +22,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Provider store={store}>
+        
           {children}
         </Provider>
         <ScrollRestoration />

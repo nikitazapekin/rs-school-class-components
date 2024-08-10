@@ -9,7 +9,7 @@ import {
 } from "/build/_shared/chunk-JKX5JPF7.js";
 import {
   RemixBrowser
-} from "/build/_shared/chunk-CWHREAFJ.js";
+} from "/build/_shared/chunk-2TPTIFO2.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-WYKJAU76.js";
@@ -34,7 +34,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\entry.client.tsx"
   );
-  import.meta.hot.lastModified = "1723132424277.5227";
+  import.meta.hot.lastModified = "1723281666443.6758";
 }
 (0, import_react2.startTransition)(() => {
   (0, import_client.hydrateRoot)(
@@ -54,4 +54,4 @@ if (import.meta) {
     }, this)
   );
 });
-//# sourceMappingURL=/build/entry.client-FOLVKJKM.js.map
+//# sourceMappingURL=/build/entry.client-642CQBNA.js.map

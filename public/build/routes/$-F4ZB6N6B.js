@@ -1,7 +1,7 @@
 import {
   useLocation,
   useNavigate
-} from "/build/_shared/chunk-CWHREAFJ.js";
+} from "/build/_shared/chunk-2TPTIFO2.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-WYKJAU76.js";
@@ -71,7 +71,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\$.tsx"
   );
-  import.meta.hot.lastModified = "1723250787457.6956";
+  import.meta.hot.lastModified = "1723281666450.045";
 }
 var NotPage = () => {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { "data-testid": "not-found", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(NotFound_default, {}, void 0, false, {
@@ -97,4 +97,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   __default as default
 };
-//# sourceMappingURL=/build/routes/$-AQXQ6WYV.js.map
+//# sourceMappingURL=/build/routes/$-F4ZB6N6B.js.map

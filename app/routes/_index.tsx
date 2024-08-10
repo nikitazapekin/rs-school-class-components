@@ -9,7 +9,7 @@ import { setUsersActionCreator } from "../../src/store/action-creators/setUsersA
 import App from "../../src/components/App/index"
 import Background from '../../src/components/Background';
  
-
+ 
  
 type UserDataArray = Array<{
   login: string;
