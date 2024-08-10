@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["css-side-effects-plugin-ns:src\\components\\Header\\index.css"],
-  "sourcesContent": [".header {\r\n\twidth: 100%;\r\n\tbackground-color: rgb(212, 201, 188);\r\n\tposition: fixed;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tz-index: 11;\r\n\ttransition: 1s;\r\n\r\n\r\n}\r\n.header__content {\r\n\theight: 90px;\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n\tjustify-content: center;\r\n\tpadding: 0 15px;\r\n}\r\n\r\n.header__search {\r\n\tmax-width: 700px;\r\n\twidth: 100%;\r\n\r\n\tdisplay: flex;\r\n}\r\n.header-dark {\r\n\tbackground-color: rgb(43, 41, 41);\r\n}\r\n\r\n.search__bar {\r\n\twidth: 100%;\r\n\tpadding: 5px 10px;\r\n}\r\n\r\n.search__btn {\r\n\tpadding: 5px;\r\n\ttransition: 1s;\r\n\tcursor: pointer;\r\n}\r\n\r\n.search__btn:hover {\r\n\tbackground-color: rgb(90, 90, 190);\r\n\tcolor: #fff;\r\n}\r\n\r\n.redirect__btn {\r\n\tcursor: pointer;\r\n\r\n\tpadding: 7px;\r\n\tmargin-left: 10px;\r\n\r\n\ttransition: 1s;\r\n}\r\n\r\n.redirect__btn:hover {\r\n\tbackground-color: rgb(90, 90, 190);\r\n\tcolor: #fff;\r\n}\r\n"],
-  "mappings": ";AAAA;AACC;AACA;AACA;AACA;AACA;AACA;AACA;AAAA;AAID;AACC;AACA;AACA;AACA;AACA;AAAA;AAGD;AACC;AACA;AAEA;AAAA;AAED;AACC;AAAA;AAGD;AACC;AACA;AAAA;AAGD;AACC;AACA;AACA;AAAA;AAGD;AACC;AACA;AAAA;AAGD;AACC;AAEA;AACA;AAEA;AAAA;AAGD;AACC;AACA;AAAA;",
-  "names": []
-}

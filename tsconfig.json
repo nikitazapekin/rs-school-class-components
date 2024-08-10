@@ -16,7 +16,10 @@
 	  
 	"compilerOptions": {
 	  "lib": ["DOM", "DOM.Iterable", "ES2022"],
-	  "types": ["@remix-run/node", "vite/client", "@testing-library/jest-dom", "jest",  "node"],
+
+ 
+	
+	  "types": ["@remix-run/node","@remix-run/react",  "vite/client", "@testing-library/jest-dom", "jest",  "node"],
 	  "isolatedModules": true,
 	  "esModuleInterop": true,
 	  "jsx": "react-jsx",
@@ -32,7 +35,8 @@
 	  "forceConsistentCasingInFileNames": true,
 	  "baseUrl": "./src",
 	  
-		"paths": {
+	  "paths": {
+			"@remix-run/*": ["node_modules/@remix-run/*"],
 			"@/*": ["./*"]
 		},
   

@@ -1,38 +1,27 @@
-import type { Config } from '@jest/types';
+import type { Config } from 'jest';
 
-const config: Config.InitialOptions = {
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
-  },
-  transformIgnorePatterns: [
-    '/node_modules/(?!@remix-run/react|@web3-storage|other-package-you-need).+\\.js$'
-  ],
-  moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js',
-    '@/(.*)': '<rootDir>/src/$1'
-  },
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+const config: Config = {
+  clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+  },
   coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   coverageReporters: ['html', 'text', 'text-summary', 'lcov'],
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',        // Включить все файлы .ts и .tsx из папки src
-    '!**/*.d.ts',               // Исключить все файлы .d.ts
-    '!**/node_modules/**',      // Исключить папку node_modules
-    '!**/*.test.{ts,tsx}',      // Исключить тестовые файлы
-    '!babel.config.ts',        // Исключить babel.config.ts
-    '!jest.config.ts',         // Исключить jest.config.ts
-    '!remix.config.ts',        // Исключить remix.config.ts
-    '!vite-env.d.ts',          // Исключить vite-env.d.ts
-    '!vite.config.ts',         // Исключить vite.config.ts
-    '!**/entry.client.tsx',    // Исключить entry.client.tsx
-    '!**/entry.server.tsx',    // Исключить entry.server.tsx
-    '!**/types.ts',            
+    '**/*.{ts,tsx}',            
+    '!**/*.d.ts',              
+    '!**/node_modules/**',     
+    '!jest.config.ts',
+    '!**/types.ts',       
+    '!**/.next/types/**'     
   ],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  transformIgnorePatterns: [
+    "node_modules/(?!(module-to-transform|@remix-run)/)" 
+  ]
 };
 
 export default config;
