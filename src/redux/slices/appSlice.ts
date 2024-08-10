@@ -94,6 +94,9 @@ const appSlicee = createSlice({
 			setClickedUser(state, action: PayloadAction<User>) {
 			state.clickedUser = action.payload
 					},
+
+
+				 
 	},
 
 
@@ -113,6 +116,7 @@ export const {
 	setStoredInLocalStorageQuery,
 	setTypedValue,
 	setNewSearchValue,
-	setClickedUser
+	setClickedUser,
+ 
 } = appSlicee.actions;
 export default appSlicee.reducer;

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import styles from "./styles.module.scss";
 
 import Image from 'next/image';
+ 
 
 export interface User {
 	login: string;
@@ -34,6 +35,7 @@ interface UserDataProps {
 }
 const UserData = ({user}: UserDataProps) => {
   
+ 
     const params = useSelector(paramsSelector);
      return (
         <aside className={`${styles.sidebar} 

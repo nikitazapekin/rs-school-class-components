@@ -13,6 +13,7 @@ import StoredUsersButton from "../StoredUsersFlyoutElement";
 
 import Providers from "../../../redux/Provider";
 import { setUsersActionCreator } from "../../../redux/action-creators/setUsersActionCreator";
+import { clickedUserSelector } from "../../../redux/selectors/getClickedElement";
 type UserDataArray = Array<{
 	login: string;
 	id: number;
@@ -57,6 +58,7 @@ const storedUsers = useSelector(storedUsersSelector);
 	useEffect(()=> {
 dispatch(setUsersActionCreator(users))
 	}, [users])
+ 
   return (
   <>
 <Providers>
@@ -69,11 +71,14 @@ dispatch(setUsersActionCreator(users))
 				{users.length === 0 && <p className={styles.list__nothing}>Nothing found</p>}
 				<div className={styles.list__btns}>
 					<button className={`${styles.list__prev} ${styles.list__btn}`} onClick={handlePrev}
+					 
 					>
 						Prev
 					</button>
 					<button className={`${styles.list__next} ${styles.list__btn}`} onClick={handleNext} 
-					data-testid="next">
+					data-testid="next"
+				 
+					>
 						Next
 					</button>
 				</div>
