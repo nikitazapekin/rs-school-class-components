@@ -6,7 +6,7 @@ import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
 import { storedUsersSelector } from './redux/selectors/getStoredElements';
 import App from './App';
 import List from './components/List';
-import ErrorComponent from './components/ErrorComponent';
+ 
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 import Spinner from './components/Spinner';
 jest.mock('./components/List');
@@ -34,7 +34,7 @@ const mockStore = () => {
 describe('App component', () => {
   beforeEach(() => {
     (List as jest.Mock).mockImplementation(() => <div>List Component</div>);
-    (ErrorComponent as jest.Mock).mockImplementation(() => <div>Error Component</div>);
+    
     (StoredUsersButton as jest.Mock).mockImplementation(() => <div>Stored Users Button</div>);
     (Spinner as jest.Mock).mockImplementation(() => <div>Loading...</div>);
   });

@@ -43,7 +43,7 @@ console.log(clickedUser)
 				))}
 				{users.length === 0 && <p className={styles.list__nothing}>Nothing found</p>}
 				<div className={styles.list__btns}>
-					<button className={`${styles.list__prev} ${styles.list__btn}`} onClick={handlePrev}>
+					<button className={`${styles.list__prev} ${styles.list__btn}`} onClick={handlePrev}  disabled={clickedUser.login ? true : false}>
 						Prev
 					</button>
 					<button className={`${styles.list__next} ${styles.list__btn}`} onClick={handleNext} data-testid="next" disabled={clickedUser.login ? true : false}>

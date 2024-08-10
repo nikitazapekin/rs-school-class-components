@@ -919,7 +919,7 @@ FN:25,setSelectedElement
 FNF:4
 FNH:4
 FNDA:10,setAddToStoredElement
-FNDA:3,setRemoveStoredElementById
+FNDA:4,setRemoveStoredElementById
 FNDA:3,setClearStoredElements
 FNDA:7,setSelectedElement
 DA:1,1
@@ -941,8 +941,8 @@ DA:16,3
 DA:17,3
 DA:18,10
 DA:19,1
-DA:20,3
-DA:21,3
+DA:20,4
+DA:21,4
 DA:22,1
 DA:23,3
 DA:24,3
@@ -965,8 +965,8 @@ BRDA:13,2,0,7
 BRDA:15,3,0,3
 BRDA:13,4,0,3
 BRDA:16,5,0,3
-BRDA:19,6,0,3
-BRDA:20,7,0,4
+BRDA:19,6,0,4
+BRDA:20,7,0,7
 BRDA:22,8,0,3
 BRDA:25,9,0,7
 BRDA:26,10,0,3
