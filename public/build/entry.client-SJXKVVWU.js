@@ -9,10 +9,7 @@ import {
 } from "/build/_shared/chunk-JKX5JPF7.js";
 import {
   RemixBrowser
-} from "/build/_shared/chunk-2TPTIFO2.js";
-import {
-  createHotContext
-} from "/build/_shared/chunk-WYKJAU76.js";
+} from "/build/_shared/chunk-JMKKOCVI.js";
 import "/build/_shared/chunk-GIAAE3CH.js";
 import {
   require_jsx_dev_runtime
@@ -20,6 +17,9 @@ import {
 import {
   require_react
 } from "/build/_shared/chunk-BOXFZXVX.js";
+import {
+  createHotContext
+} from "/build/_shared/chunk-WYKJAU76.js";
 import "/build/_shared/chunk-UWV35TSL.js";
 import {
   __toESM
@@ -54,4 +54,4 @@ if (import.meta) {
     }, this)
   );
 });
-//# sourceMappingURL=/build/entry.client-4N2SQCHD.js.map
+//# sourceMappingURL=/build/entry.client-SJXKVVWU.js.map

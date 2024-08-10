@@ -1284,80 +1284,6 @@ function Index() {
   }, this);
 }
 
-// app/routes/home/index.tsx
-var home_exports = {};
-__export(home_exports, {
-  default: () => Index2,
-  loader: () => loader3,
-  meta: () => meta
-});
-import { useLoaderData as useLoaderData3 } from "@remix-run/react";
-import { useState as useState3 } from "react";
-import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
-async function loader3() {
-  return {
-    message: "hello from loader"
-  };
-}
-var meta = () => [
-  { title: "New Remix App" },
-  { name: "description", content: "Welcome to Remix!" }
-];
-function Index2() {
-  let loaderData = useLoaderData3(), [notes, setNotes] = useState3([
-    {
-      id: 1,
-      text: "This is a note"
-    }
-  ]);
-  return /* @__PURE__ */ jsxDEV14("main", { className: "container", children: [
-    /* @__PURE__ */ jsxDEV14("h1", { children: "Welcome to Remix" }, void 0, !1, {
-      fileName: "app/routes/home/index.tsx",
-      lineNumber: 29,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV14("p", { children: loaderData.message }, void 0, !1, {
-      fileName: "app/routes/home/index.tsx",
-      lineNumber: 30,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV14(
-      "button",
-      {
-        onClick: () => setNotes([
-          ...notes,
-          {
-            id: notes.length + 1,
-            text: `Note ${notes.length + 1}`
-          }
-        ]),
-        children: "Create a Note"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/home/index.tsx",
-        lineNumber: 31,
-        columnNumber: 7
-      },
-      this
-    ),
-    /* @__PURE__ */ jsxDEV14("ul", { children: notes.map((note) => /* @__PURE__ */ jsxDEV14("li", { children: note.text }, note.id, !1, {
-      fileName: "app/routes/home/index.tsx",
-      lineNumber: 46,
-      columnNumber: 18
-    }, this)) }, void 0, !1, {
-      fileName: "app/routes/home/index.tsx",
-      lineNumber: 44,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/home/index.tsx",
-    lineNumber: 28,
-    columnNumber: 5
-  }, this);
-}
-
 // app/routes/$.tsx
 var __exports = {};
 __export(__exports, {
@@ -1366,23 +1292,23 @@ __export(__exports, {
 
 // src/components/NotFound/index.tsx
 import { useNavigate as useNavigate3 } from "@remix-run/react";
-import { jsxDEV as jsxDEV15 } from "react/jsx-dev-runtime";
+import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
 var NotFound = () => {
   let navigate = useNavigate3(), handleBackToHomepage = () => {
     navigate("/");
   };
-  return /* @__PURE__ */ jsxDEV15("div", { style: styles6.not, "data-testid": "not-found", children: [
-    /* @__PURE__ */ jsxDEV15("p", { style: styles6.title, children: "404" }, void 0, !1, {
+  return /* @__PURE__ */ jsxDEV14("div", { style: styles6.not, "data-testid": "not-found", children: [
+    /* @__PURE__ */ jsxDEV14("p", { style: styles6.title, children: "404" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 11,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV15("p", { style: styles6.text, children: "Page was not found" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV14("p", { style: styles6.text, children: "Page was not found" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 12,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ jsxDEV15("button", { onClick: handleBackToHomepage, style: styles6.button, children: "Back to homepage" }, void 0, !1, {
+    /* @__PURE__ */ jsxDEV14("button", { onClick: handleBackToHomepage, style: styles6.button, children: "Back to homepage" }, void 0, !1, {
       fileName: "src/components/NotFound/index.tsx",
       lineNumber: 13,
       columnNumber: 7
@@ -1425,8 +1351,8 @@ var NotFound = () => {
 }, NotFound_default = NotFound;
 
 // app/routes/$.tsx
-import { Fragment as Fragment5, jsxDEV as jsxDEV16 } from "react/jsx-dev-runtime";
-var NotPage = () => /* @__PURE__ */ jsxDEV16(Fragment5, { children: /* @__PURE__ */ jsxDEV16("div", { "data-testid": "not-found", children: /* @__PURE__ */ jsxDEV16(NotFound_default, {}, void 0, !1, {
+import { Fragment as Fragment5, jsxDEV as jsxDEV15 } from "react/jsx-dev-runtime";
+var NotPage = () => /* @__PURE__ */ jsxDEV15(Fragment5, { children: /* @__PURE__ */ jsxDEV15("div", { "data-testid": "not-found", children: /* @__PURE__ */ jsxDEV15(NotFound_default, {}, void 0, !1, {
   fileName: "app/routes/$.tsx",
   lineNumber: 7,
   columnNumber: 3
@@ -1441,7 +1367,7 @@ var NotPage = () => /* @__PURE__ */ jsxDEV16(Fragment5, { children: /* @__PURE__
 }, this), __default = NotPage;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-4N2SQCHD.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-2TPTIFO2.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TN4BLI4Q.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-T7WTDN37.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-T4DEV42B.js", imports: ["/build/_shared/chunk-AIKSV2JJ.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-45PFYMZR.js", imports: ["/build/_shared/chunk-AIKSV2JJ.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/home": { id: "routes/home", parentId: "root", path: "home", index: void 0, caseSensitive: void 0, module: "/build/routes/home-HYCVNV4Z.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "903ef852", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723318623213 }, url: "/build/manifest-903EF852.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-SJXKVVWU.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-XFNXQ4IU.js", "/build/_shared/chunk-JKX5JPF7.js", "/build/_shared/chunk-JMKKOCVI.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-WYKJAU76.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GL5F2DHH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-VQFGQ7KK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-UB5P2Y6Z.js", imports: ["/build/_shared/chunk-5GOIZJAD.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/details": { id: "routes/details", parentId: "root", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/details-MHVJJFL4.js", imports: ["/build/_shared/chunk-5GOIZJAD.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "c9742df9", hmr: { runtime: "/build/_shared\\chunk-WYKJAU76.js", timestamp: 1723319332072 }, url: "/build/manifest-C9742DF9.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, unstable_singleFetch: !1, unstable_lazyRouteDiscovery: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1468,14 +1394,6 @@ var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_
     index: !0,
     caseSensitive: void 0,
     module: index_exports
-  },
-  "routes/home": {
-    id: "routes/home",
-    parentId: "root",
-    path: "home",
-    index: void 0,
-    caseSensitive: void 0,
-    module: home_exports
   },
   "routes/$": {
     id: "routes/$",

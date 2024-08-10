@@ -5,7 +5,7 @@ import {
   getThemeSelector,
   paramsSelector,
   useAppDispatch
-} from "/build/_shared/chunk-AIKSV2JJ.js";
+} from "/build/_shared/chunk-5GOIZJAD.js";
 import {
   setClickedUser,
   useSelector
@@ -14,10 +14,7 @@ import {
   Link,
   useLoaderData,
   useNavigation
-} from "/build/_shared/chunk-2TPTIFO2.js";
-import {
-  createHotContext
-} from "/build/_shared/chunk-WYKJAU76.js";
+} from "/build/_shared/chunk-JMKKOCVI.js";
 import "/build/_shared/chunk-GIAAE3CH.js";
 import {
   require_jsx_dev_runtime
@@ -25,6 +22,9 @@ import {
 import {
   require_react
 } from "/build/_shared/chunk-BOXFZXVX.js";
+import {
+  createHotContext
+} from "/build/_shared/chunk-WYKJAU76.js";
 import "/build/_shared/chunk-UWV35TSL.js";
 import {
   __toESM
@@ -252,4 +252,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-45PFYMZR.js.map
+//# sourceMappingURL=/build/routes/details-MHVJJFL4.js.map
