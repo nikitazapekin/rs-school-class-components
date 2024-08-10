@@ -10,7 +10,7 @@ import App from "../../src/components/App/index"
 import Background from '../../src/components/Background';
  
  import { useNavigation } from '@remix-run/react';
-import Spinner from '@/components/Spinner';
+import Spinner from '../../src/components/Spinner';
  
 type UserDataArray = Array<{
   login: string;

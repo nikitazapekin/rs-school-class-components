@@ -26,7 +26,7 @@ const App = () => {
 	return (
 		<>
 	 
-			<div className="container">
+			<div className="container" data-testid="app">
 			<Header />
 				<List />
 				{storedUsers.length > 0 && <StoredUsersButton />}
