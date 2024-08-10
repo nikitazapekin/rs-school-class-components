@@ -186,7 +186,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\details\\index.tsx"
   );
-  import.meta.hot.lastModified = "1723301011917.2275";
+  import.meta.hot.lastModified = "1723301258371.1624";
 }
 var Deatils = () => {
   _s();
@@ -213,11 +213,11 @@ var Deatils = () => {
     }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Spinner_default, {}, void 0, false, {
       fileName: "app/routes/details/index.tsx",
       lineNumber: 90,
-      columnNumber: 5
+      columnNumber: 21
     }, this) }, void 0, false, {
       fileName: "app/routes/details/index.tsx",
       lineNumber: 81,
-      columnNumber: 29
+      columnNumber: 37
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(App_default, {}, void 0, false, {
       fileName: "app/routes/details/index.tsx",
@@ -232,7 +232,7 @@ var Deatils = () => {
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(UserData_default, {}, void 0, false, {
       fileName: "app/routes/details/index.tsx",
       lineNumber: 95,
-      columnNumber: 11
+      columnNumber: 13
     }, this)
   ] }, void 0, true, {
     fileName: "app/routes/details/index.tsx",
@@ -252,4 +252,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-GKYYRSNO.js.map
+//# sourceMappingURL=/build/routes/details-2GLO2YK3.js.map

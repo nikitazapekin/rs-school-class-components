@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios, { AxiosResponse } from 'axios';
 import { useLoaderData } from "@remix-run/react";
 import { redirect } from "@remix-run/node";
-import  UserData  from "../../../src/components/UserData/index"
+import UserData from "../../../src/components/UserData/index"
 import App from "../../../src/components/App";
 import Background from "../../../src/components/Background";
 import { useAppDispatch } from "../../../src/hooks/redux";
@@ -56,33 +56,33 @@ export async function loader({ request }: { request: Request }) {
         } else {
             console.error('Unknown error:', error);
         }
-        return { user: [], query: "",page:  1,limit: 10 };
-   
+        return { user: [], query: "", page: 1, limit: 10 };
+
     }
 }
 const Deatils = () => {
     const { user } = useLoaderData<LoaderData>();
     const dispath = useAppDispatch()
 
-    useEffect(()=> {
-dispath(setClickedUser(user))
+    useEffect(() => {
+        dispath(setClickedUser(user))
     }, [user])
     const { state } = useNavigation();
     console.log(state)
     return (
         <>
 
-{state === 'loading' && (
-    <div style={{width: "100%", height: "100vh",position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center"} }>
-    <Spinner />
- 
-    </div>
-			)
-			}
+            {state === 'loading' && (
+                <div style={{ width: "100%", height: "100vh", position: "relative", zIndex: "111111", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Spinner />
+
+                </div>
+            )
+            }
             <App />
             <Background />
-          <UserData />
-        
+            <UserData />
+
         </>
     );
 }
