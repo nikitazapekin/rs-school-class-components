@@ -49,7 +49,7 @@ const UsersPage = ({ users }: Props) => {
 	}, [users, dispatch]);
 
 	if (loading) {
-	//	return <Spinner />;
+		return <Spinner />;
 	}
 
 	return (
