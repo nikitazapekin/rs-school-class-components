@@ -14,6 +14,7 @@ export default defineConfig({
     tsconfigPaths(),
   ],
 });
+//npm install --save-dev vitest c8 --legacy-peer-deps
 
 /*
 import { defineConfig } from "vite";
