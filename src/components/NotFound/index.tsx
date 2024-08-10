@@ -1,5 +1,5 @@
 
- import "~/index.css"
+ //import "~/index.css"
 import { useNavigate, useLocation } from "@remix-run/react";
 const style = {
   color: 'red',

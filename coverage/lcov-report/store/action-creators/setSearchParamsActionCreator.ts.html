@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">41.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>7/17</span>
             </div>
         
             
@@ -80,40 +80,40 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { setSearchParamsURL, setNextPage, setPrevPage, setQueryPage, setFirstPage } from '../slices/appSlice';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { setSearchParamsURL, setNextPage, setPrevPage, setQueryPage, setFirstPage } from '../slices/appSlice';
 import { AppDispatch } from '../store';
-export const <span class="cstat-no" title="statement not covered" >setSearchParamsActionCreator = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>o</span>ffset: number, query: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch: AppDispatch) =&gt; {</span></span>
+export const setSearchParamsActionCreator = <span class="fstat-no" title="function not covered" >(offset: number, query: string) =&gt; (dispatch: AppDispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	dispatch(setSearchParamsURL({ offset, query }));</span>
-};
-export const <span class="cstat-no" title="statement not covered" >setFirstPageActionCreator = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>) =</span>&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch: AppDispatch) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export const setFirstPageActionCreator = <span class="fstat-no" title="function not covered" >() =&gt; (dispatch: AppDispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	dispatch(setFirstPage());</span>
-};
-export const <span class="cstat-no" title="statement not covered" >setNextPageActionCreator = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>) =</span>&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch: AppDispatch) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export const setNextPageActionCreator = <span class="fstat-no" title="function not covered" >() =&gt; (dispatch: AppDispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	dispatch(setNextPage());</span>
-};
-export const <span class="cstat-no" title="statement not covered" >setPrevPageActionCreator = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>) =</span>&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch: AppDispatch) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export const setPrevPageActionCreator = <span class="fstat-no" title="function not covered" >() =&gt; (dispatch: AppDispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	dispatch(setPrevPage());</span>
-};
-export const <span class="cstat-no" title="statement not covered" >setQueryActionCreator = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>q</span>uery: string) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch: AppDispatch) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export const setQueryActionCreator = <span class="fstat-no" title="function not covered" >(query: string) =&gt; (dispatch: AppDispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	dispatch(setQueryPage(query));</span>
-};
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -121,7 +121,7 @@ export const <span class="cstat-no" title="statement not covered" >setQueryActio
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-09T12:59:54.294Z
+                at 2024-08-10T07:41:54.561Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

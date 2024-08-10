@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import List from './index'; // Путь к вашему компоненту
+import List from './index'; 
 import { rootReducer } from '../../store/store';
 import { RootState } from '../../store/store';
 import { UserItem } from './types';
@@ -100,7 +100,6 @@ test('renders the List component with users', () => {
     </Provider>
   );
 
-  // Проверяем, что отображаются карточки пользователей
   expect(screen.getByText('user1')).toBeInTheDocument();
   expect(screen.getByText('user2')).toBeInTheDocument();
   expect(screen.queryByText(/nothing found/i)).not.toBeInTheDocument();
@@ -113,19 +112,13 @@ test('renders the List component without users and shows "Nothing found" message
       <List />
     </Provider>
   );
-
-  // Проверяем, что отображается сообщение о том, что ничего не найдено
+ 
   expect(screen.getByText(/nothing found/i)).toBeInTheDocument();
   expect(screen.queryByText(/user/i)).not.toBeInTheDocument();
 });
 
 test('handles Prev and Next button clicks', () => {
-    /*
-  const setPageMock = jest.fn();
-  jest.mock('../../hooks/useURL', () => () => ({
-    setPage: setPageMock,
-  }));
-*/
+   
   const stateWithUsers: Partial<RootState> = {
     appSlice: {
       ...initialState.appSlice,
@@ -162,10 +155,10 @@ test('handles Prev and Next button clicks', () => {
     </Provider>
   );
 
-  // Проверяем, что кнопки Prev и Next работают корректно
+
   fireEvent.click(screen.getByText(/next/i));
-  //expect(setPageMock).toHaveBeenCalledWith(2, '');
+
 
   fireEvent.click(screen.getByText(/prev/i));
- // expect(setPageMock).toHaveBeenCalledWith(0, '');
+
 });

@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/33</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/33</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
@@ -95,7 +95,11 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -127,20 +131,24 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >// jest.config.ts</span></span></span>
-<span class="cstat-no" title="statement not covered" >import type { Config } from '@jest/types';</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import type { Config } from '@jest/types';</span></span></span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const config: Config.InitialOptions = {</span>
-<span class="cstat-no" title="statement not covered" >  testEnvironment: 'jest-environment-jsdom',</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  preset: 'ts-jest',</span>
 <span class="cstat-no" title="statement not covered" >  transform: {</span>
-<span class="cstat-no" title="statement not covered" >    '^.+\\.(ts|tsx)?$': 'ts-jest',</span>
-<span class="cstat-no" title="statement not covered" >    '^.+\\.(js|jsx)$': 'babel-jest',</span>
+<span class="cstat-no" title="statement not covered" >    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest', // Используйте babel-jest для обработки файлов</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >  transformIgnorePatterns: [</span>
+<span class="cstat-no" title="statement not covered" >    '/node_modules/(?!@remix-run/react|@web3-storage|other-package-you-need).+\\.js$'</span>
+<span class="cstat-no" title="statement not covered" >  ],</span>
 <span class="cstat-no" title="statement not covered" >  moduleNameMapper: {</span>
 <span class="cstat-no" title="statement not covered" >    '\\.(css|less|sass|scss)$': 'identity-obj-proxy', </span>
-<span class="cstat-no" title="statement not covered" >    '\\.(jpg|jpeg|png|gif|svg)$': '&lt;rootDir&gt;/__mocks__/fileMock.js' </span>
+<span class="cstat-no" title="statement not covered" >    '\\.(jpg|jpeg|png|gif|svg)$': '&lt;rootDir&gt;/__mocks__/fileMock.js',</span>
+<span class="cstat-no" title="statement not covered" >    '@/(.*)': '&lt;rootDir&gt;/src/$1' </span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],</span>
 <span class="cstat-no" title="statement not covered" >  collectCoverage: true,</span>
@@ -148,25 +156,29 @@
 <span class="cstat-no" title="statement not covered" >  coverageProvider: 'v8',</span>
 <span class="cstat-no" title="statement not covered" >  coverageReporters: ['html', 'text', 'text-summary', 'lcov'],</span>
 <span class="cstat-no" title="statement not covered" >  collectCoverageFrom: [</span>
-<span class="cstat-no" title="statement not covered" >    '**/*.{ts,tsx}',            </span>
 <span class="cstat-no" title="statement not covered" >    '!**/*.d.ts',              </span>
 <span class="cstat-no" title="statement not covered" >    '!**/node_modules/**',     </span>
 <span class="cstat-no" title="statement not covered" >    '!**/*.test.{ts,tsx}',      </span>
-<span class="cstat-no" title="statement not covered" >    '!**/index.tsx',            </span>
-<span class="cstat-no" title="statement not covered" >    '!**/types.ts',            </span>
+<span class="cstat-no" title="statement not covered" >    '!**/types.ts',       </span>
+<span class="cstat-no" title="statement not covered" >    '!babel.config.ts',        </span>
+<span class="cstat-no" title="statement not covered" >    '!jest.config.ts',         </span>
+<span class="cstat-no" title="statement not covered" >    '**/*.{ts,tsx}',            </span>
+<span class="cstat-no" title="statement not covered" >    '!vite.config.ts',          </span>
+<span class="cstat-no" title="statement not covered" >    '!**/entry.client.tsx',     </span>
+<span class="cstat-no" title="statement not covered" >    '!**/entry.server.tsx',        </span>
 <span class="cstat-no" title="statement not covered" >  ],</span>
-<span class="cstat-no" title="statement not covered" > // setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']</span>
-<span class="cstat-no" title="statement not covered" > setupFilesAfterEnv: ['&lt;rootDir&gt;/setupTests.ts']</span>
+<span class="cstat-no" title="statement not covered" >  setupFilesAfterEnv: ['&lt;rootDir&gt;/setupTests.ts'],</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export default config;</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >export default config;</span>
+<span class="cstat-no" title="statement not covered" >    //'!**/index.tsx',            </span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-10T00:00:35.946Z
+                at 2024-08-10T00:38:55.225Z
             </div>
         <script src="../prettify.js"></script>
         <script>

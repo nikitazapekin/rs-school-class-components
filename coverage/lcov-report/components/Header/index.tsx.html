@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">31.25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>10/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">31.25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>10/32</span>
             </div>
         
             
@@ -95,7 +95,15 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -105,60 +113,52 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';</span>
-<span class="cstat-no" title="statement not covered" >import { faSearch } from '@fortawesome/free-solid-svg-icons';</span>
-<span class="cstat-no" title="statement not covered" >import './index.scss';</span>
-<span class="cstat-no" title="statement not covered" >import ThemeButton from '../ThemeButton';</span>
-<span class="cstat-no" title="statement not covered" >import useURL from '@/hooks/useURL';</span>
-<span class="cstat-no" title="statement not covered" >import { useSelector } from 'react-redux';</span>
-<span class="cstat-no" title="statement not covered" >import { getThemeSelector } from '@/store/selectors/getTheme';</span>
-<span class="cstat-no" title="statement not covered" >import { Link } from '@remix-run/react';</span>
-const Header = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-const isDark = <span class="cstat-no" title="statement not covered" >useSelector(getThemeSelector)</span>
-	const { handleInput, handleSearch 
-	} = <span class="cstat-no" title="statement not covered" >useURL();</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import './index.css';
+import ThemeButton from '../ThemeButton';
+import useURL from '@/hooks/useURL';
+import { useSelector } from 'react-redux';
+import { getThemeSelector } from '@/store/selectors/getTheme';
+import { Link } from '@remix-run/react';
+const Header = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >const isDark = useSelector(getThemeSelector)</span>
+<span class="cstat-no" title="statement not covered" >	const { handleInput, handleSearch </span>
+<span class="cstat-no" title="statement not covered" >	} = useURL();</span>
 <span class="cstat-no" title="statement not covered" >	return (</span>
-		&lt;header className={`header ${isDark ? `header-dark` : ''}`}&gt;
-			&lt;div className="header__content"&gt;
-				&lt;nav className="header__search"&gt;
-					&lt;input type="text" className="search__bar" placeholder="Search..." onChange={handleInput} /&gt;
-					&lt;button className="search__btn" onClick={handleSearch}
-					 aria-label="search"&gt;
-						&lt;FontAwesomeIcon icon={faSearch} /&gt;
-					&lt;/button&gt;
-				&lt;/nav&gt;
-			 
-				&lt;Link to="/dcfewfe"&gt;
-				Redirect to not found page
-				&lt;/Link&gt;
-				&lt;ThemeButton /&gt;
-			&lt;/div&gt;
-		&lt;/header&gt;
-	);
-};
-<span class="cstat-no" title="statement not covered" >export default Header;</span>
+<span class="cstat-no" title="statement not covered" >		&lt;header className={`header ${isDark ? `header-dark` : ''}`}&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;div className="header__content"&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;nav className="header__search"&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;input type="text" className="search__bar" placeholder="Search..." onChange={handleInput} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;button className="search__btn" onClick={handleSearch}</span>
+<span class="cstat-no" title="statement not covered" >					 aria-label="search"&gt;</span>
+<span class="cstat-no" title="statement not covered" >						&lt;FontAwesomeIcon icon={faSearch} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >					&lt;/button&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;/nav&gt;</span>
+<span class="cstat-no" title="statement not covered" >			 </span>
+<span class="cstat-no" title="statement not covered" >				&lt;Link to="/dcfewfe"&gt;</span>
+<span class="cstat-no" title="statement not covered" >				Redirect to not found page</span>
+<span class="cstat-no" title="statement not covered" >				&lt;/Link&gt;</span>
+<span class="cstat-no" title="statement not covered" >				&lt;ThemeButton /&gt;</span>
+<span class="cstat-no" title="statement not covered" >			&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >		&lt;/header&gt;</span>
+<span class="cstat-no" title="statement not covered" >	);</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export default Header;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -166,7 +166,7 @@ const isDark = <span class="cstat-no" title="statement not covered" >useSelector
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-09T12:59:54.294Z
+                at 2024-08-10T07:41:54.561Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

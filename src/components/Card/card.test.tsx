@@ -2,6 +2,271 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
+import { useNavigate, useLocation } from '@remix-run/react';
+import Card from './index'; // Путь к вашему компоненту
+import { rootReducer } from '../../store/store';
+import { RootState } from '../../store/store';
+import { AddElementToStorage } from '../../store/action-creators/addElementToStorage';
+import { storedUsersSelector } from '../../store/selectors/getStoredElements';
+import { getThemeSelector } from '../../store/selectors/getTheme';
+import { paramsSelector } from '../../store/selectors/getSearchParams';
+import { UserItem } from '../../store/types';
+
+// Мокируем необходимые модули и функции
+jest.mock('../../hooks/redux', () => ({
+  useAppDispatch: () => jest.fn(),
+}));
+
+jest.mock('@remix-run/react', () => ({
+  useNavigate: () => jest.fn(),
+  useLocation: () => ({ pathname: '/' }),
+}));
+
+jest.mock('../../store/action-creators/addElementToStorage', () => ({
+  AddElementToStorage: jest.fn(),
+}));
+
+jest.mock('../../store/selectors/getStoredElements', () => ({
+  storedUsersSelector: jest.fn(),
+}));
+
+jest.mock('../../store/selectors/getTheme', () => ({
+  getThemeSelector: jest.fn(),
+}));
+
+jest.mock('../../store/selectors/getSearchParams', () => ({
+  paramsSelector: jest.fn(),
+}));
+
+const mockDispatch = jest.fn();
+const mockNavigate = jest.fn();
+
+const initialState: Partial<RootState> = {
+  themeSlice: {
+    isDark: false
+  },
+  selectedElementsSlice: {
+    storedElements: [],
+    selectedElement: null,
+  },
+  appSlice: {
+    isLoading: false,
+	error: null,
+	isLoadingUserData: false,
+	users: [],
+	typedValue: "",
+	params: {
+		limit: 10,
+		offset: 1,
+		query: '',
+		storedValue: '',
+	},
+	status: 'idle',
+	clickedUser: {
+		login: "",
+	id: 0,
+	node_id:"" ,
+	avatar_url: "",
+	gravatar_id:"" ,
+	url:"" ,
+	html_url:"" ,
+	followers_url: "",
+	following_url:"" ,
+	gists_url: "",
+	starred_url: "",
+	subscriptions_url:  "",
+	organizations_url: "",
+	repos_url:"" ,
+	events_url:"" ,
+	received_events_url:"" ,
+	type: "",
+	site_admin: false,
+	score: 0
+	}
+  }
+};
+
+const createTestStore = (state: Partial<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    preloadedState: state,
+  });
+
+test('renders Card component with user information', () => {
+  const user: UserItem = {
+    login: 'testuser',
+    id: 1,
+    node_id: 'node1',
+    avatar_url: 'http://example.com/avatar.jpg',
+    gravatar_id: '',
+    url: '',
+    html_url: '',
+    followers_url: '',
+    following_url: '',
+    gists_url: '',
+    starred_url: '',
+    subscriptions_url: '',
+    organizations_url: '',
+    repos_url: '',
+    events_url: '',
+    received_events_url: '',
+    type: '',
+    site_admin: false,
+    score: 0
+  };
+
+  const store = createTestStore(initialState);
+   
+  (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+  render(
+    <Provider store={store}>
+      <Card user={user} />
+    </Provider>
+  );
+
+  // Проверяем отображение информации о пользователе
+  expect(screen.getByAltText('user')).toHaveAttribute('src', user.avatar_url);
+  expect(screen.getByText(user.login)).toBeInTheDocument();
+
+  // Проверяем, что чекбокс не отмечен
+  expect(screen.getByRole('checkbox')).not.toBeChecked();
+
+  // Проверяем наличие кнопки и ее текст
+  expect(screen.getByRole('button', { name: /show details/i })).toBeInTheDocument();
+});
+
+test('handles checkbox change and button click', () => {
+  const user: UserItem = {
+    login: 'testuser',
+    id: 1,
+    node_id: 'node1',
+    avatar_url: 'http://example.com/avatar.jpg',
+    gravatar_id: '',
+    url: '',
+    html_url: '',
+    followers_url: '',
+    following_url: '',
+    gists_url: '',
+    starred_url: '',
+    subscriptions_url: '',
+    organizations_url: '',
+    repos_url: '',
+    events_url: '',
+    received_events_url: '',
+    type: '',
+    site_admin: false,
+    score: 0
+  };
+
+  const store = createTestStore(initialState);
+  
+  (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+  render(
+    <Provider store={store}>
+      <Card user={user} />
+    </Provider>
+  );
+
+  // Имитация изменения чекбокса
+  fireEvent.change(screen.getByRole('checkbox'), { target: { checked: true } });
+  expect(mockDispatch).toHaveBeenCalledWith(AddElementToStorage(user));
+
+  // Имитация клика по кнопке "Show details"
+  fireEvent.click(screen.getByRole('button', { name: /show details/i }));
+  expect(mockNavigate).toHaveBeenCalledWith(`/details?page=1&user=${user.login}`, { state: { from: { pathname: '/' } } });
+});
+
+test('renders Card component with dark theme', () => {
+  const user: UserItem = {
+    login: 'testuser',
+    id: 1,
+    node_id: 'node1',
+    avatar_url: 'http://example.com/avatar.jpg',
+    gravatar_id: '',
+    url: '',
+    html_url: '',
+    followers_url: '',
+    following_url: '',
+    gists_url: '',
+    starred_url: '',
+    subscriptions_url: '',
+    organizations_url: '',
+    repos_url: '',
+    events_url: '',
+    received_events_url: '',
+    type: '',
+    site_admin: false,
+    score: 0
+  };
+
+  const darkThemeState: Partial<RootState> = {
+    themeSlice: {
+      isDark: true
+    },
+    selectedElementsSlice: {
+        storedElements: [],
+        selectedElement: null,
+      },
+      appSlice: {
+        isLoading: false,
+        error: null,
+        isLoadingUserData: false,
+        users: [],
+        typedValue: "",
+        params: {
+            limit: 10,
+            offset: 1,
+            query: '',
+            storedValue: '',
+        },
+        status: 'idle',
+        clickedUser: {
+            login: "",
+        id: 0,
+        node_id:"" ,
+        avatar_url: "",
+        gravatar_id:"" ,
+        url:"" ,
+        html_url:"" ,
+        followers_url: "",
+        following_url:"" ,
+        gists_url: "",
+        starred_url: "",
+        subscriptions_url:  "",
+        organizations_url: "",
+        repos_url:"" ,
+        events_url:"" ,
+        received_events_url:"" ,
+        type: "",
+        site_admin: false,
+        score: 0
+        }
+      }
+  };
+
+  const store = createTestStore(darkThemeState);
+  
+  (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+  render(
+    <Provider store={store}>
+      <Card user={user} />
+    </Provider>
+  );
+
+ 
+  expect(screen.getByRole('article')).toHaveClass('user-dark');
+});
+
+
+/*
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import Card from './index';
 import { rootReducer } from '../../store/store';
 import { RootState } from '../../store/store';
@@ -184,7 +449,7 @@ describe('Card Component', () => {
   });
 });
 
-
+*/
 
 /*
 import React from 'react';

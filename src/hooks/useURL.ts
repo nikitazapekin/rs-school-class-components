@@ -7,8 +7,7 @@ import { useSelector } from 'react-redux';
 import { setQueryActionCreator } from '../store/action-creators/setSearchParamsActionCreator';
 import { setSearchParamsActionCreator } from '../store/action-creators/setSearchParamsActionCreator';
   
-//import { useNavigate, useLocation } from "./node_modules/@remix-run/react";
-//import { useNavigate, useLocation } from "../../node_modules/remix-run";
+ 
 import { useNavigate, useLocation } from "@remix-run/react";
  
 
