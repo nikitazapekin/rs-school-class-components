@@ -13,7 +13,7 @@ import StoredUsersButton from "../StoredUsersFlyoutElement";
 
 import Providers from "../../../redux/Provider";
 import { setUsersActionCreator } from "../../../redux/action-creators/setUsersActionCreator";
-import { clickedUserSelector } from "../../../redux/selectors/getClickedElement";
+ 
 type UserDataArray = Array<{
 	login: string;
 	id: number;

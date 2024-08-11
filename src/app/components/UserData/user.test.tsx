@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { useSelector as useSelectorMock } from 'react-redux';
+ 
 import UserData from './index';
-import { paramsSelector } from '../../../redux/selectors/getSearchParams';
+ 
 import { User } from './index';
 
-// Mocking the necessary modules and components
+ 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
 }));
@@ -45,15 +45,7 @@ describe('UserData Component', () => {
         site_admin: false,
         score: 1,
     };
-
-    // Cast useSelectorMock to the correct type
-    /*
-    (useSelectorMock as jest.Mock).mockImplementation((selector) => {
-      if (selector === paramsSelector) {
-        return { offset: 1, query: 'test' };
-      }
-    });
-*/
+ 
     const { getByText, getByAltText } = render(<UserData user={user} />);
 
     expect(getByText('testuser')).toBeInTheDocument();
