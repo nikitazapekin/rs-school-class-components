@@ -1,4 +1,4 @@
-import Spinner from '../Spinner';
+ 
 import Card from '../Card';
 import React from 'react';
 import styles from "./index.module.scss";
@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../hooks/redux';
 import { useSelector } from 'react-redux';
 import { setNextPageActionCreator, setPrevPageActionCreator } from '../../redux/action-creators/setSearchParamsActionCreator';
 import { paramsSelector } from '../../redux/selectors/getSearchParams';
-import { isLoadingSelector } from '../../redux/selectors/isLoadingSelector';
+ 
 import useURL from '../../hooks/useURL';
 import { UserItem } from './types';
 import { getUsersSelector } from '../../redux/selectors/getUsersSelector';
@@ -18,8 +18,8 @@ const List = () => {
 	const users = useSelector(getUsersSelector);
 	const params = useSelector(paramsSelector);
 const clickedUser = useSelector(clickedUserSelector)
-console.log(clickedUser)
-	const isLoading = useSelector(isLoadingSelector);
+ 
+ 
 	const handleNext = () => {
 		window.scrollTo(0, 0);
 		dispatch(setNextPageActionCreator());
@@ -37,7 +37,7 @@ console.log(clickedUser)
 
 		<section className={styles.list}>
 			<div className={styles.list__container}>
-				{isLoading && <Spinner />}
+			 
 				{users.map((item: UserItem) => (
 					<Card user={item} key={item.id} />
 				))}
