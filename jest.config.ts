@@ -20,9 +20,12 @@ const config: Config = {
     '**/*.{ts,tsx}',            
     '!**/*.d.ts',              
     '!**/node_modules/**',     
+    '!**/setIsLoading.ts',     
     '!jest.config.ts',
     '!**/types.ts',       
-    '!**/.next/types/**'     
+    '!**/.next/types/**',
+    '!**/isLoadingSelector.ts',    
+    '!**/isLoadingUserData.ts',     
   ],
 };
 

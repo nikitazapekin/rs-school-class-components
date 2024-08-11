@@ -37,7 +37,7 @@ jest.mock('./redux', () => ({
 interface MockRouter {
   push: jest.Mock;
   pathname: string;
-  query: Record<string, any>;
+  query: Record<string, undefined>;
   isReady: boolean;
   searchParams: URLSearchParams;
 }

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider, useSelector } from 'react-redux';
 import { createStore } from 'redux';
-import { rootReducer, AppDispatch} from '../../../redux/store'; 
+import { rootReducer, AppDispatch } from '../../../redux/store'; 
 import App from './index';
 import { setNextPageActionCreator, setPrevPageActionCreator } from '../../../redux/action-creators/setSearchParamsActionCreator';
 import { useAppDispatch } from '../../../hooks/redux';
@@ -71,9 +71,12 @@ describe('App Component', () => {
   };
 
   const useSelectorMock = useSelector as jest.MockedFunction<typeof useSelector>;
-  beforeEach(() => {
-    useSelectorMock.mockImplementation((selector: (state: MockState) => any) => selector(mockState));
-  });
+
+beforeEach(() => {
+  useSelectorMock.mockImplementation(<TState, TSelected>(
+    selector: (state: TState) => TSelected
+  ): TSelected => selector(mockState as unknown as TState));
+});
 
   test('renders correctly with users', () => {
     const users: UserItem[] = [
@@ -158,3 +161,5 @@ describe('App Component', () => {
   });
 });
 
+
+ 
