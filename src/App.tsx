@@ -6,14 +6,13 @@ import { useSelector } from 'react-redux';
 
 
 import { storedUsersSelector } from './redux/selectors/getStoredElements';
-import { isLoadingSelector } from './redux/selectors/isLoadingSelector';
-import Spinner from './components/Spinner';
+ import Spinner from './components/Spinner';
 
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 const App = () => {
 
 	const storedUsers = useSelector(storedUsersSelector);
-	const isLoading = useSelector(isLoadingSelector);
+ 
 
 
 	return (
@@ -25,7 +24,7 @@ const App = () => {
 
 			</div>
 			{storedUsers.length > 0 && <StoredUsersButton />}
-			{isLoading && <Spinner />}
+		 
 
 
 
