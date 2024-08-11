@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.73% </span>
+                <span class="strong">96.96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>90/95</span>
+                <span class='fraction'>96/99</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.73% </span>
+                <span class="strong">96.96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>90/95</span>
+                <span class='fraction'>96/99</span>
             </div>
         
             
@@ -160,7 +160,9 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -202,6 +204,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -229,10 +240,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -244,7 +251,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -255,16 +261,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"> 
-import axios from 'axios';
-import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/redux';
 import { setUsersActionCreator } from '../redux/action-creators/setUsersActionCreator';
+import Spinner from '../components/Spinner';
+&nbsp;
 type UserDataArray = Array&lt;{
 	login: string;
 	id: number;
@@ -299,12 +303,21 @@ interface Props {
 }
 &nbsp;
 const UsersPage = ({ users }: Props) =&gt; {
-	const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch();
+	const [loading, setLoading] = useState(true);
+&nbsp;
 	useEffect(() =&gt; {
-		dispatch(setUsersActionCreator(users))
-	}, [users])
+		dispatch(setUsersActionCreator(users));
+		setLoading(false);
+	}, [users, dispatch]);
+&nbsp;
+	if (loading) {
+		return &lt;Spinner /&gt;;
+	}
+&nbsp;
 	return (
 		&lt;div&gt;
+		 
 			 
 		&lt;/div&gt;
 	);
@@ -313,7 +326,7 @@ const UsersPage = ({ users }: Props) =&gt; {
 export default UsersPage;
 &nbsp;
 export const getServerSideProps: GetServerSideProps = async (context) =&gt; {
-	const { query, page , limit = '10' } = context.query;
+	const { query, page, limit = '10' } = context.query;
 	const offset = parseInt(page as string, 10);
 	const perPage = parseInt(limit as string, 10);
 	let url: string;
@@ -325,17 +338,13 @@ export const getServerSideProps: GetServerSideProps = async (context) =&gt; {
 	try {
 		let users: UserDataArray = [];
 &nbsp;
-		if (!query) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >			const response: AxiosResponse&lt;UserData&gt; = await axios.get(url);</span>
-<span class="cstat-no" title="statement not covered" >			users = response.data.items;</span>
-		} else {
-			const response: AxiosResponse&lt;UserData&gt; = await axios.get(url);
-			users = response.data.items;
-		}
+		const response: AxiosResponse&lt;UserData&gt; = await axios.get(url);
+		users = response.data.items;
+&nbsp;
 		return {
 			props: {
 				users,
-				},
+			},
 		};
 	} catch (error) {
 		if (axios.isAxiosError(error)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
@@ -347,13 +356,10 @@ export const getServerSideProps: GetServerSideProps = async (context) =&gt; {
 		return {
 			props: {
 				users: [],
-			 
-				},
+			},
 		};
 	}
 };
-&nbsp;
-&nbsp;
  </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -361,7 +367,7 @@ export const getServerSideProps: GetServerSideProps = async (context) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-07T14:45:45.113Z
+                at 2024-08-11T08:12:43.266Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

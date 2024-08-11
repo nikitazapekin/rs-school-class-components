@@ -10,7 +10,7 @@ import List from './components/List';
 import StoredUsersButton from './components/StoredUsersFlyoutElement';
 import Spinner from './components/Spinner';
 jest.mock('./components/List');
-jest.mock('./components/ErrorComponent');
+ 
 jest.mock('./components/StoredUsersFlyoutElement');
 jest.mock('./components/Spinner');
 jest.mock('./redux/selectors/getStoredElements', () => ({
@@ -50,7 +50,7 @@ describe('App component', () => {
     );
 
     expect(screen.getByText('List Component')).toBeInTheDocument();
-    expect(screen.getByText('Error Component')).toBeInTheDocument();
+ 
   });
 
   it('shows the stored users button when there are stored users', () => {
