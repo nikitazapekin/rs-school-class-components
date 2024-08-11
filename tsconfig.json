@@ -1,11 +1,47 @@
+
+
+
+
+
+
 {
-	"files": [],
-	"references": [
-		{
-			"path": "./tsconfig.app.json"
+	"include": [
+	  "**/*.ts",
+	  "**/*.tsx",
+	  "**/.server/**/*.ts",
+	  "**/.server/**/*.tsx",
+	  "**/.client/**/*.ts",
+	  "**/.client/**/*.tsx"
+	  , "app/components/NoteList.jsx", "app/root.jsx"  ],
+	  
+	"compilerOptions": {
+	  "lib": ["DOM", "DOM.Iterable", "ES2022"],
+
+ 
+	
+	  "types": ["@remix-run/node","@remix-run/react",  "vite/client", "@testing-library/jest-dom", "jest",  "node"],
+	  "isolatedModules": true,
+	  "esModuleInterop": true,
+	  "jsx": "react-jsx",
+	 
+	  "target": "esnext",
+	  "module": "commonjs",
+	   "moduleResolution": "node",
+	  "resolveJsonModule": true,
+	 
+	  "strict": true,
+	  "allowJs": true,
+	  "skipLibCheck": true,
+	  "forceConsistentCasingInFileNames": true,
+	  "baseUrl": "./src",
+	  
+	  "paths": {
+			"@remix-run/*": ["node_modules/@remix-run/*"],
+			"@/*": ["./*"]
 		},
-		{
-			"path": "./tsconfig.node.json"
-		}
-	]
-}
+  
+	 
+	  "noEmit": true
+	}
+  }
+  

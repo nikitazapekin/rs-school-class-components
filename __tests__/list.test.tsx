@@ -1,0 +1,144 @@
+ 
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { describe, it, expect, vi } from 'vitest';
+import List from '../src/components/List/index';
+import { rootReducer } from '../src/store/store';
+ 
+import { MemoryRouter } from 'react-router-dom';
+
+vi.mock('../../hooks/useURL', () => ({
+  __esModule: true,
+  default: () => ({
+    setPage: vi.fn(),
+  })
+}));
+
+
+ 
+describe('List Component', () => {
+  it('should render Spinner when isLoading is true', () => {
+    const store = configureStore({
+      reducer: rootReducer,
+      preloadedState: {
+        themeSlice: { isDark: false },
+        selectedElementsSlice: {
+            storedElements: [],
+
+	selectedElement: null,
+        },
+       appSlice: { 
+        isLoading: false,
+        error: null,
+        isLoadingUserData: false,
+        users: [],
+        typedValue: "",
+        params: {
+            limit: 10,
+            offset: 1,
+            query: '',
+            storedValue: '',
+        },
+        status: 'idle',
+        clickedUser: {
+            login: "",
+        id: 0,
+        node_id:"" ,
+        avatar_url: "",
+        gravatar_id:"" ,
+        url:"" ,
+        html_url:"" ,
+        followers_url: "",
+        following_url:"" ,
+        gists_url: "",
+        starred_url: "",
+        subscriptions_url:  "",
+        organizations_url: "",
+        repos_url:"" ,
+        events_url:"" ,
+        received_events_url:"" ,
+        type: "",
+        site_admin: false,
+        score: 0
+        }     
+        },
+      },
+    });
+
+    render(
+        <MemoryRouter>
+
+      <Provider store={store}>
+        <List />
+      </Provider>
+        </MemoryRouter>
+    );
+    expect(screen.getByTestId('next')).toBeInTheDocument();
+    
+    });
+     
+   it('should render "Nothing found" when there are no users', () => {
+    const store = configureStore({
+      reducer: rootReducer,
+      preloadedState: {
+        themeSlice: { isDark: false },
+        selectedElementsSlice: {
+            storedElements: [],
+
+	selectedElement: null,
+        },
+       appSlice: { 
+        isLoading: false,
+        error: null,
+        isLoadingUserData: false,
+        users: [],
+        typedValue: "",
+        params: {
+            limit: 10,
+            offset: 1,
+            query: '',
+            storedValue: '',
+        },
+        status: 'idle',
+        clickedUser: {
+            login: "",
+        id: 0,
+        node_id:"" ,
+        avatar_url: "",
+        gravatar_id:"" ,
+        url:"" ,
+        html_url:"" ,
+        followers_url: "",
+        following_url:"" ,
+        gists_url: "",
+        starred_url: "",
+        subscriptions_url:  "",
+        organizations_url: "",
+        repos_url:"" ,
+        events_url:"" ,
+        received_events_url:"" ,
+        type: "",
+        site_admin: false,
+        score: 0
+        }     
+        },
+      },
+    });
+
+    render(
+        <MemoryRouter>
+
+      <Provider store={store}>
+        <List />
+      </Provider>
+        </MemoryRouter>
+    );
+    const nothingFoundElements = screen.queryAllByText('Nothing found');
+    expect(nothingFoundElements.length).toBe(2);
+ 
+  });
+  
+ 
+ 
+});
