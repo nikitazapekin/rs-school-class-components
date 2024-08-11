@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import axios, { AxiosResponse } from 'axios';
 import { useLoaderData } from "@remix-run/react";
 import { redirect } from "@remix-run/node";

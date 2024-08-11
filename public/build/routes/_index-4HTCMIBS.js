@@ -3,7 +3,7 @@ import {
   Background_default,
   Spinner_default,
   useAppDispatch
-} from "/build/_shared/chunk-IXWMQZDO.js";
+} from "/build/_shared/chunk-42SRB6X3.js";
 import {
   setUsers
 } from "/build/_shared/chunk-LFRHN66C.js";
@@ -54,7 +54,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\_index.tsx"
   );
-  import.meta.hot.lastModified = "1723325535421.0193";
+  import.meta.hot.lastModified = "1723372714624.01";
 }
 function Index() {
   _s();
@@ -116,4 +116,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   Index as default
 };
-//# sourceMappingURL=/build/routes/_index-RHOJ3AZD.js.map
+//# sourceMappingURL=/build/routes/_index-4HTCMIBS.js.map

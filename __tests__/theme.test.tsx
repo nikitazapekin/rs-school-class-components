@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Provider } from 'react-redux';
@@ -7,7 +7,7 @@ import ThemeButton from '../src/components/ThemeButton';
 import { rootReducer } from '../src/store/store';
 import { setTheme } from '../src/store/slices/themeSlice';
 
-// Мокаем хук useAppDispatch
+ 
 const mockDispatch = vi.fn();
 vi.mock('../src/hooks/redux', () => ({
   useAppDispatch: () => mockDispatch,
@@ -39,7 +39,7 @@ describe('ThemeButton Component', () => {
   });
 
   it('should render correctly with dark theme', () => {
-    // Изменяем начальное состояние на темную тему
+ 
     const darkThemeState = {
       themeSlice: { isDark: true },
     };

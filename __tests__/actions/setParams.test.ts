@@ -1,6 +1,6 @@
 import reducer, { setFirstPage, setNextPage, setPrevPage, setSearchParamsURL, setQueryPage } from '../../src/store/slices/appSlice';
 import { AppStatee } from '../../src/store/types';
-import { describe,test, it, expect, vi } from 'vitest';
+import {  test,   expect } from 'vitest';
 const initialState: AppStatee = {
 	isLoading: false,
 	error: null,

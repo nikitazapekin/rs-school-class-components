@@ -10,6 +10,9 @@ export default defineConfig({
         include: ['**/*.{ts,tsx}'],
         exclude: [
             '**/*.d.ts',
+            '**/setSelectedElementActionCreator.ts',
+            '**/addElementToStorage.ts',
+            '**/setSearchParamsActionCreator.ts',
             '**/node_modules/**',
             '**/types.ts',
             '**/.next/types/**',

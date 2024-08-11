@@ -43,7 +43,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\root.tsx"
   );
-  import.meta.hot.lastModified = "1723306688993.408";
+  import.meta.hot.lastModified = "1723373909157.8955";
 }
 function Layout({
   children
@@ -121,4 +121,4 @@ export {
   Layout,
   App as default
 };
-//# sourceMappingURL=/build/root-US4UBA2D.js.map
+//# sourceMappingURL=/build/root-SP46CRZI.js.map

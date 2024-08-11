@@ -1,14 +1,13 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import { describe, expect, it, beforeEach, vi } from 'vitest';
+ 
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it, beforeEach } from 'vitest';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import App from "../src/components/App/index"
 import appSlice from '../src/store/slices/appSlice';
 import selectedElementsSlice from '../src/store/slices/selectedElementsSlice';
 import themeSlice from '../src/store/slices/themeSlice';
-import { setStoredInLocalStorageActionCreator } from '../src/store/action-creators/setStoredInLocalStorageQuery';
-import { useAppDispatch } from '../src/hooks/redux';
+ 
 import { MemoryRouter } from 'react-router-dom';
  
  

@@ -1,23 +1,18 @@
-import React from 'react';
+ 
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { useNavigate, useLocation } from '@remix-run/react';
+ 
 import Card from '../src/components/Card/index';
 import { rootReducer } from '../src/store/store';  
-import { AddElementToStorage } from '../src/store/action-creators/addElementToStorage';
-import { storedUsersSelector } from '../src/store/selectors/getStoredElements';
-import { getThemeSelector } from '../src/store/selectors/getTheme';
-import { paramsSelector } from '../src/store/selectors/getSearchParams';
+ 
  
 vi.mock('@remix-run/react', () => ({
   useNavigate: vi.fn(),
   useLocation: vi.fn(),
 }));
-
-const mockNavigate = vi.fn();
-const mockUseLocation = vi.fn();
+ 
 
 describe('Card Component', () => {
  

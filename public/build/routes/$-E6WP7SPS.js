@@ -95,7 +95,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\$.tsx"
   );
-  import.meta.hot.lastModified = "1723306688996.9912";
+  import.meta.hot.lastModified = "1723372714624.01";
 }
 var NotPage = () => {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { "data-testid": "not-found", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(NotFound_default, {}, void 0, false, {
@@ -121,4 +121,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   __default as default
 };
-//# sourceMappingURL=/build/routes/$-VQFGQ7KK.js.map
+//# sourceMappingURL=/build/routes/$-E6WP7SPS.js.map

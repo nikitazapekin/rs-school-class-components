@@ -1,14 +1,11 @@
-import React from 'react';
+ 
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { describe, it, expect, vi } from 'vitest';
 import List from '../src/components/List/index';
 import { rootReducer } from '../src/store/store';
-import useURL from '../src/hooks/useURL';
-import Spinner from '../src/components/Spinner/index';
-import Card from '../src/components/Card/index';
-import { UserItem } from "../src/store/types"
+ 
 import { MemoryRouter } from 'react-router-dom';
 
 vi.mock('../../hooks/useURL', () => ({
@@ -78,7 +75,7 @@ describe('List Component', () => {
         </MemoryRouter>
     );
     expect(screen.getByTestId('next')).toBeInTheDocument();
-    //  expect(screen.getByTestId('loader')).not.toBeInTheDocument();
+    
     });
      
    it('should render "Nothing found" when there are no users', () => {

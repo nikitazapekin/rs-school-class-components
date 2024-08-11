@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+ 
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -116,33 +116,6 @@ it('should call handleInput on input change', () => {
     const inputElements = screen.queryAllByText('Redirect to not found page')
     expect(inputElements).toHaveLength(4);
   });
-  /*
-  */
+ 
 });
-
-      /*
-      it('should render correctly and apply light theme styles when isDark is false', () => {
-          mockUseSelector.mockReturnValue(false); // Состояние темы светлое
-    
-        const store = configureStore({
-          reducer: rootReducer,
-          preloadedState: {
-            themeSlice: { isDark: false },
-          },
-        });
-    
-        render(
-          <Provider store={store}>
-            <MemoryRouter>
-    
-            <Header />
-            </MemoryRouter>
-          </Provider>
-        );
-    
-      //  const headerElement = screen.getByTestId('header');
-      const headerElement = screen.queryByTestId('header');
-        
-        expect(headerElement).toHaveStyle('background-color: rgb(212, 201, 188)');
-        });
-        */
+ 

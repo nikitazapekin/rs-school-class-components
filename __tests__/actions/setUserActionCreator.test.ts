@@ -1,7 +1,7 @@
 import reducer, { setUsers } from "../../src/store/slices/appSlice"
 import { AppStatee } from '../../src/store/types';
-import React from "react";
-import { describe,test, it, expect, vi } from 'vitest';
+ 
+import { test,   expect } from 'vitest';
 const previousState: AppStatee = {
 	isLoading: false,
 	error: null,

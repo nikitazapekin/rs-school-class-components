@@ -35,15 +35,4 @@ const Spinner: React.FC = () => {
 
 export default Spinner;
 
-
-//import './index.scss';
-/*
-const Spinner = () => {
-	return (
-		<>
-			<span className="loader" data-testid="loader"></span>
-		</>
-	);
-};
-export default Spinner;
-*/
+ 

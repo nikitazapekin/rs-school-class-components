@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Provider } from 'react-redux';
@@ -35,26 +35,5 @@ describe('Background Component', () => {
     const backgroundDiv = screen.getByTestId('background');
  
     expect(backgroundDiv).toHaveStyle('background-color: rgb(59, 59, 59)');
-  });
-/*
-  it('should render with light background when isDark is false', () => {
-    const store = createTestStore({
-      themeSlice: {
-        isDark: false,
-      },
-    });
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-
-        <Background />
-        </MemoryRouter>
-      </Provider>
-    );
-
-    const backgroundDiv = screen.getByTestId('background');
- 
-    expect(backgroundDiv).not.toHaveStyle('background-color: aliceblue');
-  });
-  */
+  }); 
 });

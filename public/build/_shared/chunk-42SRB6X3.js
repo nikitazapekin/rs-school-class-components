@@ -4578,7 +4578,6 @@ var import_jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
 var App = () => {
   const dispatch = useAppDispatch();
   const storedUsers = useSelector(storedUsersSelector);
-  const isLoading = useSelector(isLoadingSelector);
   (0, import_react7.useEffect)(() => {
     dispatch(
       setStoredInLocalStorageActionCreator(
@@ -4590,32 +4589,32 @@ var App = () => {
     /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "container", "data-testid": "app", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Header_default, {}, void 0, false, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 30,
+        lineNumber: 27,
         columnNumber: 4
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(List_default, {}, void 0, false, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 31,
+        lineNumber: 28,
         columnNumber: 5
       }, this),
       storedUsers.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(StoredUsersFlyoutElement_default, {}, void 0, false, {
         fileName: "src/components/App/index.tsx",
-        lineNumber: 32,
+        lineNumber: 29,
         columnNumber: 32
       }, this)
     ] }, void 0, true, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 29,
+      lineNumber: 26,
       columnNumber: 4
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Background_default, {}, void 0, false, {
       fileName: "src/components/App/index.tsx",
-      lineNumber: 35,
+      lineNumber: 32,
       columnNumber: 4
     }, this)
   ] }, void 0, true, {
     fileName: "src/components/App/index.tsx",
-    lineNumber: 27,
+    lineNumber: 25,
     columnNumber: 3
   }, this);
 };
@@ -4648,4 +4647,4 @@ object-assign/index.js:
   @license MIT
   *)
 */
-//# sourceMappingURL=/build/_shared/chunk-IXWMQZDO.js.map
+//# sourceMappingURL=/build/_shared/chunk-42SRB6X3.js.map

@@ -1,5 +1,4 @@
  
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Provider } from 'react-redux';
@@ -7,8 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import StoredUsersButton from '../src/components/StoredUsersFlyoutElement/index';
 import { rootReducer } from '../src/store/store';
 import { clearStoredElementsActionCreator } from '../src/store/action-creators/clearStoredElementsActionCreator';
-
-// Мокаем хук useAppDispatch
+ 
 vi.mock('../src/hooks/redux', () => ({
   useAppDispatch: () => mockDispatch,
 }));

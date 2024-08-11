@@ -5,7 +5,7 @@ import {
   getThemeSelector,
   paramsSelector,
   useAppDispatch
-} from "/build/_shared/chunk-IXWMQZDO.js";
+} from "/build/_shared/chunk-42SRB6X3.js";
 import {
   setClickedUser,
   useSelector
@@ -185,7 +185,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\details\\index.tsx"
   );
-  import.meta.hot.lastModified = "1723326767623.6223";
+  import.meta.hot.lastModified = "1723373936613.3127";
 }
 var Deatils = () => {
   _s();
@@ -251,4 +251,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   details_default as default
 };
-//# sourceMappingURL=/build/routes/details-XZP235BN.js.map
+//# sourceMappingURL=/build/routes/details-RF63VPTD.js.map

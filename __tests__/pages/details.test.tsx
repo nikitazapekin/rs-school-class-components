@@ -1,10 +1,10 @@
-import React from 'react';
+ 
 import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import axios from 'axios';
-import Details, { loader } from '../../app/routes/details';  
+ 
+import Details  from '../../app/routes/details';  
 import { rootReducer } from '../../src/store/store';
 import { setClickedUser } from '../../src/store/slices/appSlice';
 import { useLoaderData } from '@remix-run/react';
@@ -190,11 +190,8 @@ background.forEach(item=> {
     expect(item).toBeInTheDocument();
 
 })
- //   expect(screen.getByTestId('background')).toBeInTheDocument();
+ 
   
   });
-  /*
-      const nothingFoundElements = screen.queryAllByText('Nothing found');
-    expect(nothingFoundElements.length).toBe(2);
-  */
+  
 });

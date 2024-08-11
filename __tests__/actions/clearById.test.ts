@@ -1,6 +1,6 @@
 import reducer, { setRemoveStoredElementById } from '../../src/store/slices/selectedElementsSlice';
 import { SelectedElementsState } from '../../src/store/types';
-import { describe,test, it, expect, vi } from 'vitest';
+import { test,   expect  } from 'vitest';
 const previousState: SelectedElementsState = {
 	storedElements: [
 		{

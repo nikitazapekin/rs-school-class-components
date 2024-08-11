@@ -7,13 +7,13 @@ import StoredUsersButton from '../StoredUsersFlyoutElement';
 import Background from '../Background';
 import { useAppDispatch } from '../../hooks/redux';
 import { setStoredInLocalStorageActionCreator } from '../../store/action-creators/setStoredInLocalStorageQuery';
-import { isLoadingSelector } from '../../store/selectors/isLoadingSelector';
+
  
 
 const App = () => {
 	const dispatch = useAppDispatch();
 	const storedUsers = useSelector(storedUsersSelector);
-	const isLoading = useSelector(isLoadingSelector);
+
 	useEffect(() => {
 		dispatch(
 			setStoredInLocalStorageActionCreator(
@@ -21,11 +21,8 @@ const App = () => {
 			),
 		);
 	}, []);
-
-	 
 	return (
 		<>
-	 
 			<div className="container" data-testid="app">
 			<Header />
 				<List />
