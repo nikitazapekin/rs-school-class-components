@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../src/store/store.ts"],
-  "sourcesContent": [" \r\n \r\nimport { combineReducers, configureStore } from '@reduxjs/toolkit';\r\nimport type { ThunkAction, Action } from '@reduxjs/toolkit';\r\nimport appSlice from './slices/appSlice';\r\n \r\nimport selectedElementsSlice from './slices/selectedElementsSlice';\r\nimport themeSlice from './slices/themeSlice';\r\n\r\nexport const rootReducer = combineReducers({\r\n\tappSlice: appSlice,\r\n\tselectedElementsSlice: selectedElementsSlice,\r\n\tthemeSlice: themeSlice\r\n\t \r\n});\r\n\r\nexport const store = configureStore({\r\n\treducer: rootReducer,\r\n\t \r\n});\r\n\r\nexport type AppDispatch = typeof store.dispatch;\r\nexport type RootState = ReturnType<typeof store.getState>;\r\nexport type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;\r\n "],
-  "mappings": ";;;;;;;;;AASO,IAAM,cAAc,gBAAgB;AAAA,EAC1C,UAAU;AAAA,EACV,uBAAuB;AAAA,EACvB,YAAY;AAEb,CAAC;AAEM,IAAM,QAAQ,eAAe;AAAA,EACnC,SAAS;AAEV,CAAC;",
-  "names": []
-}

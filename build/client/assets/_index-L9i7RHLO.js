@@ -1,1 +1,0 @@
-import{r as e,j as r}from"./index-tMfIdM9H.js";import{u as a,A as o,B as n}from"./index-gYum0-Rv.js";import{e as p,f as c}from"./themeSlice-UQ2EKB3S.js";const i=s=>t=>{t(p(s))};function x(){const{users:s}=c(),t=a();return e.useEffect(()=>{s.length>0&&t(i(s))},[s,t]),r.jsxs(r.Fragment,{children:[r.jsx(o,{}),r.jsx(n,{})]})}export{x as default};

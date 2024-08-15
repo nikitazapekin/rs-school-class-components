@@ -1,17 +1,15 @@
- 
- 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import type { ThunkAction, Action } from '@reduxjs/toolkit';
 import appSlice from './slices/appSlice';
- 
+/*
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { githubApi } from './slices/querySlice';
+import { usersGithubApi } from './slices/userQuerySlice';
 import selectedElementsSlice from './slices/selectedElementsSlice';
-import themeSlice from './slices/themeSlice';
-
+*/
 export const rootReducer = combineReducers({
 	appSlice: appSlice,
-	selectedElementsSlice: selectedElementsSlice,
-	themeSlice: themeSlice
-	 
+ 
 });
 
 export const store = configureStore({
