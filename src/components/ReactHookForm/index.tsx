@@ -148,45 +148,16 @@ const ReactHookForm = () => {
               <p className="hform__error">{errors.country?.message}</p>
             </div>
             <input 
+             className="hform__input"
               {...register("country")}
-            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" required />
+            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" />
         
         <datalist id="countriesList">
           {countries.map((country) => (
             <option key={country}>{country}</option>
           ))}
           </datalist>
-            {/*
-            <input
-              value={value}
-              onChange={onChange}
-              type="text"
-              className="hform__input"
-              placeholder="Enter country..."
-            />
-            {countries
-              .filter((item) => {
-                const searchTerm = value.toLowerCase();
-                const fullName = item.toLowerCase();
-
-                return (
-                  searchTerm &&
-                  fullName.startsWith(searchTerm) &&
-                  fullName !== searchTerm
-                );
-              })
-
-              .map((item, index) => (
-                <div
-                  onClick={() => onSearch(String(item))}
-                  className="dropdown-row"
-                  key={index}
-                >
-                  {item}
-                </div>
-              ))}
-
-              */}
+          
           </div>
 
           <div className="hform__field">

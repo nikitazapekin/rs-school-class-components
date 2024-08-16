@@ -29,7 +29,7 @@ const UncontrolledForm = () => {
         context: { countries },
     });
 
-   
+
 
     const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -96,7 +96,7 @@ const UncontrolledForm = () => {
                             </p>
                         </div>
                         <input
-                                  {...register("name")}
+                            {...register("name")}
                             type="text"
                             className="hform__input"
                             placeholder="Enter username..."
@@ -114,7 +114,7 @@ const UncontrolledForm = () => {
                             </p>
                         </div>
                         <input
-                                   {...register("age")}
+                            {...register("age")}
                             type="number"
                             className="hform__input"
                             placeholder="Enter age..."
@@ -132,7 +132,7 @@ const UncontrolledForm = () => {
                             </p>
                         </div>
                         <input
-                             {...register("email")}
+                            {...register("email")}
                             type="email"
                             className="hform__input"
                             placeholder="Enter email..."
@@ -150,7 +150,7 @@ const UncontrolledForm = () => {
                             </p>
                         </div>
                         <input
-                                {...register("password")}
+                            {...register("password")}
                             type="password"
                             className="hform__input"
                             placeholder="Enter password..."
@@ -171,7 +171,7 @@ const UncontrolledForm = () => {
                             </p>
                         </div>
                         <input
-                               {...register("confirmPassword")}
+                            {...register("confirmPassword")}
                             type="password"
                             className="hform__input"
                             placeholder="Confirm password..."
@@ -194,7 +194,8 @@ const UncontrolledForm = () => {
 
                         <input
                             {...register("country")}
-                            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" required />
+                            className="hform__input"
+                            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Country" />
 
                         <datalist id="countriesList">
                             {countries.map((country) => (
@@ -207,7 +208,7 @@ const UncontrolledForm = () => {
                     </div>
                     <div className="hform__field">
                         <h2 className="hform__field__title">Gender</h2>
-                        <select {...register("gender")} 
+                        <select {...register("gender")}
                             className="hform__select">
                             <option value="">Select gender</option>
                             <option value="man">Man</option>
@@ -224,7 +225,7 @@ const UncontrolledForm = () => {
                     <div className="hform__field hform__field__checkbox">
                         <label htmlFor="agreeToTerms" className="hform__agree">
                             <input
-                                    {...register("agreeToTerms")}
+                                {...register("agreeToTerms")}
                                 type="checkbox"
                                 id="agreeToTerms"
                             />

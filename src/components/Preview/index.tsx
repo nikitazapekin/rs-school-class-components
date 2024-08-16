@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { getReactHookFormParamsSelector } from "../../store/selectors/getReactHookFormParams.selector";
 import { historySelector } from "../../store/selectors/history.selector";
 import "./index.scss"
+import Card from "../Card";
 const Preview = () => {
     const reactHookFormParams = useSelector(getReactHookFormParamsSelector);
     const history = useSelector(historySelector);
@@ -89,8 +90,8 @@ const Preview = () => {
                 <div className="preview__history">
                     <h2 className="preview__history__title">History</h2>
                     <div className="preview__history__elements">
-                        {history.slice(1).map((item) => (
-                            <>{JSON.stringify(item)}</>
+                        {history.slice(1).map((item,index) => (
+                          <Card item={item} key={index}/>
                         ))}
                         {history.length <=1 && (
                             <p  className="preview__history__nothing">
@@ -105,3 +106,5 @@ const Preview = () => {
 };
 
 export default Preview;
+
+                     //   <>{JSON.stringify(item)}</>
