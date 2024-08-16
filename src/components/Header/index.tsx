@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import "./index.scss";
 const Header = () => {
-    const gunc =(test: any) => {
-        return ""
-    }
+  
   return (
     <>
       <header className="header">
