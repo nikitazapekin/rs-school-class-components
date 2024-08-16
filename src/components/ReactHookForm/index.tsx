@@ -52,29 +52,15 @@ const ReactHookForm = () => {
         setValueState(searchTerm);
         console.log("search", searchTerm);
     };
-    /*
-
-    const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const base64String = reader.result as string;
-                setValue('avatar', base64String, { shouldValidate: true });
-                setAvatarPreview(base64String);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-*/
+   
 const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
         const reader = new FileReader();
         reader.onloadend = () => {
             const base64String = reader.result as string;
-            setValue('avatar', base64String, { shouldValidate: true }); // Устанавливаем base64 строку
-            setAvatarPreview(base64String); // Для отображения предварительного просмотра
+            setValue('avatar', base64String, { shouldValidate: true });  
+            setAvatarPreview(base64String); 
         };
         reader.readAsDataURL(file);
     }
@@ -193,9 +179,7 @@ const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
                     </div>
 
                     <div className="hform__field">
-                        {/*
-                        <input {...register('avatar')} type="file" className="hform__input" accept=".png, .jpeg" onChange={onAvatarChange} />
-                        */}
+                     
                         <h2 className="hform__field__title">Avatar</h2>
                         <input type="file" className="hform__input" accept=".png, .jpeg" onChange={onAvatarChange} />
 

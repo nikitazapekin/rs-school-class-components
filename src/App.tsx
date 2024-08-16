@@ -2,35 +2,11 @@
 import "./global.scss"
 import "./normalize.scss"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
-import MainPage from './pages/MainPage'
-import ReactHookFormPage from './pages/ReactHookFormPage'
-import UncontrolledFormPage from './pages/UncontrolledFormPage'
+ 
 import { Provider } from 'react-redux';
 import { store } from "./store/store"
 import AppRoutes from "./utils/routes"
-/*
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainPage />,
-    errorElement: <>Nothing found</>,
-    children: [
-      {
-        path: "registration-react-hook-form",
-        element: <ReactHookFormPage />
-      },
-      {
-        path: "registration-uncontrolled",
-        element: <UncontrolledFormPage />
-      }
-    ]
-  }, 
-
-  {
-    path: "*",
-    element: <MainPage />
-  }
-]) */
+ 
 
 function App() {
 

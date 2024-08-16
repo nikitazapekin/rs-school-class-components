@@ -1,12 +1,11 @@
 import { Route, Routes, Navigate } from "react-router-dom"
 
-import {
-   
-} from "./consts"
+import { UNCONTROLLED_FORM } from "./consts"
 
 import { REACT_HOOK_FORM, MAIN_PAGE } from "./consts"
 import ReactHookFormPage from "../pages/ReactHookFormPage"
 import MainPage from "../pages/MainPage"
+import UncontrolledFormPage from "../pages/UncontrolledFormPage"
 export const publicRoutes = [
     {
         path: REACT_HOOK_FORM,
@@ -15,6 +14,10 @@ export const publicRoutes = [
      {
       path: MAIN_PAGE,
       Component: MainPage
+   },
+   {
+      path: UNCONTROLLED_FORM,
+      Component: UncontrolledFormPage
    },
   
 ]
@@ -27,7 +30,7 @@ const AppRoutes = ( )=> {
          
          <Routes>
             {publicRoutes.map(({ path, Component }) => (
-                <Route key={path} path={path} element={<Component />} /> // Use Component as JSX
+                <Route key={path} path={path} element={<Component />} /> 
             ))}
  
          </Routes>

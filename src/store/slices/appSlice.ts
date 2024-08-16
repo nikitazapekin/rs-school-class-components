@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-/*
-interface FormTypes {
-    name: string,
-    age: number,
-    email: string,
-    firstPassword: string,
-    secondPassword: string,
-    gender: "Man" | "Female" | "None",
-    avatar: string,
-    isAccept: boolean,
-    country: string
-}
-    */
+ 
 interface FormTypes {
     name: string;
     email: string;
@@ -24,12 +12,25 @@ interface FormTypes {
     avatar: string;   
 
     }
-   
+    interface FormTypesErrors {
+        name: string;
+        email: string;
+        password: string;
+        age: string;
+        gender: string;
+        country: string;
+        agreeToTerms: string;
+        confirmPassword: string;
+        avatar: string;   
+    
+        }
+       
 
 interface AppState {
     countries: String[],
     reactHookForm: FormTypes, 
-    uncontrolledForm: FormTypes
+    uncontrolledForm: FormTypes,
+  formErrors: FormTypesErrors
 }
 
 
@@ -92,6 +93,17 @@ const initialState: AppState = {
     avatar: "",
     agreeToTerms: false,
     country: ""
+    }, 
+   formErrors: {
+        name: "",
+        age: "",
+        email: "",
+        password: "",
+      confirmPassword: "",
+        gender: "",
+        avatar: "",
+        agreeToTerms: "",
+        country: "" 
     }
 };
 const appSlicee = createSlice({
@@ -108,10 +120,15 @@ setPersonalDataReactHookForm(state, action: PayloadAction<FormTypes>) {
    state.reactHookForm = action.payload
   //  state.reactHookForm.age = action.payload.
 },
+setFormErrors(state, action: PayloadAction<FormTypesErrors>) {
+    state.formErrors = action.payload
+    console.log("SER ERR", state.formErrors)
+}
     },
 });
 export const {
     setLoading,
-setPersonalDataReactHookForm
+setPersonalDataReactHookForm,
+setFormErrors
 } = appSlicee.actions;
 export default appSlicee.reducer;
