@@ -1,8 +1,9 @@
+import Header from "../components/Header";
 import ReactHookForm from "../components/ReactHookForm";
-import { RegForm } from "../components/testform";
-import TestAuto from "../components/testAuto";
+
 const ReactHookFormPage = () => {
     return ( <>
+    <Header />
     {/*
 <RegForm />
     */}
@@ -10,7 +11,7 @@ const ReactHookFormPage = () => {
 
 
 
-<TestAuto />
+
     </>  );
 }
  

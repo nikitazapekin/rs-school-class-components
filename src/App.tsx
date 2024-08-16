@@ -1,153 +1,14 @@
-/*
 
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
-
-
-const schema = yup
-  .object({
-    firstName: yup.string().required(),
-    age: yup.number().positive().integer().required(),
-  })
-  .required()
-
-
-export default function App() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  })
-  const onSubmit = (data: any) => console.log(data)
-
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstName")} />
-      <p>{errors.firstName?.message}</p>
-
-
-      <input {...register("age")} />
-      <p>{errors.age?.message}</p>
-
-
-      <input type="submit" />
-    </form>
-  )
-}
-
-*/
-/*
-import { useForm } from "react-hook-form"
-
-
-export default function App() {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm()
-  const onSubmit = (data) => console.log(data)
-
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        {...register("firstName", { required: true })}
-        aria-invalid={errors.firstName ? "true" : "false"}
-      />
-      {errors.firstName?.type === "required" && (
-        <p role="alert">First name is required</p>
-      )}
-
-
-      <input
-        {...register("mail", { required: "Email Address is required" })}
-        aria-invalid={errors.mail ? "true" : "false"}
-      />
-      {errors.mail && <p role="alert">{errors.mail.message}</p>}
-
-
-      <input type="submit" />
-    </form>
-  )
-}
-*/
-/*
-import { useForm, SubmitHandler } from "react-hook-form"
-
-
-interface IFormInput {
-  firstName: string
-  lastName: string
-  age: number
-}
-
-
-export default function App() {
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("firstName", { required: true, maxLength: 20 })} />
-      <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-      <input type="number" {...register("age", { min: 18, max: 99 })} />
-      <input type="submit" />
-    </form>
-  )
-}
-  */
-/*
-import ReactDOM from "react-dom"
-import { useForm, SubmitHandler } from "react-hook-form"
-
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
-}
-
-interface IFormInput {
-  firstName: string
-  gender: GenderEnum
-}
-
-export default function App() {
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>First Name</label>
-      <input {...register("firstName")} />
-      <label>Gender Selection</label>
-      <select {...register("gender")}>
-        <option value="female">female</option>
-        <option value="male">male</option>
-        <option value="other">other</option>
-      </select>
-      <input type="submit" />
-    </form>
-  )
-}
-
-*/
-/* 
-*/
 import "./global.scss"
 import "./normalize.scss"
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import ReactHookFormPage from './pages/ReactHookFormPage'
 import UncontrolledFormPage from './pages/UncontrolledFormPage'
 import { Provider } from 'react-redux';
 import { store } from "./store/store"
-
+import AppRoutes from "./utils/routes"
+/*
 const router = createBrowserRouter([
   {
     path: "/",
@@ -169,16 +30,19 @@ const router = createBrowserRouter([
     path: "*",
     element: <MainPage />
   }
-])
+]) */
+
 function App() {
-  
+
 
   return (
     <>
-    <Provider store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AppRoutes />
 
-<RouterProvider router={router} />
-    </Provider>
+        </BrowserRouter>
+      </Provider>
     </>
   )
 }

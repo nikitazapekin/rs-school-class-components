@@ -1,0 +1,73 @@
+.hform {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hform__inner {
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  max-width: 900px;
+  align-items: center;
+  width: 100%;
+}
+.hform__inner__background {
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  opacity: 0.5;
+  position: absolute;
+  background-color: rgb(146, 100, 39);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.hform__title {
+  font-size: 32px;
+  font-weight: bold;
+}
+.hform__field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.hform__field__preview {
+  display: flex;
+  justify-content: space-between;
+}
+.hform__field__title {
+  font-size: 22px;
+}
+.hform__input {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid rgb(58, 57, 57);
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.hform__input:hover {
+  background-color: rgb(85, 84, 84);
+}
+.hform__input::-moz-placeholder {
+  font-size: 16px;
+}
+.hform__input::placeholder {
+  font-size: 16px;
+}
+.hform__input:hover .hform__input::-moz-placeholder {
+  color: #fff;
+}
+.hform__input:hover .hform__input::placeholder {
+  color: #fff;
+}
+.hform__error {
+  font-size: 22px;
+  color: rgb(104, 27, 27);
+}/*# sourceMappingURL=index.css.map */
