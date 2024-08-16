@@ -102,10 +102,3 @@ export const schema = yup.object().shape({
   avatar: yup.string().required("Avatar is required"),
 });
 
-/*
-       .test('is-valid-format', 'Invalid file format, only PNG or JPEG is allowed', (value) => {
-           if (!value) return false;
-           const validFormats = ['data:image/jpeg;base64', 'data:image/png;base64'];
-           return validFormats.some(format => value.startsWith(format));
-       }),
-*/

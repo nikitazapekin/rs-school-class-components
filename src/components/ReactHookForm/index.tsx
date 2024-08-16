@@ -1,6 +1,6 @@
 import "./index.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./schema";
+import {schema} from "./schema"
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,19 +8,7 @@ import { coutrySelector } from "../../store/selectors/country.selector";
 import { useAppDispatch } from "../../hooks/redux";
 import { SetPersonalDataReactHookFormActionCreator } from "../../store/actions/setUserData";
 import { useNavigate } from "react-router-dom";
-
-export interface RegisterInterface {
-  name: string;
-  email: string;
-  password: string;
-  age: number;
-  gender: string;
-  country: string;
-  agreeToTerms: boolean;
-  confirmPassword: string;
-  avatar: string;
-}
-
+import { RegisterInterface } from "./types"
 const ReactHookForm = () => {
   const navigate = useNavigate();
   const countries = useSelector(coutrySelector);
@@ -37,18 +25,8 @@ const ReactHookForm = () => {
     context: { countries },
   });
 
-  const [value, setValueState] = useState<string>("");
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValueState(event.target.value);
-  };
-
-  const onSearch = (searchTerm: string) => {
-    setValue("country", searchTerm, { shouldValidate: true });
-    setValueState(searchTerm);
-    console.log("search", searchTerm);
-  };
 
   const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -169,6 +147,16 @@ const ReactHookForm = () => {
               <h2 className="hform__field__title">Country</h2>
               <p className="hform__error">{errors.country?.message}</p>
             </div>
+            <input 
+              {...register("country")}
+            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" required />
+        
+        <datalist id="countriesList">
+          {countries.map((country) => (
+            <option key={country}>{country}</option>
+          ))}
+          </datalist>
+            {/*
             <input
               value={value}
               onChange={onChange}
@@ -197,6 +185,8 @@ const ReactHookForm = () => {
                   {item}
                 </div>
               ))}
+
+              */}
           </div>
 
           <div className="hform__field">
@@ -246,6 +236,15 @@ const ReactHookForm = () => {
             <input type="submit" className="hform__submit" />
           </div>
         </div>
+        {/*
+        <input type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" required />
+        
+          <datalist id="countriesList">
+            {countries.map((country) => (
+              <option key={country}>{country}</option>
+            ))}
+            </datalist>
+            */}
       </form>
     </>
   );

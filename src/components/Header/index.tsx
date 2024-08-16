@@ -7,15 +7,17 @@ const Header = () => {
       <header className="header">
         <ul className="header__inner">
           <li className="header__item">
-            <Link to="/">Homepage</Link>
+            <Link className="header__link" to="/">Homepage</Link>
           </li>
           <li className="header__item">
-            <Link to="/registration-react-hook-form">React hook form</Link>
+            <Link  className="header__link"  to="/registration-react-hook-form">React hook form</Link>
           </li>
           <li className="header__item">
-            <Link to="/registration-uncontrolled-form">Uncontrolled form</Link>
+            <Link  className="header__link"  to="/registration-uncontrolled-form">Uncontrolled form</Link>
           </li>
         </ul>
+        <div className="header__background">
+        </div>
       </header>
     </>
   );
