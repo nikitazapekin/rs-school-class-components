@@ -204,18 +204,10 @@ const ReactHookForm = () => {
           </div>
 
           <div className="hform__field">
-            <input type="submit" className="hform__submit" />
+            <input type="submit" className="hform__submit" disabled={Object.values(errors).some(value =>value.message!="") ? true : false} />
           </div>
         </div>
-        {/*
-        <input type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" required />
-        
-          <datalist id="countriesList">
-            {countries.map((country) => (
-              <option key={country}>{country}</option>
-            ))}
-            </datalist>
-            */}
+       
       </form>
     </>
   );

@@ -1,3 +1,5 @@
+
+
 import "./index.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
@@ -118,7 +120,7 @@ const UncontrolledForm = () => {
                             type="number"
                             className="hform__input"
                             placeholder="Enter age..."
-                        />
+                            />
                     </div>
 
                     <div className="hform__field">
@@ -228,7 +230,7 @@ const UncontrolledForm = () => {
                                 {...register("agreeToTerms")}
                                 type="checkbox"
                                 id="agreeToTerms"
-                            />
+                                />
                             <p className="hform__agree__text">
                                 I agree to the terms of service
                             </p>
@@ -273,3 +275,5 @@ const UncontrolledForm = () => {
 };
 
 export default UncontrolledForm;
+/*
+*/
