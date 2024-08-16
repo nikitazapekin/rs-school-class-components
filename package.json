@@ -13,6 +13,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -37,7 +38,7 @@
     "vite": "^5.4.0"
   },
   "lint-staged": {
-		"*": "prettier --ignore-unknown --write",
-		"./src/*.{ts,tsx}": "eslint --fix --color"
-	}
+    "*": "prettier --ignore-unknown --write",
+    "./src/*.{ts,tsx}": "eslint --fix --color"
+  }
 }
