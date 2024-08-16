@@ -1,5 +1,5 @@
-import { RootState } from '../store';
+import { RootState } from "../store";
 
 export const errorsSelector = (state: RootState) => {
-    return state.appSlice.formErrors
+  return state.appSlice.formErrors;
 };
