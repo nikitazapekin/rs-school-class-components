@@ -152,7 +152,7 @@ const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
                                 return searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm;
                             })
-                            .slice(0, 5)
+                         //   .slice(0, 5)
                             .map((item, index) => (
                                 <div onClick={() => onSearch(String(item))} className="dropdown-row" key={index}>
                                     {item}

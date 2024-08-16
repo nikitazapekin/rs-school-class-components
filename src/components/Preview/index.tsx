@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { getReactHookFormParamsSelector } from "../../store/selectors/getReactHookFormParams.selector";
+import { historySelector } from "../../store/selectors/history.selector";
 
 const Preview = () => {
     const reactHookFormParams = useSelector(getReactHookFormParamsSelector)
+    const history = useSelector(historySelector)
     console.log(reactHookFormParams)
     return (
         <div className="preview">
@@ -103,11 +105,24 @@ const Preview = () => {
                     </div>
 
                 </div>
+
+
+<div className="preview__history">
+    <h2 className="preview__history__title">
+        History
+    </h2>
+    <div className="preview__history__elements">
+        {history.map(item=> (
+            <>
+            {JSON.stringify(item)}
+            </>
+        ))}
+    </div>
+</div>
             </div>
 
 
-
-            {JSON.stringify(reactHookFormParams)}
+ 
         </div>
     );
 }

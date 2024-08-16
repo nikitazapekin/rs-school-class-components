@@ -30,11 +30,13 @@ interface AppState {
     countries: String[],
     reactHookForm: FormTypes, 
     uncontrolledForm: FormTypes,
-  formErrors: FormTypesErrors
+  formErrors: FormTypesErrors,
+  history: FormTypes[]
 }
 
 
 const initialState: AppState = {
+
     countries: [
         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
         "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas",
@@ -104,19 +106,18 @@ const initialState: AppState = {
         avatar: "",
         agreeToTerms: "",
         country: "" 
-    }
+    },
+    history: []
 };
 const appSlicee = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setLoading(state, action: PayloadAction<boolean>) {
-            console.log('LOOO', action.payload);
-
-        },
+  
 setPersonalDataReactHookForm(state, action: PayloadAction<FormTypes>) {
  //   setPersonalDataReactHookForm(state, action: FormTypes) {
    console.log("AC" +action.payload)
+   state.history.push(state.reactHookForm)
    state.reactHookForm = action.payload
   //  state.reactHookForm.age = action.payload.
 },
@@ -127,7 +128,7 @@ setFormErrors(state, action: PayloadAction<FormTypesErrors>) {
     },
 });
 export const {
-    setLoading,
+
 setPersonalDataReactHookForm,
 setFormErrors
 } = appSlicee.actions;
