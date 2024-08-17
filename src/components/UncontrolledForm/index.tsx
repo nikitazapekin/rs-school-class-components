@@ -5,7 +5,7 @@ import { coutrySelector } from "../../store/selectors/country.selector";
 import { useAppDispatch } from "../../hooks/redux";
 import { SetPersonalDataReactHookFormActionCreator } from "../../store/actions/setUserData";
 import { useNavigate } from "react-router-dom";
- 
+import { useState } from "react";
 import * as yup from "yup";
 
 const UncontrolledForm = () => {
@@ -25,7 +25,7 @@ const UncontrolledForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const errorRef = useRef<{ [key: string]: HTMLParagraphElement | null }>({});
- 
+ const [password, setPassword] =useState<string>("")
     const schema = yup.object().shape({
         name: yup
             .string()
@@ -42,7 +42,7 @@ const UncontrolledForm = () => {
             .required("Field is required")
             .matches(/^\S+@\S+\.\S+$/, "Invalid email format"),
 
-        password: yup
+       /* password: yup
             .string()
             .required("Field is required")
             .min(6, "Password must be at least 6 characters long")
@@ -60,7 +60,51 @@ const UncontrolledForm = () => {
                 ].filter(Boolean).length;
                 return strengthCount >= 3;
             }),
+*/
 
+
+password: yup
+.string()
+.required("Field is required")
+.min(6, "Password must be at least 6 characters long")
+.test("password-strength", "Password is too weak", (value) => {
+  if (!value) return false;
+
+  const hasUpperCase = /[A-Z]/.test(value);
+  const hasLowerCase = /[a-z]/.test(value);
+  const hasNumber = /\d/.test(value);
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+  const strengthCount = [
+    hasUpperCase,
+    hasLowerCase,
+    hasNumber,
+    hasSpecialChar,
+  ].filter(Boolean).length;
+
+  return strengthCount >= 3;
+})
+.test(
+  "password-strength-message",
+  "The password must contain at least three of the following: uppercase letter, lowercase letter, number, special character",
+  (value) => {
+    if (!value) return false;
+
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumber = /\d/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+    const strengthCount = [
+      hasUpperCase,
+      hasLowerCase,
+      hasNumber,
+      hasSpecialChar,
+    ].filter(Boolean).length;
+
+    return strengthCount >= 3;
+  },
+),
         confirmPassword: yup
             .string()
             .oneOf([yup.ref("password"), ""], "Passwords must match")
@@ -134,7 +178,23 @@ const UncontrolledForm = () => {
             reader.readAsDataURL(file);
         }
     };
-
+    const getPasswordStrength = (password: string) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumber = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const strengthCount = [
+          hasUpperCase,
+          hasLowerCase,
+          hasNumber,
+          hasSpecialChar,
+        ].filter(Boolean).length;
+        if (strengthCount === 4) return "Strong";
+        if (strengthCount === 3) return "Medium";
+        if (strengthCount > 0) return "Weak";
+    
+        return "Very Weak";
+      };
     const submitForm = async (event: React.FormEvent) => {
         event.preventDefault();
 
@@ -171,7 +231,9 @@ const UncontrolledForm = () => {
             }
         }
     };
-
+const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+}
     return (
         <form className="hform" onSubmit={submitForm}>
             <div className="hform__inner">
@@ -227,9 +289,12 @@ const UncontrolledForm = () => {
                         type="password"
                         className="hform__input"
                         placeholder="Enter password..."
+                        onChange={(event)=>handleChange(event)}
                     />
+                     <p className="hform__strength">
+              Password Strength: {getPasswordStrength(password)}
+            </p>
                 </div>
-
                 <div className="hform__field">
                     <div className="hform__field__preview">
                         <h2 className="hform__field__title">Confirm Password</h2>
