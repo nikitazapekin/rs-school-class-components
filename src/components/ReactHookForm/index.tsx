@@ -203,7 +203,7 @@ const ReactHookForm = () => {
             )}
           </div>
 
-          <div className="hform__field">
+          <div className="hform__field hform__btn">
             <input type="submit" className="hform__submit" disabled={Object.values(errors).some(value =>value.message!="") ? true : false} />
           </div>
         </div>

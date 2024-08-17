@@ -8,8 +8,12 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        column-gap: 20px;
         height: 60px;
+    }
+
+    &__list {
+        display: flex;
+        column-gap: 20px;
     }
 
     &__background {
@@ -22,9 +26,15 @@
         opacity: 0.5;
         z-index: -1;
     }
+
     &__link {
         color: black;
         font-size: 22px;
         cursor: pointer;
+        transition: 0.4s ease-in-out;
+
+    }
+    &__link:hover {
+text-decoration: underline;
     }
 }
