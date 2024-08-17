@@ -49,7 +49,7 @@ export const schema = yup.object().shape({
     })
     .test(
       "password-strength-message",
-      "The password must contain at least three of the following: uppercase letter, lowercase letter, number, special character",
+"The password must contain: uppercase and lowercase letters, number, special character",
       (value) => {
         if (!value) return false;
 

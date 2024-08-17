@@ -1,6 +1,6 @@
 import "./index.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {schema} from "./schema"
+import { schema } from "./schema"
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import { useAppDispatch } from "../../hooks/redux";
 import { SetPersonalDataReactHookFormActionCreator } from "../../store/actions/setUserData";
 import { useNavigate } from "react-router-dom";
 import { RegisterInterface } from "./types"
+import { getPasswordStrength } from "../../helpers/passwordStrength";
 const ReactHookForm = () => {
   const navigate = useNavigate();
   const countries = useSelector(coutrySelector);
@@ -42,25 +43,6 @@ const ReactHookForm = () => {
   };
 
   const passwordValue = watch("password", "");
-
-  const getPasswordStrength = (password: string) => {
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    const strengthCount = [
-      hasUpperCase,
-      hasLowerCase,
-      hasNumber,
-      hasSpecialChar,
-    ].filter(Boolean).length;
-    if (strengthCount === 4) return "Strong";
-    if (strengthCount === 3) return "Medium";
-    if (strengthCount > 0) return "Weak";
-
-    return "Very Weak";
-  };
-
   const submitForm = (data: RegisterInterface) => {
     dispatch(SetPersonalDataReactHookFormActionCreator(data));
     navigate("/");
@@ -124,9 +106,16 @@ const ReactHookForm = () => {
               className="hform__input"
               placeholder="Enter password..."
             />
-            <p className="hform__strength">
-              Password Strength: {getPasswordStrength(passwordValue)}
-            </p>
+            <div className="hform__strength">
+              Password Strength: {getPasswordStrength(passwordValue).message}
+ 
+              <progress
+                className={`hform__strength__progress ${getPasswordStrength(passwordValue).class}` }
+
+                max={100}
+                value={getPasswordStrength(passwordValue).value}
+              />
+            </div>
           </div>
 
           <div className="hform__field">
@@ -147,30 +136,40 @@ const ReactHookForm = () => {
               <h2 className="hform__field__title">Country</h2>
               <p className="hform__error">{errors.country?.message}</p>
             </div>
-            <input 
-             className="hform__input"
+            <input
+              className="hform__input"
               {...register("country")}
-            type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Countr" />
-        
-        <datalist id="countriesList">
-          {countries.map((country) => (
-            <option key={country}>{country}</option>
-          ))}
-          </datalist>
-          
+              type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Country" />
+
+            <datalist id="countriesList">
+              {countries.map((country) => (
+                <option key={country}>{country}</option>
+              ))}
+            </datalist>
+
           </div>
 
           <div className="hform__field">
-            <h2 className="hform__field__title">Gender</h2>
+          
+                <div className="hform__field__preview">
+              <h2 className="hform__field__title">Gender</h2>
+            <p className="hform__error">{errors.gender?.message}</p>
+             
+            </div>
             <select {...register("gender")} className="hform__select">
               <option value="">Select gender</option>
               <option value="man">Man</option>
               <option value="female">Female</option>
             </select>
-            <p className="hform__error">{errors.gender?.message}</p>
           </div>
 
           <div className="hform__field hform__field__checkbox">
+          <div className="hform__field__preview">
+              <h2 className="hform__field__title">Agree term</h2>
+            <p className="hform__error">{errors.agreeToTerms?.message}</p>
+           
+             
+            </div>
             <label htmlFor="agreeToTerms" className="hform__agree">
               <input
                 {...register("agreeToTerms")}
@@ -181,11 +180,20 @@ const ReactHookForm = () => {
                 I agree to the terms of service
               </p>
             </label>
-            <p className="hform__error">{errors.agreeToTerms?.message}</p>
           </div>
 
           <div className="hform__field">
-            <h2 className="hform__field__title">Avatar</h2>
+
+
+          <div className="hform__field__preview">
+              <h2 className="hform__field__title">Avatar</h2>
+            
+            <p className="hform__error">{errors.avatar?.message}</p>
+             
+            </div>
+
+
+          
             <input
               type="file"
               className="hform__input"
@@ -193,7 +201,6 @@ const ReactHookForm = () => {
               onChange={onAvatarChange}
             />
 
-            <p className="hform__error">{errors.avatar?.message}</p>
             {avatarPreview && (
               <img
                 src={avatarPreview}
@@ -203,11 +210,11 @@ const ReactHookForm = () => {
             )}
           </div>
 
-          <div className="hform__field hform__btn">
-            <input type="submit" className="hform__submit" disabled={Object.values(errors).some(value =>value.message!="") ? true : false} />
-          </div>
+        
+
+          <button type="submit" className="submit-btn" disabled={Object.values(errors).some(({message})=>Boolean(message)) }>Submit</button>
         </div>
-       
+
       </form>
     </>
   );

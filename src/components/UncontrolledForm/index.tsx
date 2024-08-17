@@ -7,7 +7,8 @@ import { SetPersonalDataReactHookFormActionCreator } from "../../store/actions/s
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import * as yup from "yup";
-
+import { schema } from "./schema"
+import { getPasswordStrength } from "../../helpers/passwordStrength";
 const UncontrolledForm = () => {
     const navigate = useNavigate();
     const countries = useSelector(coutrySelector);
@@ -25,118 +26,8 @@ const UncontrolledForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const errorRef = useRef<{ [key: string]: HTMLParagraphElement | null }>({});
- const [password, setPassword] =useState<string>("")
-    const schema = yup.object().shape({
-        name: yup
-            .string()
-            .trim()
-            .required("Field is required")
-            .min(2, "The name must be at least 2 characters long")
-            .test("is-first-letter-uppercase", "The first character must be uppercase", (value) => {
-                if (!value) return false;
-                return /^[A-ZА-Я]/.test(value);
-            }),
+    const [password, setPassword] = useState<string>("")
 
-        email: yup
-            .string()
-            .required("Field is required")
-            .matches(/^\S+@\S+\.\S+$/, "Invalid email format"),
-
-       /* password: yup
-            .string()
-            .required("Field is required")
-            .min(6, "Password must be at least 6 characters long")
-            .test("password-strength", "Password is too weak", (value) => {
-                if (!value) return false;
-                const hasUpperCase = /[A-Z]/.test(value);
-                const hasLowerCase = /[a-z]/.test(value);
-                const hasNumber = /\d/.test(value);
-                const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-                const strengthCount = [
-                    hasUpperCase,
-                    hasLowerCase,
-                    hasNumber,
-                    hasSpecialChar,
-                ].filter(Boolean).length;
-                return strengthCount >= 3;
-            }),
-*/
-
-
-password: yup
-.string()
-.required("Field is required")
-.min(6, "Password must be at least 6 characters long")
-.test("password-strength", "Password is too weak", (value) => {
-  if (!value) return false;
-
-  const hasUpperCase = /[A-Z]/.test(value);
-  const hasLowerCase = /[a-z]/.test(value);
-  const hasNumber = /\d/.test(value);
-  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-
-  const strengthCount = [
-    hasUpperCase,
-    hasLowerCase,
-    hasNumber,
-    hasSpecialChar,
-  ].filter(Boolean).length;
-
-  return strengthCount >= 3;
-})
-.test(
-  "password-strength-message",
-  "The password must contain at least three of the following: uppercase letter, lowercase letter, number, special character",
-  (value) => {
-    if (!value) return false;
-
-    const hasUpperCase = /[A-Z]/.test(value);
-    const hasLowerCase = /[a-z]/.test(value);
-    const hasNumber = /\d/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-
-    const strengthCount = [
-      hasUpperCase,
-      hasLowerCase,
-      hasNumber,
-      hasSpecialChar,
-    ].filter(Boolean).length;
-
-    return strengthCount >= 3;
-  },
-),
-        confirmPassword: yup
-            .string()
-            .oneOf([yup.ref("password"), ""], "Passwords must match")
-            .required("Field is required"),
-
-        age: yup
-            .number()
-            .required("Field is required")
-            .positive("Age must be a positive number")
-            .integer("Age must be an integer")
-            .max(100, "Please enter a correct age"),
-
-        gender: yup
-            .string()
-            .required("Field is required")
-            .oneOf(["man", "female"], "Choose the correct gender"),
-
-        country: yup
-            .string()
-            .required("Field is required")
-            .test("is-valid-country", "Invalid country selected", function (value) {
-                return countries.includes(value || "");
-            }),
-
-        agreeToTerms: yup
-            .boolean()
-            .required("Consent required")
-            .oneOf([true], "Consent required"),
-
-        avatar: yup.string().required("Avatar is required"),
-    });
- 
     const validateForm = async () => {
         const formData = {
             name: nameRef.current?.value || "",
@@ -178,23 +69,6 @@ password: yup
             reader.readAsDataURL(file);
         }
     };
-    const getPasswordStrength = (password: string) => {
-        const hasUpperCase = /[A-Z]/.test(password);
-        const hasLowerCase = /[a-z]/.test(password);
-        const hasNumber = /\d/.test(password);
-        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-        const strengthCount = [
-          hasUpperCase,
-          hasLowerCase,
-          hasNumber,
-          hasSpecialChar,
-        ].filter(Boolean).length;
-        if (strengthCount === 4) return "Strong";
-        if (strengthCount === 3) return "Medium";
-        if (strengthCount > 0) return "Weak";
-    
-        return "Very Weak";
-      };
     const submitForm = async (event: React.FormEvent) => {
         event.preventDefault();
 
@@ -206,22 +80,22 @@ password: yup
 
         const validatedData = await validateForm();
         if (validatedData) {
-           
+
             dispatch(SetPersonalDataReactHookFormActionCreator(
                 {
 
-                name: validatedData.name,
-                age: Number(validatedData.age),
-            email: validatedData.email,
-            password: validatedData.password,
-            confirmPassword: validatedData.confirmPassword,
-            country: validatedData.country,
-            gender: validatedData.gender,
-            agreeToTerms: Boolean(validatedData.agreeToTerms),
-            avatar: validatedData.avatar
-        })
-    )
-       
+                    name: validatedData.name,
+                    age: Number(validatedData.age),
+                    email: validatedData.email,
+                    password: validatedData.password,
+                    confirmPassword: validatedData.confirmPassword,
+                    country: validatedData.country,
+                    gender: validatedData.gender,
+                    agreeToTerms: Boolean(validatedData.agreeToTerms),
+                    avatar: validatedData.avatar
+                })
+            )
+
             navigate("/");
             if (avatarPreviewRef.current) {
                 avatarPreviewRef.current.src = "";
@@ -231,9 +105,9 @@ password: yup
             }
         }
     };
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value)
-}
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value)
+    }
     return (
         <form className="hform" onSubmit={submitForm}>
             <div className="hform__inner">
@@ -289,11 +163,17 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                         type="password"
                         className="hform__input"
                         placeholder="Enter password..."
-                        onChange={(event)=>handleChange(event)}
+                        onChange={(event) => handleChange(event)}
                     />
-                     <p className="hform__strength">
-              Password Strength: {getPasswordStrength(password)}
-            </p>
+                    <div className="hform__strength">
+                        Password Strength: {getPasswordStrength(password).message}
+                        <progress
+                                className={`hform__strength__progress ${getPasswordStrength(password).class}` }
+
+                            max={100}
+                            value={getPasswordStrength(password).value}
+                        />
+                    </div>
                 </div>
                 <div className="hform__field">
                     <div className="hform__field__preview">
@@ -331,16 +211,26 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                 </div>
 
                 <div className="hform__field">
-                    <h2 className="hform__field__title">Gender</h2>
+                <div className="hform__field__preview">
+              <h2 className="hform__field__title">Gender</h2>
+         
+                    <p ref={error => (errorRef.current["gender"] = error)} className="hform__error" />
+             
+            </div>
                     <select ref={genderRef} className="hform__select">
                         <option value="">Select gender</option>
                         <option value="man">Man</option>
                         <option value="female">Female</option>
                     </select>
-                    <p ref={error => (errorRef.current["gender"] = error)} className="hform__error" />
                 </div>
 
                 <div className="hform__field hform__field__checkbox">
+                <div className="hform__field__preview">
+              <h2 className="hform__field__title">Agree term</h2>
+             
+                    <p ref={error => (errorRef.current["agreeToTerms"] = error)} className="hform__error" />
+             
+            </div>
                     <label htmlFor="agreeToTerms" className="hform__agree">
                         <input
                             ref={agreeToTermsRef}
@@ -351,11 +241,15 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                             I agree to the terms of service
                         </p>
                     </label>
-                    <p ref={error => (errorRef.current["agreeToTerms"] = error)} className="hform__error" />
                 </div>
 
                 <div className="hform__field">
-                    <h2 className="hform__field__title">Avatar</h2>
+                <div className="hform__field__preview">
+              <h2 className="hform__field__title">Avatar</h2>
+        
+            <p ref={error => (errorRef.current["avatar"] = error)} className="hform__error" />
+             
+            </div>
                     <input
                         ref={fileInputRef}
                         type="file"
@@ -363,17 +257,13 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
                         accept=".png, .jpeg"
                         onChange={onAvatarChange}
                     />
-                    <p ref={error => (errorRef.current["avatar"] = error)} className="hform__error" />
                     <img ref={avatarPreviewRef} alt="Avatar Preview" className="hform__avatar-preview" />
                 </div>
 
-                <div className="hform__field hform__btn">
-                    <input type="submit" className="hform__submit" />
-                </div>
+<button type="submit" className="submit-btn">Submit</button>
             </div>
         </form>
     );
 };
 
 export default UncontrolledForm;
- 
