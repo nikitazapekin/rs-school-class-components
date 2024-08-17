@@ -19,7 +19,7 @@ interface AppState {
   history: FormTypes[];
 }
 
-const initialState: AppState = {
+export const initialState: AppState = {
   countries: countries,
   reactHookForm: {
     name: "",

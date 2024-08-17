@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { countries } from "./consts";
+import { initialState } from "../../store/slices/appSlice";
 export const schema = yup.object().shape({
     name: yup
         .string()
@@ -81,7 +81,8 @@ return strengthCount >= 3;
         .string()
         .required("Field is required")
         .test("is-valid-country", "Invalid country selected", function (value) {
-            return countries.includes(value || "");
+    
+    return initialState.countries.includes(value || "");
         }),
 
     agreeToTerms: yup
