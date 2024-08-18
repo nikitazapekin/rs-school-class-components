@@ -9,7 +9,8 @@ export   const getPasswordStrength = (password: string) => {
       hasNumber,
       hasSpecialChar,
     ].filter(Boolean).length;
-    if (strengthCount === 4) return {message: "Strong", value: 100, class:"hform__cwpower" };
+    if (strengthCount === 4 && password.length>=6) return {message: "Strong", value: 100, class:"hform__cwpower" };
+    if (strengthCount === 4 ) return {message: "Medium", value: 66, class:"hform__wpower" };
     if (strengthCount === 3) return {message:"Medium", value: 66, class: "hform__wpower"};
     if (strengthCount > 0) return {message: "Weak", value: 33, class: "hform__vwpower" };
 
