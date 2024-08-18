@@ -1,5 +1,18 @@
+ 
 export interface CardProps {
-	html_url: string;
-	avatar_url: string;
-	login: string;
-}
+
+item: {
+
+       name: string;
+       email: string;
+        password: string;
+        age: number;
+        gender: string;
+        country: string;
+        agreeToTerms: boolean;
+        confirmPassword: string;
+        avatar: string;
+    }
+
+
+  }
