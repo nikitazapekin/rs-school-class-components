@@ -15,12 +15,4 @@ export   const getPasswordStrength = (password: string) => {
 
     return {message: "Very Weak", value: 0, class: "hform__vwpower" } ;
   };
- /*
  
- .hform__vwpower {
-  --webkit-progress-bar: #ccc, 
-  --webkit-progress-value: red,
-  --moz-progress-bar: red
- }
- .hform__wpower {
- */
