@@ -6,9 +6,9 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config({
   extends: [js.configs.recommended, ...tseslint.configs.recommended],
-  //files: ['**/*.{ts,tsx}'],
 
-  files: ["**/*.ts", "**/*.tsx"], // Specify the file patterns ESLint should target
+
+  files: ["**/*.ts", "**/*.tsx"], 
 
   ignores: ["dist"],
   languageOptions: {
